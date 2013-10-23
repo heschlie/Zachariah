@@ -1,2 +1,5 @@
+# Python files to ignore
 *.pyc
+
+# Photoshop files to ignore
 *.psd

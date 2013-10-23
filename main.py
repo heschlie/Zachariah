@@ -6,36 +6,37 @@ import level, settings
 
 pygame.init()
 
-def main():
-    global RES, DISPSURF, resX, resY, mouseClick
-    #Trying to make the menu/game multiresolution capable, might not pan out
-    RES = [(1280,720), (1920,1080)]
-    resolution = 0
-    DISPSURF = pygame.display.set_mode(RES[resolution])
-    resX = RES[resolution][0]
-    resY = RES[resolution][1]
-    
-    mouseClick = False
-    mousex = 0
-    mousey = 0
-    
-    pygame.display.set_caption("Zacharaiah")
-    
-    while True:
+class Game(object):
+    def main(self):
+        global RES, DISPSURF, resX, resY, mouseClick
+        # Trying to make the menu/game multiresolution capable, might not pan out
+        RES = [(1280,720), (1920,1080)]
+        self.resolution = 0
+        DISPSURF = pygame.display.set_mode(RES[self.resolution])
+        resX = RES[self.resolution][0]
+        resY = RES[self.resolution][1]
+        
         mouseClick = False
-        for event in pygame.event.get():
-            if event.type == QUIT or (event.type == KEYUP and event.key == K_ESCAPE):
-                pygame.quit()
-                sys.exit()
-            elif event.type == MOUSEMOTION:
-                mousex, mousey = event.pos
-            elif event.type == MOUSEBUTTONUP:
-                mousex, mousey = event.pos
-                mouseClick = True
+        self.mousex = 0
+        self.mousey = 0
         
-        mainMenu()
+        pygame.display.set_caption("Zacharaiah")
         
-        pygame.display.update()
+        while True:
+            mouseClick = False
+            for event in pygame.event.get():
+                if event.type == QUIT or (event.type == KEYUP and event.key == K_ESCAPE):
+                    pygame.quit()
+                    sys.exit()
+                elif event.type == MOUSEMOTION:
+                    self.mousex, self.mousey = event.pos
+                elif event.type == MOUSEBUTTONUP:
+                    self.mousex, self.mousey = event.pos
+                    mouseClick = True
+            
+            mainMenu()
+            
+            pygame.display.update()
     
     
 def mainMenu():
@@ -75,4 +76,4 @@ def mainMenu():
     DISPSURF.blit(title, titleObj)
 
 if __name__ == "__main__":
-    main()
+    Game().main()

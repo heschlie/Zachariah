@@ -1,5 +1,7 @@
 import pygame, sys
 from pygame.locals import *
 
-def load(world):
-    print  world
+class Level(object):
+    
+    def load(self, world):
+        print  world

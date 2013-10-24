@@ -2,7 +2,8 @@
 
 import pygame, sys
 from pygame.locals import *
-import level, settings
+from level import *
+from settings import *
 
 pygame.init()
 
@@ -65,10 +66,10 @@ def mainMenu():
     
     #Load the overworld upon clicking 'Play' button    
     if hovA.collidepoint(pygame.mouse.get_pos()) and mouseClick == True:
-        level.load('overworld')
+        Level.load('overworld')
 
     if hovB.collidepoint(pygame.mouse.get_pos()) and mouseClick == True:
-        settings.settingsMenu('bar')
+        settingsMenu('bar')
         
         
     pygame.draw.rect(DISPSURF, (0,255,0), (((resX - 200) * .5), (resY * .1) - 25, 200, 50))

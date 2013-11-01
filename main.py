@@ -57,7 +57,7 @@ def mainMenu():
         
         #Load the overworld upon clicking 'Play' button    
         if hovA.collidepoint(pygame.mouse.get_pos()) and mouseClick == True:
-            level.load('foo', DISPSURF)
+            level.load('foo')
     
         if hovB.collidepoint(pygame.mouse.get_pos()) and mouseClick == True:
             settings.settingsMenu('bar')

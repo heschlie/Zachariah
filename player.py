@@ -30,7 +30,5 @@ class Player(pygame.sprite.Sprite):
         #self.dy = min(400, self.dy + 40)
         self.rect.y += self.dy * dt
         
-        
         if check_collision(lvl, self):
-            print "Colliding"
-            
+            print "Colliding"          

@@ -3,16 +3,14 @@ from pygame.locals import *
 from pixelperfect import *
 #from main import *
 
-def load(world, ):
+def load(world):
     pygame.init()
     screen = pygame.display.get_surface()
     
     print world
     clock = pygame.time.Clock()
-    hero = player.Player()
     lvl = Level()
-    
-    print str(lvl.hitmask)
+    hero = player.Player()
     
     lvl.set_player_loc(hero, 100,100)
     
@@ -36,9 +34,7 @@ class Level(object):
     
     def __init__(self,):
 
-        #lvl_img = pygame.image.load('test_level.png')
         self.lvl_bg, self.rect = load_image('test_level.png', None, True)
-        #self.hitmask = get_alpha_hitmask(self.lvl_bg, self.rect, 255)
         self.hitmask = pygame.surfarray.array_alpha(self.lvl_bg)
         
     def set_player_loc(self, player, x, y):

@@ -3,18 +3,20 @@ from pygame.locals import *
 from pixelperfect import *
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, *groups):
-        super(Player, self).__init__(*groups)
+    def __init__(self):
+        #super(Player, self).__init__(*groups)
         
         self.image, self.rect = load_image('images/player.png', None, True)
-        #self.hitmask = get_alpha_hitmask(self.image, self.rect, 255)
         self.hitmask = pygame.surfarray.array_alpha(self.image)
         self.resting = False
         self.dy = 0
         self.speed = 50
+        self.flrA = Detectors(self.rect.x+1, self.rect.y, 1,self.rect.height+16)
+        self.flrB = Detectors(self.rect.right-2, self.rect.y, 1,self.rect.height+16)
+        self.wall = Detectors(self.rect.x, self.rect.bottom-30, self.rect.width, 1)
         
     def update(self, dt, lvl):
-        #last = self.rect.copy()
+        last = self.rect.copy()
 
         key = pygame.key.get_pressed()
         if key[pygame.K_LEFT]:
@@ -26,9 +28,14 @@ class Player(pygame.sprite.Sprite):
         if key[pygame.K_UP]:
             self.rect.y -= self.speed * dt
         if self.resting and key[pygame.K_SPACE]:
-            self.dy = -500
-        #self.dy = min(400, self.dy + 40)
+            self.dy = -200
+        #self.dy = min(400, self.dy + 20)
         self.rect.y += self.dy * dt
         
-        if check_collision(lvl, self):
-            print "Colliding"          
+        if check_collision(self.flrA, lvl):
+            print "Collision detected"
+            
+class Detectors(object):
+    def __init__(self, x, y, width, height):
+        self.image = pygame.Rect((x, y),(width, height))
+        self.hitmask = self.image

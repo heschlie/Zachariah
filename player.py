@@ -1,6 +1,7 @@
 import pygame, sys
 from pygame.locals import *
 from pixelperfect import *
+import tiledtmxloader
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -14,6 +15,7 @@ class Player(pygame.sprite.Sprite):
         self.flrA = Detectors(self.rect.x+1, self.rect.y, 1,self.rect.height+16)
         self.flrB = Detectors(self.rect.right-2, self.rect.y, 1,self.rect.height+16)
         self.wall = Detectors(self.rect.x, self.rect.bottom-30, self.rect.width, 1)
+        self._sprite = tiledtmxloader.helperspygame.SpriteLayer.Sprite(self.image, self.rect)
         
     def update(self, dt, lvl):
         last = self.rect.copy()
@@ -38,4 +40,4 @@ class Player(pygame.sprite.Sprite):
 class Detectors(object):
     def __init__(self, x, y, width, height):
         self.image = pygame.Rect((x, y),(width, height))
-        self.hitmask = self.image
+        #self.hitmask = pygame.Mask.self.image

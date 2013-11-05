@@ -21,6 +21,8 @@ def load(world):
         lvl.tilemap.update(dt/1000., lvl)
         screen.fill((0,100,0))
         lvl.tilemap.draw(screen)
+        print lvl.tilemap.layers['Tile Layer 1'].get_at(lvl.hero.rect.centerx, lvl.hero.rect.centery)
+        print lvl.hero.rect.centerx, lvl.hero.rect.centery
         
         #screen.blit(lvl.lvl_bg, lvl.rect)
         #screen.blit(hero.image, hero.rect)

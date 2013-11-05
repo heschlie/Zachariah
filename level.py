@@ -5,6 +5,8 @@ import tiledtmxloader
 #from main import *
 
 def load(world):
+    dt = 60
+    
     pygame.init()
     screen = pygame.display.get_surface()
     
@@ -14,15 +16,18 @@ def load(world):
     lvl = Level(hero)
     
     lvl.set_player_loc(hero, 100, 100)
+    lvl.sprite_layers[1].add_sprite(hero._sprite)
     
     while True:
-        dt = 60
         clock.tick(dt)
-        
-        hero.update(dt/1000., lvl)
+       
         update_viewport(hero, lvl)
+        hero.update(dt/1000., lvl)
         
-        lvl.sprite_layers[0].add_sprite(hero._sprite)
+        print lvl.renderer.pick_layer(lvl.sprite_layers[0], hero._sprite.rect.centerx, hero._sprite.rect.centery)
+        #print hero._sprite.rect.centerx, hero._sprite.rect.centery
+        #print hero.rect.centerx, hero.rect.centery
+        print hero._sprite.rect.centerx, hero._sprite.rect.centery
         
         screen.fill((0,100,0))
         
@@ -33,7 +38,7 @@ def load(world):
                 lvl.renderer.render_layer(screen, layer)
         
         #screen.blit(lvl.lvl_bg, lvl.rect)
-        #screen.blit(hero.image, hero.rect)
+        screen.blit(hero.image, hero.rect)
         pygame.display.update()
         
         for event in pygame.event.get():
@@ -42,32 +47,32 @@ def load(world):
                 sys.exit()
                 
 def update_viewport(hero, lvl):
-    if hero._sprite.rect.centerx <= 640 and hero._sprite.rect.centery <= 370:
+    if hero.rect.x <= 640 and hero.rect.y <= 370:
         #Top left
         lvl.renderer.set_camera_position(640, 370)
-    elif hero._sprite.rect.centerx >= lvl.lvl_map.pixel_width - 640 and hero._sprite.rect.centery >= lvl.lvl_map.pixel_height - 370:
+    elif hero.rect.x >= lvl.lvl_map.pixel_width - 640 and hero.rect.y >= lvl.lvl_map.pixel_height - 370:
         #Bottom right
         lvl.renderer.set_camera_position(lvl.lvl_map.pixel_width - 640, lvl.lvl_map.pixel_height - 370)
-    elif hero._sprite.rect.centerx <= 640 and hero._sprite.rect.centery >= lvl.lvl_map.pixel_height - 370:
+    elif hero.rect.x <= 640 and hero.rect.y >= lvl.lvl_map.pixel_height - 370:
         #Bottom left
         lvl.renderer.set_camera_position(640, lvl.lvl_map.pixel_height - 370)
-    elif hero._sprite.rect.centerx >= lvl.lvl_map.pixel_width - 640 and hero._sprite.rect.centery <= 370:
+    elif hero.rect.x >= lvl.lvl_map.pixel_width - 640 and hero.rect.y <= 370:
         #Top Right
         lvl.renderer.set_camera_position(lvl.lvl_map.pixel_width - 640, 370)
-    elif hero._sprite.rect.centerx <= 640:
+    elif hero.rect.x <= 640:
         #Left
-        lvl.renderer.set_camera_position(640, hero._sprite.rect.centery)
-    elif hero._sprite.rect.centerx >= lvl.lvl_map.pixel_width - 640:
+        lvl.renderer.set_camera_position(640, hero.rect.y)
+    elif hero.rect.x >= lvl.lvl_map.pixel_width - 640:
         #Right
-        lvl.renderer.set_camera_position(lvl.lvl_map.pixel_width - 640, hero._sprite.rect.centery)
-    elif hero._sprite.rect.centery <= 370:
+        lvl.renderer.set_camera_position(lvl.lvl_map.pixel_width - 640, hero.rect.y)
+    elif hero.rect.y <= 370:
         #Top
-        lvl.renderer.set_camera_position(hero._sprite.rect.centerx, 370)
-    elif hero._sprite.rect.centery >= lvl.lvl_map.pixel_height - 370:
+        lvl.renderer.set_camera_position(hero.rect.x, 370)
+    elif hero.rect.y >= lvl.lvl_map.pixel_height - 370:
         #bottom
-        lvl.renderer.set_camera_position(hero._sprite.rect.centerx, lvl.lvl_map.pixel_height -370)
+        lvl.renderer.set_camera_position(hero.rect.x, lvl.lvl_map.pixel_height -370)
     else:
-        lvl.renderer.set_camera_position(hero._sprite.rect.centerx, hero._sprite.rect.centery)
+        lvl.renderer.set_camera_position(hero.rect.x, hero.rect.y)
 
 class Level(object):
     
@@ -75,21 +80,22 @@ class Level(object):
 
         #self.lvl_bg, self.rect = load_image('test_level.png', None, True)
         #self.hitmask = pygame.surfarray.array_alpha(self.lvl_bg)
-        
-        self.lvl_map = tiledtmxloader.tmxreader.TileMapParser().parse_decode("levels/test/untitled.tmx")
+        self.level = "levels/test/untitled.tmx"
+        self.lvl_map = tiledtmxloader.tmxreader.TileMapParser().parse_decode(self.level)
         
         self.resources = tiledtmxloader.helperspygame.ResourceLoaderPygame()
         self.resources.load(self.lvl_map)
         
         self.renderer = tiledtmxloader.helperspygame.RendererPygame()
         
-        cam_x = hero.rect.centerx
-        cam_y = hero.rect.centery
+        cam_x = hero._sprite.rect.centerx
+        cam_y = hero._sprite.rect.centery
         
         self.renderer.set_camera_position_and_size(cam_x, cam_y, 1280, 720)
         
         self.sprite_layers = tiledtmxloader.helperspygame.get_layers_from_map(self.resources)
         self.sprite_layers = [layer for layer in self.sprite_layers if not layer.is_object_group]
+                
         
     def set_player_loc(self, player, x, y):
         player.rect.center = (x, y)

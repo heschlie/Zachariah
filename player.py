@@ -20,29 +20,11 @@ class Player(Character):
         lvl.set_player_loc(self, (loc))
         
     def update(self, dt, lvl):
-        last = self.rect.copy()
-
-        key = pygame.key.get_pressed()
-        if key[pygame.K_LEFT]:
-            self.rect.centerx -= self.speed * dt
-            #self.herox -= self.speed * dt
-        if key[pygame.K_RIGHT]:
-            self.rect.centerx += self.speed * dt
-            #self.herox += self.speed * dt
-        if key[pygame.K_DOWN]:
-            self.rect.centery += self.speed * dt
-            #self.heroy += self.speed * dt
-        if key[pygame.K_UP]:
-            self.rect.centery -= self.speed * dt
-            #self.heroy -= self.speed * dt
-        if not self.fall and key[pygame.K_SPACE]:
-            self.dy = -200
         #self.dy = min(400, self.dy + 20)
-        self.rect.y += self.dy * dt
-        
+        #self.rect.y += self.dy * dt
+        self.check_keys(dt)
         self.detect_ground(lvl)
         self.reset_wall_floor_rects()
-        
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         
     def detect_ground(self, level):
@@ -60,15 +42,15 @@ class Player(Character):
         if change != None:
             self.rect.y = int(change - self.rect.height)
         #else:
-            #self.fall = True
+        #    self.fall = True
                      
                      
     def check_floor_initial(self, pads_on, pad_details, level):
         i, floor = pad_details
         collide = []
         for cell in level.rect_dict:
-            if floor.colliderect(level.rect_dict[cell].tile.surface.get_bounding_rect()):
-                collide.append(cell) 
+            if floor.colliderect(level.rect_dict[cell]):
+                collide.append(cell)
                 pads_on[i] = True
         print collide        
         return collide, pads_on
@@ -79,7 +61,6 @@ class Player(Character):
         for key in collide:
             cell_heights = level.height_dict[key]
             x_in_cell = floor.x - key[0] * level.tilemap.layers['Tile Layer 1'].tile_width
-            print x_in_cell
             offset = cell_heights[x_in_cell]
             
             if change == None:
@@ -97,7 +78,22 @@ class Player(Character):
         self.wall_detect_rect = wall
         
         
-
+    def check_keys(self, dt):
+        key = pygame.key.get_pressed()
+        if key[pygame.K_LEFT]:
+            self.rect.centerx -= self.speed * dt
+            #self.herox -= self.speed * dt
+        if key[pygame.K_RIGHT]:
+            self.rect.centerx += self.speed * dt
+            #self.herox += self.speed * dt
+        if key[pygame.K_DOWN]:
+            self.rect.centery += self.speed * dt
+            #self.heroy += self.speed * dt
+        if key[pygame.K_UP]:
+            self.rect.centery -= self.speed * dt
+            #self.heroy -= self.speed * dt
+        if not self.fall and key[pygame.K_SPACE]:
+            self.dy = -200
         
         
         

@@ -14,7 +14,7 @@ def load():
     clock = pygame.time.Clock()
     lvl = Level(screen, 'test')
     #for coord, cell in lvl.tilemap.layers['Tile Layer 1'].cells.items():
-    #    print coord, cell.tile.gid
+    #    print coord, cell.tile.surface.get_size()
     #for i in lvl.height_dict:
     #    print i, lvl.height_dict[i]
     
@@ -25,12 +25,7 @@ def load():
         lvl.tilemap.update(dt/1000., lvl)
         screen.fill((0,100,0))
         lvl.tilemap.draw(screen)
-        #if lvl.tilemap.layers['Tile Layer 1'].get_at(lvl.hero.floor_detect_rects[0].x, lvl.hero.floor_detect_rects[0].bottom) != None:
-            #print "test2 ", lvl.tilemap.layers['Tile Layer 1'].get_at(lvl.hero.rect.centerx, lvl.hero.rect.bottom).px, lvl.tilemap.layers['Tile Layer 1'].get_at(lvl.hero.rect.centerx, lvl.hero.rect.bottom).py
-            #print "floor[0]", lvl.tilemap.layers['Tile Layer 1'].get_at(lvl.hero.floor_detect_rects[0].x, lvl.hero.floor_detect_rects[0].bottom).px, lvl.tilemap.layers['Tile Layer 1'].get_at(lvl.hero.floor_detect_rects[0].x, lvl.hero.floor_detect_rects[0].bottom).py
-        #if lvl.tilemap.layers['Tile Layer 1'].get_at(lvl.hero.floor_detect_rects[1].x, lvl.hero.floor_detect_rects[1].bottom) != None:
-            #print "floor[1]", lvl.tilemap.layers['Tile Layer 1'].get_at(lvl.hero.floor_detect_rects[1].x, lvl.hero.floor_detect_rects[1].bottom).px, lvl.tilemap.layers['Tile Layer 1'].get_at(lvl.hero.floor_detect_rects[1].x, lvl.hero.floor_detect_rects[1].bottom).py
-        
+
         pygame.display.update()
         
         for event in pygame.event.get():
@@ -42,30 +37,42 @@ class Level(object):
     
     def __init__(self, screen, name):
         
+        """Loading the level files, changing the CWD to match the files for loading,
+        This was easier than having to edit the .tmx file every time it needed to
+        be edited."""
         os.chdir('levels/%s/' % name)
-        self.level = "test.tmx"
+        self.level = "%s.tmx" % name
         self.tilesheet = pygame.image.load('%s.png' % name)
-        
         self.tilemap = tmx.load(self.level, screen.get_size())
+        os.chdir('../..')
+        
+        """Loading the 'hero' into the level, and adding him/her to the self.sprites group"""
         self.sprites = tmx.SpriteLayer()
         self.start_cell = self.tilemap.layers['triggers'].find('player')[0]
-        os.chdir('../..')
         self.hero = player.Player(self, (self.start_cell.px, self.start_cell.py), self.sprites)
-        self.rect_dict = self.tilemap.layers['Tile Layer 1'].cells
-        self.height_dict = self.gen_height_map()
-        
-        
         self.tilemap.layers.append(self.sprites)
+        
+        """Cell, rect, and mask dicts"""
+        self.cell_size = (self.tilemap.layers['Tile Layer 1'].tile_width, self.tilemap.layers['Tile Layer 1'].tile_height)
+        self.cells_dict = self.tilemap.layers['Tile Layer 1'].cells
+        self.height_dict = self.gen_height_map()
+        self.rect_dict = self.get_rect_dict()
+        
         
     def set_player_loc(self, player, loc):
         player.rect.center = loc
         
+    def get_rect_dict(self):
+        rect_dict = {}
+        for coord, cell in self.cells_dict.items():
+            rect_dict[coord] = cell.tile.surface.get_rect(x = coord[0] * self.cell_size[0], y = coord[1] * self.cell_size[1])
+        return rect_dict
         
     def gen_height_map(self):
         height_dict = {}
         test_mask = pygame.Mask((1,self.tilemap.layers['Tile Layer 1'].tile_width))
         test_mask.fill()
-        for coord, cell in self.rect_dict.items():
+        for coord, cell in self.cells_dict.items():
             heights = []
             mask = pygame.mask.from_surface(cell.tile.surface)
             for i in range(cell.tile.surface.get_width()):

@@ -474,6 +474,7 @@ visible: Whether the object is shown (1) or hidden (0). Defaults to 1.
             if value.isdigit():
                 value = int(value)
             o.properties[name] = value
+        #print o
         return o
 
     def intersects(self, x1, y1, x2, y2):
@@ -717,6 +718,7 @@ class TileMap(object):
         for tag in map.findall('objectgroup'):
             layer = ObjectLayer.fromxml(tag, tilemap)
             tilemap.layers.add_named(layer, layer.name)
+            #tilemap.layers.add_named(layer, layer.properties)
 
         return tilemap
 

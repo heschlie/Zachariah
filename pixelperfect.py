@@ -38,5 +38,4 @@ def load_image(name, colorkey=None, alpha=False):
         if colorkey is -1:
             colorkey = image.get_at((0,0))
         image.set_colorkey(colorkey, RLEACCEL)
-    print "Success"
     return image, image.get_rect()

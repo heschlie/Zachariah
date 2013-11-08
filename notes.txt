@@ -1,0 +1,1 @@
+mask = pygame.mask.from_surface(lvl.tilemap.layers['Tile Layer 1'].get_at(herox, heroy).tile.surface)

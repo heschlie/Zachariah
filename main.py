@@ -44,20 +44,20 @@ def mainMenu():
         titleObj.center = (1280 * .5), (720 * .1)
         
         #Draw button images using a small amount of math to hold position over resolution changes
-        DISPSURF.blit(playImg,(1280 * .175,720 * .417))
-        DISPSURF.blit(settingsImg,(1280 * .511,720 * .417))
+        DISPSURF.blit(playImg,(1280 * .175, 720 * .417))
+        DISPSURF.blit(settingsImg,(1280 * .511, 720 * .417))
         
         #Setup button hover image swap
-        hovA = DISPSURF.blit(playImg,(1280 * .175,720 * .417))
-        hovB = DISPSURF.blit(settingsImg,(1280 * .511,720 * .417))
+        hovA = DISPSURF.blit(playImg,(1280 * .175, 720 * .417))
+        hovB = DISPSURF.blit(settingsImg,(1280 * .511, 720 * .417))
         if hovA.collidepoint(pygame.mouse.get_pos()):
-            DISPSURF.blit(playHover,(1280 * .175,720 * .417))
+            DISPSURF.blit(playHover,(1280 * .175, 720 * .417))
         if hovB.collidepoint(pygame.mouse.get_pos()):
-            DISPSURF.blit(settingsHover,(1280 * .511,720 * .417))
+            DISPSURF.blit(settingsHover,(1280 * .511, 720 * .417))
         
         #Load the overworld upon clicking 'Play' button    
         if hovA.collidepoint(pygame.mouse.get_pos()) and mouseClick == True:
-            level.load('foo')
+            level.load()
     
         if hovB.collidepoint(pygame.mouse.get_pos()) and mouseClick == True:
             settings.settingsMenu('bar')

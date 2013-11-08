@@ -11,25 +11,39 @@ class Player(Character):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
         
-        self.image, self.rect = load_image('images/player.png', None, True)
+        self.image, self.rect = load_image('images/player.png', None, 127)
         self.hitmask = pygame.surfarray.array_alpha(self.image)
-        self.reset_wall_floor_rects()
-        self.fall = False
-        self.dy = 0
-        self.speed = 50
         lvl.set_player_loc(self, (loc))
+        self.fall = False
+        self.speed = 3
+        self.jump_power = -6.5
+        self.jump_cut_magnitude = -3
+        self.grav = 0.22
+        self.y_vel = self.x_vel = 0
+        self.setup_collision_rects()
         
-    def update(self, dt, lvl):
-        #self.dy = min(400, self.dy + 20)
-        #self.rect.y += self.dy * dt
-        self.check_keys(dt)
+    def update(self, dt, lvl, key):
+        self.check_keys(key)
+        self.detect_wall(lvl)
         self.detect_ground(lvl)
-        self.reset_wall_floor_rects()
+        self.physics_update()
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
+        
+    def setup_collision_rects(self):
+        self.reset_wall_floor_rects()
+        self.fat_mask = pygame.Mask(self.rect.size)
+        self.fat_mask.fill()
+        self.wall_detect_mask = pygame.Mask(self.wall_detect_rect.size)
+        self.wall_detect_mask.fill()
+        self.floor_detect_mask = pygame.Mask((self.rect.width, 1))
+        self.floor_detect_mask.fill()
+        self.collide_ls = []
         
     def detect_ground(self, level):
         if not self.fall:
             self.grounded(level)
+        else:
+            self.airborne(level)
         self.reset_wall_floor_rects()
               
     def grounded(self, level):
@@ -39,10 +53,12 @@ class Player(Character):
             collide, pads_on = self.check_floor_initial(pads_on, (i, floor), level)
             if collide:
                 change = self.check_floor_final(collide, (i, floor), change, level)
+        if pads_on[0]^pads_on[1]:
+            change = self.detect_glitch_fix(pads_on,change,level)
         if change != None:
             self.rect.y = int(change - self.rect.height)
-        #else:
-        #    self.fall = True
+        else:
+            self.fall = True
                      
                      
     def check_floor_initial(self, pads_on, pad_details, level):
@@ -51,8 +67,7 @@ class Player(Character):
         for cell in level.rect_dict:
             if floor.colliderect(level.rect_dict[cell]):
                 collide.append(cell)
-                pads_on[i] = True
-        print collide        
+                pads_on[i] = True      
         return collide, pads_on
          
          
@@ -62,12 +77,23 @@ class Player(Character):
             cell_heights = level.height_dict[key]
             x_in_cell = floor.x - key[0] * level.tilemap.layers['Tile Layer 1'].tile_width
             offset = cell_heights[x_in_cell]
-            
             if change == None:
-                change = (key[1] + 1) * level.tilemap.layers['Tile Layer 1'].tile_width - offset
+                change = (key[1] + 1) * level.tilemap.layers['Tile Layer 1'].tile_height - offset
             else:
-                change = min((key[1] + 1) * level.tilemap.layers['Tile Layer 1'].tile_width - offset, change)
+                change = min((key[1] + 1) * level.tilemap.layers['Tile Layer 1'].tile_height - offset, change)
         return change
+    
+    def detect_wall(self, level):
+        if not self.fall:
+            rect,mask = self.wall_detect_rect,self.wall_detect_mask
+        else:
+            rect,mask = self.rect,self.fat_mask
+        if self.collide_with(level,rect,mask,(int(self.x_vel),0)):
+            #self.x_vel = self.adjust_pos(level,rect,mask,[int(self.x_vel),0],0)
+            self.x_vel = 0
+        self.rect.x += int(self.x_vel)
+        print int(self.x_vel)
+        self.reset_wall_floor_rects()
       
       
     def reset_wall_floor_rects(self):
@@ -78,22 +104,89 @@ class Player(Character):
         self.wall_detect_rect = wall
         
         
-    def check_keys(self, dt):
-        key = pygame.key.get_pressed()
+    def check_keys(self, key):
+        self.x_vel = 0
+        if key[pygame.K_LSHIFT]:
+            self.speed = 6
         if key[pygame.K_LEFT]:
-            self.rect.centerx -= self.speed * dt
-            #self.herox -= self.speed * dt
+            self.x_vel -= self.speed
         if key[pygame.K_RIGHT]:
-            self.rect.centerx += self.speed * dt
-            #self.herox += self.speed * dt
-        if key[pygame.K_DOWN]:
-            self.rect.centery += self.speed * dt
-            #self.heroy += self.speed * dt
-        if key[pygame.K_UP]:
-            self.rect.centery -= self.speed * dt
-            #self.heroy -= self.speed * dt
-        if not self.fall and key[pygame.K_SPACE]:
-            self.dy = -200
+            self.x_vel += self.speed
+            
+    
+    def airborne(self, level):
+        mask = self.floor_detect_mask
+        check = (pygame.Rect(self.rect.x+1,self.rect.y,self.rect.width-1,1),
+                 pygame.Rect(self.rect.x+1,self.rect.bottom-1,self.rect.width-2,1))
+        stop_fall = False
+        for rect in check:
+            if self.collide_with(level, rect, mask, [0, int(self.y_vel)]):
+                offset = [0, int(self.y_vel)]
+                #self.y_vel = self.adjust_pos(level, rect, mask, offset, 1)
+                self.y_vel = 0
+                stop_fall = True
+        self.rect.y += int(self.y_vel)
+        if stop_fall:
+            self.fall = False
+            
+            
+    def collide_with(self, level, rect, mask, offset):
+        test = pygame.Rect((rect.x + offset[0], rect.y + offset[1]), rect.size)
+        self.collide_ls = []
+        for cell, rec in level.rect_dict.items():
+            if test.colliderect(rec):
+                level_rect = level.rect_dict[cell]
+                mask_test = test.x - level_rect.x, test.y - level_rect.y
+                level_mask = level.mask_dict[cell]
+                if level_mask.overlap_area(mask, mask_test):
+                    self.collide_ls.append(cell)
+        return self.collide_ls
+    
+    """Was unable to get this working properly, so I am simply setting the velocity
+    of the character to 0 when it detects a floor or wall.  I will change this if
+    problems arise."""
+    def adjust_pos(self, level, rect, mask, offset, off_ind):
+        offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
+        while 1:
+            if any(self.collide_with(level, rect, mask, offset)):
+                offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
+                if not offset[off_ind]:
+                    return 0
+                else:
+                    return offset[off_ind]
+    
+    def physics_update(self):
+        if self.fall:
+            self.y_vel += self.grav
+        else:
+            self.y_vel = 0
+                
+    def detect_glitch_fix(self,pads,change,level):
+        """Fixes a glitch with the blit location that occurs on up-slopes when
+        one detection bar hits a solid cell and the other doesn't. This could
+        probably still be improved."""
+        inc,index = ((1,0) if not pads[0] else (-1,1))
+        detector = self.floor_detect_rects[index].copy()
+        pad_details = (index,detector)
+        old_change = change
+        while detector.x != self.floor_detect_rects[not index].x:
+            detector.x += inc
+            collide = self.check_floor_initial([0,0],pad_details,level)[0]
+            change = self.check_floor_final(collide,pad_details,change,level)
+            if change < old_change:
+                return change
+        return old_change
         
-        
+    def jump(self):
+        """Called when the player presses the jump key."""
+        if not self.fall:
+            self.y_vel = self.jump_power
+            self.fall = True
+
+    def jump_cut(self):
+        """Called when the palyer releases the jump key before maximum height is
+        reached."""
+        if self.fall:
+            if self.y_vel < self.jump_cut_magnitude:
+                self.y_vel = self.jump_cut_magnitude
         

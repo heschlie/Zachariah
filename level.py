@@ -12,7 +12,7 @@ def load():
     screen = pygame.display.get_surface()
     
     clock = pygame.time.Clock()
-    lvl = Level(screen, 'test')
+    lvl = Level(screen, 'alpha')
 
     
     """Main loop"""
@@ -51,13 +51,13 @@ class Level(object):
         
         """Loading the 'hero' into the level, and adding him/her to the self.sprites group"""
         self.sprites = tmx.SpriteLayer()
-        self.start_cell = self.tilemap.layers['triggers'].find('player')[0]
+        self.start_cell = self.tilemap.layers['spawns'].find('player')[0]
         self.hero = player.Player(self, (self.start_cell.px, self.start_cell.py), self.sprites)
         self.tilemap.layers.append(self.sprites)
         
         """Cell, rect, and mask dicts"""
-        self.cell_size = (self.tilemap.layers['Tile Layer 1'].tile_width, self.tilemap.layers['Tile Layer 1'].tile_height)
-        self.cells_dict = self.tilemap.layers['Tile Layer 1'].cells
+        self.cell_size = (self.tilemap.layers['terrain'].tile_width, self.tilemap.layers['terrain'].tile_height)
+        self.cells_dict = self.tilemap.layers['terrain'].cells
         self.height_dict = self.gen_height_map()
         self.rect_dict = self.get_rect_dict()
         self.mask_dict = self.make_mask_dict()
@@ -75,7 +75,7 @@ class Level(object):
         
     def gen_height_map(self):
         height_dict = {}
-        test_mask = pygame.Mask((1,self.tilemap.layers['Tile Layer 1'].tile_width))
+        test_mask = pygame.Mask((1,self.tilemap.layers['terrain'].tile_width))
         test_mask.fill()
         for coord, cell in self.cells_dict.items():
             heights = []

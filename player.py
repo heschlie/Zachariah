@@ -16,13 +16,14 @@ class Player(Character):
         lvl.set_player_loc(self, (loc))
         self.fall = False
         self.speed = 3
-        self.jump_power = -6.5
+        self.jump_power = -13
         self.jump_cut_magnitude = -3
         self.grav = 0.22
         self.y_vel = self.x_vel = 0
         self.setup_collision_rects()
         
     def update(self, dt, lvl, key):
+        self.speed = 3
         self.check_keys(key)
         self.detect_wall(lvl)
         self.detect_ground(lvl)
@@ -75,12 +76,12 @@ class Player(Character):
         i, floor = pad_details
         for key in collide:
             cell_heights = level.height_dict[key]
-            x_in_cell = floor.x - key[0] * level.tilemap.layers['Tile Layer 1'].tile_width
+            x_in_cell = floor.x - key[0] * level.tilemap.layers['terrain'].tile_width
             offset = cell_heights[x_in_cell]
             if change == None:
-                change = (key[1] + 1) * level.tilemap.layers['Tile Layer 1'].tile_height - offset
+                change = (key[1] + 1) * level.tilemap.layers['terrain'].tile_height - offset
             else:
-                change = min((key[1] + 1) * level.tilemap.layers['Tile Layer 1'].tile_height - offset, change)
+                change = min((key[1] + 1) * level.tilemap.layers['terrain'].tile_height - offset, change)
         return change
     
     def detect_wall(self, level):

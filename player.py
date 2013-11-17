@@ -2,22 +2,15 @@ import pygame, sys
 from pygame.locals import *
 from pixelperfect import *
 import tmx
+
+
 class Character(pygame.sprite.Sprite):
-    def __init__(self):
-        self.test123 = "abc"
-        
-        
-class Player(Character):
     def __init__(self, lvl, loc, *groups):
-        super(Character, self).__init__(*groups)
-        
-        self.image, self.rect = load_image('images/player.png', None, 127)
-        self.hitmask = pygame.surfarray.array_alpha(self.image)
-        lvl.set_player_loc(self, (loc))
+        self.test123 = "abc"
         self.fall = False
         self.platform = False
         self.speed = 3
-        self.jump_power = -13
+        self.jump_power = -8.75
         self.jump_cut_magnitude = -3
         self.grav = 0.22
         self.y_vel = self.x_vel = 0
@@ -25,12 +18,9 @@ class Player(Character):
         
     def update(self, dt, lvl, key):
         self.speed = 3
-        self.check_keys(key)
         self.detect_wall(lvl)
         self.detect_ground(lvl)
         self.physics_update()
-        lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
-        
         
     def setup_collision_rects(self):
         self.reset_wall_floor_rects()
@@ -62,8 +52,7 @@ class Player(Character):
             self.rect.y = int(change - self.rect.height)
         else:
             self.fall = True
-                     
-                     
+                
     def check_floor_initial(self, pads_on, pad_details, level):
         i, floor = pad_details
         collide = []
@@ -72,7 +61,6 @@ class Player(Character):
                 collide.append(cell)
                 pads_on[i] = True      
         return collide, pads_on
-         
          
     def check_floor_final(self, collide, pad_details, change, level):
         i, floor = pad_details
@@ -97,7 +85,6 @@ class Player(Character):
         self.rect.x += int(self.x_vel)
         self.reset_wall_floor_rects()
       
-      
     def reset_wall_floor_rects(self):
         flr = (pygame.Rect((self.rect.x+1,self.rect.y),(1,self.rect.height+16)),
                pygame.Rect((self.rect.right-2,self.rect.y),(1,self.rect.height+16)))
@@ -105,17 +92,6 @@ class Player(Character):
         self.floor_detect_rects = flr
         self.wall_detect_rect = wall
         
-        
-    def check_keys(self, key):
-        self.x_vel = 0
-        if key[pygame.K_LSHIFT]:
-            self.speed = 6
-        if key[pygame.K_LEFT]:
-            self.x_vel -= self.speed
-        if key[pygame.K_RIGHT]:
-            self.x_vel += self.speed
-            
-    
     def airborne(self, level):
         new = self.rect
         mask = self.floor_detect_mask
@@ -129,20 +105,18 @@ class Player(Character):
                 self.y_vel = 0
                 stop_fall = True
         if level.tilemap.layers['platforms'].collide(check[1], 'blockers'):
-            for cell in level.tilemap.layers['platforms'].collide(check[1], 'blockers'):
+            for cell in level.tilemap.layers['platforms'].collide(self.rect, 'blockers'):
                 if check[1].bottom + int(self.y_vel) > cell.top and self.y_vel > 0:
                     self.rect.bottom = cell.top + 2
                     self.y_vel = 0
                     self.platform = True
                     stop_fall = True
         else:
-            print 'test'
             self.fall = True
             self.platform = False
         self.rect.y += int(self.y_vel)
         if stop_fall:
             self.fall = False
-            
             
     def collide_with(self, level, rect, mask, offset):
         test = pygame.Rect((rect.x + offset[0], rect.y + offset[1]), rect.size)
@@ -203,4 +177,30 @@ class Player(Character):
         if self.fall:
             if self.y_vel < self.jump_cut_magnitude:
                 self.y_vel = self.jump_cut_magnitude
+
+        
+class Player(Character):
+    def __init__(self, lvl, loc, *groups):
+        super(Character, self).__init__(*groups)
+        self.image, self.rect = load_image('images/player.png', None, 127)
+        self.hitmask = pygame.surfarray.array_alpha(self.image)
+        lvl.set_player_loc(self, (loc))
+        super(Player, self).__init__(lvl, loc)
+        
+    def update(self, dt, lvl, key):
+        self.check_keys(key)
+        super(Player, self).update(dt, lvl, key)
+        lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
+        
+    def check_keys(self, key):
+        self.x_vel = 0
+        if key[pygame.K_LSHIFT]:
+            self.speed = 6
+        if key[pygame.K_LEFT]:
+            self.x_vel -= self.speed
+        if key[pygame.K_RIGHT]:
+            self.x_vel += self.speed
+            
+    
+    
         

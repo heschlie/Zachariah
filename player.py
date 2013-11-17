@@ -15,6 +15,7 @@ class Player(Character):
         self.hitmask = pygame.surfarray.array_alpha(self.image)
         lvl.set_player_loc(self, (loc))
         self.fall = False
+        self.platform = False
         self.speed = 3
         self.jump_power = -13
         self.jump_cut_magnitude = -3
@@ -30,6 +31,7 @@ class Player(Character):
         self.physics_update()
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         
+        
     def setup_collision_rects(self):
         self.reset_wall_floor_rects()
         self.fat_mask = pygame.Mask(self.rect.size)
@@ -41,7 +43,7 @@ class Player(Character):
         self.collide_ls = []
         
     def detect_ground(self, level):
-        if not self.fall:
+        if not self.fall and not self.platform:
             self.grounded(level)
         else:
             self.airborne(level)
@@ -93,7 +95,6 @@ class Player(Character):
             #self.x_vel = self.adjust_pos(level,rect,mask,[int(self.x_vel),0],0)
             self.x_vel = 0
         self.rect.x += int(self.x_vel)
-        print int(self.x_vel)
         self.reset_wall_floor_rects()
       
       
@@ -116,16 +117,28 @@ class Player(Character):
             
     
     def airborne(self, level):
+        new = self.rect
         mask = self.floor_detect_mask
         check = (pygame.Rect(self.rect.x+1,self.rect.y,self.rect.width-1,1),
                  pygame.Rect(self.rect.x+1,self.rect.bottom-1,self.rect.width-2,1))
         stop_fall = False
         for rect in check:
             if self.collide_with(level, rect, mask, [0, int(self.y_vel)]):
-                offset = [0, int(self.y_vel)]
+                #offset = [0, int(self.y_vel)]
                 #self.y_vel = self.adjust_pos(level, rect, mask, offset, 1)
                 self.y_vel = 0
                 stop_fall = True
+        if level.tilemap.layers['platforms'].collide(check[1], 'blockers'):
+            for cell in level.tilemap.layers['platforms'].collide(check[1], 'blockers'):
+                if check[1].bottom + int(self.y_vel) > cell.top and self.y_vel > 0:
+                    self.rect.bottom = cell.top + 2
+                    self.y_vel = 0
+                    self.platform = True
+                    stop_fall = True
+        else:
+            print 'test'
+            self.fall = True
+            self.platform = False
         self.rect.y += int(self.y_vel)
         if stop_fall:
             self.fall = False
@@ -180,7 +193,7 @@ class Player(Character):
         
     def jump(self):
         """Called when the player presses the jump key."""
-        if not self.fall:
+        if not self.fall or self.platform:
             self.y_vel = self.jump_power
             self.fall = True
 

@@ -11,7 +11,7 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Tile Layer 1" width="46" height="28">
+ <layer name="terrain" width="46" height="28">
   <data encoding="base64" compression="zlib">
    eJztkEsKwCAMBdNapPc/sYp1W4KfVykzMJsskiFmAP8lfh3QQTS6ldCthW4tdGuhWwvdWujWQrf/3qw9O//7zp5WG0P2euYrusutY4Kt901vj2cXIo6bAMcJBm0=
   </data>
@@ -21,7 +21,7 @@
    eJztwQEBAAAAgiD/r25IQAEAAAAArwYUIAAB
   </data>
  </layer>
- <objectgroup name="triggers" width="46" height="28">
+ <objectgroup name="spawns" width="46" height="28">
   <object name="Player" x="130" y="546" width="31" height="28">
    <properties>
     <property name="player" value="yes"/>

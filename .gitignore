@@ -3,3 +3,6 @@
 
 # Photoshop files to ignore
 *.psd
+
+#pyxel edit files
+*.pyxel

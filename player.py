@@ -192,8 +192,8 @@ class Player(Character):
         self.rect = self.image.get_rect()
         self.hitmask = pygame.surfarray.array_alpha(self.image)
         lvl.set_player_loc(self, (loc))
+        self.dir = ''
         super(Player, self).__init__(lvl, loc)
-        print self.animSurf
         
     def update(self, dt, lvl, key):
         self.check_keys(key)
@@ -203,7 +203,10 @@ class Player(Character):
     def check_keys(self, key):
         self.conductor.play()
         self.x_vel = 0
-        dir = ''
+        if self.dir == 'left':
+            self.image = self.face_left
+        if self.dir == 'right':
+            self.image = self.face_right
         if key[pygame.K_LSHIFT]:
             self.speed = 6
         if key[pygame.K_LEFT]:
@@ -214,7 +217,7 @@ class Player(Character):
             if self.speed == 6:
                 self.image = self.animSurf['run_left'].getCurrentFrame()
                 self.hitmask = pygame.surfarray.array_alpha(self.animSurf['run_left'].getCurrentFrame())
-            dir = 'left'
+            self.dir = 'left'
         if key[pygame.K_RIGHT]:
             self.x_vel += self.speed
             if self.speed == 3:
@@ -223,13 +226,7 @@ class Player(Character):
             if self.speed == 6:
                 self.image = self.animSurf['run_right'].getCurrentFrame()
                 self.hitmask = pygame.surfarray.array_alpha(self.animSurf['run_right'].getCurrentFrame())
-            dir = 'right'
-        else:
-            self.conductor.stop()
-            if dir == 'left':
-                self.image = self.face_left
-            if dir == 'right':
-                self.image = self.face_right
+            self.dir = 'right'
             
             
     def get_images(self):

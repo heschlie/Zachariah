@@ -87,9 +87,9 @@ class Character(pygame.sprite.Sprite):
         self.reset_wall_floor_rects()
       
     def reset_wall_floor_rects(self):
-        flr = (pygame.Rect((self.rect.x+1,self.rect.y),(1,self.rect.height+16)),
-               pygame.Rect((self.rect.right-2,self.rect.y),(1,self.rect.height+16)))
-        wall = pygame.Rect(self.rect.x,self.rect.bottom-10,self.rect.width,1)
+        flr = (pygame.Rect((self.rect.x+7,self.rect.y),(1,self.rect.height+16)),
+               pygame.Rect((self.rect.right-8,self.rect.y),(1,self.rect.height+16)))
+        wall = pygame.Rect(self.rect.x,self.rect.bottom-15,self.rect.width,1)
         self.floor_detect_rects = flr
         self.wall_detect_rect = wall
         
@@ -203,6 +203,7 @@ class Player(Character):
     def check_keys(self, key):
         self.conductor.play()
         self.x_vel = 0
+        #setting directions for idle
         if self.dir == 'left':
             self.image = self.face_left
         if self.dir == 'right':
@@ -213,20 +214,21 @@ class Player(Character):
             self.x_vel -= self.speed
             if self.speed == 3:
                 self.image = self.animSurf['walk_left'].getCurrentFrame()
-                self.hitmask = pygame.surfarray.array_alpha(self.animSurf['walk_left'].getCurrentFrame())
+                #self.hitmask = pygame.surfarray.array_alpha(self.animSurf['walk_left'].getCurrentFrame())
             if self.speed == 6:
                 self.image = self.animSurf['run_left'].getCurrentFrame()
-                self.hitmask = pygame.surfarray.array_alpha(self.animSurf['run_left'].getCurrentFrame())
+                #self.hitmask = pygame.surfarray.array_alpha(self.animSurf['run_left'].getCurrentFrame())
             self.dir = 'left'
         if key[pygame.K_RIGHT]:
             self.x_vel += self.speed
             if self.speed == 3:
                 self.image = self.animSurf['walk_right'].getCurrentFrame()
-                self.hitmask = pygame.surfarray.array_alpha(self.animSurf['walk_right'].getCurrentFrame())
+                #self.hitmask = pygame.surfarray.array_alpha(self.animSurf['walk_right'].getCurrentFrame())
             if self.speed == 6:
                 self.image = self.animSurf['run_right'].getCurrentFrame()
-                self.hitmask = pygame.surfarray.array_alpha(self.animSurf['run_right'].getCurrentFrame())
+                #self.hitmask = pygame.surfarray.array_alpha(self.animSurf['run_right'].getCurrentFrame())
             self.dir = 'right'
+            self.hitmask = pygame.surfarray.array_alpha(self.image)
             
             
     def get_images(self):
@@ -236,9 +238,10 @@ class Player(Character):
         animTypes = 'walk_right run_right'.split()
         y = 1
         for animType in animTypes:
-            imageAndDuration = [(self.sheet.subsurface((32*x,64*y,32,64)), 0.2) for x in range(4)]
+            imageAndDuration = [(self.sheet.subsurface((32*x,64*y,32,64)), 0.175) for x in range(4)]
             animSurf[animType] = pyganim.PygAnimation(imageAndDuration)
             y += 1
+        #flipping the right animations to create the left ones
         animSurf['walk_left'] = animSurf['walk_right'].getCopy()
         animSurf['walk_left'].flip(True, False)
         animSurf['walk_left'].makeTransformsPermanent()
@@ -246,8 +249,8 @@ class Player(Character):
         animSurf['run_left'].flip(True, False)
         animSurf['run_left'].makeTransformsPermanent()
         return animSurf
-            
-            
     
-    
+    def dead(self):
+        deadFont = pygame.font.Font('freesansbold.ttf', 32)
+        died = deadFont.render('You died!  Play again?', True, (0,0,0))
         

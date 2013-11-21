@@ -2,21 +2,16 @@ import pygame, sys
 from pygame.locals import *
 from pixelperfect import *
 import tmx
+import pyganim
+
+
 class Character(pygame.sprite.Sprite):
-    def __init__(self):
-        self.test123 = "abc"
-        
-        
-class Player(Character):
     def __init__(self, lvl, loc, *groups):
-        super(Character, self).__init__(*groups)
-        
-        self.image, self.rect = load_image('images/player.png', None, 127)
-        self.hitmask = pygame.surfarray.array_alpha(self.image)
-        lvl.set_player_loc(self, (loc))
+        self.test123 = "abc"
         self.fall = False
+        self.platform = False
         self.speed = 3
-        self.jump_power = -13
+        self.jump_power = -8.75
         self.jump_cut_magnitude = -3
         self.grav = 0.22
         self.y_vel = self.x_vel = 0
@@ -24,11 +19,9 @@ class Player(Character):
         
     def update(self, dt, lvl, key):
         self.speed = 3
-        self.check_keys(key)
         self.detect_wall(lvl)
         self.detect_ground(lvl)
         self.physics_update()
-        lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         
     def setup_collision_rects(self):
         self.reset_wall_floor_rects()
@@ -41,7 +34,7 @@ class Player(Character):
         self.collide_ls = []
         
     def detect_ground(self, level):
-        if not self.fall:
+        if not self.fall and not self.platform:
             self.grounded(level)
         else:
             self.airborne(level)
@@ -60,8 +53,7 @@ class Player(Character):
             self.rect.y = int(change - self.rect.height)
         else:
             self.fall = True
-                     
-                     
+                
     def check_floor_initial(self, pads_on, pad_details, level):
         i, floor = pad_details
         collide = []
@@ -70,7 +62,6 @@ class Player(Character):
                 collide.append(cell)
                 pads_on[i] = True      
         return collide, pads_on
-         
          
     def check_floor_final(self, collide, pad_details, change, level):
         i, floor = pad_details
@@ -93,43 +84,40 @@ class Player(Character):
             #self.x_vel = self.adjust_pos(level,rect,mask,[int(self.x_vel),0],0)
             self.x_vel = 0
         self.rect.x += int(self.x_vel)
-        print int(self.x_vel)
         self.reset_wall_floor_rects()
       
-      
     def reset_wall_floor_rects(self):
-        flr = (pygame.Rect((self.rect.x+1,self.rect.y),(1,self.rect.height+16)),
-               pygame.Rect((self.rect.right-2,self.rect.y),(1,self.rect.height+16)))
-        wall = pygame.Rect(self.rect.x,self.rect.bottom-10,self.rect.width,1)
+        flr = (pygame.Rect((self.rect.x+7,self.rect.y),(1,self.rect.height+16)),
+               pygame.Rect((self.rect.right-8,self.rect.y),(1,self.rect.height+16)))
+        wall = pygame.Rect(self.rect.x,self.rect.bottom-15,self.rect.width,1)
         self.floor_detect_rects = flr
         self.wall_detect_rect = wall
         
-        
-    def check_keys(self, key):
-        self.x_vel = 0
-        if key[pygame.K_LSHIFT]:
-            self.speed = 6
-        if key[pygame.K_LEFT]:
-            self.x_vel -= self.speed
-        if key[pygame.K_RIGHT]:
-            self.x_vel += self.speed
-            
-    
     def airborne(self, level):
+        new = self.rect
         mask = self.floor_detect_mask
         check = (pygame.Rect(self.rect.x+1,self.rect.y,self.rect.width-1,1),
                  pygame.Rect(self.rect.x+1,self.rect.bottom-1,self.rect.width-2,1))
         stop_fall = False
         for rect in check:
             if self.collide_with(level, rect, mask, [0, int(self.y_vel)]):
-                offset = [0, int(self.y_vel)]
+                #offset = [0, int(self.y_vel)]
                 #self.y_vel = self.adjust_pos(level, rect, mask, offset, 1)
                 self.y_vel = 0
                 stop_fall = True
+        if level.tilemap.layers['platforms'].collide(check[1], 'blockers'):
+            for cell in level.tilemap.layers['platforms'].collide(self.rect, 'blockers'):
+                if check[1].bottom + int(self.y_vel) > cell.top and self.y_vel > 0:
+                    self.rect.bottom = cell.top + 2
+                    self.y_vel = 0
+                    self.platform = True
+                    stop_fall = True
+        else:
+            self.fall = True
+            self.platform = False
         self.rect.y += int(self.y_vel)
         if stop_fall:
             self.fall = False
-            
             
     def collide_with(self, level, rect, mask, offset):
         test = pygame.Rect((rect.x + offset[0], rect.y + offset[1]), rect.size)
@@ -146,15 +134,15 @@ class Player(Character):
     """Was unable to get this working properly, so I am simply setting the velocity
     of the character to 0 when it detects a floor or wall.  I will change this if
     problems arise."""
-    def adjust_pos(self, level, rect, mask, offset, off_ind):
-        offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
-        while 1:
-            if any(self.collide_with(level, rect, mask, offset)):
-                offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
-                if not offset[off_ind]:
-                    return 0
-                else:
-                    return offset[off_ind]
+#     def adjust_pos(self, level, rect, mask, offset, off_ind):
+#         offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
+#         while 1:
+#             if any(self.collide_with(level, rect, mask, offset)):
+#                 offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
+#                 if not offset[off_ind]:
+#                     return 0
+#                 else:
+#                     return offset[off_ind]
     
     def physics_update(self):
         if self.fall:
@@ -180,7 +168,7 @@ class Player(Character):
         
     def jump(self):
         """Called when the player presses the jump key."""
-        if not self.fall:
+        if not self.fall or self.platform:
             self.y_vel = self.jump_power
             self.fall = True
 
@@ -190,4 +178,79 @@ class Player(Character):
         if self.fall:
             if self.y_vel < self.jump_cut_magnitude:
                 self.y_vel = self.jump_cut_magnitude
+            
+
+        
+class Player(Character):
+    def __init__(self, lvl, loc, *groups):
+        super(Character, self).__init__(*groups)
+        #self.image, self.rect = load_image('images/player.png', None, 127)
+        self.sheet = pygame.image.load('images/char1a.png').convert_alpha()
+        self.animSurf = self.get_images()
+        self.conductor = pyganim.PygConductor(self.animSurf)
+        self.image = self.face_right
+        self.rect = self.image.get_rect()
+        self.hitmask = pygame.surfarray.array_alpha(self.image)
+        lvl.set_player_loc(self, (loc))
+        self.dir = ''
+        super(Player, self).__init__(lvl, loc)
+        
+    def update(self, dt, lvl, key):
+        self.check_keys(key)
+        super(Player, self).update(dt, lvl, key)
+        lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
+        
+    def check_keys(self, key):
+        self.conductor.play()
+        self.x_vel = 0
+        #setting directions for idle
+        if self.dir == 'left':
+            self.image = self.face_left
+        if self.dir == 'right':
+            self.image = self.face_right
+        if key[pygame.K_LSHIFT]:
+            self.speed = 6
+        if key[pygame.K_LEFT]:
+            self.x_vel -= self.speed
+            if self.speed == 3:
+                self.image = self.animSurf['walk_left'].getCurrentFrame()
+                #self.hitmask = pygame.surfarray.array_alpha(self.animSurf['walk_left'].getCurrentFrame())
+            if self.speed == 6:
+                self.image = self.animSurf['run_left'].getCurrentFrame()
+                #self.hitmask = pygame.surfarray.array_alpha(self.animSurf['run_left'].getCurrentFrame())
+            self.dir = 'left'
+        if key[pygame.K_RIGHT]:
+            self.x_vel += self.speed
+            if self.speed == 3:
+                self.image = self.animSurf['walk_right'].getCurrentFrame()
+                #self.hitmask = pygame.surfarray.array_alpha(self.animSurf['walk_right'].getCurrentFrame())
+            if self.speed == 6:
+                self.image = self.animSurf['run_right'].getCurrentFrame()
+                #self.hitmask = pygame.surfarray.array_alpha(self.animSurf['run_right'].getCurrentFrame())
+            self.dir = 'right'
+            self.hitmask = pygame.surfarray.array_alpha(self.image)
+            
+            
+    def get_images(self):
+        self.face_right = self.sheet.subsurface((0,0,32,64))
+        self.face_left = pygame.transform.flip(self.face_right, True, False)
+        animSurf = {}
+        animTypes = 'walk_right run_right'.split()
+        y = 1
+        for animType in animTypes:
+            imageAndDuration = [(self.sheet.subsurface((32*x,64*y,32,64)), 0.175) for x in range(4)]
+            animSurf[animType] = pyganim.PygAnimation(imageAndDuration)
+            y += 1
+        #flipping the right animations to create the left ones
+        animSurf['walk_left'] = animSurf['walk_right'].getCopy()
+        animSurf['walk_left'].flip(True, False)
+        animSurf['walk_left'].makeTransformsPermanent()
+        animSurf['run_left'] = animSurf['run_right'].getCopy()
+        animSurf['run_left'].flip(True, False)
+        animSurf['run_left'].makeTransformsPermanent()
+        return animSurf
+    
+    def dead(self):
+        deadFont = pygame.font.Font('freesansbold.ttf', 32)
+        died = deadFont.render('You died!  Play again?', True, (0,0,0))
         

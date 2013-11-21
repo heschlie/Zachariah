@@ -12,7 +12,7 @@ def load():
     screen = pygame.display.get_surface()
     
     clock = pygame.time.Clock()
-    lvl = Level(screen, 'alpha')
+    lvl = Level(screen, 'beta')
 
     
     """Main loop"""

@@ -45,7 +45,7 @@ class Level(object):
         be edited."""
         os.chdir('levels/%s/' % name)
         self.level = "%s.tmx" % name
-        self.tilesheet = pygame.image.load('%s.png' % name)
+        #self.tilesheet = pygame.image.load('%s.png' % name)
         self.tilemap = tmx.load(self.level, screen.get_size())
         os.chdir('../..')
         
@@ -62,6 +62,13 @@ class Level(object):
         self.rect_dict = self.get_rect_dict()
         self.mask_dict = self.make_mask_dict()
         
+        self.enemies = tmx.SpriteLayer()
+        for enemy in self.tilemap.layers['spawns'].find('enemy'):
+            if enemy.properties['enemy'] == 'walker':
+                player.Walker(self, (enemy.px, enemy.py), self.enemies)
+            if enemy.properties['enemy'] == 'standing':
+                player.Standing(self, (enemy.px, enemy.py), self.enemies)
+        self.tilemap.layers.append(self.enemies)
         
     def set_player_loc(self, player, loc):
         player.rect.center = loc

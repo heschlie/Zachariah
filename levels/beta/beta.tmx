@@ -11,10 +11,20 @@
    eJzt3E1Lw0AYhdHBL9Dq//+7totSDWnJpEmnd+YcuBvromB4n0XAQynlUACAZIei5wCQTs8BIJ+eA0A+PQeAfHoOAPn0HADy6TkA5NNzAMin5wCQT88BIJ+eA0A+PQeAfHoOAPn0HADy6TkA5NNzAMin5wCQT88BIJ+eA0A+PQeAfHoOAPn0HADy6TkA5NNzAMin5wCQT88BIJ+eA0A+PQeAfHoOAPn0HADy6TkA5NNzAMin5wCQT88zvRz3etx7pwOgjp7nObX8q1z+dj0OgDruZ5YRWu55BKjnfuYYpeWeR4B6o9zPUwtvvZ89//z0Tvrtgd9rqZFaPsLzCLC1Ee7nXAun/n72WZ6r6aO1vPfnEWAPvd/Pay2cmn7+LE0fseU9P48Ae+n5ft5q4dTc77Ru+qgt7/V5BNhTr/dzqxa2avrILe/xeQTYW4/3c+sW3tv0jyt71PdPHAB1zvez9f8D23I/Zfu+3NP0W+2e0nI9B1ij9d1O2tqmL+25ll8GQJ3Wdztta5q+pOda/n8A1Gl9txP3XTLeESQPgDqt77bZ3ACo0/pum80NgDq/h6FFhA==
   </data>
  </layer>
- <objectgroup name="spawns" width="500" height="50">
+ <objectgroup name="spawns" width="500" height="50" visible="0">
   <object gid="49" x="97" y="1375">
    <properties>
     <property name="player" value=""/>
+   </properties>
+  </object>
+  <object gid="50" x="545" y="1409">
+   <properties>
+    <property name="enemy" value="walker"/>
+   </properties>
+  </object>
+  <object gid="50" x="1156" y="1410">
+   <properties>
+    <property name="enemy" value="standing"/>
    </properties>
   </object>
  </objectgroup>
@@ -23,18 +33,18 @@
    eJzt2bENACAMA8FUjMH+Y7ICEgVycielT/eFqwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5loXBwAAAAAAAAAd2MgBAAAAAAAAmMA+DgD97d8PAADP9BwA8uk5AOTTcwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACATAeSagEb
   </data>
  </layer>
- <objectgroup name="platforms" width="500" height="50">
-  <object x="4032" y="928" width="288" height="16">
+ <objectgroup name="platforms" width="500" height="50" visible="0">
+  <object x="4032" y="928" width="288" height="8">
    <properties>
     <property name="blockers" value="t"/>
    </properties>
   </object>
-  <object x="4288" y="800" width="288" height="16">
+  <object x="4288" y="800" width="288" height="8">
    <properties>
     <property name="blockers" value="t"/>
    </properties>
   </object>
-  <object x="4512" y="672" width="288" height="16">
+  <object x="4512" y="672" width="288" height="8">
    <properties>
     <property name="blockers" value="t"/>
    </properties>

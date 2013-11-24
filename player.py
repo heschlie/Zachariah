@@ -7,7 +7,12 @@ import pyganim
 
 class Character(pygame.sprite.Sprite):
     def __init__(self, lvl, loc, *groups):
-        self.test123 = "abc"
+        self.animSurf = self.get_images()
+        self.conductor = pyganim.PygConductor(self.animSurf)
+        self.image = self.face_right
+        self.rect = self.image.get_rect()
+        self.hitmask = pygame.surfarray.array_alpha(self.image)
+        self.dir = 'right'
         self.fall = False
         self.platform = False
         self.speed = 3
@@ -18,7 +23,6 @@ class Character(pygame.sprite.Sprite):
         self.setup_collision_rects()
         
     def update(self, dt, lvl, key):
-        self.speed = 3
         self.detect_wall(lvl)
         self.detect_ground(lvl)
         self.physics_update()
@@ -29,9 +33,28 @@ class Character(pygame.sprite.Sprite):
         self.fat_mask.fill()
         self.wall_detect_mask = pygame.Mask(self.wall_detect_rect.size)
         self.wall_detect_mask.fill()
-        self.floor_detect_mask = pygame.Mask((self.rect.width, 1))
+        self.floor_detect_mask = pygame.Mask((self.rect.width-10, 1))
         self.floor_detect_mask.fill()
         self.collide_ls = []
+        
+    def get_images(self):
+        self.face_right = self.sheet.subsurface((0,0,32,64))
+        self.face_left = pygame.transform.flip(self.face_right, True, False)
+        animSurf = {}
+        animTypes = 'walk_right run_right'.split()
+        y = 1
+        for animType in animTypes:
+            imageAndDuration = [(self.sheet.subsurface((32*x,64*y,32,64)), 0.175) for x in range(4)]
+            animSurf[animType] = pyganim.PygAnimation(imageAndDuration)
+            y += 1
+        #flipping the right animations to create the left ones
+        animSurf['walk_left'] = animSurf['walk_right'].getCopy()
+        animSurf['walk_left'].flip(True, False)
+        animSurf['walk_left'].makeTransformsPermanent()
+        animSurf['run_left'] = animSurf['run_right'].getCopy()
+        animSurf['run_left'].flip(True, False)
+        animSurf['run_left'].makeTransformsPermanent()
+        return animSurf
         
     def detect_ground(self, level):
         if not self.fall and not self.platform:
@@ -60,7 +83,7 @@ class Character(pygame.sprite.Sprite):
         for cell in level.rect_dict:
             if floor.colliderect(level.rect_dict[cell]):
                 collide.append(cell)
-                pads_on[i] = True      
+                pads_on[i] = True     
         return collide, pads_on
          
     def check_floor_final(self, collide, pad_details, change, level):
@@ -146,7 +169,8 @@ class Character(pygame.sprite.Sprite):
     
     def physics_update(self):
         if self.fall:
-            self.y_vel += self.grav
+            if self.y_vel < abs(10):
+                self.y_vel += self.grav
         else:
             self.y_vel = 0
                 
@@ -186,19 +210,14 @@ class Player(Character):
         super(Character, self).__init__(*groups)
         #self.image, self.rect = load_image('images/player.png', None, 127)
         self.sheet = pygame.image.load('images/char1a.png').convert_alpha()
-        self.animSurf = self.get_images()
-        self.conductor = pyganim.PygConductor(self.animSurf)
-        self.image = self.face_right
-        self.rect = self.image.get_rect()
-        self.hitmask = pygame.surfarray.array_alpha(self.image)
-        lvl.set_player_loc(self, (loc))
-        self.dir = ''
         super(Player, self).__init__(lvl, loc)
+        self.rect.center = loc
         
     def update(self, dt, lvl, key):
         self.check_keys(key)
         super(Player, self).update(dt, lvl, key)
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
+        self.speed = 3
         
     def check_keys(self, key):
         self.conductor.play()
@@ -214,43 +233,85 @@ class Player(Character):
             self.x_vel -= self.speed
             if self.speed == 3:
                 self.image = self.animSurf['walk_left'].getCurrentFrame()
-                #self.hitmask = pygame.surfarray.array_alpha(self.animSurf['walk_left'].getCurrentFrame())
             if self.speed == 6:
                 self.image = self.animSurf['run_left'].getCurrentFrame()
-                #self.hitmask = pygame.surfarray.array_alpha(self.animSurf['run_left'].getCurrentFrame())
             self.dir = 'left'
         if key[pygame.K_RIGHT]:
             self.x_vel += self.speed
             if self.speed == 3:
                 self.image = self.animSurf['walk_right'].getCurrentFrame()
-                #self.hitmask = pygame.surfarray.array_alpha(self.animSurf['walk_right'].getCurrentFrame())
             if self.speed == 6:
                 self.image = self.animSurf['run_right'].getCurrentFrame()
-                #self.hitmask = pygame.surfarray.array_alpha(self.animSurf['run_right'].getCurrentFrame())
             self.dir = 'right'
             self.hitmask = pygame.surfarray.array_alpha(self.image)
-            
-            
+
+
+class Monster(Character):
+    def __init__(self, lvl, loc, *groups):
+        super(Character, self).__init__(*groups)
+        #self.sheet = pygame.image.load('images/enemy1a.png').convert_alpha()
+        super(Monster, self).__init__(lvl, loc)
+        self.start = loc
+        self.rect.center = self.start
+        self.speed = 2
+        self.patrol_distance = 160
+        
+    def update(self, dt, lvl, key):
+        super(Monster, self).update(dt, lvl, key)
+        self.move()
+        
+    def move(self):
+        self.conductor.play()
+        self.x_vel = 0
+        right = 'right'
+        left = 'left'
+        if abs(self.rect.left - self.start[0]) > self.patrol_distance:
+            self.dir = right
+        if abs(self.rect.right - self.start[0]) > self.patrol_distance:
+            self.dir = left
+        if self.dir == left:
+            self.x_vel -= self.speed
+            self.image = self.animSurf['walk_left'].getCurrentFrame()
+        if self.dir == right:
+            self.x_vel += self.speed
+            self.image = self.animSurf['walk_right'].getCurrentFrame()
+        self.hitmask = pygame.surfarray.array_alpha(self.image)
+        
+        
+class Walker(Monster):
+    def __init__(self, lvl, loc, *groups):
+        super(Character, self).__init__(*groups)
+        self.sheet = pygame.image.load('images/enemy1a.png')
+        super(Walker, self).__init__(lvl, loc)
+        
     def get_images(self):
-        self.face_right = self.sheet.subsurface((0,0,32,64))
+        self.face_right = self.sheet.subsurface((0,32,32,32))
         self.face_left = pygame.transform.flip(self.face_right, True, False)
         animSurf = {}
-        animTypes = 'walk_right run_right'.split()
-        y = 1
-        for animType in animTypes:
-            imageAndDuration = [(self.sheet.subsurface((32*x,64*y,32,64)), 0.175) for x in range(4)]
-            animSurf[animType] = pyganim.PygAnimation(imageAndDuration)
-            y += 1
+        imageAndDuration = [(self.sheet.subsurface((32*x,32,32,32)), 0.2) for x in range(4)]
+        animSurf['walk_right'] = pyganim.PygAnimation(imageAndDuration)
         #flipping the right animations to create the left ones
         animSurf['walk_left'] = animSurf['walk_right'].getCopy()
         animSurf['walk_left'].flip(True, False)
         animSurf['walk_left'].makeTransformsPermanent()
-        animSurf['run_left'] = animSurf['run_right'].getCopy()
-        animSurf['run_left'].flip(True, False)
-        animSurf['run_left'].makeTransformsPermanent()
         return animSurf
-    
-    def dead(self):
-        deadFont = pygame.font.Font('freesansbold.ttf', 32)
-        died = deadFont.render('You died!  Play again?', True, (0,0,0))
         
+        
+class Standing(Monster):
+    def __init__(self, lvl, loc, *groups):
+        super(Character, self).__init__(*groups)
+        self.sheet = pygame.image.load('images/enemy1a.png')
+        super(Standing, self).__init__(lvl, loc)
+        self.speed = 0
+        
+    def get_images(self):
+        self.face_right = self.sheet.subsurface((0,0,32,32))
+        self.face_left = pygame.transform.flip(self.face_right, True, False)
+        animSurf = {}
+        imageAndDuration = [(self.sheet.subsurface((32*x,0,32,32)), 0.2) for x in range(4)]
+        animSurf['walk_right'] = pyganim.PygAnimation(imageAndDuration)
+        #flipping the right animations to create the left ones
+        animSurf['walk_left'] = animSurf['walk_right'].getCopy()
+        animSurf['walk_left'].flip(True, False)
+        animSurf['walk_left'].makeTransformsPermanent()
+        return animSurf

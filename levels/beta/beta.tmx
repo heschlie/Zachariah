@@ -17,24 +17,54 @@
     <property name="player" value=""/>
    </properties>
   </object>
+  <object gid="50" x="545" y="1409">
+   <properties>
+    <property name="enemy" value="walker"/>
+   </properties>
+  </object>
+  <object gid="50" x="1156" y="1410">
+   <properties>
+    <property name="enemy" value="standing"/>
+   </properties>
+  </object>
+  <object gid="50" x="1190" y="1411">
+   <properties>
+    <property name="enemy" value="standing"/>
+   </properties>
+  </object>
+  <object gid="50" x="1226" y="1411">
+   <properties>
+    <property name="enemy" value="standing"/>
+   </properties>
+  </object>
+  <object gid="50" x="611" y="1409">
+   <properties>
+    <property name="enemy" value="walker"/>
+   </properties>
+  </object>
+  <object gid="50" x="680" y="1412">
+   <properties>
+    <property name="enemy" value="walker"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="background" width="500" height="50">
   <data encoding="base64" compression="zlib">
    eJzt2bENACAMA8FUjMH+Y7ICEgVycielT/eFqwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5loXBwAAAAAAAAAd2MgBAAAAAAAAmMA+DgD97d8PAADP9BwA8uk5AOTTcwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACATAeSagEb
   </data>
  </layer>
- <objectgroup name="platforms" width="500" height="50">
-  <object x="4032" y="928" width="288" height="16">
+ <objectgroup name="platforms" width="500" height="50" visible="0">
+  <object x="4032" y="928" width="288" height="8">
    <properties>
     <property name="blockers" value="t"/>
    </properties>
   </object>
-  <object x="4288" y="800" width="288" height="16">
+  <object x="4288" y="800" width="288" height="8">
    <properties>
     <property name="blockers" value="t"/>
    </properties>
   </object>
-  <object x="4512" y="672" width="288" height="16">
+  <object x="4512" y="672" width="288" height="8">
    <properties>
     <property name="blockers" value="t"/>
    </properties>

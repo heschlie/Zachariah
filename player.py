@@ -44,7 +44,8 @@ class Character(pygame.sprite.Sprite):
         animTypes = 'walk_right run_right'.split()
         y = 1
         for animType in animTypes:
-            imageAndDuration = [(self.sheet.subsurface((32*x,64*y,32,64)), 0.175) for x in range(4)]
+            imageAndDuration = [(self.sheet.subsurface((32*x,64*y,32,64)), 0.175) 
+                                for x in range(4)]
             animSurf[animType] = pyganim.PygAnimation(imageAndDuration)
             y += 1
         #flipping the right animations to create the left ones
@@ -112,7 +113,7 @@ class Character(pygame.sprite.Sprite):
     def reset_wall_floor_rects(self):
         flr = (pygame.Rect((self.rect.x+7,self.rect.y),(1,self.rect.height+16)),
                pygame.Rect((self.rect.right-8,self.rect.y),(1,self.rect.height+16)))
-        wall = pygame.Rect(self.rect.x,self.rect.bottom-15,self.rect.width,1)
+        wall = pygame.Rect(self.rect.x+6,self.rect.bottom-15,self.rect.width-6,1)
         self.floor_detect_rects = flr
         self.wall_detect_rect = wall
         

@@ -21,6 +21,7 @@ def load():
         lvl.tilemap.update(dt, lvl, key)
         screen.fill((0,100,0))
         lvl.tilemap.draw(screen)
+        pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah",clock.get_fps()))
 
         pygame.display.update()
         clock.tick(dt)

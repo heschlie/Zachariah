@@ -70,6 +70,9 @@ class Level(object):
                 player.Standing(self, (enemy.px, enemy.py), self.enemies)
         self.tilemap.layers.append(self.enemies)
         
+        #for test in self.enemies.__iter__():
+        #    print test.rect
+        
     def set_player_loc(self, player, loc):
         player.rect.center = loc
         

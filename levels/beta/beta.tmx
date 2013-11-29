@@ -53,7 +53,7 @@
    eJzt2bENACAMA8FUjMH+Y7ICEgVycielT/eFqwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5loXBwAAAAAAAAAd2MgBAAAAAAAAmMA+DgD97d8PAADP9BwA8uk5AOTTcwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACATAeSagEb
   </data>
  </layer>
- <objectgroup name="platforms" width="500" height="50" visible="0">
+ <objectgroup name="platforms" width="500" height="50">
   <object x="4032" y="928" width="288" height="8">
    <properties>
     <property name="blockers" value="t"/>
@@ -67,6 +67,11 @@
   <object x="4512" y="672" width="288" height="8">
    <properties>
     <property name="blockers" value="t"/>
+   </properties>
+  </object>
+  <object gid="51" x="414" y="1311">
+   <properties>
+    <property name="platform" value=""/>
    </properties>
   </object>
  </objectgroup>

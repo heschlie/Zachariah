@@ -1,4 +1,4 @@
-import pygame, sys, player
+import pygame, sys, player, platform
 from pygame.locals import *
 from pixelperfect import *
 import tmx
@@ -71,11 +71,17 @@ class Level(object):
                 player.Standing(self, (enemy.px, enemy.py), self.enemies)
         self.tilemap.layers.append(self.enemies)
         
+        self.platforms = tmx.SpriteLayer()
+        for plat in self.tilemap.layers['platforms'].find('platform'):
+            platform.Platform((plat.px, plat.py), self.platforms)
+        self.tilemap.layers.append(self.platforms)
+            
+        
         #for test in self.enemies.__iter__():
         #    print test.rect
         
-    def set_player_loc(self, player, loc):
-        player.rect.center = loc
+    #def set_player_loc(self, player, loc):
+    #    player.rect.center = loc
         
     def get_rect_dict(self):
         rect_dict = {}

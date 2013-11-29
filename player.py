@@ -11,6 +11,7 @@ class Character(pygame.sprite.Sprite):
         self.conductor = pyganim.PygConductor(self.animSurf)
         self.image = self.face_right
         self.rect = self.image.get_rect()
+        #self.hitmask = pygame.mask.from_surface(self.image, 127)
         self.hitmask = pygame.surfarray.array_alpha(self.image)
         self.dir = 'right'
         self.fall = False
@@ -136,6 +137,9 @@ class Character(pygame.sprite.Sprite):
                     self.y_vel = 0
                     self.platform = True
                     stop_fall = True
+        for plat in level.platforms:
+            if check_collision(self, plat):
+                print 'test'
         else:
             self.fall = True
             self.platform = False
@@ -245,7 +249,7 @@ class Player(Character):
                 self.image = self.animSurf['run_right'].getCurrentFrame()
             self.dir = 'right'
             self.hitmask = pygame.surfarray.array_alpha(self.image)
-
+            #self.hitmask = pygame.mask.from_surface(self.image, 127)
 
 class Monster(Character):
     def __init__(self, lvl, loc, *groups):

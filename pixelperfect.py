@@ -17,7 +17,6 @@ def check_collision(obj1,obj2):
     for x in xrange(rect.width):
         for y in xrange(rect.height):
             if hm1[x1+x][y1+y] and hm2[x2+x][y2+y]:
-                print x1, y1
                 return True
             else:
                 continue

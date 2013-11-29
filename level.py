@@ -92,7 +92,7 @@ class Level(object):
         
     def gen_height_map(self):
         height_dict = {}
-        test_mask = pygame.Mask((1,self.tilemap.layers['terrain'].tile_width))
+        test_mask = pygame.Mask((1,self.tilemap.layers['terrain'].tile_height))
         test_mask.fill()
         for coord, cell in self.cells_dict.items():
             heights = []

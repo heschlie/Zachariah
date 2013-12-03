@@ -38,7 +38,6 @@ def load():
                     lvl.hero.jump_cut()
                 
 class Level(object):
-    
     def __init__(self, screen, name):
         
         """Loading the level files, changing the CWD to match the files for loading,
@@ -79,9 +78,6 @@ class Level(object):
         
         #for test in self.enemies.__iter__():
         #    print test.rect
-        
-    #def set_player_loc(self, player, loc):
-    #    player.rect.center = loc
         
     def get_rect_dict(self):
         rect_dict = {}

@@ -11,7 +11,6 @@ class Character(pygame.sprite.Sprite):
         self.conductor = pyganim.PygConductor(self.animSurf)
         self.image = self.face_right
         self.rect = self.image.get_rect()
-        #self.hitmask = pygame.mask.from_surface(self.image, 127)
         self.hitmask = pygame.surfarray.array_alpha(self.image)
         self.dir = 'right'
         self.fall = False

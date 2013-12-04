@@ -58,7 +58,7 @@ class Character(pygame.sprite.Sprite):
         return animSurf
         
     def detect_ground(self, level):
-        if not self.fall and not self.platform:
+        if not self.fall:
             self.grounded(level)
         else:
             self.airborne(level)
@@ -129,6 +129,9 @@ class Character(pygame.sprite.Sprite):
                 #self.y_vel = self.adjust_pos(level, rect, mask, offset, 1)
                 self.y_vel = 0
                 stop_fall = True
+            elif self.collide_with_platform(level, rect, mask, [0, int(self.y_vel)]):
+                self.y_vel = 0
+                stop_fall = True
 #         if level.tilemap.layers['platforms'].collide(check[1], 'blockers'):
 #             for cell in level.tilemap.layers['platforms'].collide(self.rect, 'blockers'):
 #                 if check[1].bottom + int(self.y_vel) > cell.top and self.y_vel > 0:
@@ -136,10 +139,15 @@ class Character(pygame.sprite.Sprite):
 #                     self.y_vel = 0
 #                     self.platform = True
 #                     stop_fall = True
-        for plat in level.platforms:
-            mask_offset = (plat.rect.x - self.rect.x, plat.rect.y - self.rect.y)
-            if self.hitmask.overlap(plat.hitmask, mask_offset) != None:
-                print 'test'
+#         for plat in level.platforms:
+#             mask_offset = (plat.rect.x - self.rect.x, plat.rect.y - self.rect.y)
+#             if self.rect.colliderect(plat.rect):
+#                 if self.hitmask.overlap(plat.hitmask, mask_offset) != None:
+#                     if plat.type == 'solid':
+#                         self.y_vel = 0
+#                         stop_fall = True
+#                     elif plat.type == 'platform':
+#                         print 'test'
         else:
             self.fall = True
             self.platform = False
@@ -158,6 +166,14 @@ class Character(pygame.sprite.Sprite):
                 if level_mask.overlap_area(mask, mask_test):
                     self.collide_ls.append(cell)
         return self.collide_ls
+    
+    def collide_with_platform(self, level, rect, mask, offset):
+        test = pygame.Rect((rect.x + offset[0], rect.y + offset[1]), rect.size)
+        for plat in level.platforms:
+            if test.colliderect(plat.rect):
+                mask_test = test.x - plat.rect.x, test.y - plat.rect.y
+                if plat.hitmask.overlap(mask, mask_test):
+                    return True
     
     """Was unable to get this working properly, so I am simply setting the velocity
     of the character to 0 when it detects a floor or wall.  I will change this if

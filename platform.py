@@ -12,6 +12,7 @@ class Platform(pygame.sprite.Sprite):
         self.rect.center = loc
         self.hitmask = pygame.mask.from_surface(self.image, 127)
         self.height_map = self.gen_height_map()
+        self.type = 'solid'
         
     def gen_height_map(self):
         test_mask = pygame.Mask((1, self.rect.height))

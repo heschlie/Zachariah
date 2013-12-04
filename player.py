@@ -11,7 +11,7 @@ class Character(pygame.sprite.Sprite):
         self.conductor = pyganim.PygConductor(self.animSurf)
         self.image = self.face_right
         self.rect = self.image.get_rect()
-        self.hitmask = pygame.surfarray.array_alpha(self.image)
+        self.hitmask = pygame.mask.from_surface(self.image, 127)
         self.dir = 'right'
         self.fall = False
         self.platform = False
@@ -129,15 +129,16 @@ class Character(pygame.sprite.Sprite):
                 #self.y_vel = self.adjust_pos(level, rect, mask, offset, 1)
                 self.y_vel = 0
                 stop_fall = True
-        if level.tilemap.layers['platforms'].collide(check[1], 'blockers'):
-            for cell in level.tilemap.layers['platforms'].collide(self.rect, 'blockers'):
-                if check[1].bottom + int(self.y_vel) > cell.top and self.y_vel > 0:
-                    self.rect.bottom = cell.top + 2
-                    self.y_vel = 0
-                    self.platform = True
-                    stop_fall = True
+#         if level.tilemap.layers['platforms'].collide(check[1], 'blockers'):
+#             for cell in level.tilemap.layers['platforms'].collide(self.rect, 'blockers'):
+#                 if check[1].bottom + int(self.y_vel) > cell.top and self.y_vel > 0:
+#                     self.rect.bottom = cell.top + 2
+#                     self.y_vel = 0
+#                     self.platform = True
+#                     stop_fall = True
         for plat in level.platforms:
-            if check_collision(self, plat):
+            mask_offset = (plat.rect.x - self.rect.x, plat.rect.y - self.rect.y)
+            if self.hitmask.overlap(plat.hitmask, mask_offset) != None:
                 print 'test'
         else:
             self.fall = True
@@ -212,7 +213,6 @@ class Character(pygame.sprite.Sprite):
 class Player(Character):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
-        #self.image, self.rect = load_image('images/player.png', None, 127)
         self.sheet = pygame.image.load('images/char1a.png').convert_alpha()
         super(Player, self).__init__(lvl, loc)
         self.rect.center = loc
@@ -247,8 +247,7 @@ class Player(Character):
             if self.speed == 6:
                 self.image = self.animSurf['run_right'].getCurrentFrame()
             self.dir = 'right'
-            self.hitmask = pygame.surfarray.array_alpha(self.image)
-            #self.hitmask = pygame.mask.from_surface(self.image, 127)
+            self.hitmask = pygame.mask.from_surface(self.image, 127)
 
 class Monster(Character):
     def __init__(self, lvl, loc, *groups):
@@ -279,7 +278,7 @@ class Monster(Character):
         if self.dir == right:
             self.x_vel += self.speed
             self.image = self.animSurf['walk_right'].getCurrentFrame()
-        self.hitmask = pygame.surfarray.array_alpha(self.image)
+        self.hitmask = pygame.mask.from_surface(self.image, 127)
         
         
 class Walker(Monster):

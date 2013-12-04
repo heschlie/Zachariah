@@ -38,3 +38,15 @@ def load_image(name, colorkey=None, alpha=False):
             colorkey = image.get_at((0,0))
         image.set_colorkey(colorkey, RLEACCEL)
     return image, image.get_rect()
+
+def get_alpha_hitmask(image, rect, alpha=0):
+    """returns a hitmask using an image's alpha.
+       image->pygame Surface,
+       rect->pygame Rect that fits image,
+       alpha->the alpha amount that is invisible in collisions"""
+    mask=[]
+    for x in range(rect.width):
+        mask.append([])
+        for y in range(rect.height):
+            mask[x].append(not image.get_at((x,y))[3]==alpha)
+    return mask

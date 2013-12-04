@@ -10,7 +10,7 @@ class Platform(pygame.sprite.Sprite):
         self.image = pygame.image.load('images/platform.png').convert_alpha()
         self.rect = self.image.get_rect()
         self.rect.center = loc
-        self.hitmask = pygame.surfarray.array_alpha(self.image)
+        self.hitmask = pygame.mask.from_surface(self.image, 127)
         self.height_map = self.gen_height_map()
         
     def gen_height_map(self):

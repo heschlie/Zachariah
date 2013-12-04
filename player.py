@@ -60,6 +60,8 @@ class Character(pygame.sprite.Sprite):
     def detect_ground(self, level):
         if not self.fall:
             self.grounded(level)
+        elif self.platform:
+            self.grounded_platform(level)
         else:
             self.airborne(level)
         self.reset_wall_floor_rects()
@@ -77,6 +79,20 @@ class Character(pygame.sprite.Sprite):
             self.rect.y = int(change - self.rect.height)
         else:
             self.fall = True
+            
+    def grounded_platform(self, level):
+        change = None
+        pads_on = [False, False]
+        for i, floor in enumerate(self.floor_detect_rects):
+            collide, pads_on = self.check_floor_initial_platform(pads_on, i, floor, level)
+            if collide:
+                change = self.check_floor_final_platform(collide, (i, floor), change, level)
+        if pads_on[0]^pads_on[1]:
+            change = self.detect_glitch_fix_platform(pads_on, change, level)
+        if change != None:
+            self.rect.y = int(change - self.rect.height)
+        else:
+            self.fall = True
                 
     def check_floor_initial(self, pads_on, pad_details, level):
         i, floor = pad_details
@@ -86,6 +102,15 @@ class Character(pygame.sprite.Sprite):
                 collide.append(cell)
                 pads_on[i] = True     
         return collide, pads_on
+    
+    def check_floor_initial_platform(self, pads_on, pad_details, level):
+        i, floor = pad_details
+        collide = []
+        for plat in level.platforms:
+            if floor.colliderect(plat.rect):
+                collide.append(plat)
+                pads_on[i] = True
+            return collide, pads_on
          
     def check_floor_final(self, collide, pad_details, change, level):
         i, floor = pad_details
@@ -99,6 +124,16 @@ class Character(pygame.sprite.Sprite):
                 change = min((key[1] + 1) * level.tilemap.layers['terrain'].tile_height - offset, change)
         return change
     
+    def check_floor_final_platform(self, plat, pad_details, change, level):
+        i, floor = pad_details
+        x_in_plat = floor.x - plat.rect.x
+        offset = plat.height_dict[x_in_plat]
+        if change == None:
+            change = (plat.rect.y + 1) - offset
+        else:
+            change = min((plat.rect.y + 1) - offset, change)
+        return change
+    
     def detect_wall(self, level):
         if not self.fall:
             rect,mask = self.wall_detect_rect,self.wall_detect_mask
@@ -107,6 +142,8 @@ class Character(pygame.sprite.Sprite):
         if self.collide_with(level,rect,mask,(int(self.x_vel),0)):
             #self.x_vel = self.adjust_pos(level,rect,mask,[int(self.x_vel),0],0)
             self.x_vel = 0
+        elif self.collide_with_platform(level, rect, mask, (int(self.x_vel), 0)):
+            self.x_vel = 0            
         self.rect.x += int(self.x_vel)
         self.reset_wall_floor_rects()
       
@@ -132,22 +169,7 @@ class Character(pygame.sprite.Sprite):
             elif self.collide_with_platform(level, rect, mask, [0, int(self.y_vel)]):
                 self.y_vel = 0
                 stop_fall = True
-#         if level.tilemap.layers['platforms'].collide(check[1], 'blockers'):
-#             for cell in level.tilemap.layers['platforms'].collide(self.rect, 'blockers'):
-#                 if check[1].bottom + int(self.y_vel) > cell.top and self.y_vel > 0:
-#                     self.rect.bottom = cell.top + 2
-#                     self.y_vel = 0
-#                     self.platform = True
-#                     stop_fall = True
-#         for plat in level.platforms:
-#             mask_offset = (plat.rect.x - self.rect.x, plat.rect.y - self.rect.y)
-#             if self.rect.colliderect(plat.rect):
-#                 if self.hitmask.overlap(plat.hitmask, mask_offset) != None:
-#                     if plat.type == 'solid':
-#                         self.y_vel = 0
-#                         stop_fall = True
-#                     elif plat.type == 'platform':
-#                         print 'test'
+                self.platform = True
         else:
             self.fall = True
             self.platform = False
@@ -207,6 +229,19 @@ class Character(pygame.sprite.Sprite):
             detector.x += inc
             collide = self.check_floor_initial([0,0],pad_details,level)[0]
             change = self.check_floor_final(collide,pad_details,change,level)
+            if change < old_change:
+                return change
+        return old_change
+    
+    def detect_glitch_fix_platform(self, pads, change, level):
+        inc, index = ((1,0) if not pads[0] else (-1,1))
+        detector = self.floor_detect_rects[index].copy()
+        pad_details = (index, detector)
+        old_change = change
+        while detector.x != self.floor_detect_rects[not index].x:
+            detector.x += inc
+            collide = self.check_floor_initial_platform([0,0], pad_details, level)[0]
+            change = self.check_floor_final_platform(collide, pad_details, change, level)
             if change < old_change:
                 return change
         return old_change

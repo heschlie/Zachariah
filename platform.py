@@ -17,7 +17,8 @@ class Platform(pygame.sprite.Sprite):
         self.float_dist = 10
         self.speed = 0.15
         self.y_vel = 0
-        self.max_speed = 1
+        self.max_speed = .25
+        self.counter = 0
         
     def gen_height_map(self):
         test_mask = pygame.Mask((1, self.rect.height))
@@ -40,6 +41,12 @@ class Platform(pygame.sprite.Sprite):
                 self.y_vel = self.max_speed * -1
             if self.y_vel > 0:
                 self.y_vel = self.max_speed
-        self.rect.y += self.y_vel        
+        self.counter += self.y_vel        
+        if abs(self.counter) >= 1:
+            print self.counter
+            self.rect.y += self.counter
+            self.counter = 0
+                
+    
     def update(self, dt, level, key):
         self.float(self.start)

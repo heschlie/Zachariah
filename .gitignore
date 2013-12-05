@@ -6,3 +6,6 @@
 
 #pyxel edit files
 *.pyxel
+
+*.project
+*.pydevproject

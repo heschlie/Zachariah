@@ -60,8 +60,6 @@ class Character(pygame.sprite.Sprite):
     def detect_ground(self, level):
         if not self.fall:
             self.grounded(level)
-        elif self.platform:
-            self.grounded_platform(level)
         else:
             self.airborne(level)
         self.reset_wall_floor_rects()
@@ -73,22 +71,12 @@ class Character(pygame.sprite.Sprite):
             collide, pads_on = self.check_floor_initial(pads_on, (i, floor), level)
             if collide:
                 change = self.check_floor_final(collide, (i, floor), change, level)
-        if pads_on[0]^pads_on[1]:
-            change = self.detect_glitch_fix(pads_on,change,level)
-        if change != None:
-            self.rect.y = int(change - self.rect.height)
-        else:
-            self.fall = True
-            
-    def grounded_platform(self, level):
-        change = None
-        pads_on = [False, False]
         for i, floor in enumerate(self.floor_detect_rects):
-            collide, pads_on = self.check_floor_initial_platform(pads_on, i, floor, level)
+            collide, pads_on = self.check_floor_initial_platform(pads_on, (i, floor), level)
             if collide:
                 change = self.check_floor_final_platform(collide, (i, floor), change, level)
         if pads_on[0]^pads_on[1]:
-            change = self.detect_glitch_fix_platform(pads_on, change, level)
+            change = self.detect_glitch_fix(pads_on,change,level)
         if change != None:
             self.rect.y = int(change - self.rect.height)
         else:
@@ -124,14 +112,15 @@ class Character(pygame.sprite.Sprite):
                 change = min((key[1] + 1) * level.tilemap.layers['terrain'].tile_height - offset, change)
         return change
     
-    def check_floor_final_platform(self, plat, pad_details, change, level):
+    def check_floor_final_platform(self, collide, pad_details, change, level):
         i, floor = pad_details
-        x_in_plat = floor.x - plat.rect.x
-        offset = plat.height_dict[x_in_plat]
-        if change == None:
-            change = (plat.rect.y + 1) - offset
-        else:
-            change = min((plat.rect.y + 1) - offset, change)
+        for plat in collide:
+            x_in_plat = floor.x - plat.rect.x
+            offset = plat.height_map[x_in_plat]
+            if change == None:
+                change = (plat.rect.bottom) - offset
+            else:
+                change = min((plat.rect.bottom) - offset, change)
         return change
     
     def detect_wall(self, level):
@@ -166,13 +155,13 @@ class Character(pygame.sprite.Sprite):
                 #self.y_vel = self.adjust_pos(level, rect, mask, offset, 1)
                 self.y_vel = 0
                 stop_fall = True
-            elif self.collide_with_platform(level, rect, mask, [0, int(self.y_vel)]):
+            if self.collide_with_platform(level, rect, mask, [0, int(self.y_vel)]):
                 self.y_vel = 0
                 stop_fall = True
                 self.platform = True
-        else:
-            self.fall = True
-            self.platform = False
+            else:
+                self.fall = True
+                self.platform = False
         self.rect.y += int(self.y_vel)
         if stop_fall:
             self.fall = False
@@ -240,7 +229,7 @@ class Character(pygame.sprite.Sprite):
         old_change = change
         while detector.x != self.floor_detect_rects[not index].x:
             detector.x += inc
-            collide = self.check_floor_initial_platform([0,0], pad_details, level)[0]
+            collide = self.check_floor_initial_platform([0,0], pad_details, level)
             change = self.check_floor_final_platform(collide, pad_details, change, level)
             if change < old_change:
                 return change
@@ -248,7 +237,7 @@ class Character(pygame.sprite.Sprite):
         
     def jump(self):
         """Called when the player presses the jump key."""
-        if not self.fall or self.platform:
+        if not self.fall:
             self.y_vel = self.jump_power
             self.fall = True
 
@@ -288,6 +277,7 @@ class Player(Character):
             self.x_vel -= self.speed
             if self.speed == 3:
                 self.image = self.animSurf['walk_left'].getCurrentFrame()
+                #print self.animSurf['walk_left']._propGetCurrentFrameNum()
             if self.speed == 6:
                 self.image = self.animSurf['run_left'].getCurrentFrame()
             self.dir = 'left'

@@ -69,7 +69,7 @@
     <property name="blockers" value="t"/>
    </properties>
   </object>
-  <object gid="51" x="414" y="1311">
+  <object gid="51" x="320" y="1122">
    <properties>
     <property name="platform" value=""/>
    </properties>

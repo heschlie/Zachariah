@@ -49,6 +49,11 @@ class Level(object):
         self.tilemap = tmx.load(self.level, screen.get_size())
         os.chdir('../..')
         
+        self.platforms = tmx.SpriteLayer()
+        for plat in self.tilemap.layers['platforms'].find('platform'):
+            platform.Platform((plat.px, plat.py), self.platforms)
+        self.tilemap.layers.append(self.platforms)        
+        
         """Loading the 'hero' into the level, and adding him/her to the self.sprites group"""
         self.sprites = tmx.SpriteLayer()
         self.start_cell = self.tilemap.layers['spawns'].find('player')[0]
@@ -69,12 +74,6 @@ class Level(object):
             if enemy.properties['enemy'] == 'standing':
                 player.Standing(self, (enemy.px, enemy.py), self.enemies)
         self.tilemap.layers.append(self.enemies)
-        
-        self.platforms = tmx.SpriteLayer()
-        for plat in self.tilemap.layers['platforms'].find('platform'):
-            platform.Platform((plat.px, plat.py), self.platforms)
-        self.tilemap.layers.append(self.platforms)
-            
         
         #for test in self.enemies.__iter__():
         #    print test.rect

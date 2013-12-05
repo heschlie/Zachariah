@@ -15,7 +15,7 @@ class Platform(pygame.sprite.Sprite):
         self.height_map = self.gen_height_map()
         self.type = 'solid'
         self.float_dist = 10
-        self.speed = 0.25
+        self.speed = 0.15
         self.y_vel = 0
         self.max_speed = 1
         
@@ -31,9 +31,9 @@ class Platform(pygame.sprite.Sprite):
     
     def float(self, loc):
         if (self.rect.y - loc[1]) < (self.float_dist * -1):
-            self.speed = 0.25
+            self.speed = 0.15
         if (self.rect.y - loc[1]) > self.float_dist:
-            self.speed = -0.25
+            self.speed = -0.15
         self.y_vel += self.speed
         if abs(self.y_vel) > self.max_speed:
             if self.y_vel < 0:

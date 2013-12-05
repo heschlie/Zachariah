@@ -1,4 +1,4 @@
-import pygame, sys, player, platform
+import pygame, sys, player, platform, monster
 from pygame.locals import *
 from pixelperfect import *
 import tmx
@@ -70,9 +70,9 @@ class Level(object):
         self.enemies = tmx.SpriteLayer()
         for enemy in self.tilemap.layers['spawns'].find('enemy'):
             if enemy.properties['enemy'] == 'walker':
-                player.Walker(self, (enemy.px, enemy.py), self.enemies)
+                monster.Walker(self, (enemy.px, enemy.py), self.enemies)
             if enemy.properties['enemy'] == 'standing':
-                player.Standing(self, (enemy.px, enemy.py), self.enemies)
+                monster.Standing(self, (enemy.px, enemy.py), self.enemies)
         self.tilemap.layers.append(self.enemies)
         
         #for test in self.enemies.__iter__():

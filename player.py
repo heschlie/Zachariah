@@ -3,6 +3,7 @@ from pygame.locals import *
 from pixelperfect import *
 import tmx
 import pyganim
+import re
 
 
 class Character(pygame.sprite.Sprite):
@@ -228,6 +229,7 @@ class Character(pygame.sprite.Sprite):
                 self.y_vel = self.jump_cut_magnitude
 
     def flip_anim(self, src):
+        """Will flip the right facing animations to face left"""
         fliped = src.getCopy()
         fliped.flip(True, False)
         fliped.makeTransformsPermanent()
@@ -238,8 +240,10 @@ class Player(Character):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/char.png').convert_alpha()
+        animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right stop_right ' \
+                    'damage_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 64)
-        self.animSurf = self.get_images(self.sheet, 32, 64)
+        self.animSurf = self.get_images(self.sheet, animTypes, 32, 64)
         super(Player, self).__init__(lvl, loc)
         self.rect.center = loc
         
@@ -276,15 +280,25 @@ class Player(Character):
             self.x_vel += self.speed
         self.hitmask = pygame.mask.from_surface(self.image, 127)
 
-    def get_images(self, sheet, imgWidth, imgHeight):
+    def get_images(self, sheet, animTypes, imgWidth, imgHeight):
+        """This pulls the images from the spritesheet using subsurface and then adds those to
+        pyganim objects to be animated in the game, it needs to be fed the width and height of
+        the subsurface to be pulled, the spritesheet, and a list of animation names.  This was
+        setup using the schema 'animation_right' and only right facing images and will automagically
+        generate from that"""
         self.face_right = self.sheet.subsurface((0, 0, 32, 64))
         self.face_left = pygame.transform.flip(self.face_right, True, False)
         sheetRect = sheet.get_rect()
         animSurf = {}
-        animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right stop_right ' \
-                    'damage_right'.split()
-        animFlips = 'idle_left walk_left run_left jump_left fall_left tred_left swim_left stop_left damage_left'.split()
+
+        animFlips = []
+        #Use a regex to replace _right with _left
+        for i in animTypes:
+            s = re.sub(r'_right\b', '_left', i)
+            animFlips.append(s)
         placeholder = [(self.placeholder, 0.175), (self.placeholder, 0.175)]
+        #Grabs the images from the sheet, checks for opaque pixels and appends
+        #them to the list, then adds the list to the animation
         for y, animType in enumerate(animTypes):
             imageAndDuration = []
             for x in range(sheetRect.width/imgWidth):

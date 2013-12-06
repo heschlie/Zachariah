@@ -7,7 +7,6 @@ import pyganim
 
 class Character(pygame.sprite.Sprite):
     def __init__(self, lvl, loc, *groups):
-        self.animSurf = self.get_images()
         self.conductor = pyganim.PygConductor(self.animSurf)
         self.image = self.face_right
         self.rect = self.image.get_rect()
@@ -36,26 +35,6 @@ class Character(pygame.sprite.Sprite):
         self.floor_detect_mask = pygame.Mask((self.rect.width-10, 1))
         self.floor_detect_mask.fill()
         self.collide_ls = []
-        
-    def get_images(self):
-        self.face_right = self.sheet.subsurface((0,0,32,64))
-        self.face_left = pygame.transform.flip(self.face_right, True, False)
-        animSurf = {}
-        animTypes = 'walk_right run_right'.split()
-        y = 1
-        for animType in animTypes:
-            imageAndDuration = [(self.sheet.subsurface((32*x,64*y,32,64)), 0.175) 
-                                for x in range(4)]
-            animSurf[animType] = pyganim.PygAnimation(imageAndDuration)
-            y += 1
-        #flipping the right animations to create the left ones
-        animSurf['walk_left'] = animSurf['walk_right'].getCopy()
-        animSurf['walk_left'].flip(True, False)
-        animSurf['walk_left'].makeTransformsPermanent()
-        animSurf['run_left'] = animSurf['run_right'].getCopy()
-        animSurf['run_left'].flip(True, False)
-        animSurf['run_left'].makeTransformsPermanent()
-        return animSurf
         
     def detect_ground(self, level):
         if not self.fall:
@@ -247,12 +226,20 @@ class Character(pygame.sprite.Sprite):
         if self.fall:
             if self.y_vel < self.jump_cut_magnitude:
                 self.y_vel = self.jump_cut_magnitude
+
+    def flip_anim(self, src):
+        fliped = src.getCopy()
+        fliped.flip(True, False)
+        fliped.makeTransformsPermanent()
+        return fliped
             
 
 class Player(Character):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
-        self.sheet = pygame.image.load('images/char1a.png').convert_alpha()
+        self.sheet = pygame.image.load('images/char.png').convert_alpha()
+        self.placeholder = self.sheet.subsurface(0, 0, 32, 64)
+        self.animSurf = self.get_images(self.sheet, 32, 64)
         super(Player, self).__init__(lvl, loc)
         self.rect.center = loc
         
@@ -273,18 +260,49 @@ class Player(Character):
         if key[pygame.K_LSHIFT]:
             self.speed = 6
         if key[pygame.K_LEFT]:
-            self.x_vel -= self.speed
             if self.speed == 3:
                 self.image = self.animSurf['walk_left'].getCurrentFrame()
                 #print self.animSurf['walk_left']._propGetCurrentFrameNum()
             if self.speed == 6:
                 self.image = self.animSurf['run_left'].getCurrentFrame()
             self.dir = 'left'
+            self.x_vel -= self.speed
         if key[pygame.K_RIGHT]:
-            self.x_vel += self.speed
             if self.speed == 3:
                 self.image = self.animSurf['walk_right'].getCurrentFrame()
             if self.speed == 6:
                 self.image = self.animSurf['run_right'].getCurrentFrame()
             self.dir = 'right'
-            self.hitmask = pygame.mask.from_surface(self.image, 127)
+            self.x_vel += self.speed
+        self.hitmask = pygame.mask.from_surface(self.image, 127)
+
+    def get_images(self, sheet, imgWidth, imgHeight):
+        self.face_right = self.sheet.subsurface((0, 0, 32, 64))
+        self.face_left = pygame.transform.flip(self.face_right, True, False)
+        sheetRect = sheet.get_rect()
+        animSurf = {}
+        animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right stop_right ' \
+                    'damage_right'.split()
+        animFlips = 'idle_left walk_left run_left jump_left fall_left tred_left swim_left stop_left damage_left'.split()
+        placeholder = [(self.placeholder, 0.175), (self.placeholder, 0.175)]
+        for y, animType in enumerate(animTypes):
+            imageAndDuration = []
+            for x in range(sheetRect.width/imgWidth):
+                image = self.sheet.subsurface(imgWidth*x, imgHeight*y, imgWidth, imgHeight)
+                for i in range(imgHeight):
+                    z = False
+                    for j in range(imgWidth):
+                        if image.get_at((j, i))[3] > 0:
+                            imageAndDuration.append((image, 0.175))
+                            z = True
+                            break
+                    if z:
+                        break
+            if imageAndDuration:
+                animSurf[animType] = pyganim.PygAnimation(imageAndDuration)
+            else:
+                animSurf[animType] = pyganim.PygAnimation(placeholder)
+        #flipping the right animations to create the left ones
+        for i, src in enumerate(animTypes):
+            animSurf[animFlips[i]] = self.flip_anim(animSurf[src])
+        return animSurf

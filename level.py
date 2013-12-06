@@ -14,8 +14,7 @@ def load():
     clock = pygame.time.Clock()
     lvl = Level(screen, 'beta')
 
-    
-    """Main loop"""
+    #Main Loop
     while True:
         key = pygame.key.get_pressed()
         lvl.tilemap.update(dt, lvl, key)
@@ -36,7 +35,8 @@ def load():
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_SPACE:
                     lvl.hero.jump_cut()
-                
+
+
 class Level(object):
     def __init__(self, screen, name):
         
@@ -54,13 +54,13 @@ class Level(object):
             platform.Platform((plat.px, plat.py), self.platforms)
         self.tilemap.layers.append(self.platforms)        
         
-        """Loading the 'hero' into the level, and adding him/her to the self.sprites group"""
+        #Loading the 'hero' into the level, and adding him/her to the self.sprites group
         self.sprites = tmx.SpriteLayer()
         self.start_cell = self.tilemap.layers['spawns'].find('player')[0]
         self.hero = player.Player(self, (self.start_cell.px, self.start_cell.py), self.sprites)
         self.tilemap.layers.append(self.sprites)
         
-        """Cell, rect, and mask dicts"""
+        #Cell, rect, and mask dicts
         self.cell_size = (self.tilemap.layers['terrain'].tile_width, self.tilemap.layers['terrain'].tile_height)
         self.cells_dict = self.tilemap.layers['terrain'].cells
         self.height_dict = self.gen_height_map()
@@ -84,7 +84,6 @@ class Level(object):
             rect_dict[coord] = cell.tile.surface.get_rect(x = coord[0] * self.cell_size[0], y = coord[1] * self.cell_size[1])
         return rect_dict
 
-        
     def gen_height_map(self):
         height_dict = {}
         test_mask = pygame.Mask((1,self.tilemap.layers['terrain'].tile_height))
@@ -103,8 +102,3 @@ class Level(object):
         for i, cell in self.cells_dict.items():
             mask_dict[i] = pygame.mask.from_surface(cell.tile.surface)
         return mask_dict
-        
-        
-        
-        
-        

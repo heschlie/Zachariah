@@ -41,6 +41,7 @@ class Walker(Monster):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/enemy1a.png')
+        self.animSurf = self.get_images()
         super(Walker, self).__init__(lvl, loc)
         
     def get_images(self):
@@ -60,6 +61,7 @@ class Standing(Monster):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/enemy1a.png')
+        self.animSurf = self.get_images()
         super(Standing, self).__init__(lvl, loc)
         self.speed = 0
         

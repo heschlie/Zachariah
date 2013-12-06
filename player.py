@@ -243,7 +243,7 @@ class Player(Character):
         animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right stop_right ' \
                     'damage_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 64)
-        self.animSurf = self.get_images(self.sheet, animTypes, 32, 64)
+        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes, 32, 64)
         super(Player, self).__init__(lvl, loc)
         self.rect.center = loc
         
@@ -258,27 +258,32 @@ class Player(Character):
         self.x_vel = 0
         #setting directions for idle
         if self.dir == 'left':
-            self.image = self.face_left
+            self.image = self.animSurf['idle_left'].getCurrentFrame()
+            self.hitmask = self.hitmask_dict['idle_left'][self.animSurf['idle_left']._propGetCurrentFrameNum()]
         if self.dir == 'right':
-            self.image = self.face_right
+            self.image = self.animSurf['idle_right'].getCurrentFrame()
+            self.hitmask = self.hitmask_dict['idle_right'][self.animSurf['idle_right']._propGetCurrentFrameNum()]
+            #print self.animSurf['idle_right']._propGetCurrentFrameNum()
         if key[pygame.K_LSHIFT]:
             self.speed = 6
         if key[pygame.K_LEFT]:
             if self.speed == 3:
                 self.image = self.animSurf['walk_left'].getCurrentFrame()
-                #print self.animSurf['walk_left']._propGetCurrentFrameNum()
+                self.hitmask = self.hitmask_dict['walk_left'][self.animSurf['walk_left']._propGetCurrentFrameNum()]
             if self.speed == 6:
                 self.image = self.animSurf['run_left'].getCurrentFrame()
+                self.hitmask = self.hitmask_dict['run_left'][self.animSurf['run_left']._propGetCurrentFrameNum()]
             self.dir = 'left'
             self.x_vel -= self.speed
         if key[pygame.K_RIGHT]:
             if self.speed == 3:
                 self.image = self.animSurf['walk_right'].getCurrentFrame()
+                self.hitmask = self.hitmask_dict['walk_right'][self.animSurf['walk_right']._propGetCurrentFrameNum()]
             if self.speed == 6:
                 self.image = self.animSurf['run_right'].getCurrentFrame()
+                self.hitmask = self.hitmask_dict['run_right'][self.animSurf['run_right']._propGetCurrentFrameNum()]
             self.dir = 'right'
             self.x_vel += self.speed
-        self.hitmask = pygame.mask.from_surface(self.image, 127)
 
     def get_images(self, sheet, animTypes, imgWidth, imgHeight):
         """This pulls the images from the spritesheet using subsurface and then adds those to
@@ -290,7 +295,7 @@ class Player(Character):
         self.face_left = pygame.transform.flip(self.face_right, True, False)
         sheetRect = sheet.get_rect()
         animSurf = {}
-
+        hitmask_dict = {}
         animFlips = []
         #Use a regex to replace _right with _left
         for i in animTypes:
@@ -301,6 +306,8 @@ class Player(Character):
         #them to the list, then adds the list to the animation
         for y, animType in enumerate(animTypes):
             imageAndDuration = []
+            hitmask_list_R = []
+            hitmask_list_L = []
             for x in range(sheetRect.width/imgWidth):
                 image = self.sheet.subsurface(imgWidth*x, imgHeight*y, imgWidth, imgHeight)
                 for i in range(imgHeight):
@@ -308,15 +315,21 @@ class Player(Character):
                     for j in range(imgWidth):
                         if image.get_at((j, i))[3] > 0:
                             imageAndDuration.append((image, 0.175))
+                            hitmask_list_R.append(pygame.mask.from_surface(image))
+                            imageL = pygame.transform.flip(image, True, False)
+                            hitmask_list_L.append(pygame.mask.from_surface(imageL))
                             z = True
                             break
                     if z:
                         break
+            print imageAndDuration
             if imageAndDuration:
                 animSurf[animType] = pyganim.PygAnimation(imageAndDuration)
+                hitmask_dict[animType] = hitmask_list_R
+                hitmask_dict[animFlips[y]] = hitmask_list_L
             else:
                 animSurf[animType] = pyganim.PygAnimation(placeholder)
         #flipping the right animations to create the left ones
         for i, src in enumerate(animTypes):
             animSurf[animFlips[i]] = self.flip_anim(animSurf[src])
-        return animSurf
+        return animSurf, hitmask_dict

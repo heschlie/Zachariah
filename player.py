@@ -186,9 +186,9 @@ class Character(pygame.sprite.Sprite):
                 if plat.hitmask.overlap(mask, mask_test):
                     return True
     
-    """Was unable to get this working properly, so I am simply setting the velocity
-    of the character to 0 when it detects a floor or wall.  I will change this if
-    problems arise."""
+    # """Was unable to get this working properly, so I am simply setting the velocity
+    # of the character to 0 when it detects a floor or wall.  I will change this if
+    # problems arise."""
 #     def adjust_pos(self, level, rect, mask, offset, off_ind):
 #         offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
 #         while 1:
@@ -249,7 +249,6 @@ class Character(pygame.sprite.Sprite):
                 self.y_vel = self.jump_cut_magnitude
             
 
-        
 class Player(Character):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)

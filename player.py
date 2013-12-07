@@ -9,7 +9,7 @@ import re
 class Character(pygame.sprite.Sprite):
     def __init__(self, lvl, loc, *groups):
         self.conductor = pyganim.PygConductor(self.animSurf)
-        self.image = self.face_right
+        self.conductor.play()
         self.rect = self.image.get_rect()
         self.hitmask = pygame.mask.from_surface(self.image, 127)
         self.dir = 'right'
@@ -26,6 +26,52 @@ class Character(pygame.sprite.Sprite):
         self.detect_wall(lvl)
         self.detect_ground(lvl)
         self.physics_update()
+
+    def get_images(self, sheet, animTypes, imgWidth, imgHeight):
+        """This pulls the images from the spritesheet using subsurface and then adds those to
+        pyganim objects to be animated in the game, it needs to be fed the width and height of
+        the subsurface to be pulled, the spritesheet, and a list of animation names.  This was
+        setup using the schema 'animation_right' and only right facing images and will automagically
+        generate from that"""
+        sheetRect = sheet.get_rect()
+        animSurf = {}
+        hitmask_dict = {}
+        animFlips = []
+        #Use a regex to replace _right with _left
+        for i in animTypes:
+            s = re.sub(r'_right\b', '_left', i)
+            animFlips.append(s)
+        placeholder = [(self.placeholder, 0.175), (self.placeholder, 0.175)]
+        #Grabs the images from the sheet, checks for opaque pixels and appends
+        #them to the list, then adds the list to the animation
+        for y, animType in enumerate(animTypes):
+            imageAndDuration = []
+            hitmask_list_R = []
+            hitmask_list_L = []
+            for x in range(sheetRect.width/imgWidth):
+                image = self.sheet.subsurface(imgWidth*x, imgHeight*y, imgWidth, imgHeight)
+                for i in range(imgHeight):
+                    z = False
+                    for j in range(imgWidth):
+                        if image.get_at((j, i))[3] > 0:
+                            imageAndDuration.append((image, 0.175))
+                            hitmask_list_R.append(pygame.mask.from_surface(image))
+                            imageL = pygame.transform.flip(image, True, False)
+                            hitmask_list_L.append(pygame.mask.from_surface(imageL))
+                            z = True
+                            break
+                    if z:
+                        break
+            if imageAndDuration:
+                animSurf[animType] = pyganim.PygAnimation(imageAndDuration)
+                hitmask_dict[animType] = hitmask_list_R
+                hitmask_dict[animFlips[y]] = hitmask_list_L
+            else:
+                animSurf[animType] = pyganim.PygAnimation(placeholder)
+        #flipping the right animations to create the left ones
+        for i, src in enumerate(animTypes):
+            animSurf[animFlips[i]] = self.flip_anim(animSurf[src])
+        return animSurf, hitmask_dict
         
     def setup_collision_rects(self):
         self.reset_wall_floor_rects()
@@ -244,6 +290,7 @@ class Player(Character):
                     'damage_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 64)
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes, 32, 64)
+        self.image = self.animSurf['idle_right'].getCurrentFrame()
         super(Player, self).__init__(lvl, loc)
         self.rect.center = loc
         
@@ -254,7 +301,6 @@ class Player(Character):
         self.speed = 3
         
     def check_keys(self, key):
-        self.conductor.play()
         self.x_vel = 0
         #setting directions for idle
         if self.dir == 'left':
@@ -263,7 +309,6 @@ class Player(Character):
         if self.dir == 'right':
             self.image = self.animSurf['idle_right'].getCurrentFrame()
             self.hitmask = self.hitmask_dict['idle_right'][self.animSurf['idle_right']._propGetCurrentFrameNum()]
-            #print self.animSurf['idle_right']._propGetCurrentFrameNum()
         if key[pygame.K_LSHIFT]:
             self.speed = 6
         if key[pygame.K_LEFT]:
@@ -284,52 +329,3 @@ class Player(Character):
                 self.hitmask = self.hitmask_dict['run_right'][self.animSurf['run_right']._propGetCurrentFrameNum()]
             self.dir = 'right'
             self.x_vel += self.speed
-
-    def get_images(self, sheet, animTypes, imgWidth, imgHeight):
-        """This pulls the images from the spritesheet using subsurface and then adds those to
-        pyganim objects to be animated in the game, it needs to be fed the width and height of
-        the subsurface to be pulled, the spritesheet, and a list of animation names.  This was
-        setup using the schema 'animation_right' and only right facing images and will automagically
-        generate from that"""
-        self.face_right = self.sheet.subsurface((0, 0, 32, 64))
-        self.face_left = pygame.transform.flip(self.face_right, True, False)
-        sheetRect = sheet.get_rect()
-        animSurf = {}
-        hitmask_dict = {}
-        animFlips = []
-        #Use a regex to replace _right with _left
-        for i in animTypes:
-            s = re.sub(r'_right\b', '_left', i)
-            animFlips.append(s)
-        placeholder = [(self.placeholder, 0.175), (self.placeholder, 0.175)]
-        #Grabs the images from the sheet, checks for opaque pixels and appends
-        #them to the list, then adds the list to the animation
-        for y, animType in enumerate(animTypes):
-            imageAndDuration = []
-            hitmask_list_R = []
-            hitmask_list_L = []
-            for x in range(sheetRect.width/imgWidth):
-                image = self.sheet.subsurface(imgWidth*x, imgHeight*y, imgWidth, imgHeight)
-                for i in range(imgHeight):
-                    z = False
-                    for j in range(imgWidth):
-                        if image.get_at((j, i))[3] > 0:
-                            imageAndDuration.append((image, 0.175))
-                            hitmask_list_R.append(pygame.mask.from_surface(image))
-                            imageL = pygame.transform.flip(image, True, False)
-                            hitmask_list_L.append(pygame.mask.from_surface(imageL))
-                            z = True
-                            break
-                    if z:
-                        break
-            print imageAndDuration
-            if imageAndDuration:
-                animSurf[animType] = pyganim.PygAnimation(imageAndDuration)
-                hitmask_dict[animType] = hitmask_list_R
-                hitmask_dict[animFlips[y]] = hitmask_list_L
-            else:
-                animSurf[animType] = pyganim.PygAnimation(placeholder)
-        #flipping the right animations to create the left ones
-        for i, src in enumerate(animTypes):
-            animSurf[animFlips[i]] = self.flip_anim(animSurf[src])
-        return animSurf, hitmask_dict

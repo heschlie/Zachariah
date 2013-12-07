@@ -1,9 +1,6 @@
 import pygame, sys
 from pygame.locals import *
-from pixelperfect import *
-from player import *
-import tmx
-import pyganim
+from character import *
 
 class Monster(Character):
     def __init__(self, lvl, loc, *groups):

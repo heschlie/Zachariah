@@ -3,6 +3,7 @@ from pygame.locals import *
 import pyganim
 import re
 
+
 class Character(pygame.sprite.Sprite):
     def __init__(self, lvl, loc, *groups):
         self.conductor = pyganim.PygConductor(self.animSurf)

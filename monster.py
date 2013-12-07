@@ -1,6 +1,7 @@
 from pygame.locals import *
 from character import *
 
+
 class Monster(Character):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)

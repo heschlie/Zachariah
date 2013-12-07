@@ -1,6 +1,4 @@
-import pygame, sys
 from character import *
-from pygame.locals import *
 
 
 class Player(Character):

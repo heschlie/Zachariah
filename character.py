@@ -1,7 +1,5 @@
-import pygame, sys
+import pygame
 from pygame.locals import *
-from pixelperfect import *
-import tmx
 import pyganim
 import re
 
@@ -171,8 +169,8 @@ class Character(pygame.sprite.Sprite):
     def airborne(self, level):
         new = self.rect
         mask = self.floor_detect_mask
-        check = (pygame.Rect(self.rect.x+1,self.rect.y,self.rect.width-1,1),
-                 pygame.Rect(self.rect.x+1,self.rect.bottom-1,self.rect.width-2,1))
+        check = (pygame.Rect(self.rect.x+1, self.rect.y, self.rect.width-1,1),
+                 pygame.Rect(self.rect.x+1, self.rect.bottom-1, self.rect.width-2,1))
         stop_fall = False
         for rect in check:
             if self.collide_with(level, rect, mask, [0, int(self.y_vel)]):

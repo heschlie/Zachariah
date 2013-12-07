@@ -1,8 +1,6 @@
 import pygame, sys
 from pygame.locals import *
-from pixelperfect import *
-import tmx
-import pyganim
+
 
 class Platform(pygame.sprite.Sprite):
     def __init__(self, loc, *groups):

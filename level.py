@@ -1,6 +1,5 @@
-import pygame, sys, player, platform, monster
+import pygame, player, platform, monster, sys
 from pygame.locals import *
-from pixelperfect import *
 import tmx
 import os
 

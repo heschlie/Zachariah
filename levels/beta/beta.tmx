@@ -42,7 +42,7 @@
     <property name="enemy" value="walker"/>
    </properties>
   </object>
-  <object gid="50" x="680" y="1412">
+  <object gid="50" x="672" y="1411">
    <properties>
     <property name="enemy" value="walker"/>
    </properties>

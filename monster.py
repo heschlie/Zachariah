@@ -52,6 +52,7 @@ class Walker(Monster):
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 32, 32)
         super(Walker, self).__init__(lvl, loc)
 
+
 class Standing(Monster):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)

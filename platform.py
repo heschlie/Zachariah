@@ -43,7 +43,6 @@ class Platform(pygame.sprite.Sprite):
         if abs(self.counter) >= 1:
             self.rect.y += self.counter
             self.counter = 0
-                
-    
+
     def update(self, dt, level, key):
         self.float(self.start)

@@ -17,7 +17,7 @@ def load():
     while True:
         key = pygame.key.get_pressed()
         lvl.tilemap.update(dt, lvl, key)
-        screen.fill((0,100,0))
+        screen.fill((0, 100, 0))
         lvl.tilemap.draw(screen)
         pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah",clock.get_fps()))
 
@@ -38,7 +38,6 @@ def load():
 
 class Level(object):
     def __init__(self, screen, name):
-        
         """Loading the level files, changing the CWD to match the files for loading,
         This was easier than having to edit the .tmx file every time it needed to
         be edited."""
@@ -93,7 +92,7 @@ class Level(object):
             for i in range(cell.tile.surface.get_width()):
                 height = mask.overlap_area(test_mask,(i, 0))
                 heights.append(height)
-            height_dict[(coord)] = heights
+            height_dict[coord] = heights
         return height_dict
     
     def make_mask_dict(self):

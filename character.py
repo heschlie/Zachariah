@@ -149,10 +149,10 @@ class Character(pygame.sprite.Sprite):
 
     def detect_wall(self, level):
         if not self.fall:
-            rect,mask = self.wall_detect_rect,self.wall_detect_mask
+            rect, mask = self.wall_detect_rect, self.wall_detect_mask
         else:
-            rect,mask = self.rect,self.fat_mask
-        if self.collide_with(level,rect,mask,(int(self.x_vel),0)):
+            rect, mask = self.rect, self.fat_mask
+        if self.collide_with(level, rect, mask, (int(self.x_vel), 0)):
             #self.x_vel = self.adjust_pos(level,rect,mask,[int(self.x_vel),0],0)
             self.x_vel = 0
         elif self.collide_with_platform(level, rect, mask, (int(self.x_vel), 0)):
@@ -161,17 +161,17 @@ class Character(pygame.sprite.Sprite):
         self.reset_wall_floor_rects()
 
     def reset_wall_floor_rects(self):
-        flr = (pygame.Rect((self.rect.x+7,self.rect.y),(1,self.rect.height+16)),
-               pygame.Rect((self.rect.right-8,self.rect.y),(1,self.rect.height+16)))
-        wall = pygame.Rect(self.rect.x+6,self.rect.bottom-15,self.rect.width-6,1)
+        flr = (pygame.Rect((self.rect.x+7, self.rect.y), (1, self.rect.height+16)),
+               pygame.Rect((self.rect.right-8, self.rect.y), (1, self.rect.height+16)))
+        wall = pygame.Rect(self.rect.x+6, self.rect.bottom-15, self.rect.width-6,1)
         self.floor_detect_rects = flr
         self.wall_detect_rect = wall
 
     def airborne(self, level):
         new = self.rect
         mask = self.floor_detect_mask
-        check = (pygame.Rect(self.rect.x+1, self.rect.y, self.rect.width-1,1),
-                 pygame.Rect(self.rect.x+1, self.rect.bottom-1, self.rect.width-2,1))
+        check = (pygame.Rect(self.rect.x+1, self.rect.y, self.rect.width-1, 1),
+                 pygame.Rect(self.rect.x+1, self.rect.bottom-1, self.rect.width-2, 1))
         stop_fall = False
         for rect in check:
             if self.collide_with(level, rect, mask, [0, int(self.y_vel)]):
@@ -230,30 +230,30 @@ class Character(pygame.sprite.Sprite):
         else:
             self.y_vel = 0
 
-    def detect_glitch_fix(self,pads,change,level):
+    def detect_glitch_fix(self, pads, change, level):
         """Fixes a glitch with the blit location that occurs on up-slopes when
         one detection bar hits a solid cell and the other doesn't. This could
         probably still be improved."""
-        inc,index = ((1,0) if not pads[0] else (-1,1))
+        inc,index = ((1,0) if not pads[0] else (-1, 1))
         detector = self.floor_detect_rects[index].copy()
         pad_details = (index,detector)
         old_change = change
         while detector.x != self.floor_detect_rects[not index].x:
             detector.x += inc
-            collide = self.check_floor_initial([0,0],pad_details,level)[0]
-            change = self.check_floor_final(collide,pad_details,change,level)
+            collide = self.check_floor_initial([0, 0], pad_details, level)[0]
+            change = self.check_floor_final(collide, pad_details, change, level)
             if change < old_change:
                 return change
         return old_change
 
     def detect_glitch_fix_platform(self, pads, change, level):
-        inc, index = ((1,0) if not pads[0] else (-1,1))
+        inc, index = ((1, 0) if not pads[0] else (-1, 1))
         detector = self.floor_detect_rects[index].copy()
         pad_details = (index, detector)
         old_change = change
         while detector.x != self.floor_detect_rects[not index].x:
             detector.x += inc
-            collide = self.check_floor_initial_platform([0,0], pad_details, level)
+            collide = self.check_floor_initial_platform([0, 0], pad_details, level)
             change = self.check_floor_final_platform(collide, pad_details, change, level)
             if change < old_change:
                 return change

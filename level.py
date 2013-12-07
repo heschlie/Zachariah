@@ -43,10 +43,11 @@ class Level(object):
         be edited."""
         os.chdir('levels/%s/' % name)
         self.level = "%s.tmx" % name
-        #self.tilesheet = pygame.image.load('%s.png' % name)
         self.tilemap = tmx.load(self.level, screen.get_size())
         os.chdir('../..')
-        
+
+        #Loading platforms, this needs to come before the player so the player is drawn on top
+        #of the platform sprites, and so he will move with the platforms
         self.platforms = tmx.SpriteLayer()
         for plat in self.tilemap.layers['platforms'].find('platform'):
             platform.Platform((plat.px, plat.py), self.platforms)
@@ -64,7 +65,8 @@ class Level(object):
         self.height_dict = self.gen_height_map()
         self.rect_dict = self.get_rect_dict()
         self.mask_dict = self.make_mask_dict()
-        
+
+        #Load the monsters.  Set the value of the enemy property to the class you wish to make a monster from
         self.enemies = tmx.SpriteLayer()
         for enemy in self.tilemap.layers['spawns'].find('enemy'):
             if enemy.properties['enemy'] == 'walker':
@@ -79,12 +81,13 @@ class Level(object):
     def get_rect_dict(self):
         rect_dict = {}
         for coord, cell in self.cells_dict.items():
-            rect_dict[coord] = cell.tile.surface.get_rect(x = coord[0] * self.cell_size[0], y = coord[1] * self.cell_size[1])
+            rect_dict[coord] = cell.tile.surface.get_rect(x=coord[0] * self.cell_size[0],
+                                                          y=coord[1] * self.cell_size[1])
         return rect_dict
 
     def gen_height_map(self):
         height_dict = {}
-        test_mask = pygame.Mask((1,self.tilemap.layers['terrain'].tile_height))
+        test_mask = pygame.Mask((1, self.tilemap.layers['terrain'].tile_height))
         test_mask.fill()
         for coord, cell in self.cells_dict.items():
             heights = []

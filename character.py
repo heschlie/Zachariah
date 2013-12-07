@@ -100,7 +100,7 @@ class Character(pygame.sprite.Sprite):
             if collide:
                 change = self.check_floor_final_platform(collide, (i, floor), change, level)
         if pads_on[0]^pads_on[1]:
-            change = self.detect_glitch_fix(pads_on,change,level)
+            change = self.detect_glitch_fix(pads_on, change, level)
         if change != None:
             self.rect.y = int(change - self.rect.height)
         else:
@@ -163,7 +163,7 @@ class Character(pygame.sprite.Sprite):
     def reset_wall_floor_rects(self):
         flr = (pygame.Rect((self.rect.x+7, self.rect.y), (1, self.rect.height+16)),
                pygame.Rect((self.rect.right-8, self.rect.y), (1, self.rect.height+16)))
-        wall = pygame.Rect(self.rect.x+6, self.rect.bottom-15, self.rect.width-6,1)
+        wall = pygame.Rect(self.rect.x+6, self.rect.bottom-15, self.rect.width-6, 1)
         self.floor_detect_rects = flr
         self.wall_detect_rect = wall
 
@@ -234,9 +234,9 @@ class Character(pygame.sprite.Sprite):
         """Fixes a glitch with the blit location that occurs on up-slopes when
         one detection bar hits a solid cell and the other doesn't. This could
         probably still be improved."""
-        inc,index = ((1,0) if not pads[0] else (-1, 1))
+        inc, index = ((1, 0) if not pads[0] else (-1, 1))
         detector = self.floor_detect_rects[index].copy()
-        pad_details = (index,detector)
+        pad_details = (index, detector)
         old_change = change
         while detector.x != self.floor_detect_rects[not index].x:
             detector.x += inc

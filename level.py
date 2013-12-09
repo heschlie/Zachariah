@@ -1,4 +1,8 @@
-import pygame, player, platform, monster, sys
+import pygame
+import player
+import platform
+import monster
+import sys
 from pygame.locals import *
 import tmx
 import os
@@ -19,7 +23,7 @@ def load():
         lvl.tilemap.update(dt, lvl, key)
         screen.fill((0, 100, 0))
         lvl.tilemap.draw(screen)
-        pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah",clock.get_fps()))
+        pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah", clock.get_fps()))
 
         pygame.display.update()
         clock.tick(dt)
@@ -93,7 +97,7 @@ class Level(object):
             heights = []
             mask = pygame.mask.from_surface(cell.tile.surface)
             for i in range(cell.tile.surface.get_width()):
-                height = mask.overlap_area(test_mask,(i, 0))
+                height = mask.overlap_area(test_mask, (i, 0))
                 heights.append(height)
             height_dict[coord] = heights
         return height_dict

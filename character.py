@@ -12,17 +12,22 @@ class Character(pygame.sprite.Sprite):
         self.dir = 'right'
         self.fall = False
         self.platform = False
-        self.speed = 3
+        self.plat_speed = 0
+        self.speed = .25 + self.plat_speed
         self.jump_power = -8.75
         self.jump_cut_magnitude = -3
         self.grav = 0.22
+        self.x_det = .25
         self.y_vel = self.x_vel = 0
+        self.max_speed = 3
         self.setup_collision_rects()
 
     def update(self, dt, lvl, key):
+        self.speed = .25 + self.plat_speed
         self.detect_wall(lvl)
         self.detect_ground(lvl)
         self.physics_update()
+        self.plat_speed = 0
 
     def get_images(self, sheet, animTypes, imgWidth, imgHeight):
         """This pulls the images from the spritesheet using subsurface and then adds those to
@@ -167,10 +172,10 @@ class Character(pygame.sprite.Sprite):
         self.wall_detect_rect = wall
 
     def airborne(self, level):
-        new = self.rect
         mask = self.floor_detect_mask
         check = (pygame.Rect(self.rect.x+1, self.rect.y, self.rect.width-1, 1),
                  pygame.Rect(self.rect.x+1, self.rect.bottom-1, self.rect.width-2, 1))
+        #check = (self.rect, self.rect)
         stop_fall = False
         for rect in check:
             if self.collide_with(level, rect, mask, [0, int(self.y_vel)]):

@@ -12,16 +12,18 @@ class Player(Character):
         self.image = self.animSurf['idle_right'].getCurrentFrame()
         super(Player, self).__init__(lvl, loc)
         self.rect.center = loc
+        #self.speed = .25 + self.plat_speed
         
     def update(self, dt, lvl, key):
         self.check_keys(key)
+        self.inertia(key)
         super(Player, self).update(dt, lvl, key)
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
-        self.speed = 3
+        self.max_speed = 3
         
     def check_keys(self, key):
-        self.x_vel = 0
         #setting directions for idle
+        x_vel = 0
         if self.dir == 'left':
             self.image = self.animSurf['idle_left'].getCurrentFrame()
             self.hitmask = self.hitmask_dict['idle_left'][self.animSurf['idle_left']._propGetCurrentFrameNum()]
@@ -29,22 +31,38 @@ class Player(Character):
             self.image = self.animSurf['idle_right'].getCurrentFrame()
             self.hitmask = self.hitmask_dict['idle_right'][self.animSurf['idle_right']._propGetCurrentFrameNum()]
         if key[pygame.K_LSHIFT]:
-            self.speed = 6
+            self.max_speed = 6
         if key[pygame.K_LEFT]:
-            if self.speed == 3:
+            if abs(self.x_vel) > 1:
                 self.image = self.animSurf['walk_left'].getCurrentFrame()
                 self.hitmask = self.hitmask_dict['walk_left'][self.animSurf['walk_left']._propGetCurrentFrameNum()]
-            if self.speed == 6:
+            if abs(self.x_vel) > 4:
                 self.image = self.animSurf['run_left'].getCurrentFrame()
                 self.hitmask = self.hitmask_dict['run_left'][self.animSurf['run_left']._propGetCurrentFrameNum()]
             self.dir = 'left'
-            self.x_vel -= self.speed
+            x_vel -= self.speed
         if key[pygame.K_RIGHT]:
-            if self.speed == 3:
+            if self.x_vel > 1:
                 self.image = self.animSurf['walk_right'].getCurrentFrame()
                 self.hitmask = self.hitmask_dict['walk_right'][self.animSurf['walk_right']._propGetCurrentFrameNum()]
-            if self.speed == 6:
+            if self.x_vel > 4:
                 self.image = self.animSurf['run_right'].getCurrentFrame()
                 self.hitmask = self.hitmask_dict['run_right'][self.animSurf['run_right']._propGetCurrentFrameNum()]
             self.dir = 'right'
-            self.x_vel += self.speed
+            x_vel += self.speed
+        x_vel = x_vel
+        print self.plat_speed
+        self.x_vel += x_vel
+
+    def inertia(self, key):
+        max_speed = self.max_speed + self.plat_speed
+        if abs(self.x_vel) - self.x_det > max_speed:
+            if self.x_vel > 0:
+                self.x_vel -= (self.x_det * 2) + self.plat_speed
+            if self.x_vel < 0:
+                self.x_vel += (self.x_det * 2) + self.plat_speed
+        if self.x_vel > 0 and not key[pygame.K_RIGHT] or self.x_vel > max_speed:
+            self.x_vel -= self.x_det + self.plat_speed
+        if self.x_vel < 0 and not key[pygame.K_LEFT] or self.x_vel < (max_speed * -1):
+            self.x_vel += self.x_det + self.plat_speed
+        #self.x_vel += self.plat_speed

@@ -50,8 +50,6 @@ class Player(Character):
                 self.hitmask = self.hitmask_dict['run_right'][self.animSurf['run_right']._propGetCurrentFrameNum()]
             self.dir = 'right'
             x_vel += self.speed
-        x_vel = x_vel
-        print self.plat_speed
         self.x_vel += x_vel
 
     def inertia(self, key):

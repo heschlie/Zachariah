@@ -13,9 +13,10 @@ class Monster(Character):
         self.speed = 2
         self.patrol_distance = 160
         
-    def update(self, dt, lvl, key):
+    def update(self, dt, lvl, key, joy):
         self.move()
-        super(Monster, self).update(dt, lvl, key)
+        self.inertia()
+        super(Monster, self).update(dt, lvl, key, joy)
         
     def move(self):
         self.conductor.play()

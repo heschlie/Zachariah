@@ -74,7 +74,7 @@ class Platform(pygame.sprite.Sprite):
                 sprite.plat_speed = self.x_vel
                 sprite.is_platform = True
 
-    def update(self, dt, level, key):
+    def update(self, dt, level, key, joy):
         #self.float(self.start)
         self.move(self.start)
         self.adjust_character_speed(level)

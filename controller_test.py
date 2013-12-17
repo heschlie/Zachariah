@@ -13,11 +13,14 @@ def main():
         clock = pygame.time.Clock()
         joysticks = []
         for i in range(0, pygame.joystick.get_count()):
-                joysticks.append(pygame.joystick.Joystick(i))
-                joysticks[-1].init()
-                print "Detected joystick '",joysticks[-1].get_name(),"'"
+            joysticks.append(pygame.joystick.Joystick(i))
+            joysticks[-1].init()
+            print "Detected joystick '",joysticks[-1].get_name(),"'"
+            print joysticks[i].get_numhats()
         while 1:
                 clock.tick(60)
+                print joysticks[0].get_hat(0)
+
                 for event in pygame.event.get():
                         if event.type == QUIT:
                                 print "Received event 'Quit', exiting."
@@ -42,7 +45,7 @@ def main():
                         elif event.type == JOYBUTTONUP:
                                 print "Joystick '",joysticks[event.joy].get_name(),"' button",event.button,"up."
                         elif event.type == JOYHATMOTION:
-                                print "Joystick '",joysticks[event.joy].get_name(),"' hat",event.hat," moved."
- 
+                                print "Joystick '",joysticks[event.joy].get_name(),"' hat",event.hat," moved.", event.value
+
 if __name__ == "__main__":
         main()

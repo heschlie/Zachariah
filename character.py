@@ -14,7 +14,7 @@ class Character(pygame.sprite.Sprite):
         self.platform = False
         self.is_platform = False
         self.plat_speed = 0
-        self.speed = .25 + self.plat_speed
+        self.speed = .25
         self.jump_power = -8.75
         self.jump_cut_magnitude = -3
         self.grav = 0.22
@@ -23,8 +23,7 @@ class Character(pygame.sprite.Sprite):
         self.max_speed = 3
         self.setup_collision_rects()
 
-    def update(self, dt, lvl, key):
-        self.speed = .25
+    def update(self, dt, lvl, key, joy):
         self.detect_wall(lvl)
         self.detect_ground(lvl)
         self.physics_update()
@@ -165,9 +164,9 @@ class Character(pygame.sprite.Sprite):
         self.reset_wall_floor_rects()
 
     def reset_wall_floor_rects(self):
-        flr = (pygame.Rect((self.rect.x+7, self.rect.y), (1, self.rect.height+16)),
-               pygame.Rect((self.rect.right-8, self.rect.y), (1, self.rect.height+16)))
-        wall = pygame.Rect(self.rect.x+2, self.rect.bottom-15, self.rect.width-4, 1)
+        flr = (pygame.Rect((self.rect.x+9, self.rect.y), (1, self.rect.height+16)),
+               pygame.Rect((self.rect.right-9, self.rect.y), (1, self.rect.height+16)))
+        wall = pygame.Rect(self.rect.x+3, self.rect.bottom-15, self.rect.width-8, 1)
         self.floor_detect_rects = flr
         self.wall_detect_rect = wall
 
@@ -282,3 +281,15 @@ class Character(pygame.sprite.Sprite):
         fliped.flip(True, False)
         fliped.makeTransformsPermanent()
         return fliped
+
+    def inertia(self):
+        max_speed = self.max_speed
+        if abs(self.x_vel) - self.x_det > max_speed:
+            if self.x_vel > 0:
+                self.x_vel -= (self.x_det * 2)
+            if self.x_vel < 0:
+                self.x_vel += (self.x_det * 2)
+        if self.x_vel > 0 and not self.x_vel > max_speed:
+            self.x_vel -= self.x_det
+        if self.x_vel < 0 and not self.x_vel < (max_speed * -1):
+            self.x_vel += self.x_det

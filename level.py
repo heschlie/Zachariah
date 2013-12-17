@@ -17,9 +17,15 @@ def load():
     clock = pygame.time.Clock()
     lvl = Level(screen, 'beta')
 
+    joysticks = []
+    for i in range(0, pygame.joystick.get_count()):
+        joysticks.append(pygame.joystick.Joystick(i))
+        joysticks[-1].init()
+
     #Main Loop
     while True:
-        for event in pygame.event.get():
+        keys = pygame.event.get()
+        for event in keys:
             if event.type == QUIT or (event.type == KEYUP and event.key == K_ESCAPE):
                 pygame.quit()
                 sys.exit()
@@ -29,9 +35,15 @@ def load():
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_SPACE:
                     lvl.hero.jump_cut()
+            elif event.type == JOYBUTTONDOWN:
+                if event.button == 0:
+                    lvl.hero.jump()
+            elif event.type == JOYBUTTONUP:
+                if event.button == 0:
+                    lvl.hero.jump_cut()
 
         key = pygame.key.get_pressed()
-        lvl.tilemap.update(dt, lvl, key)
+        lvl.tilemap.update(dt, lvl, key, joysticks)
         screen.fill((0, 100, 0))
         lvl.tilemap.draw(screen)
         pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah", clock.get_fps()))

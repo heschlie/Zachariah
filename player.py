@@ -13,14 +13,15 @@ class Player(Character):
         super(Player, self).__init__(lvl, loc)
         self.rect.center = loc
         
-    def update(self, dt, lvl, key):
-        self.check_keys(key)
+    def update(self, dt, lvl, key, joy):
+        self.get_events(key, joy)
+        self.check_keys(key, joy)
         self.inertia(key)
-        super(Player, self).update(dt, lvl, key)
+        super(Player, self).update(dt, lvl, key, joy)
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         self.max_speed = 3
         
-    def check_keys(self, key):
+    def check_keys(self, key, joy):
         #setting directions for idle
         x_vel = 0
         if self.dir == 'left':
@@ -29,9 +30,9 @@ class Player(Character):
         if self.dir == 'right':
             self.image = self.animSurf['idle_right'].getCurrentFrame()
             self.hitmask = self.hitmask_dict['idle_right'][self.animSurf['idle_right']._propGetCurrentFrameNum()]
-        if key[pygame.K_LSHIFT]:
+        if self.run:
             self.max_speed = 6
-        if key[pygame.K_LEFT]:
+        if self.direction == 'left':
             if abs(self.x_vel) > 1:
                 self.image = self.animSurf['walk_left'].getCurrentFrame()
                 self.hitmask = self.hitmask_dict['walk_left'][self.animSurf['walk_left']._propGetCurrentFrameNum()]
@@ -40,7 +41,7 @@ class Player(Character):
                 self.hitmask = self.hitmask_dict['run_left'][self.animSurf['run_left']._propGetCurrentFrameNum()]
             self.dir = 'left'
             x_vel -= self.speed
-        if key[pygame.K_RIGHT]:
+        if self.direction == 'right':
             if self.x_vel > 1:
                 self.image = self.animSurf['walk_right'].getCurrentFrame()
                 self.hitmask = self.hitmask_dict['walk_right'][self.animSurf['walk_right']._propGetCurrentFrameNum()]
@@ -58,8 +59,34 @@ class Player(Character):
                 self.x_vel -= (self.x_det * 2)
             if self.x_vel < 0:
                 self.x_vel += (self.x_det * 2)
-        if self.x_vel > 0 and not key[pygame.K_RIGHT] or self.x_vel > max_speed:
+        if self.x_vel > 0 and self.direction == '' or self.x_vel > max_speed:
             self.x_vel -= self.x_det
-        if self.x_vel < 0 and not key[pygame.K_LEFT] or self.x_vel < (max_speed * -1):
+        if self.x_vel < 0 and self.direction == '' or self.x_vel < (max_speed * -1):
             self.x_vel += self.x_det
         #self.x_vel += self.plat_speed
+
+    def get_events(self, key, joy):
+        self.run = self.get_run(key, joy)
+        self.direction = self.get_direction(key, joy)
+
+    def get_direction(self, key, joy):
+        direction = ''
+        for event in joy:
+            if event.get_hat(0) == (-1, 0):
+                direction = 'left'
+            elif event.get_hat(0) == (1, 0):
+                direction = 'right'
+        if key[pygame.K_LEFT]:
+            direction = 'left'
+        elif key[pygame.K_RIGHT]:
+            direction = 'right'
+        return direction
+
+    def get_run(self, key, joy):
+        run = False
+        for event in joy:
+            if event.get_button(2):
+                run = True
+        if key[pygame.K_LSHIFT]:
+            run = True
+        return run

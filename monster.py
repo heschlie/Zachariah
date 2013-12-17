@@ -14,8 +14,8 @@ class Monster(Character):
         self.patrol_distance = 160
         
     def update(self, dt, lvl, key):
-        super(Monster, self).update(dt, lvl, key)
         self.move()
+        super(Monster, self).update(dt, lvl, key)
         
     def move(self):
         self.conductor.play()

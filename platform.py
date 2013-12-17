@@ -17,7 +17,7 @@ class Platform(pygame.sprite.Sprite):
         self.speed = 0.15
         self.y_vel = 0
         self.x_vel = 0
-        self.max_speed = 1
+        self.max_speed = 2
         self.counter = 0
         
     def gen_height_map(self):
@@ -62,15 +62,17 @@ class Platform(pygame.sprite.Sprite):
     def adjust_character_speed(self, level):
         x_vel = int(self.x_vel)
         y_vel = int(self.y_vel)
-        test = pygame.Rect((self.rect.x - x_vel, self.rect.y - y_vel), self.rect.size)
+        test = pygame.Rect((self.rect.x + x_vel, self.rect.y + y_vel), (self.rect.width + 20, self.rect.height))
         for mob in level.enemies:
             mask_test = test.x - mob.rect.x, test.y - mob.rect.y
             if mob.hitmask.overlap(self.hitmask, mask_test):
                 mob.plat_speed = self.x_vel
         for sprite in level.sprites:
-            mask_test = test.x - sprite.rect.x, test.y - sprite.rect.y - 10
+            mask_test = (test.x - 8) - sprite.rect.x, (test.y - 5) - sprite.rect.y
             if sprite.hitmask.overlap(self.hitmask, mask_test):
                 sprite.rect.x += self.x_vel
+                sprite.plat_speed = self.x_vel
+                sprite.is_platform = True
 
     def update(self, dt, level, key):
         #self.float(self.start)

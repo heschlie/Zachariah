@@ -12,7 +12,6 @@ class Player(Character):
         self.image = self.animSurf['idle_right'].getCurrentFrame()
         super(Player, self).__init__(lvl, loc)
         self.rect.center = loc
-        #self.speed = .25 + self.plat_speed
         
     def update(self, dt, lvl, key):
         self.check_keys(key)
@@ -53,14 +52,14 @@ class Player(Character):
         self.x_vel += x_vel
 
     def inertia(self, key):
-        max_speed = self.max_speed + self.plat_speed
+        max_speed = self.max_speed  # + abs(self.plat_speed)
         if abs(self.x_vel) - self.x_det > max_speed:
             if self.x_vel > 0:
-                self.x_vel -= (self.x_det * 2) + self.plat_speed
+                self.x_vel -= (self.x_det * 2)
             if self.x_vel < 0:
-                self.x_vel += (self.x_det * 2) + self.plat_speed
+                self.x_vel += (self.x_det * 2)
         if self.x_vel > 0 and not key[pygame.K_RIGHT] or self.x_vel > max_speed:
-            self.x_vel -= self.x_det + self.plat_speed
+            self.x_vel -= self.x_det
         if self.x_vel < 0 and not key[pygame.K_LEFT] or self.x_vel < (max_speed * -1):
-            self.x_vel += self.x_det + self.plat_speed
+            self.x_vel += self.x_det
         #self.x_vel += self.plat_speed

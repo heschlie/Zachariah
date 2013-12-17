@@ -19,15 +19,6 @@ def load():
 
     #Main Loop
     while True:
-        key = pygame.key.get_pressed()
-        lvl.tilemap.update(dt, lvl, key)
-        screen.fill((0, 100, 0))
-        lvl.tilemap.draw(screen)
-        pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah", clock.get_fps()))
-
-        pygame.display.update()
-        clock.tick(dt)
-        
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYUP and event.key == K_ESCAPE):
                 pygame.quit()
@@ -38,6 +29,15 @@ def load():
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_SPACE:
                     lvl.hero.jump_cut()
+
+        key = pygame.key.get_pressed()
+        lvl.tilemap.update(dt, lvl, key)
+        screen.fill((0, 100, 0))
+        lvl.tilemap.draw(screen)
+        pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah", clock.get_fps()))
+
+        pygame.display.update()
+        clock.tick(dt)
 
 
 class Level(object):

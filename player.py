@@ -15,13 +15,13 @@ class Player(Character):
         
     def update(self, dt, lvl, key, joy):
         self.get_events(key, joy)
-        self.check_keys(key, joy)
-        self.inertia(key)
+        self.check_keys()
+        self.inertia()
         super(Player, self).update(dt, lvl, key, joy)
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         self.max_speed = 3
         
-    def check_keys(self, key, joy):
+    def check_keys(self):
         #setting directions for idle
         x_vel = 0
         if self.dir == 'left':
@@ -52,7 +52,7 @@ class Player(Character):
             x_vel += self.speed
         self.x_vel += x_vel
 
-    def inertia(self, key):
+    def inertia(self):
         max_speed = self.max_speed  # + abs(self.plat_speed)
         if abs(self.x_vel) - self.x_det > max_speed:
             if self.x_vel > 0:

@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/character.py" afterPath="$PROJECT_DIR$/character.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller_test.py" afterPath="$PROJECT_DIR$/controller_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/level.py" afterPath="$PROJECT_DIR$/level.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monster.py" afterPath="$PROJECT_DIR$/monster.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platform.py" afterPath="$PROJECT_DIR$/platform.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/player.py" afterPath="$PROJECT_DIR$/player.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -82,7 +77,7 @@
           <file leaf-file-name="player.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/player.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="61" column="50" selection-start="3016" selection-end="3016" vertical-scroll-proportion="0.39763778" vertical-offset="633" max-vertical-offset="1649">
+                <state line="91" column="18" selection-start="3968" selection-end="3968" vertical-scroll-proportion="1.5226378" vertical-offset="0" max-vertical-offset="1649">
                   <folding />
                 </state>
               </provider>
@@ -496,7 +491,11 @@
       <created>1387243358526</created>
       <updated>1387243358526</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Implemented contorllers, well at least an xbox controller, jumping and running and moving all seem to work, will need to implement more methods when other actions are added to the game.">
+      <created>1387255953277</created>
+      <updated>1387255953277</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -543,7 +542,8 @@
     <MESSAGE value="Started sorting out platform X movement, player at this point will move with platform while touching it, but will not carry inertia.&#10;&#10;Player inertia has been implemented, at the moment the player will speed up and slow down at the same rate, this may become one value later." />
     <MESSAGE value="minor changes" />
     <MESSAGE value="some fixes for the platform moving on the X axis, still needs some tweaks, mainly player need to move with the platform a bit after leaving it, carrying the x_vel of the platform doesn't seem to be enough.  Also need to fix player warping on top of platform when collidiing with sides, this may be a non-issue in actual gameplay as most horizantally moving platforms will be drop-down type.&#10;&#10;Also made some tweaks to the 'fat_mask' for detecting walls when airborne, still needs more polish, also found that the normal wall detector needs tweaking, need to nail down final images for player to make them 'perfect'" />
-    <option name="LAST_COMMIT_MESSAGE" value="some fixes for the platform moving on the X axis, still needs some tweaks, mainly player need to move with the platform a bit after leaving it, carrying the x_vel of the platform doesn't seem to be enough.  Also need to fix player warping on top of platform when collidiing with sides, this may be a non-issue in actual gameplay as most horizantally moving platforms will be drop-down type.&#10;&#10;Also made some tweaks to the 'fat_mask' for detecting walls when airborne, still needs more polish, also found that the normal wall detector needs tweaking, need to nail down final images for player to make them 'perfect'" />
+    <MESSAGE value="Implemented contorllers, well at least an xbox controller, jumping and running and moving all seem to work, will need to implement more methods when other actions are added to the game." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented contorllers, well at least an xbox controller, jumping and running and moving all seem to work, will need to implement more methods when other actions are added to the game." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -665,7 +665,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="50" selection-start="3016" selection-end="3016" vertical-scroll-proportion="0.39763778" vertical-offset="633" max-vertical-offset="1649">
+        <state line="91" column="18" selection-start="3968" selection-end="3968" vertical-scroll-proportion="1.5226378" vertical-offset="0" max-vertical-offset="1649">
           <folding />
         </state>
       </provider>

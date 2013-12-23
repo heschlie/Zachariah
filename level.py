@@ -24,6 +24,8 @@ def load():
 
     #Main Loop
     while True:
+    #     if lvl.hero.dead:
+    #        break
         keys = pygame.event.get()
         for event in keys:
             if event.type == QUIT or (event.type == KEYUP and event.key == K_ESCAPE):

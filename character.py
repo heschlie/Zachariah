@@ -105,7 +105,7 @@ class Character(pygame.sprite.Sprite):
             collide, pads_on = self.check_floor_initial_platform(pads_on, (i, floor), level)
             if collide:
                 change = self.check_floor_final_platform(collide, (i, floor), change, level)
-        if pads_on[0]^pads_on[1]:
+        if pads_on[0] ^ pads_on[1]:
             change = self.detect_glitch_fix(pads_on, change, level)
         if change is not None:
             self.rect.y = int(change - self.rect.height)
@@ -292,9 +292,9 @@ class Character(pygame.sprite.Sprite):
                 self.x_vel -= (self.x_det * 2)
             if self.x_vel < 0:
                 self.x_vel += (self.x_det * 2)
-        if self.x_vel > 0 and not self.x_vel > max_speed:
+        elif self.x_vel > 0 and abs(self.x_vel) > max_speed:
             self.x_vel -= self.x_det
-        if self.x_vel < 0 and not self.x_vel < (max_speed * -1):
+        elif self.x_vel < 0 and abs(self.x_vel) > max_speed:
             self.x_vel += self.x_det
 
     def take_damage(self, damage, vel):
@@ -304,12 +304,11 @@ class Character(pygame.sprite.Sprite):
         else:
             direction = 'L'
         if direction == 'R':
-            self.x_vel = 4
+            self.x_vel = 8
         elif direction == 'L':
-            self.x_vel = -4
+            self.x_vel = -8
         self.hp -= damage
 
     def check_alive(self):
         if self.hp <= 0:
-            #self.kill()
-            print 'ded'
+            self.hitmask.clear()

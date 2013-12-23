@@ -12,6 +12,7 @@ class Player(Character):
         self.image = self.animSurf['idle_right'].getCurrentFrame()
         super(Player, self).__init__(lvl, loc)
         self.rect.center = loc
+        self.dead = False
         
     def update(self, dt, lvl, key, joy):
         self.get_events(key, joy)
@@ -20,11 +21,11 @@ class Player(Character):
         super(Player, self).update(dt, lvl, key, joy)
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         self.max_speed = 3
-        self.do_damage(lvl)
+        self.jmp_damage(lvl)
         
     def check_keys(self):
         #setting directions for idle
-        x_vel = 0
+        #x_vel = 0
         if self.dir == 'left':
             self.image = self.animSurf['idle_left'].getCurrentFrame()
             self.hitmask = self.hitmask_dict['idle_left'][self.animSurf['idle_left']._propGetCurrentFrameNum()]
@@ -41,7 +42,7 @@ class Player(Character):
                 self.image = self.animSurf['run_left'].getCurrentFrame()
                 self.hitmask = self.hitmask_dict['run_left'][self.animSurf['run_left']._propGetCurrentFrameNum()]
             self.dir = 'left'
-            x_vel -= self.speed
+            self.x_vel -= self.speed
         if self.direction == 'right':
             if self.x_vel > 1:
                 self.image = self.animSurf['walk_right'].getCurrentFrame()
@@ -50,8 +51,8 @@ class Player(Character):
                 self.image = self.animSurf['run_right'].getCurrentFrame()
                 self.hitmask = self.hitmask_dict['run_right'][self.animSurf['run_right']._propGetCurrentFrameNum()]
             self.dir = 'right'
-            x_vel += self.speed
-        self.x_vel += x_vel
+            self.x_vel += self.speed
+        #self.x_vel += x_vel
 
     def inertia(self):
         max_speed = self.max_speed  # + abs(self.plat_speed)
@@ -92,18 +93,22 @@ class Player(Character):
             run = True
         return run
 
-    def do_damage(self, level):
+    def jmp_damage(self, level):
         x_vel = int(self.x_vel)
         y_vel = int(self.y_vel)
         test = pygame.Rect((self.rect.x + x_vel, self.rect.y + y_vel), (self.rect.width, self.rect.height))
         for mob in level.enemies:
             mask_test = test.x - mob.rect.x, test.y - mob.rect.y
-            if mob.hitmask.overlap(self.hitmask, mask_test):
+            if self.rect.bottom < mob.rect.top + 18 and mob.hitmask.overlap(self.hitmask, mask_test):
                 mob.take_damage(1, self.x_vel)
                 self.bounce()
                 print mob.hp
-            #elif mob.hitmask.overlap(self.hitmask, mask_test):
-            #    print 'ouch'
+            elif mob.hitmask.overlap(self.hitmask, mask_test):
+                self.hp -= 1
 
     def bounce(self):
         self.y_vel = -4
+
+    def check_alive(self):
+        if self.hp <= 0:
+            self.dead = True

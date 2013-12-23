@@ -22,29 +22,9 @@
     <property name="enemy" value="walker"/>
    </properties>
   </object>
-  <object gid="50" x="1156" y="1410">
-   <properties>
-    <property name="enemy" value="standing"/>
-   </properties>
-  </object>
-  <object gid="50" x="1190" y="1411">
-   <properties>
-    <property name="enemy" value="standing"/>
-   </properties>
-  </object>
   <object gid="50" x="1226" y="1411">
    <properties>
     <property name="enemy" value="standing"/>
-   </properties>
-  </object>
-  <object gid="50" x="611" y="1409">
-   <properties>
-    <property name="enemy" value="walker"/>
-   </properties>
-  </object>
-  <object gid="50" x="672" y="1411">
-   <properties>
-    <property name="enemy" value="walker"/>
    </properties>
   </object>
  </objectgroup>
@@ -69,7 +49,7 @@
     <property name="blockers" value="t"/>
    </properties>
   </object>
-  <object gid="51" x="320" y="1122">
+  <object gid="51" x="1982" y="831">
    <properties>
     <property name="platform" value=""/>
    </properties>

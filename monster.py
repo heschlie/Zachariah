@@ -4,7 +4,6 @@ from character import *
 
 class Monster(Character):
     def __init__(self, lvl, loc, *groups):
-        super(Character, self).__init__(*groups)
         self.image = self.animSurf['idle_left'].getCurrentFrame()
         super(Monster, self).__init__(lvl, loc)
         self.dir = 'left'
@@ -52,6 +51,7 @@ class Walker(Monster):
         self.placeholder = self.sheet.subsurface(0, 0, 32, 32)
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 32, 32)
         super(Walker, self).__init__(lvl, loc)
+        self.hp = 2
 
 
 class Standing(Monster):
@@ -63,3 +63,4 @@ class Standing(Monster):
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 32, 32)
         super(Standing, self).__init__(lvl, loc)
         self.speed = 0
+        self.hp = 1

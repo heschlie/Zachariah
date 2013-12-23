@@ -42,8 +42,8 @@ class Platform(pygame.sprite.Sprite):
             if self.y_vel > 0:
                 self.y_vel = self.max_speed
         self.counter += self.y_vel        
-        if abs(self.counter) >= 1:
-            self.rect.y += self.counter
+        if abs(self.counter) >= 3:
+            self.rect.y += self.y_vel
             self.counter = 0
 
     def move(self, loc):

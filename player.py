@@ -20,6 +20,7 @@ class Player(Character):
         super(Player, self).update(dt, lvl, key, joy)
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         self.max_speed = 3
+        self.do_damage(lvl)
         
     def check_keys(self):
         #setting directions for idle
@@ -90,3 +91,19 @@ class Player(Character):
         if key[pygame.K_LSHIFT]:
             run = True
         return run
+
+    def do_damage(self, level):
+        x_vel = int(self.x_vel)
+        y_vel = int(self.y_vel)
+        test = pygame.Rect((self.rect.x + x_vel, self.rect.y + y_vel), (self.rect.width, self.rect.height))
+        for mob in level.enemies:
+            mask_test = test.x - mob.rect.x, test.y - mob.rect.y
+            if mob.hitmask.overlap(self.hitmask, mask_test):
+                mob.take_damage(1, self.x_vel)
+                self.bounce()
+                print mob.hp
+            #elif mob.hitmask.overlap(self.hitmask, mask_test):
+            #    print 'ouch'
+
+    def bounce(self):
+        self.y_vel = -4

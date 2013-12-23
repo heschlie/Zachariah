@@ -1,4 +1,5 @@
 import pygame
+from pygame.locals import *
 import pyganim
 import re
 
@@ -22,8 +23,10 @@ class Character(pygame.sprite.Sprite):
         self.y_vel = self.x_vel = 0
         self.max_speed = 3
         self.setup_collision_rects()
+        self.hp = 3
 
     def update(self, dt, lvl, key, joy):
+        self.check_alive()
         self.detect_wall(lvl)
         self.detect_ground(lvl)
         self.physics_update()
@@ -293,3 +296,20 @@ class Character(pygame.sprite.Sprite):
             self.x_vel -= self.x_det
         if self.x_vel < 0 and not self.x_vel < (max_speed * -1):
             self.x_vel += self.x_det
+
+    def take_damage(self, damage, vel):
+        direction = 'R'
+        if vel >= 0:
+            direction = 'R'
+        else:
+            direction = 'L'
+        if direction == 'R':
+            self.x_vel = 4
+        elif direction == 'L':
+            self.x_vel = -4
+        self.hp -= damage
+
+    def check_alive(self):
+        if self.hp <= 0:
+            #self.kill()
+            print 'ded'

@@ -6,18 +6,16 @@ import level, settings
 
 pygame.init()
 
-def mainMenu():
-    global RES, DISPSURF, mouseClick
+
+def main():
     # Trying to make the menu/game multiresolution capable, might not pan out
-    RES = [(1280,720), (1920,1080)]
+    res = [(1280, 720), (1920, 1080)]
     resolution = 0
-    DISPSURF = pygame.display.set_mode(RES[resolution])
-    
-    mouseClick = False
-    mousex = 0
-    mousey = 0
+    screen = pygame.display.set_mode(res[resolution])
     
     pygame.display.set_caption("Zacharaiah")
+    play_btn = Button('images/play.png', 'images/playHover.png', (1280 * .175, 720 * .417))
+    settings_btn = Button('images/settings.png', 'images/settingsHover.png', (1280 * .511, 720 * .417))
     
     while True:
         mouseClick = False
@@ -25,48 +23,52 @@ def mainMenu():
             if event.type == QUIT or (event.type == KEYUP and event.key == K_ESCAPE):
                 pygame.quit()
                 sys.exit()
-            elif event.type == MOUSEMOTION:
-                mousex, mousey = event.pos
             elif event.type == MOUSEBUTTONUP:
-                mousex, mousey = event.pos
                 mouseClick = True
-        
-        #lvl = level.Level(DISPSURF)
+
+        screen.fill((0, 0, 0))
         menuFont = pygame.font.Font('freesansbold.ttf', 32)
-        #buttonFont = pygame.font.Font('freesansbold.ttf', 24)
-        playImg = pygame.image.load('images/play.png').convert()
-        settingsImg = pygame.image.load('images/settings.png').convert()
-        playHover = pygame.image.load('images/playHover.png').convert()
-        settingsHover = pygame.image.load('images/settingsHover.png').convert()
         
-        title = menuFont.render('Zacharaiah', True, (0,0,0))
+        title = menuFont.render('Zacharaiah', True, (0, 0, 0))
         titleObj = title.get_rect()
         titleObj.center = (1280 * .5), (720 * .1)
-        
-        #Draw button images using a small amount of math to hold position over resolution changes
-        DISPSURF.blit(playImg,(1280 * .175, 720 * .417))
-        DISPSURF.blit(settingsImg,(1280 * .511, 720 * .417))
-        
-        #Setup button hover image swap
-        hovA = DISPSURF.blit(playImg,(1280 * .175, 720 * .417))
-        hovB = DISPSURF.blit(settingsImg,(1280 * .511, 720 * .417))
-        if hovA.collidepoint(pygame.mouse.get_pos()):
-            DISPSURF.blit(playHover,(1280 * .175, 720 * .417))
-        if hovB.collidepoint(pygame.mouse.get_pos()):
-            DISPSURF.blit(settingsHover,(1280 * .511, 720 * .417))
+
+        play_btn.reset_img()
+        settings_btn.reset_img()
+        if play_btn.rect.collidepoint(pygame.mouse.get_pos()):
+            play_btn.img_hover()
+        if settings_btn.rect.collidepoint(pygame.mouse.get_pos()):
+            settings_btn.img_hover()
         
         #Load the overworld upon clicking 'Play' button    
-        if hovA.collidepoint(pygame.mouse.get_pos()) and mouseClick == True:
+        if play_btn.rect.collidepoint(pygame.mouse.get_pos()) and mouseClick:
             level.load()
     
-        if hovB.collidepoint(pygame.mouse.get_pos()) and mouseClick == True:
+        if settings_btn.rect.collidepoint(pygame.mouse.get_pos()) and mouseClick:
             settings.settingsMenu('bar')
-            
-            
-        pygame.draw.rect(DISPSURF, (0,255,0), (((1280 - 200) * .5), (720 * .1) - 25, 200, 50))
+
+        pygame.draw.rect(screen, (0, 255, 0), (((1280 - 200) * .5), (720 * .1) - 25, 200, 50))
         
-        DISPSURF.blit(title, titleObj)
+        screen.blit(title, titleObj)
+        screen.blit(play_btn.image, play_btn.rect)
+        screen.blit(settings_btn.image, settings_btn.rect)
         pygame.display.update()
 
+
+class Button(object):
+    def __init__(self, img1, img2, loc):
+        self.image = pygame.image.load(img1).convert()
+        self.def_image = self.image
+        self.hover = pygame.image.load(img2).convert()
+        self.rect = self.image.get_rect()
+        self.rect.topleft = loc
+
+    def img_hover(self):
+        self.image = self.hover
+
+    def reset_img(self):
+        self.image = self.def_image
+
+
 if __name__ == "__main__":
-    mainMenu()
+    main()

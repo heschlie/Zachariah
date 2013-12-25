@@ -299,9 +299,9 @@ class Character(pygame.sprite.Sprite):
 
     def take_damage(self, damage, offset, push):
         if offset >= 3:
-            self.x_vel += push
+            self.x_vel = push
         elif offset <= -3:
-            self.x_vel -= push
+            self.x_vel = -push
         else:
             pass
         self.hp -= damage

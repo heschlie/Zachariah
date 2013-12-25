@@ -16,14 +16,14 @@ class Player(Character):
         
     def update(self, dt, lvl, key, joy):
         self.get_events(key, joy)
-        self.check_keys()
+        self.move()
         self.inertia()
         super(Player, self).update(dt, lvl, key, joy)
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         self.max_speed = 3
         self.jmp_damage(lvl)
         
-    def check_keys(self):
+    def move(self):
         #setting directions for idle
         if self.dir == 'left':
             self.image = self.animSurf['idle_left'].getCurrentFrame()
@@ -53,7 +53,7 @@ class Player(Character):
             self.x_vel += self.speed
 
     def inertia(self):
-        max_speed = self.max_speed  # + abs(self.plat_speed)
+        max_speed = self.max_speed
         if abs(self.x_vel) - self.x_det > max_speed:
             if self.x_vel > 0:
                 self.x_vel -= (self.x_det * 2)
@@ -63,7 +63,6 @@ class Player(Character):
             self.x_vel -= self.x_det
         if self.x_vel < 0 and self.direction == '' or self.x_vel < (max_speed * -1):
             self.x_vel += self.x_det
-        #self.x_vel += self.plat_speed
 
     def get_events(self, key, joy):
         self.run = self.get_run(key, joy)

@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/character.py" afterPath="$PROJECT_DIR$/character.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monster.py" afterPath="$PROJECT_DIR$/monster.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/player.py" afterPath="$PROJECT_DIR$/player.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Zachariah.iws" />
@@ -16,7 +17,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1387930394431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1387934834177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -33,10 +34,21 @@
     <splitter split-orientation="horizontal" split-proportion="0.43766937">
       <split-first>
         <leaf>
+          <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/main.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="52" column="50" selection-start="1870" selection-end="1870" vertical-scroll-proportion="0.5482283" vertical-offset="327" max-vertical-offset="1343">
+                  <folding>
+                    <element signature="e#19#37#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="platform.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/platform.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="66" column="64" selection-start="2384" selection-end="2424" vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="1445">
+                <state line="66" column="64" selection-start="2384" selection-end="2424" vertical-scroll-proportion="0.0" vertical-offset="412" max-vertical-offset="1428">
                   <folding />
                 </state>
               </provider>
@@ -45,34 +57,16 @@
           <file leaf-file-name="level.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/level.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="52" column="31" selection-start="1507" selection-end="1507" vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="2176">
+                <state line="37" column="47" selection-start="942" selection-end="942" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="2057">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="33" column="36" selection-start="942" selection-end="942" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1309">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="controller_test.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/controller_test.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="21" column="45" selection-start="766" selection-end="766" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="952">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="player.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="player.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/player.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="105" column="28" selection-start="4638" selection-end="4638" vertical-scroll-proportion="0.7864173" vertical-offset="986" max-vertical-offset="2040">
+                <state line="11" column="66" selection-start="591" selection-end="591" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2023">
                   <folding />
                 </state>
               </provider>
@@ -85,10 +79,8 @@
           <file leaf-file-name="character.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/character.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="302" column="25" selection-start="12736" selection-end="12736" vertical-scroll-proportion="0.7322835" vertical-offset="4390" max-vertical-offset="5406">
-                  <folding>
-                    <element signature="e#0#13#0" expanded="true" />
-                  </folding>
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5355">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -96,14 +88,8 @@
           <file leaf-file-name="monster.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/monster.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="67" column="19" selection-start="2949" selection-end="2949" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1241">
-                  <folding>
-                    <marker date="1387930366625" expanded="true" signature="122:413" placeholder="..." />
-                    <marker date="1387930366625" expanded="true" signature="1944:2432" placeholder="..." />
-                    <marker date="1387930366625" expanded="true" signature="1987:2432" placeholder="..." />
-                    <marker date="1387930366625" expanded="true" signature="2459:2976" placeholder="..." />
-                    <marker date="1387930366625" expanded="true" signature="2502:2976" placeholder="..." />
-                  </folding>
+                <state line="26" column="28" selection-start="790" selection-end="790" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -111,16 +97,7 @@
           <file leaf-file-name="pyganim.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/pyganim.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="562" column="31" selection-start="23882" selection-end="23886" vertical-scroll-proportion="-16.44" vertical-offset="9143" max-vertical-offset="14484">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="tmx.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/tmx.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="687" column="14" selection-start="22563" selection-end="22569" vertical-scroll-proportion="0.0" vertical-offset="11679" max-vertical-offset="14433">
+                <state line="561" column="0" selection-start="23854" selection-end="23854" vertical-scroll-proportion="-15.76" vertical-offset="9143" max-vertical-offset="14484">
                   <folding />
                 </state>
               </provider>
@@ -149,9 +126,10 @@
         <option value="$PROJECT_DIR$/controller_test.py" />
         <option value="$PROJECT_DIR$/platform.py" />
         <option value="$PROJECT_DIR$/level.py" />
-        <option value="$PROJECT_DIR$/player.py" />
         <option value="$PROJECT_DIR$/monster.py" />
         <option value="$PROJECT_DIR$/character.py" />
+        <option value="$PROJECT_DIR$/player.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -545,7 +523,11 @@
       <created>1387930305093</created>
       <updated>1387930305093</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="tweaked the area for no movement when damaging something, may need further tuning.">
+      <created>1387930469857</created>
+      <updated>1387930469857</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -596,7 +578,8 @@
     <MESSAGE value="Added some collision between the player and mobs" />
     <MESSAGE value="basic collision and bouncing off of mobs working, need to integrate death animations and pass .kill() to mobs" />
     <MESSAGE value="Changed the take_damage method to push the character based on the location of what is doing damage, if what is doing damage is in the mid 16 pixels of a character (from something like a jump) the character that took damage will not move.&#10;&#10;I also added some extra arguments to take_damage to input the offset, and velocity that the character taking damage will be pushed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the take_damage method to push the character based on the location of what is doing damage, if what is doing damage is in the mid 16 pixels of a character (from something like a jump) the character that took damage will not move.&#10;&#10;I also added some extra arguments to take_damage to input the offset, and velocity that the character taking damage will be pushed." />
+    <MESSAGE value="tweaked the area for no movement when damaging something, may need further tuning." />
+    <option name="LAST_COMMIT_MESSAGE" value="tweaked the area for no movement when damaging something, may need further tuning." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -612,13 +595,7 @@
     <entry file="file://$PROJECT_DIR$/monster.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="30" selection-start="943" selection-end="943" vertical-scroll-proportion="0.0" vertical-offset="157" max-vertical-offset="1173">
-          <folding>
-            <marker date="1387930366625" expanded="true" signature="122:413" placeholder="..." />
-            <marker date="1387930366625" expanded="true" signature="1944:2432" placeholder="..." />
-            <marker date="1387930366625" expanded="true" signature="1987:2432" placeholder="..." />
-            <marker date="1387930366625" expanded="true" signature="2459:2976" placeholder="..." />
-            <marker date="1387930366625" expanded="true" signature="2502:2976" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -640,13 +617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="45" selection-start="766" selection-end="766" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="952">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/-762174762/pygame/joystick.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="143" column="11" selection-start="3968" selection-end="3968" vertical-scroll-proportion="0.7155512" vertical-offset="1704" max-vertical-offset="2720" />
@@ -655,13 +625,6 @@
     <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/-762174762/__builtin__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4186" column="8" selection-start="143464" selection-end="143464" vertical-scroll-proportion="0.33267716" vertical-offset="70824" max-vertical-offset="86683">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tmx.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="687" column="14" selection-start="22563" selection-end="22569" vertical-scroll-proportion="0.0" vertical-offset="11679" max-vertical-offset="14433">
           <folding />
         </state>
       </provider>
@@ -685,53 +648,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/controller_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="36" selection-start="942" selection-end="942" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/level.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="31" selection-start="1507" selection-end="1507" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2057">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pyganim.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="562" column="31" selection-start="23882" selection-end="23886" vertical-scroll-proportion="-16.44" vertical-offset="9143" max-vertical-offset="14484">
+        <state line="21" column="45" selection-start="766" selection-end="766" vertical-scroll-proportion="0.33464566" vertical-offset="0" max-vertical-offset="1016">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="28" selection-start="4638" selection-end="4638" vertical-scroll-proportion="0.7864173" vertical-offset="986" max-vertical-offset="2040">
+        <state line="11" column="66" selection-start="591" selection-end="591" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2023">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/level.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="47" selection-start="942" selection-end="942" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="2057">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="630" column="43" selection-start="20551" selection-end="20551" vertical-scroll-proportion="0.33299696" vertical-offset="10295" max-vertical-offset="14348">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyganim.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="561" column="0" selection-start="23854" selection-end="23854" vertical-scroll-proportion="-15.76" vertical-offset="9143" max-vertical-offset="14484">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="50" selection-start="1870" selection-end="1870" vertical-scroll-proportion="0.5482283" vertical-offset="327" max-vertical-offset="1343">
+          <folding>
+            <element signature="e#19#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monster.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="19" selection-start="2949" selection-end="2949" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1241">
-          <folding>
-            <marker date="1387930366625" expanded="true" signature="122:413" placeholder="..." />
-            <marker date="1387930366625" expanded="true" signature="1944:2432" placeholder="..." />
-            <marker date="1387930366625" expanded="true" signature="1987:2432" placeholder="..." />
-            <marker date="1387930366625" expanded="true" signature="2459:2976" placeholder="..." />
-            <marker date="1387930366625" expanded="true" signature="2502:2976" placeholder="..." />
-          </folding>
+        <state line="26" column="28" selection-start="790" selection-end="790" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/character.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="302" column="25" selection-start="12736" selection-end="12736" vertical-scroll-proportion="0.7322835" vertical-offset="4390" max-vertical-offset="5406">
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5355">
+          <folding />
         </state>
       </provider>
     </entry>

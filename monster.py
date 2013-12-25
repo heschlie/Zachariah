@@ -11,6 +11,7 @@ class Monster(Character):
         self.rect.center = self.start
         self.patrol_distance = 160
         self.max_speed = 2
+        self.jump_hit = 0
         
     def update(self, dt, lvl, key, joy):
         self.move()
@@ -52,6 +53,7 @@ class Walker(Monster):
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 32, 32)
         super(Walker, self).__init__(lvl, loc)
         self.hp = 2
+        self.jump_hit = 18
 
 
 class Standing(Monster):
@@ -64,3 +66,4 @@ class Standing(Monster):
         super(Standing, self).__init__(lvl, loc)
         self.max_speed = 0
         self.hp = 1
+        self.jump_hit = 18

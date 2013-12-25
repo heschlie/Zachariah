@@ -25,7 +25,6 @@ class Player(Character):
         
     def check_keys(self):
         #setting directions for idle
-        #x_vel = 0
         if self.dir == 'left':
             self.image = self.animSurf['idle_left'].getCurrentFrame()
             self.hitmask = self.hitmask_dict['idle_left'][self.animSurf['idle_left']._propGetCurrentFrameNum()]
@@ -52,7 +51,6 @@ class Player(Character):
                 self.hitmask = self.hitmask_dict['run_right'][self.animSurf['run_right']._propGetCurrentFrameNum()]
             self.dir = 'right'
             self.x_vel += self.speed
-        #self.x_vel += x_vel
 
     def inertia(self):
         max_speed = self.max_speed  # + abs(self.plat_speed)
@@ -96,11 +94,14 @@ class Player(Character):
     def jmp_damage(self, level):
         x_vel = int(self.x_vel)
         y_vel = int(self.y_vel)
+        mob_offset = 0
         test = pygame.Rect((self.rect.x + x_vel, self.rect.y + y_vel), (self.rect.width, self.rect.height))
         for mob in level.enemies:
             mask_test = test.x - mob.rect.x, test.y - mob.rect.y
-            if self.rect.bottom < mob.rect.top + 18 and mob.hitmask.overlap(self.hitmask, mask_test):
-                mob.take_damage(1, self.x_vel)
+            if self.rect.bottom < mob.rect.top + mob.jump_hit and \
+                    mob.hitmask.overlap(self.hitmask, mask_test) and self.fall:
+                mob_offset = mob.rect.centerx - self.rect.centerx
+                mob.take_damage(1, mob_offset, 8)
                 self.bounce()
                 print mob.hp
             elif mob.hitmask.overlap(self.hitmask, mask_test):

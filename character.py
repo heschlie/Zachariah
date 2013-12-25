@@ -297,18 +297,16 @@ class Character(pygame.sprite.Sprite):
         elif self.x_vel < 0 and abs(self.x_vel) > max_speed:
             self.x_vel += self.x_det
 
-    def take_damage(self, damage, vel):
-        direction = 'R'
-        if vel >= 0:
-            direction = 'R'
+    def take_damage(self, damage, direction, push):
+        if push >= 8:
+            self.x_vel += push
+        elif push <= -8:
+            self.x_vel -= push
         else:
-            direction = 'L'
-        if direction == 'R':
-            self.x_vel = 8
-        elif direction == 'L':
-            self.x_vel = -8
+            pass
         self.hp -= damage
 
     def check_alive(self):
         if self.hp <= 0:
             self.hitmask.clear()
+            self.kill()

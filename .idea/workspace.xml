@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/character.py" afterPath="$PROJECT_DIR$/character.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/level.py" afterPath="$PROJECT_DIR$/level.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monster.py" afterPath="$PROJECT_DIR$/monster.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/player.py" afterPath="$PROJECT_DIR$/player.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -18,7 +17,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1387772074494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1387929977080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -38,7 +37,7 @@
           <file leaf-file-name="platform.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/platform.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="66" column="64" selection-start="2384" selection-end="2424" vertical-scroll-proportion="0.0" vertical-offset="412" max-vertical-offset="1428">
+                <state line="66" column="64" selection-start="2384" selection-end="2424" vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="1445">
                   <folding />
                 </state>
               </provider>
@@ -47,7 +46,7 @@
           <file leaf-file-name="level.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/level.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="52" column="31" selection-start="1507" selection-end="1507" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2057">
+                <state line="52" column="31" selection-start="1507" selection-end="1507" vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="2176">
                   <folding />
                 </state>
               </provider>
@@ -56,7 +55,7 @@
           <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="33" column="36" selection-start="942" selection-end="942" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
+                <state line="33" column="36" selection-start="942" selection-end="942" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1309">
                   <folding />
                 </state>
               </provider>
@@ -74,7 +73,7 @@
           <file leaf-file-name="player.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/player.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="93" column="18" selection-start="4035" selection-end="4035" vertical-scroll-proportion="0.56496066" vertical-offset="1007" max-vertical-offset="2023">
+                <state line="105" column="28" selection-start="4638" selection-end="4638" vertical-scroll-proportion="0.7864173" vertical-offset="986" max-vertical-offset="2040">
                   <folding />
                 </state>
               </provider>
@@ -84,10 +83,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="character.py" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="character.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/character.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="313" column="32" selection-start="12988" selection-end="12988" vertical-scroll-proportion="0.0" vertical-offset="4424" max-vertical-offset="5440">
+                <state line="312" column="0" selection-start="12935" selection-end="12935" vertical-scroll-proportion="0.8996063" vertical-offset="4390" max-vertical-offset="5406">
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -95,13 +94,20 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="monster.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="monster.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/monster.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="43" column="8" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.7194882" vertical-offset="0" max-vertical-offset="1207">
-                  <folding>
-                    <element signature="e#0#27#0" expanded="true" />
-                  </folding>
+                <state line="35" column="64" selection-start="1308" selection-end="1308" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="pyganim.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/pyganim.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="562" column="31" selection-start="23882" selection-end="23886" vertical-scroll-proportion="-16.44" vertical-offset="9143" max-vertical-offset="14484">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -109,7 +115,7 @@
           <file leaf-file-name="tmx.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/tmx.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="687" column="14" selection-start="22563" selection-end="22569" vertical-scroll-proportion="-18.64" vertical-offset="11128" max-vertical-offset="14348">
+                <state line="687" column="14" selection-start="22563" selection-end="22569" vertical-scroll-proportion="0.0" vertical-offset="11679" max-vertical-offset="14433">
                   <folding />
                 </state>
               </provider>
@@ -137,10 +143,10 @@
       <list>
         <option value="$PROJECT_DIR$/controller_test.py" />
         <option value="$PROJECT_DIR$/platform.py" />
-        <option value="$PROJECT_DIR$/player.py" />
         <option value="$PROJECT_DIR$/level.py" />
-        <option value="$PROJECT_DIR$/character.py" />
         <option value="$PROJECT_DIR$/monster.py" />
+        <option value="$PROJECT_DIR$/character.py" />
+        <option value="$PROJECT_DIR$/player.py" />
       </list>
     </option>
   </component>
@@ -176,7 +182,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -197,6 +202,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -213,16 +219,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="461" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1139" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1135" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1139" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="460" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="453" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -357,9 +363,6 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
-      <method />
-    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -381,6 +384,9 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -526,14 +532,17 @@
       <created>1387763025218</created>
       <updated>1387763025218</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="basic collision and bouncing off of mobs working, need to integrate death animations and pass .kill() to mobs">
+      <created>1387772171879</created>
+      <updated>1387772171879</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -549,6 +558,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3995327" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -575,7 +585,8 @@
     <MESSAGE value="Implemented contorllers, well at least an xbox controller, jumping and running and moving all seem to work, will need to implement more methods when other actions are added to the game." />
     <MESSAGE value="minor changes" />
     <MESSAGE value="Added some collision between the player and mobs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some collision between the player and mobs" />
+    <MESSAGE value="basic collision and bouncing off of mobs working, need to integrate death animations and pass .kill() to mobs" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic collision and bouncing off of mobs working, need to integrate death animations and pass .kill() to mobs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -591,9 +602,7 @@
     <entry file="file://$PROJECT_DIR$/monster.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="30" selection-start="943" selection-end="943" vertical-scroll-proportion="0.0" vertical-offset="157" max-vertical-offset="1173">
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -613,11 +622,6 @@
           <Categories />
           <SCOPE>All</SCOPE>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pyganim.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="670" column="27" selection-start="28003" selection-end="28003" vertical-scroll-proportion="11.355932" vertical-offset="0" max-vertical-offset="14484" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controller_test.py">
@@ -641,7 +645,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tmx.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="687" column="14" selection-start="22563" selection-end="22569" vertical-scroll-proportion="-18.64" vertical-offset="11128" max-vertical-offset="14348">
+        <state line="687" column="14" selection-start="22563" selection-end="22569" vertical-scroll-proportion="0.0" vertical-offset="11679" max-vertical-offset="14433">
           <folding />
         </state>
       </provider>
@@ -655,9 +659,7 @@
     </entry>
     <entry file="file://C:/Python27/Lib/site-packages/pygame/sprite.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="49" selection-start="4482" selection-end="4482" vertical-scroll-proportion="0.0" vertical-offset="1549" max-vertical-offset="24259">
-          <folding />
-        </state>
+        <state line="99" column="49" selection-start="4482" selection-end="4482" vertical-scroll-proportion="0.0" vertical-offset="1549" max-vertical-offset="24259" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/platform.py">
@@ -681,27 +683,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pyganim.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="562" column="31" selection-start="23882" selection-end="23886" vertical-scroll-proportion="-16.44" vertical-offset="9143" max-vertical-offset="14484">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="64" selection-start="1308" selection-end="1308" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="18" selection-start="4035" selection-end="4035" vertical-scroll-proportion="0.56496066" vertical-offset="1007" max-vertical-offset="2023">
+        <state line="105" column="28" selection-start="4638" selection-end="4638" vertical-scroll-proportion="0.7864173" vertical-offset="986" max-vertical-offset="2040">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/character.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="313" column="32" selection-start="12988" selection-end="12988" vertical-scroll-proportion="0.0" vertical-offset="4424" max-vertical-offset="5440">
+        <state line="312" column="0" selection-start="12935" selection-end="12935" vertical-scroll-proportion="0.8996063" vertical-offset="4390" max-vertical-offset="5406">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="8" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.7194882" vertical-offset="0" max-vertical-offset="1207">
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>

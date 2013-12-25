@@ -65,5 +65,5 @@ class Standing(Monster):
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 32, 32)
         super(Standing, self).__init__(lvl, loc)
         self.max_speed = 0
-        self.hp = 1
+        self.hp = 5
         self.jump_hit = 18

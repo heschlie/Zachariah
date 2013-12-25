@@ -297,10 +297,10 @@ class Character(pygame.sprite.Sprite):
         elif self.x_vel < 0 and abs(self.x_vel) > max_speed:
             self.x_vel += self.x_det
 
-    def take_damage(self, damage, direction, push):
-        if push >= 8:
+    def take_damage(self, damage, offset, push):
+        if offset >= 3:
             self.x_vel += push
-        elif push <= -8:
+        elif offset <= -3:
             self.x_vel -= push
         else:
             pass

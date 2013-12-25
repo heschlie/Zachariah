@@ -4,7 +4,6 @@
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/character.py" afterPath="$PROJECT_DIR$/character.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monster.py" afterPath="$PROJECT_DIR$/monster.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/player.py" afterPath="$PROJECT_DIR$/player.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Zachariah.iws" />
@@ -17,7 +16,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1387929977080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1387930394431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -86,7 +85,7 @@
           <file leaf-file-name="character.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/character.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="312" column="0" selection-start="12935" selection-end="12935" vertical-scroll-proportion="0.8996063" vertical-offset="4390" max-vertical-offset="5406">
+                <state line="302" column="25" selection-start="12736" selection-end="12736" vertical-scroll-proportion="0.7322835" vertical-offset="4390" max-vertical-offset="5406">
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -97,8 +96,14 @@
           <file leaf-file-name="monster.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/monster.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="35" column="64" selection-start="1308" selection-end="1308" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
-                  <folding />
+                <state line="67" column="19" selection-start="2949" selection-end="2949" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1241">
+                  <folding>
+                    <marker date="1387930366625" expanded="true" signature="122:413" placeholder="..." />
+                    <marker date="1387930366625" expanded="true" signature="1944:2432" placeholder="..." />
+                    <marker date="1387930366625" expanded="true" signature="1987:2432" placeholder="..." />
+                    <marker date="1387930366625" expanded="true" signature="2459:2976" placeholder="..." />
+                    <marker date="1387930366625" expanded="true" signature="2502:2976" placeholder="..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -144,9 +149,9 @@
         <option value="$PROJECT_DIR$/controller_test.py" />
         <option value="$PROJECT_DIR$/platform.py" />
         <option value="$PROJECT_DIR$/level.py" />
+        <option value="$PROJECT_DIR$/player.py" />
         <option value="$PROJECT_DIR$/monster.py" />
         <option value="$PROJECT_DIR$/character.py" />
-        <option value="$PROJECT_DIR$/player.py" />
       </list>
     </option>
   </component>
@@ -536,13 +541,18 @@
       <created>1387772171879</created>
       <updated>1387772171879</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Changed the take_damage method to push the character based on the location of what is doing damage, if what is doing damage is in the mid 16 pixels of a character (from something like a jump) the character that took damage will not move.&#10;&#10;I also added some extra arguments to take_damage to input the offset, and velocity that the character taking damage will be pushed.">
+      <created>1387930305093</created>
+      <updated>1387930305093</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -558,7 +568,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3995327" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -586,7 +595,8 @@
     <MESSAGE value="minor changes" />
     <MESSAGE value="Added some collision between the player and mobs" />
     <MESSAGE value="basic collision and bouncing off of mobs working, need to integrate death animations and pass .kill() to mobs" />
-    <option name="LAST_COMMIT_MESSAGE" value="basic collision and bouncing off of mobs working, need to integrate death animations and pass .kill() to mobs" />
+    <MESSAGE value="Changed the take_damage method to push the character based on the location of what is doing damage, if what is doing damage is in the mid 16 pixels of a character (from something like a jump) the character that took damage will not move.&#10;&#10;I also added some extra arguments to take_damage to input the offset, and velocity that the character taking damage will be pushed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the take_damage method to push the character based on the location of what is doing damage, if what is doing damage is in the mid 16 pixels of a character (from something like a jump) the character that took damage will not move.&#10;&#10;I also added some extra arguments to take_damage to input the offset, and velocity that the character taking damage will be pushed." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -602,7 +612,13 @@
     <entry file="file://$PROJECT_DIR$/monster.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="30" selection-start="943" selection-end="943" vertical-scroll-proportion="0.0" vertical-offset="157" max-vertical-offset="1173">
-          <folding />
+          <folding>
+            <marker date="1387930366625" expanded="true" signature="122:413" placeholder="..." />
+            <marker date="1387930366625" expanded="true" signature="1944:2432" placeholder="..." />
+            <marker date="1387930366625" expanded="true" signature="1987:2432" placeholder="..." />
+            <marker date="1387930366625" expanded="true" signature="2459:2976" placeholder="..." />
+            <marker date="1387930366625" expanded="true" signature="2502:2976" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -690,13 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="64" selection-start="1308" selection-end="1308" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="105" column="28" selection-start="4638" selection-end="4638" vertical-scroll-proportion="0.7864173" vertical-offset="986" max-vertical-offset="2040">
@@ -704,9 +713,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/monster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="19" selection-start="2949" selection-end="2949" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1241">
+          <folding>
+            <marker date="1387930366625" expanded="true" signature="122:413" placeholder="..." />
+            <marker date="1387930366625" expanded="true" signature="1944:2432" placeholder="..." />
+            <marker date="1387930366625" expanded="true" signature="1987:2432" placeholder="..." />
+            <marker date="1387930366625" expanded="true" signature="2459:2976" placeholder="..." />
+            <marker date="1387930366625" expanded="true" signature="2502:2976" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/character.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="312" column="0" selection-start="12935" selection-end="12935" vertical-scroll-proportion="0.8996063" vertical-offset="4390" max-vertical-offset="5406">
+        <state line="302" column="25" selection-start="12736" selection-end="12736" vertical-scroll-proportion="0.7322835" vertical-offset="4390" max-vertical-offset="5406">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

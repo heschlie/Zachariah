@@ -13,6 +13,7 @@ class Player(Character):
         super(Player, self).__init__(lvl, loc)
         self.rect.center = loc
         self.dead = False
+        self.ears = Ears(lvl, (self.rect.x, self.rect.y), lvl.sprites)
         
     def update(self, dt, lvl, key, joy, screen):
         self.get_events(key, joy)
@@ -131,35 +132,42 @@ class Ears(Character):
         self.image = self.animSurf['idle_right'].getCurrentFrame()
         #self.image = self.sheet.subsurface(0, 0, 42, 64)
         super(Ears, self).__init__(lvl, loc)
+        self.rect.topleft = loc
+        self.hitmask.clear()
 
     def update(self, dt, lvl, key, joy, screen):
         self.move(lvl)
+        self.set_pos(lvl.hero.rect.topleft)
         #print 'test'
 
     def move(self, lvl):
         if lvl.hero.dir == 'left':
-            self.image = self.animSurf['idle_left'].getCurrentFrame()
-            frame = self.animSurf['idle_left']._propGetCurrentFrameNum()
-            self.hitmask = self.hitmask_dict['idle_left'][frame]
+            frame = lvl.hero.animSurf['idle_left']._propGetCurrentFrameNum()
+            self.image = self.animSurf['idle_left'].getFrame(frame)
+            #self.image = self.animSurf['idle_left'].getCurrentFrame()
+
         if lvl.hero.dir == 'right':
-            self.image = self.animSurf['idle_right'].getCurrentFrame()
-            frame = self.animSurf['idle_right']._propGetCurrentFrameNum()
-            self.hitmask = self.hitmask_dict['idle_right'][frame]
+            frame = lvl.hero.animSurf['idle_right']._propGetCurrentFrameNum()
+            self.image = self.animSurf['idle_right'].getFrame(frame)
+
         if lvl.hero.direction == 'left':
             if abs(lvl.hero.x_vel) > 1:
-                self.image = self.animSurf['walk_left'].getCurrentFrame().copy()
-                frame = self.animSurf['walk_left']._propGetCurrentFrameNum()
-                self.hitmask = self.hitmask_dict['walk_left'][frame]
+                frame = lvl.hero.animSurf['walk_left']._propGetCurrentFrameNum()
+                self.image = self.animSurf['walk_left'].getFrame(frame)
+
             if abs(lvl.hero.x_vel) > 4:
-                self.image = self.animSurf['run_left'].getCurrentFrame().copy()
-                frame = self.animSurf['run_left']._propGetCurrentFrameNum()
-                self.hitmask = self.hitmask_dict['run_left'][frame]
+                frame = lvl.hero.animSurf['run_left']._propGetCurrentFrameNum()
+                self.image = self.animSurf['run_left'].getFrame(frame)
+
         if lvl.hero.direction == 'right':
             if lvl.hero.x_vel > 1:
-                self.image = self.animSurf['walk_right'].getCurrentFrame().copy()
-                frame = self.animSurf['walk_right']._propGetCurrentFrameNum()
-                self.hitmask = self.hitmask_dict['walk_right'][frame]
+                frame = lvl.hero.animSurf['walk_right']._propGetCurrentFrameNum()
+                self.image = self.animSurf['walk_right'].getFrame(frame)
+
             if lvl.hero.x_vel > 4:
-                self.image = self.animSurf['run_right'].getCurrentFrame().copy()
-                frame = self.animSurf['run_right']._propGetCurrentFrameNum()
-                self.hitmask = self.hitmask_dict['run_right'][frame]
+                frame = lvl.hero.animSurf['run_right']._propGetCurrentFrameNum()
+                self.image = self.animSurf['run_right'].getFrame(frame)
+
+
+    def set_pos(self, loc):
+        self.rect.topleft = loc

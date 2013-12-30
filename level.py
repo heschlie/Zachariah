@@ -75,7 +75,7 @@ class Level(object):
         self.sprites = tmx.SpriteLayer()
         self.start_cell = self.tilemap.layers['spawns'].find('player')[0]
         self.hero = player.Player(self, (self.start_cell.px, self.start_cell.py), self.sprites)
-        self.hero_ear = player.Ears(self, (self.start_cell.px, self.start_cell.py-20), self.sprites)
+        #self.hero_ear = player.Ears(self, (self.start_cell.px, self.start_cell.py), self.sprites)
         self.tilemap.layers.append(self.sprites)
         
         #Cell, rect, and mask dicts

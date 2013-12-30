@@ -13,10 +13,10 @@ class Monster(Character):
         self.max_speed = 2
         self.jump_hit = 0
         
-    def update(self, dt, lvl, key, joy):
+    def update(self, dt, lvl, key, joy, screen):
         self.move()
         self.inertia()
-        super(Monster, self).update(dt, lvl, key, joy)
+        super(Monster, self).update(dt, lvl, key, joy, screen)
         
     def move(self):
         self.conductor.play()

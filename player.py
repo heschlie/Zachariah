@@ -8,17 +8,17 @@ class Player(Character):
         animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right stop_right ' \
                     'damage_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 64)
-        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes, 32, 64)
+        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes, 42, 64)
         self.image = self.animSurf['idle_right'].getCurrentFrame()
         super(Player, self).__init__(lvl, loc)
         self.rect.center = loc
         self.dead = False
         
-    def update(self, dt, lvl, key, joy):
+    def update(self, dt, lvl, key, joy, screen):
         self.get_events(key, joy)
         self.move()
         self.inertia()
-        super(Player, self).update(dt, lvl, key, joy)
+        super(Player, self).update(dt, lvl, key, joy, screen)
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         self.max_speed = 3
         self.jmp_damage(lvl)
@@ -27,28 +27,34 @@ class Player(Character):
         #setting directions for idle
         if self.dir == 'left':
             self.image = self.animSurf['idle_left'].getCurrentFrame()
-            self.hitmask = self.hitmask_dict['idle_left'][self.animSurf['idle_left']._propGetCurrentFrameNum()]
+            frame = self.animSurf['idle_left']._propGetCurrentFrameNum()
+            self.hitmask = self.hitmask_dict['idle_left'][frame]
         if self.dir == 'right':
             self.image = self.animSurf['idle_right'].getCurrentFrame()
-            self.hitmask = self.hitmask_dict['idle_right'][self.animSurf['idle_right']._propGetCurrentFrameNum()]
+            frame = self.animSurf['idle_right']._propGetCurrentFrameNum()
+            self.hitmask = self.hitmask_dict['idle_right'][frame]
         if self.run:
             self.max_speed = 6
         if self.direction == 'left':
             if abs(self.x_vel) > 1:
-                self.image = self.animSurf['walk_left'].getCurrentFrame()
-                self.hitmask = self.hitmask_dict['walk_left'][self.animSurf['walk_left']._propGetCurrentFrameNum()]
+                self.image = self.animSurf['walk_left'].getCurrentFrame().copy()
+                frame = self.animSurf['walk_left']._propGetCurrentFrameNum()
+                self.hitmask = self.hitmask_dict['walk_left'][frame]
             if abs(self.x_vel) > 4:
-                self.image = self.animSurf['run_left'].getCurrentFrame()
-                self.hitmask = self.hitmask_dict['run_left'][self.animSurf['run_left']._propGetCurrentFrameNum()]
+                self.image = self.animSurf['run_left'].getCurrentFrame().copy()
+                frame = self.animSurf['run_left']._propGetCurrentFrameNum()
+                self.hitmask = self.hitmask_dict['run_left'][frame]
             self.dir = 'left'
             self.x_vel -= self.speed
         if self.direction == 'right':
             if self.x_vel > 1:
-                self.image = self.animSurf['walk_right'].getCurrentFrame()
-                self.hitmask = self.hitmask_dict['walk_right'][self.animSurf['walk_right']._propGetCurrentFrameNum()]
+                self.image = self.animSurf['walk_right'].getCurrentFrame().copy()
+                frame = self.animSurf['walk_right']._propGetCurrentFrameNum()
+                self.hitmask = self.hitmask_dict['walk_right'][frame]
             if self.x_vel > 4:
-                self.image = self.animSurf['run_right'].getCurrentFrame()
-                self.hitmask = self.hitmask_dict['run_right'][self.animSurf['run_right']._propGetCurrentFrameNum()]
+                self.image = self.animSurf['run_right'].getCurrentFrame().copy()
+                frame = self.animSurf['run_right']._propGetCurrentFrameNum()
+                self.hitmask = self.hitmask_dict['run_right'][frame]
             self.dir = 'right'
             self.x_vel += self.speed
 
@@ -112,3 +118,48 @@ class Player(Character):
     def check_alive(self):
         if self.hp <= 0:
             self.dead = True
+
+
+class Ears(Character):
+    def __init__(self, lvl, loc, *groups):
+        super(Character, self).__init__(*groups)
+        self.sheet = pygame.image.load('images/char_ears.png').convert_alpha()
+        self.placeholder = self.sheet.subsurface(0, 0, 42, 64)
+        animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right stop_right ' \
+                    'damage_right'.split()
+        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes, 42, 64)
+        self.image = self.animSurf['idle_right'].getCurrentFrame()
+        #self.image = self.sheet.subsurface(0, 0, 42, 64)
+        super(Ears, self).__init__(lvl, loc)
+
+    def update(self, dt, lvl, key, joy, screen):
+        self.move(lvl)
+        #print 'test'
+
+    def move(self, lvl):
+        if lvl.hero.dir == 'left':
+            self.image = self.animSurf['idle_left'].getCurrentFrame()
+            frame = self.animSurf['idle_left']._propGetCurrentFrameNum()
+            self.hitmask = self.hitmask_dict['idle_left'][frame]
+        if lvl.hero.dir == 'right':
+            self.image = self.animSurf['idle_right'].getCurrentFrame()
+            frame = self.animSurf['idle_right']._propGetCurrentFrameNum()
+            self.hitmask = self.hitmask_dict['idle_right'][frame]
+        if lvl.hero.direction == 'left':
+            if abs(lvl.hero.x_vel) > 1:
+                self.image = self.animSurf['walk_left'].getCurrentFrame().copy()
+                frame = self.animSurf['walk_left']._propGetCurrentFrameNum()
+                self.hitmask = self.hitmask_dict['walk_left'][frame]
+            if abs(lvl.hero.x_vel) > 4:
+                self.image = self.animSurf['run_left'].getCurrentFrame().copy()
+                frame = self.animSurf['run_left']._propGetCurrentFrameNum()
+                self.hitmask = self.hitmask_dict['run_left'][frame]
+        if lvl.hero.direction == 'right':
+            if lvl.hero.x_vel > 1:
+                self.image = self.animSurf['walk_right'].getCurrentFrame().copy()
+                frame = self.animSurf['walk_right']._propGetCurrentFrameNum()
+                self.hitmask = self.hitmask_dict['walk_right'][frame]
+            if lvl.hero.x_vel > 4:
+                self.image = self.animSurf['run_right'].getCurrentFrame().copy()
+                frame = self.animSurf['run_right']._propGetCurrentFrameNum()
+                self.hitmask = self.hitmask_dict['run_right'][frame]

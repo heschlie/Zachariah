@@ -25,7 +25,7 @@ class Character(pygame.sprite.Sprite):
         self.setup_collision_rects()
         self.hp = 3
 
-    def update(self, dt, lvl, key, joy):
+    def update(self, dt, lvl, key, joy, screen):
         self.check_alive()
         self.detect_wall(lvl)
         self.detect_ground(lvl)

@@ -16,11 +16,11 @@ class Player(Character):
         self.direction = 'right'
         self.fat_mask = self.gen_fat_mask()
         
-    def update(self, dt, lvl, key, joy, screen):
-        self.get_events(key, joy)
+    def update(self, dt, lvl, key, joy, screen, keys):
+        self.get_events(key, keys, joy)
         self.move()
         self.inertia()
-        super(Player, self).update(dt, lvl, key, joy, screen)
+        super(Player, self).update(dt, lvl, key, joy, screen, keys)
         self.ears.set_pos(self.rect.topleft)
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         self.max_speed = 3
@@ -82,9 +82,25 @@ class Player(Character):
         if self.x_vel < 0 and self.direction == '' or self.x_vel < (max_speed * -1):
             self.x_vel += self.x_det
 
-    def get_events(self, key, joy):
+    def get_events(self, key, keys, joy):
+        self.jump_keys(keys)
         self.run = self.get_run(key, joy)
         self.direction = self.get_direction(key, joy)
+    
+    def jump_keys(self, keys):
+        for event in keys:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    self.jump()
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_SPACE:
+                    self.jump_cut()
+            elif event.type == JOYBUTTONDOWN:
+                if event.button == 0:
+                    self.jump()
+            elif event.type == JOYBUTTONUP:
+                if event.button == 0:
+                    self.jump_cut()
 
     def get_direction(self, key, joy):
         direction = ''
@@ -122,7 +138,8 @@ class Player(Character):
                 self.bounce()
                 print(mob.hp)
             elif mob.hitmask.overlap(self.hitmask, mask_test):
-                self.hp -= 1
+                offset = self.rect.centerx - mob.rect.centerx
+                
 
     def bounce(self):
         self.y_vel = -4
@@ -142,7 +159,7 @@ class Ears(Character):
         self.rect.topleft = loc
         self.hitmask.clear()
 
-    def update(self, dt, lvl, key, joy, screen):
+    def update(self, dt, lvl, key, joy, screen, keys):
         self.animate(lvl)
 
     def animate(self, lvl):

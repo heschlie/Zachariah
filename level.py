@@ -32,21 +32,10 @@ def load():
             if event.type == QUIT or (event.type == KEYUP and event.key == K_ESCAPE):
                 pygame.quit()
                 sys.exit()
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    lvl.hero.jump()
-            elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_SPACE:
-                    lvl.hero.jump_cut()
-            elif event.type == JOYBUTTONDOWN:
-                if event.button == 0:
-                    lvl.hero.jump()
-            elif event.type == JOYBUTTONUP:
-                if event.button == 0:
-                    lvl.hero.jump_cut()
+
 
         key = pygame.key.get_pressed()
-        lvl.tilemap.update(dt, lvl, key, joysticks, screen)
+        lvl.tilemap.update(dt, lvl, key, joysticks, screen, keys)
         screen.fill((0, 100, 0))
         screen.fill((255, 0, 0), lvl.hero.wall_detect_rect)
         screen.fill((0, 255, 0), lvl.hero.floor_detect_rects[0])

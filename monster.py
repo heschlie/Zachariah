@@ -13,11 +13,11 @@ class Monster(Character):
         self.max_speed = 2
         self.jump_hit = 0
         
-    def update(self, dt, lvl, key, joy, screen):
+    def update(self, dt, lvl, key, joy, screen, keys):
         self.kill_char()
         self.move()
         self.inertia()
-        super(Monster, self).update(dt, lvl, key, joy, screen)
+        super(Monster, self).update(dt, lvl, key, joy, screen, keys)
         
     def move(self):
         self.conductor.play()
@@ -43,6 +43,8 @@ class Monster(Character):
             self.image = self.animSurf['walk_right'].getCurrentFrame()
             self.hitmask = self.hitmask_dict['walk_right'][self.animSurf['walk_right']._propGetCurrentFrameNum()]
             self.x_vel += self.speed
+        #if self.dead:
+        #    self.image = self.animSurf['']
 
     def kill_char(self):
         if self.dead:

@@ -27,7 +27,7 @@ class Character(pygame.sprite.Sprite):
         self.hp = 3
         self.dead = False
 
-    def update(self, dt, lvl, key, joy, screen):
+    def update(self, dt, lvl, key, joy, screen, keys):
         self.check_alive(lvl)
         self.detect_wall(lvl)
         self.detect_ground(lvl)
@@ -221,7 +221,6 @@ class Character(pygame.sprite.Sprite):
         while 1:
             if any(self.collide_with(level, rect, mask, offset)):
                 offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
-                print(offset[off_ind])
                 if not offset[off_ind]:
                     return 0
             else:

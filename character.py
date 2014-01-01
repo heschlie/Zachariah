@@ -148,9 +148,9 @@ class Character(pygame.sprite.Sprite):
             x_in_plat = floor.x - plat.rect.x
             offset = plat.height_map[x_in_plat]
             if change is None:
-                change = (plat.rect.bottom) - offset
+                change = plat.rect.bottom - offset
             else:
-                change = min((plat.rect.bottom) - offset, change)
+                change = min(plat.rect.bottom - offset, change)
         return change
 
     def detect_wall(self, level):

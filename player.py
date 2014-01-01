@@ -5,8 +5,8 @@ class Player(Character):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/char.png').convert_alpha()
-        animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right stop_right ' \
-                    'damage_right'.split()
+        animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right ladder_right ' \
+                    'stop_right damage_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 64)
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes, 42, 64)
         self.image = self.animSurf['idle_right'].getCurrentFrame()
@@ -21,6 +21,7 @@ class Player(Character):
         self.move()
         self.inertia()
         super(Player, self).update(dt, lvl, key, joy, screen)
+        self.ears.set_pos(self.rect.topleft)
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         self.max_speed = 3
         self.jmp_damage(lvl)
@@ -138,7 +139,7 @@ class Ears(Character):
 
     def update(self, dt, lvl, key, joy, screen):
         self.move(lvl)
-        self.set_pos(lvl.hero.rect.topleft)
+        #self.set_pos(lvl.hero.rect.topleft)
         #print 'test'
 
     def move(self, lvl):

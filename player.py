@@ -142,7 +142,7 @@ class Player(Character):
                 
 
     def bounce(self):
-        self.y_vel = -4
+        self.y_vel = -5
 
 
 class Ears(Character):

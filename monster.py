@@ -15,7 +15,10 @@ class Monster(Character):
         
     def update(self, dt, lvl, key, joy, screen, keys):
         self.kill_char()
-        self.move()
+        if self.damage:
+            self.damage_animation()
+        if not self.damage:
+            self.move()
         self.inertia()
         super(Monster, self).update(dt, lvl, key, joy, screen, keys)
         
@@ -36,15 +39,13 @@ class Monster(Character):
             self.image = self.animSurf['idle_right'].getCurrentFrame()
             self.hitmask = self.hitmask_dict['idle_right'][self.animSurf['idle_right']._propGetCurrentFrameNum()]
         if self.dir == left and self.max_speed > 0:
-            self.image = self.animSurf['walk_left'].getCurrentFrame()
-            self.hitmask = self.hitmask_dict['walk_left'][self.animSurf['walk_left']._propGetCurrentFrameNum()]
+            self.image = self.animSurf['idle_left'].getCurrentFrame()
+            self.hitmask = self.hitmask_dict['idle_left'][self.animSurf['idle_left']._propGetCurrentFrameNum()]
             self.x_vel -= self.speed
         if self.dir == right and self.max_speed > 0:
-            self.image = self.animSurf['walk_right'].getCurrentFrame()
-            self.hitmask = self.hitmask_dict['walk_right'][self.animSurf['walk_right']._propGetCurrentFrameNum()]
+            self.image = self.animSurf['idle_right'].getCurrentFrame()
+            self.hitmask = self.hitmask_dict['idle_right'][self.animSurf['idle_right']._propGetCurrentFrameNum()]
             self.x_vel += self.speed
-        #if self.dead:
-        #    self.image = self.animSurf['']
 
     def kill_char(self):
         if self.dead:
@@ -55,8 +56,9 @@ class Monster(Character):
 class Walker(Monster):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
-        self.sheet = pygame.image.load('images/enemy1a.png').convert_alpha()
-        self.animTypes = 'idle_right walk_right run_right'.split()
+        self.sheet = pygame.image.load('images/walker.png').convert_alpha()
+        self.animTypes = 'idle_right blank1_right blank2_right blank3_right damage_right dead_right' \
+                         'something_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 32)
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 32, 32)
         super(Walker, self).__init__(lvl, loc)
@@ -67,11 +69,16 @@ class Walker(Monster):
 class Standing(Monster):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
-        self.sheet = pygame.image.load('images/enemy1a.png').convert_alpha()
-        self.animTypes = 'idle_right walk_right run_right'.split()
+        self.sheet = pygame.image.load('images/stander.png').convert_alpha()
+        self.animTypes = 'idle_right blank1_right blank2_right blank3_right damage_right dead_right' \
+                         'something_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 32)
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 32, 32)
         super(Standing, self).__init__(lvl, loc)
         self.max_speed = 0
         self.hp = 5
         self.jump_hit = 18
+
+    def update(self, dt, lvl, key, joy, screen, keys):
+        print(self.damage)
+        super().update(dt, lvl, key, joy, screen, keys)

@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/level.py" afterPath="$PROJECT_DIR$/level.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/player.py" afterPath="$PROJECT_DIR$/player.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/char_ears.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Zachariah.iws" />
@@ -16,9 +15,9 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1388378250763" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Zachariah$level.coverage" NAME="level Coverage Results" MODIFIED="1387935614473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1388553515356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$character.coverage" NAME="character Coverage Results" MODIFIED="1387935604072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$level.coverage" NAME="level Coverage Results" MODIFIED="1387935614473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -38,7 +37,7 @@
           <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="73" column="10" selection-start="2406" selection-end="2406" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
+                <state line="73" column="10" selection-start="2406" selection-end="2406" vertical-scroll-proportion="0.0" vertical-offset="1241" max-vertical-offset="1343">
                   <folding />
                 </state>
               </provider>
@@ -47,7 +46,7 @@
           <file leaf-file-name="platform.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/platform.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="76" column="12" selection-start="2860" selection-end="2860" vertical-scroll-proportion="0.0" vertical-offset="412" max-vertical-offset="1428">
+                <state line="76" column="12" selection-start="2860" selection-end="2860" vertical-scroll-proportion="0.0" vertical-offset="1292" max-vertical-offset="1445">
                   <folding />
                 </state>
               </provider>
@@ -56,16 +55,16 @@
           <file leaf-file-name="level.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/level.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="77" column="9" selection-start="2679" selection-end="2679" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="2074">
+                <state line="77" column="9" selection-start="2679" selection-end="2679" vertical-scroll-proportion="0.0" vertical-offset="1309" max-vertical-offset="2193">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="player.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="player.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/player.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="168" column="53" selection-start="7235" selection-end="7235" vertical-scroll-proportion="0.882874" vertical-offset="1959" max-vertical-offset="3026">
+                <state line="168" column="53" selection-start="7235" selection-end="7235" vertical-scroll-proportion="1.0708661" vertical-offset="1768" max-vertical-offset="3026">
                   <folding />
                 </state>
               </provider>
@@ -78,7 +77,7 @@
           <file leaf-file-name="character.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/character.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="37" column="49" selection-start="1325" selection-end="1325" vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="5355">
+                <state line="37" column="49" selection-start="1325" selection-end="1325" vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="5406">
                   <folding />
                 </state>
               </provider>
@@ -87,16 +86,16 @@
           <file leaf-file-name="monster.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/monster.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="24" column="19" selection-start="704" selection-end="704" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+                <state line="24" column="19" selection-start="704" selection-end="704" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1258">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="pyganim.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="pyganim.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/pyganim.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="653" column="46" selection-start="27399" selection-end="27404" vertical-scroll-proportion="8.697275" vertical-offset="2482" max-vertical-offset="14484">
+                <state line="653" column="46" selection-start="27399" selection-end="27404" vertical-scroll-proportion="8.483268" vertical-offset="2482" max-vertical-offset="14484">
                   <folding />
                 </state>
               </provider>
@@ -105,7 +104,7 @@
           <file leaf-file-name="tmx.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/tmx.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="633" column="23" selection-start="20606" selection-end="20606" vertical-scroll-proportion="-22.72" vertical-offset="10108" max-vertical-offset="14348">
+                <state line="633" column="23" selection-start="20606" selection-end="20606" vertical-scroll-proportion="0.0" vertical-offset="10761" max-vertical-offset="14433">
                   <folding />
                 </state>
               </provider>
@@ -193,6 +192,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Zachariah" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Zachariah" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -211,16 +224,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="461" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1135" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1139" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1135" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="460" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="453" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -393,6 +406,9 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -414,9 +430,6 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -591,15 +604,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07773437" sideWeight="0.8115265" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07773437" sideWeight="0.8115265" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18535826" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23831776" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -609,6 +621,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3995327" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -724,7 +737,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tmx.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="633" column="23" selection-start="20606" selection-end="20606" vertical-scroll-proportion="-22.72" vertical-offset="10108" max-vertical-offset="14348">
+        <state line="633" column="23" selection-start="20606" selection-end="20606" vertical-scroll-proportion="0.0" vertical-offset="10761" max-vertical-offset="14433">
           <folding />
         </state>
       </provider>
@@ -750,16 +763,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pyganim.py">
+    <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="653" column="46" selection-start="27399" selection-end="27404" vertical-scroll-proportion="8.697275" vertical-offset="2482" max-vertical-offset="14484">
+        <state line="168" column="53" selection-start="7235" selection-end="7235" vertical-scroll-proportion="1.0708661" vertical-offset="1768" max-vertical-offset="3026">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/player.py">
+    <entry file="file://$PROJECT_DIR$/pyganim.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="168" column="53" selection-start="7235" selection-end="7235" vertical-scroll-proportion="0.882874" vertical-offset="1959" max-vertical-offset="3026">
+        <state line="653" column="46" selection-start="27399" selection-end="27404" vertical-scroll-proportion="8.483268" vertical-offset="2482" max-vertical-offset="14484">
           <folding />
         </state>
       </provider>

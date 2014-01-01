@@ -9,7 +9,6 @@ import os
 
 
 def load():
-    test = 123
     dt = 60.0
     
     pygame.init()

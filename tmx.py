@@ -10,6 +10,8 @@ import pygame
 from pygame.locals import *
 from pygame import Rect
 from xml.etree import ElementTree
+import base64
+import zlib
 
 
 class Tile(object):
@@ -88,8 +90,8 @@ class Tileset(object):
         if not image:
             sys.exit("Error creating new Tileset: file %s not found" % file)
         id = self.firstgid
-        for line in xrange(image.get_height() / self.tile_height):
-            for column in xrange(image.get_width() / self.tile_width):
+        for line in range(image.get_height() // self.tile_height):
+            for column in range(image.get_width() // self.tile_width):
                 pos = Rect(column * self.tile_width, line * self.tile_height,
                     self.tile_width, self.tile_height)
                 self.tiles.append(Tile(id, image.subsurface(pos), self))
@@ -252,7 +254,8 @@ class Layer(object):
             raise ValueError('layer %s does not contain <data>' % layer.name)
 
         data = data.text.strip()
-        data = data.decode('base64').decode('zlib')
+        data = base64.b64decode(data)
+        data = zlib.decompress(data)
         data = struct.unpack('<%di' % (len(data)/4,), data)
         assert len(data) == layer.width * layer.height
         for i, gid in enumerate(data):

@@ -52,7 +52,7 @@ class Character(pygame.sprite.Sprite):
             imageAndDuration = []
             hitmask_list_R = []
             hitmask_list_L = []
-            for x in range(sheetRect.width/imgWidth):
+            for x in range(sheetRect.width//imgWidth):
                 image = self.sheet.subsurface(imgWidth*x, imgHeight*y, imgWidth, imgHeight)
                 for i in range(imgHeight):
                     z = False

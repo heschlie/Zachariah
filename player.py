@@ -14,6 +14,7 @@ class Player(Character):
         self.rect.center = loc
         self.dead = False
         self.ears = Ears(lvl, (self.rect.x, self.rect.y), lvl.sprites)
+        self.direction = 'right'
         
     def update(self, dt, lvl, key, joy, screen):
         self.get_events(key, joy)
@@ -114,7 +115,7 @@ class Player(Character):
                 self.hp -= 1
 
     def bounce(self):
-        self.y_vel = -4
+        self.y_vel += -4
 
     def check_alive(self):
         if self.hp <= 0:

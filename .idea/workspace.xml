@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/character.py" afterPath="$PROJECT_DIR$/character.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/level.py" afterPath="$PROJECT_DIR$/level.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/player.py" afterPath="$PROJECT_DIR$/player.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -17,7 +16,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1388562253348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1388563968157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$level.coverage" NAME="level Coverage Results" MODIFIED="1387935614473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$character.coverage" NAME="character Coverage Results" MODIFIED="1387935604072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -63,10 +62,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="player.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="player.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/player.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="33" column="24" selection-start="1427" selection-end="1427" vertical-scroll-proportion="0.4183071" vertical-offset="136" max-vertical-offset="3094">
+                <state line="33" column="40" selection-start="1443" selection-end="1443" vertical-scroll-proportion="0.4183071" vertical-offset="136" max-vertical-offset="3094">
                   <folding />
                 </state>
               </provider>
@@ -85,10 +84,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="character.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="character.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/character.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="217" column="0" selection-start="9212" selection-end="9212" vertical-scroll-proportion="0.63582677" vertical-offset="3043" max-vertical-offset="5372">
+                <state line="162" column="32" selection-start="6655" selection-end="6655" vertical-scroll-proportion="0.39763778" vertical-offset="2350" max-vertical-offset="5372">
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -154,9 +153,9 @@
         <option value="$PROJECT_DIR$/settings.py" />
         <option value="$PROJECT_DIR$/tmx.py" />
         <option value="$PROJECT_DIR$/monster.py" />
-        <option value="$PROJECT_DIR$/player.py" />
         <option value="$PROJECT_DIR$/level.py" />
         <option value="$PROJECT_DIR$/character.py" />
+        <option value="$PROJECT_DIR$/player.py" />
       </list>
     </option>
   </component>
@@ -640,7 +639,11 @@
       <created>1388555829083</created>
       <updated>1388555829083</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Fixed adjust_pos method in Character class, reimplemented it in the collision checks, yay!">
+      <created>1388562503920</created>
+      <updated>1388562503920</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -699,7 +702,8 @@
     <MESSAGE value="added direction var to Player class" />
     <MESSAGE value="ears were lagging slightly behind player, moved the call to set_pos to the players update method, they are following correctly now." />
     <MESSAGE value="Changed jmp_damage to only apply if the Player is going in a downward motion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed jmp_damage to only apply if the Player is going in a downward motion" />
+    <MESSAGE value="Fixed adjust_pos method in Character class, reimplemented it in the collision checks, yay!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed adjust_pos method in Character class, reimplemented it in the collision checks, yay!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -809,19 +813,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/player.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="24" selection-start="1427" selection-end="1427" vertical-scroll-proportion="0.4183071" vertical-offset="136" max-vertical-offset="3094">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/character.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="217" column="0" selection-start="9212" selection-end="9212" vertical-scroll-proportion="0.63582677" vertical-offset="3043" max-vertical-offset="5372">
+        <state line="162" column="32" selection-start="6655" selection-end="6655" vertical-scroll-proportion="0.39763778" vertical-offset="2350" max-vertical-offset="5372">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="40" selection-start="1443" selection-end="1443" vertical-scroll-proportion="0.4183071" vertical-offset="136" max-vertical-offset="3094">
+          <folding />
         </state>
       </provider>
     </entry>

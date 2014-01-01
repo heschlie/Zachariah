@@ -171,14 +171,14 @@ class Character(pygame.sprite.Sprite):
     def reset_wall_floor_rects(self):
         flr = (pygame.Rect((self.rect.x+6, self.rect.y), (1, self.rect.height+16)),
                pygame.Rect((self.rect.right-7, self.rect.y), (1, self.rect.height+16)))
-        wall = pygame.Rect(self.rect.x+5, self.rect.bottom-15, self.rect.width-10, 1)
+        wall = pygame.Rect(self.rect.x+5, self.rect.bottom-20, self.rect.width-10, 1)
         self.floor_detect_rects = flr
         self.wall_detect_rect = wall
 
     def airborne(self, level):
         mask = self.floor_detect_mask
         check = (pygame.Rect(self.rect.x+5, self.rect.y, self.rect.width-10, 1),
-                 pygame.Rect(self.rect.x+5, self.rect.bottom-1, self.rect.width-10, 1))
+                 pygame.Rect(self.rect.x+5, self.rect.bottom, self.rect.width-10, 1))
         stop_fall = False
         for rect in check:
             if self.collide_with(level, rect, mask, [0, int(self.y_vel)]):

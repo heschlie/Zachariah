@@ -31,7 +31,7 @@ class Player(Character):
         mask.clear()
         for y in range(self.rect.height):
             for x in range(self.rect.width):
-                if x > 4 < 38:
+                if x > 4 < 38 and y < 59:
                     mask.set_at((x, y), 1)
         return mask
         

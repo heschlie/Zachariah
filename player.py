@@ -14,6 +14,7 @@ class Player(Character):
         self.rect.center = loc
         self.ears = Ears(lvl, (self.rect.x, self.rect.y), lvl.sprites)
         self.direction = 'right'
+        self.fat_mask = self.gen_fat_mask()
         
     def update(self, dt, lvl, key, joy, screen):
         self.get_events(key, joy)
@@ -24,6 +25,15 @@ class Player(Character):
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         self.max_speed = 3
         self.jmp_damage(lvl)
+
+    def gen_fat_mask(self):
+        mask = pygame.mask.Mask((self.rect.width, self.rect.height))
+        mask.clear()
+        for y in range(self.rect.height):
+            for x in range(self.rect.width):
+                if x > 4 < 38:
+                    mask.set_at((x, y), 1)
+        return mask
         
     def move(self):
         #setting directions for idle
@@ -133,13 +143,12 @@ class Ears(Character):
         self.hitmask.clear()
 
     def update(self, dt, lvl, key, joy, screen):
-        self.move(lvl)
+        self.animate(lvl)
 
-    def move(self, lvl):
+    def animate(self, lvl):
         if lvl.hero.dir == 'left':
             frame = lvl.hero.animSurf['idle_left']._propGetCurrentFrameNum()
             self.image = self.animSurf['idle_left'].getFrame(frame)
-            #self.image = self.animSurf['idle_left'].getCurrentFrame()
 
         if lvl.hero.dir == 'right':
             frame = lvl.hero.animSurf['idle_right']._propGetCurrentFrameNum()

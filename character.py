@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 import pyganim
 import re
+import level
 
 
 class Character(pygame.sprite.Sprite):
@@ -80,7 +81,7 @@ class Character(pygame.sprite.Sprite):
 
     def setup_collision_rects(self):
         self.reset_wall_floor_rects()
-        self.fat_mask = pygame.Mask((self.rect.width-16, self.rect.height))
+        self.fat_mask = pygame.Mask((self.rect.width, self.rect.height))
         self.fat_mask.fill()
         self.wall_detect_mask = pygame.Mask(self.wall_detect_rect.size)
         self.wall_detect_mask.fill()
@@ -158,33 +159,31 @@ class Character(pygame.sprite.Sprite):
         if not self.fall:
             rect, mask = self.wall_detect_rect, self.wall_detect_mask
         else:
-            rect, mask = pygame.Rect((self.rect.x+8, self.rect.y), (self.rect.width-16, self.rect.height)), self.fat_mask
+            rect = self.rect
+            mask = self.fat_mask
         if self.collide_with(level, rect, mask, (int(self.x_vel), 0)):
-            #self.x_vel = self.adjust_pos(level,rect,mask,[int(self.x_vel),0],0)
-            self.x_vel = 0
+            self.x_vel = self.adjust_pos(level, rect, mask, [int(self.x_vel), 0], 0)
         elif self.collide_with_platform(level, rect, mask, (int(self.x_vel), 0)):
             self.x_vel = 0
         self.rect.x += int(self.x_vel)
         self.reset_wall_floor_rects()
 
     def reset_wall_floor_rects(self):
-        flr = (pygame.Rect((self.rect.x+9, self.rect.y), (1, self.rect.height+16)),
-               pygame.Rect((self.rect.right-9, self.rect.y), (1, self.rect.height+16)))
-        wall = pygame.Rect(self.rect.x+3, self.rect.bottom-15, self.rect.width-8, 1)
+        flr = (pygame.Rect((self.rect.x+6, self.rect.y), (1, self.rect.height+16)),
+               pygame.Rect((self.rect.right-7, self.rect.y), (1, self.rect.height+16)))
+        wall = pygame.Rect(self.rect.x+5, self.rect.bottom-15, self.rect.width-10, 1)
         self.floor_detect_rects = flr
         self.wall_detect_rect = wall
 
     def airborne(self, level):
         mask = self.floor_detect_mask
-        check = (pygame.Rect(self.rect.x+1, self.rect.y, self.rect.width-1, 1),
-                 pygame.Rect(self.rect.x+2, self.rect.bottom-1, self.rect.width-4, 1))
-        #check = (self.rect, self.rect)
+        check = (pygame.Rect(self.rect.x+5, self.rect.y, self.rect.width-10, 1),
+                 pygame.Rect(self.rect.x+5, self.rect.bottom-1, self.rect.width-10, 1))
         stop_fall = False
         for rect in check:
             if self.collide_with(level, rect, mask, [0, int(self.y_vel)]):
-                #offset = [0, int(self.y_vel)]
-                #self.y_vel = self.adjust_pos(level, rect, mask, offset, 1)
-                self.y_vel = 0
+                offset = [0, int(self.y_vel)]
+                self.y_vel = self.adjust_pos(level, rect, mask, offset, 1)
                 stop_fall = True
             if self.collide_with_platform(level, rect, mask, [0, int(self.y_vel)]):
                 self.y_vel = 0
@@ -217,18 +216,16 @@ class Character(pygame.sprite.Sprite):
                 if plat.hitmask.overlap(mask, mask_test):
                     return True
 
-    # """Was unable to get this working properly, so I am simply setting the velocity
-    # of the character to 0 when it detects a floor or wall.  I will change this if
-    # problems arise."""
     def adjust_pos(self, level, rect, mask, offset, off_ind):
         offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
         while 1:
             if any(self.collide_with(level, rect, mask, offset)):
                 offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
+                print(offset[off_ind])
                 if not offset[off_ind]:
                     return 0
-                else:
-                    return offset[off_ind]
+            else:
+                return offset[off_ind]
 
     def physics_update(self):
         if self.fall:

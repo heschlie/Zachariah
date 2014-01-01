@@ -48,7 +48,11 @@ def load():
         key = pygame.key.get_pressed()
         lvl.tilemap.update(dt, lvl, key, joysticks, screen)
         screen.fill((0, 100, 0))
+        screen.fill((255, 0, 0), lvl.hero.wall_detect_rect)
+        screen.fill((0, 255, 0), lvl.hero.floor_detect_rects[0])
+        screen.fill((0, 255, 0), lvl.hero.floor_detect_rects[1])
         lvl.tilemap.draw(screen)
+
         pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah", clock.get_fps()))
 
         pygame.display.update()

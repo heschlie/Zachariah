@@ -12,7 +12,6 @@ class Player(Character):
         self.image = self.animSurf['idle_right'].getCurrentFrame()
         super(Player, self).__init__(lvl, loc)
         self.rect.center = loc
-        self.dead = False
         self.ears = Ears(lvl, (self.rect.x, self.rect.y), lvl.sprites)
         self.direction = 'right'
         
@@ -118,18 +117,14 @@ class Player(Character):
     def bounce(self):
         self.y_vel += -4
 
-    def check_alive(self):
-        if self.hp <= 0:
-            self.dead = True
-
 
 class Ears(Character):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/char_ears.png').convert_alpha()
         self.placeholder = self.sheet.subsurface(0, 0, 42, 64)
-        animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right stop_right ' \
-                    'damage_right'.split()
+        animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right ladder_right ' \
+                    'stop_right damage_right'.split()
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes, 42, 64)
         self.image = self.animSurf['idle_right'].getCurrentFrame()
         #self.image = self.sheet.subsurface(0, 0, 42, 64)
@@ -139,8 +134,6 @@ class Ears(Character):
 
     def update(self, dt, lvl, key, joy, screen):
         self.move(lvl)
-        #self.set_pos(lvl.hero.rect.topleft)
-        #print 'test'
 
     def move(self, lvl):
         if lvl.hero.dir == 'left':

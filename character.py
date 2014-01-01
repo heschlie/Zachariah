@@ -24,9 +24,10 @@ class Character(pygame.sprite.Sprite):
         self.max_speed = 3
         self.setup_collision_rects()
         self.hp = 3
+        self.dead = False
 
     def update(self, dt, lvl, key, joy, screen):
-        self.check_alive()
+        self.check_alive(lvl)
         self.detect_wall(lvl)
         self.detect_ground(lvl)
         self.physics_update()
@@ -306,7 +307,8 @@ class Character(pygame.sprite.Sprite):
             pass
         self.hp -= damage
 
-    def check_alive(self):
+    def check_alive(self, lvl):
         if self.hp <= 0:
-            self.hitmask.clear()
-            self.kill()
+            self.dead = True
+        elif self.rect.top > lvl.tilemap.layers['terrain'].px_height:
+            self.dead = True

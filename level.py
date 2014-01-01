@@ -22,6 +22,7 @@ def load():
         joysticks.append(pygame.joystick.Joystick(i))
         joysticks[-1].init()
 
+    #print(lvl.tilemap.layers['terrain'].px_height)
     #Main Loop
     while True:
     #     if lvl.hero.dead:

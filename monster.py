@@ -14,6 +14,7 @@ class Monster(Character):
         self.jump_hit = 0
         
     def update(self, dt, lvl, key, joy, screen):
+        self.kill()
         self.move()
         self.inertia()
         super(Monster, self).update(dt, lvl, key, joy, screen)
@@ -42,6 +43,11 @@ class Monster(Character):
             self.image = self.animSurf['walk_right'].getCurrentFrame()
             self.hitmask = self.hitmask_dict['walk_right'][self.animSurf['walk_right']._propGetCurrentFrameNum()]
             self.x_vel += self.speed
+
+    def kill(self):
+        if self.dead:
+            self.hitmask.clear()
+            self.kill()
         
         
 class Walker(Monster):

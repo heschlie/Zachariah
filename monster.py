@@ -78,7 +78,3 @@ class Standing(Monster):
         self.max_speed = 0
         self.hp = 5
         self.jump_hit = 18
-
-    def update(self, dt, lvl, key, joy, screen, keys):
-        print(self.damage)
-        super().update(dt, lvl, key, joy, screen, keys)

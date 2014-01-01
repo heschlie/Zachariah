@@ -136,7 +136,6 @@ class Player(Character):
                 mob_offset = mob.rect.centerx - self.rect.centerx
                 mob.take_damage(1, mob_offset, 8)
                 self.bounce()
-                print(mob.hp)
             elif mob.hitmask.overlap(self.hitmask, mask_test):
                 offset = self.rect.centerx - mob.rect.centerx
                 

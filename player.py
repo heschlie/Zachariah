@@ -106,7 +106,7 @@ class Player(Character):
         for mob in level.enemies:
             mask_test = test.x - mob.rect.x, test.y - mob.rect.y
             if self.rect.bottom < mob.rect.top + mob.jump_hit and \
-                    mob.hitmask.overlap(self.hitmask, mask_test) and self.fall:
+                    mob.hitmask.overlap(self.hitmask, mask_test) and self.fall and self.y_vel > 0:
                 mob_offset = mob.rect.centerx - self.rect.centerx
                 mob.take_damage(1, mob_offset, 8)
                 self.bounce()
@@ -115,7 +115,7 @@ class Player(Character):
                 self.hp -= 1
 
     def bounce(self):
-        self.y_vel += -4
+        self.y_vel = -4
 
 
 class Ears(Character):

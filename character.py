@@ -7,8 +7,6 @@ import level
 
 class Character(pygame.sprite.Sprite):
     def __init__(self, lvl, loc, *groups):
-        self.conductor = pyganim.PygConductor(self.animSurf)
-        self.conductor.play()
         self.rect = self.image.get_rect()
         self.hitmask = pygame.mask.from_surface(self.image, 127)
         self.blank_hitmask = self.hitmask
@@ -29,6 +27,8 @@ class Character(pygame.sprite.Sprite):
         self.hp = 3
         self.dead = False
         self.damage = False
+        self.conductor = pyganim.PygConductor(self.animSurf)
+        self.conductor.play()
 
     def update(self, dt, lvl, key, joy, screen, keys):
         self.check_alive(lvl)
@@ -310,6 +310,8 @@ class Character(pygame.sprite.Sprite):
             pass
         #self.hp -= damage
         self.damage = True
+        self.animSurf['damage_right'].play()
+        self.animSurf['damage_left'].play()
 
     def check_alive(self, lvl):
         if self.hp <= 0:
@@ -322,10 +324,11 @@ class Character(pygame.sprite.Sprite):
         if self.dir == 'left':
             self.image = self.animSurf['damage_left'].getCurrentFrame()
             if self.animSurf['damage_left'].isFinished():
-                self.animSurf['damage_left'].stop()
+                #self.animSurf['damage_left'].stop()
                 self.damage = False
         elif self.dir == 'right':
+            print('test')
             self.image = self.animSurf['damage_right'].getCurrentFrame()
             if self.animSurf['damage_right'].isFinished():
-                self.animSurf['damage_right'].stop()
+                #self.animSurf['damage_right'].stop()
                 self.damage = False

@@ -17,10 +17,13 @@ class Player(Character):
         self.fat_mask = self.gen_fat_mask()
         
     def update(self, dt, lvl, key, joy, screen, keys):
-        self.get_events(key, keys, joy)
-        self.move()
+        if self.damage:
+            self.damage_animation()
+        if not self.damage:
+            self.get_events(key, keys, joy)
+            self.move()
         self.inertia()
-        super(Player, self).update(dt, lvl, key, joy, screen, keys)
+        super().update(dt, lvl, key, joy, screen, keys)
         self.ears.set_pos(self.rect.topleft)
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         self.max_speed = 3
@@ -138,7 +141,21 @@ class Player(Character):
                 self.bounce()
             elif mob.hitmask.overlap(self.hitmask, mask_test):
                 offset = self.rect.centerx - mob.rect.centerx
-                
+                self.take_damage(1, offset, 4)
+
+    def take_damage(self, damage, offset, push):
+        if offset >= 3:
+            self.dir = 'left'
+            self.x_vel = push
+        elif offset <= -3:
+            self.dir = 'right'
+            self.x_vel = -push
+        #self.hp -= damage
+        self.fall = True
+        self.y_vel = -push
+        self.damage = True
+        self.animSurf['damage_right'].play()
+        self.animSurf['damage_left'].play()
 
     def bounce(self):
         self.y_vel = -5
@@ -159,7 +176,8 @@ class Ears(Character):
         self.hitmask.clear()
 
     def update(self, dt, lvl, key, joy, screen, keys):
-        self.animate(lvl)
+        if not lvl.hero.damage:
+            self.animate(lvl)
 
     def animate(self, lvl):
         if lvl.hero.dir == 'left':
@@ -187,7 +205,6 @@ class Ears(Character):
             if lvl.hero.x_vel > 4:
                 frame = lvl.hero.animSurf['run_right']._propGetCurrentFrameNum()
                 self.image = self.animSurf['run_right'].getFrame(frame)
-
 
     def set_pos(self, loc):
         self.rect.topleft = loc

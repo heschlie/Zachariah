@@ -23,7 +23,7 @@ class Monster(Character):
         super(Monster, self).update(dt, lvl, key, joy, screen, keys)
         
     def move(self):
-        self.conductor.play()
+        #self.conductor.play()
         #self.x_vel = 0
         right = 'right'
         left = 'left'
@@ -49,7 +49,7 @@ class Monster(Character):
 
     def kill_char(self):
         if self.dead:
-            self.hitmask.clear()
+            self.hitmask = self.blank_hitmask
             self.kill()
         
         

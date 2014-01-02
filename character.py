@@ -324,11 +324,9 @@ class Character(pygame.sprite.Sprite):
         if self.dir == 'left':
             self.image = self.animSurf['damage_left'].getCurrentFrame()
             if self.animSurf['damage_left'].isFinished():
-                #self.animSurf['damage_left'].stop()
                 self.damage = False
         elif self.dir == 'right':
             print('test')
             self.image = self.animSurf['damage_right'].getCurrentFrame()
             if self.animSurf['damage_right'].isFinished():
-                #self.animSurf['damage_right'].stop()
                 self.damage = False

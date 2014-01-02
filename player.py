@@ -22,7 +22,7 @@ class Player(Character):
         if not self.damage:
             self.get_events(key, keys, joy)
             self.move()
-        self.inertia()
+            self.inertia()
         super().update(dt, lvl, key, joy, screen, keys)
         self.ears.set_pos(self.rect.topleft)
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
@@ -141,21 +141,37 @@ class Player(Character):
                 self.bounce()
             elif mob.hitmask.overlap(self.hitmask, mask_test):
                 offset = self.rect.centerx - mob.rect.centerx
-                self.take_damage(1, offset, 4)
+                self.take_damage(1, offset, 1, 4)
 
-    def take_damage(self, damage, offset, push):
+    def take_damage(self, damage, offset, pushx, pushy):
         if offset >= 3:
             self.dir = 'left'
-            self.x_vel = push
+            self.x_vel = pushx
         elif offset <= -3:
             self.dir = 'right'
-            self.x_vel = -push
+            self.x_vel = -pushx
         #self.hp -= damage
         self.fall = True
-        self.y_vel = -push
+        self.y_vel = -pushy
         self.damage = True
         self.animSurf['damage_right'].play()
         self.animSurf['damage_left'].play()
+        self.ears.animSurf['damage_right'].play()
+        self.ears.animSurf['damage_left'].play()
+
+    def damage_animation(self):
+        self.hitmask = self.blank_hitmask
+        if self.dir == 'left':
+            self.image = self.animSurf['damage_left'].getCurrentFrame()
+            self.ears.image = self.ears.animSurf['damage_left'].getCurrentFrame()
+            if self.animSurf['damage_left'].isFinished():
+                self.damage = False
+        elif self.dir == 'right':
+            print('test')
+            self.image = self.animSurf['damage_right'].getCurrentFrame()
+            self.ears.image = self.ears.animSurf['damage_right'].getCurrentFrame()
+            if self.animSurf['damage_right'].isFinished():
+                self.damage = False
 
     def bounce(self):
         self.y_vel = -5

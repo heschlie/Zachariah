@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/character.py" afterPath="$PROJECT_DIR$/character.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monster.py" afterPath="$PROJECT_DIR$/monster.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/player.py" afterPath="$PROJECT_DIR$/player.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -17,7 +16,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1388643989700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1388644652197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$level.coverage" NAME="level Coverage Results" MODIFIED="1387935614473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$character.coverage" NAME="character Coverage Results" MODIFIED="1387935604072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -66,7 +65,7 @@
           <file leaf-file-name="player.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/player.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="134" column="33" selection-start="5568" selection-end="5568" vertical-scroll-proportion="0.21358268" vertical-offset="2061" max-vertical-offset="3655">
+                <state line="145" column="56" selection-start="6183" selection-end="6183" vertical-scroll-proportion="0.56496066" vertical-offset="1891" max-vertical-offset="3927">
                   <folding />
                 </state>
               </provider>
@@ -85,10 +84,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="character.py" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="character.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/character.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="304" column="29" selection-start="12641" selection-end="12641" vertical-scroll-proportion="0.0" vertical-offset="4203" max-vertical-offset="5763">
+                <state line="330" column="58" selection-start="13554" selection-end="13554" vertical-scroll-proportion="0.882874" vertical-offset="4713" max-vertical-offset="5729">
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -96,10 +95,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="monster.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="monster.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/monster.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="25" column="9" selection-start="745" selection-end="745" vertical-scroll-proportion="0.21089809" vertical-offset="216" max-vertical-offset="1445">
+                <state line="58" column="75" selection-start="2376" selection-end="2376" vertical-scroll-proportion="-25.36" vertical-offset="352" max-vertical-offset="1445">
                   <folding>
                     <element signature="e#0#27#0" expanded="true" />
                   </folding>
@@ -156,9 +155,9 @@
         <option value="$PROJECT_DIR$/tmx.py" />
         <option value="$PROJECT_DIR$/platform.py" />
         <option value="$PROJECT_DIR$/level.py" />
-        <option value="$PROJECT_DIR$/player.py" />
-        <option value="$PROJECT_DIR$/character.py" />
         <option value="$PROJECT_DIR$/monster.py" />
+        <option value="$PROJECT_DIR$/character.py" />
+        <option value="$PROJECT_DIR$/player.py" />
       </list>
     </option>
   </component>
@@ -662,7 +661,11 @@
       <created>1388604470507</created>
       <updated>1388604470507</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Added knockback to Player upon taking damage, also added in damage animation for Player.  I sorted out why the animations for damage were inconsistent, it basically came down to needing to call the .play() method on those animations INSIDE the .take_damage() method to start the animation from the start right before the damage_animation() method is called.">
+      <created>1388644146827</created>
+      <updated>1388644146827</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -697,7 +700,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="added hitmask changes to Player class, the hitmask is now pulled from a dict created in the get_images method which should be much faster than generating it on the fly, this is not implemented in the Monster class yet." />
     <MESSAGE value="Moved the get_images method into the Character class and changed the Monster subclasses to use it to grab their images and hitmasks from it" />
     <MESSAGE value="Added file character.py which contains the base class info for Player and Monster classes to separate it out from the subclasses" />
     <MESSAGE value="Cleaned up imports to reduce some memory usage" />
@@ -722,7 +724,8 @@
     <MESSAGE value="Added jump_keys to detect when the player is jumping in the Player class instead of in the main game loop.  This will allow us to lock out player interaction when we need to, for example, when taking damage" />
     <MESSAGE value="Added damage animation on mobs, may need tweaking for looks, possibly adding more frames into the sprite sheet for playback, starting with inverted frame maybe (inverted -&gt; regular -&gt; inverted)" />
     <MESSAGE value="minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
+    <MESSAGE value="Added knockback to Player upon taking damage, also added in damage animation for Player.  I sorted out why the animations for damage were inconsistent, it basically came down to needing to call the .play() method on those animations INSIDE the .take_damage() method to start the animation from the start right before the damage_animation() method is called." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added knockback to Player upon taking damage, also added in damage animation for Player.  I sorted out why the animations for damage were inconsistent, it basically came down to needing to call the .play() method on those animations INSIDE the .take_damage() method to start the animation from the start right before the damage_animation() method is called." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -825,27 +828,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/character.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="304" column="29" selection-start="12641" selection-end="12641" vertical-scroll-proportion="0.0" vertical-offset="4203" max-vertical-offset="5763">
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monster.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="9" selection-start="745" selection-end="745" vertical-scroll-proportion="0.21089809" vertical-offset="216" max-vertical-offset="1445">
+        <state line="58" column="75" selection-start="2376" selection-end="2376" vertical-scroll-proportion="-25.36" vertical-offset="352" max-vertical-offset="1445">
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/character.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="330" column="58" selection-start="13554" selection-end="13554" vertical-scroll-proportion="0.882874" vertical-offset="4713" max-vertical-offset="5729">
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="33" selection-start="5568" selection-end="5568" vertical-scroll-proportion="0.21358268" vertical-offset="2061" max-vertical-offset="3655">
+        <state line="145" column="56" selection-start="6183" selection-end="6183" vertical-scroll-proportion="0.56496066" vertical-offset="1891" max-vertical-offset="3927">
           <folding />
         </state>
       </provider>

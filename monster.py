@@ -76,3 +76,20 @@ class Standing(Monster):
         self.max_speed = 0
         self.hp = 5
         self.jump_hit = 18
+
+
+class Jumper(Monster):
+    def __init__(self, lvl, loc, *groups):
+        super(Character, self).__init__(*groups)
+        self.sheet = pygame.image.load('images/jumper.png').convert_alpha()
+        self.animTypes = 'idle_right blank1_right blank2_right blank3_right damage_right dead_right' \
+                         'something_right'.split()
+        self.placeholder = self.sheet.subsurface(0, 0, 32, 32)
+        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 32, 32)
+        super(Jumper, self).__init__(lvl, loc)
+        self.hp = 2
+        self.jump_hit = 18
+
+    def update(self, dt, lvl, key, joy, screen, keys):
+        super(Jumper, self).update(dt, lvl, key, joy, screen, keys)
+        self.jump()

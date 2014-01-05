@@ -22,7 +22,7 @@
     <property name="enemy" value="walker"/>
    </properties>
   </object>
-  <object gid="50" x="1226" y="1411">
+  <object gid="50" x="929" y="1407">
    <properties>
     <property name="enemy" value="standing"/>
    </properties>
@@ -30,6 +30,11 @@
   <object gid="49" x="247" y="1399">
    <properties>
     <property name="npc" value="dino_male"/>
+   </properties>
+  </object>
+  <object gid="50" x="1436" y="1410">
+   <properties>
+    <property name="enemy" value="jumper"/>
    </properties>
   </object>
  </objectgroup>

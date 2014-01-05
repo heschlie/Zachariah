@@ -17,7 +17,8 @@ def load():
 
     monsters = {
         'standing': monster.Standing,
-        'walker': monster.Walker
+        'walker': monster.Walker,
+        'jumper': monster.Jumper
     }
 
     friendies = {

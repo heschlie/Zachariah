@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levels/beta/beta.tmx" afterPath="$PROJECT_DIR$/levels/beta/beta.tmx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/level.py" afterPath="$PROJECT_DIR$/level.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monster.py" afterPath="$PROJECT_DIR$/monster.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Zachariah.iws" />
@@ -15,7 +17,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1388892648219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1388893202502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$character.coverage" NAME="character Coverage Results" MODIFIED="1387935604072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$level.coverage" NAME="level Coverage Results" MODIFIED="1387935614473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -52,10 +54,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="level.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="level.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/level.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="74" column="21" selection-start="2137" selection-end="2137" vertical-scroll-proportion="1.238189" vertical-offset="0" max-vertical-offset="2261">
+                <state line="20" column="32" selection-start="345" selection-end="345" vertical-scroll-proportion="0.33464566" vertical-offset="0" max-vertical-offset="2278">
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -88,16 +90,16 @@
           <file leaf-file-name="character.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/character.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="84" column="12" selection-start="3552" selection-end="3552" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5661">
+                <state line="84" column="12" selection-start="3552" selection-end="3552" vertical-scroll-proportion="0.0" vertical-offset="4216" max-vertical-offset="5661">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="monster.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="monster.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/monster.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="21" column="22" selection-start="637" selection-end="637" vertical-scroll-proportion="0.33464566" vertical-offset="0" max-vertical-offset="1394">
+                <state line="94" column="19" selection-start="4101" selection-end="4101" vertical-scroll-proportion="0.91633856" vertical-offset="650" max-vertical-offset="1683">
                   <folding />
                 </state>
               </provider>
@@ -151,11 +153,11 @@
         <option value="$PROJECT_DIR$/settings.py" />
         <option value="$PROJECT_DIR$/tmx.py" />
         <option value="$PROJECT_DIR$/platform.py" />
-        <option value="$PROJECT_DIR$/monster.py" />
         <option value="$PROJECT_DIR$/character.py" />
         <option value="$PROJECT_DIR$/player.py" />
         <option value="$PROJECT_DIR$/npc.py" />
         <option value="$PROJECT_DIR$/level.py" />
+        <option value="$PROJECT_DIR$/monster.py" />
       </list>
     </option>
   </component>
@@ -675,7 +677,11 @@
       <created>1388891873481</created>
       <updated>1388891873481</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Cleaned up process for spawning monsters and npcs.  We now just need to add them to the monsters or friendlies dict in the level.py load() function to be passed to the Level class">
+      <created>1388892876439</created>
+      <updated>1388892876439</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -710,7 +716,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="minor changes to more PEP-8 compliant" />
     <MESSAGE value="minor changes to be more PEP-8 compliant" />
     <MESSAGE value="Started sorting out platform X movement, player at this point will move with platform while touching it, but will not carry inertia.&#10;&#10;Player inertia has been implemented, at the moment the player will speed up and slow down at the same rate, this may become one value later." />
     <MESSAGE value="some fixes for the platform moving on the X axis, still needs some tweaks, mainly player need to move with the platform a bit after leaving it, carrying the x_vel of the platform doesn't seem to be enough.  Also need to fix player warping on top of platform when collidiing with sides, this may be a non-issue in actual gameplay as most horizantally moving platforms will be drop-down type.&#10;&#10;Also made some tweaks to the 'fat_mask' for detecting walls when airborne, still needs more polish, also found that the normal wall detector needs tweaking, need to nail down final images for player to make them 'perfect'" />
@@ -735,7 +740,8 @@
     <MESSAGE value="added ears to damage animations" />
     <MESSAGE value="Added NPC class and Dino_male subclass to NPC" />
     <MESSAGE value="Changed super calls back to Python2 syntax to stay compatible with python 2.5+, changed name of Dino_male class to DinoMale to be more pythonic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed super calls back to Python2 syntax to stay compatible with python 2.5+, changed name of Dino_male class to DinoMale to be more pythonic" />
+    <MESSAGE value="Cleaned up process for spawning monsters and npcs.  We now just need to add them to the monsters or friendlies dict in the level.py load() function to be passed to the Level class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up process for spawning monsters and npcs.  We now just need to add them to the monsters or friendlies dict in the level.py load() function to be passed to the Level class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -811,20 +817,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/character.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="12" selection-start="3552" selection-end="3552" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5661">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="22" selection-start="637" selection-end="637" vertical-scroll-proportion="0.33464566" vertical-offset="0" max-vertical-offset="1394">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="184" column="53" selection-start="7778" selection-end="7778" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3893">
@@ -839,12 +831,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/character.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="12" selection-start="3552" selection-end="3552" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5661">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/level.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="21" selection-start="2137" selection-end="2137" vertical-scroll-proportion="1.238189" vertical-offset="0" max-vertical-offset="2261">
+        <state line="20" column="32" selection-start="345" selection-end="345" vertical-scroll-proportion="0.33464566" vertical-offset="0" max-vertical-offset="2278">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="19" selection-start="4101" selection-end="4101" vertical-scroll-proportion="0.91633856" vertical-offset="650" max-vertical-offset="1683">
+          <folding />
         </state>
       </provider>
     </entry>

@@ -31,6 +31,7 @@ class Player(Character):
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         self.max_speed = 3
         self.jmp_damage(lvl)
+        self.talk(lvl, key, joy)
 
     def gen_fat_mask(self):
         mask = pygame.mask.Mask((self.rect.width, self.rect.height))
@@ -115,10 +116,14 @@ class Player(Character):
                 direction = 'left'
             elif event.get_hat(0) == (1, 0):
                 direction = 'right'
+            elif event.get_hat(0) == (0, 1):
+                direction = 'up'
         if key[pygame.K_LEFT]:
             direction = 'left'
         elif key[pygame.K_RIGHT]:
             direction = 'right'
+        elif key[pygame.K_UP]:
+            direction = 'up'
         return direction
 
     def get_run(self, key, joy):
@@ -174,6 +179,14 @@ class Player(Character):
 
     def bounce(self):
         self.y_vel = -5
+
+    def talk(self, level, key, joy):
+        x_vel = int(self.x_vel)
+        y_vel = int(self.y_vel)
+        for char in level.npc:
+            if self.sprite_collide(self, char, (x_vel, y_vel)):
+                if self.get_direction(key, joy) == 'up':
+                    print('hello')
 
 
 class Ears(Character):

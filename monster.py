@@ -23,8 +23,6 @@ class Monster(Character):
         super(Monster, self).update(dt, lvl, key, joy, screen, keys)
         
     def move(self):
-        #self.conductor.play()
-        #self.x_vel = 0
         right = 'right'
         left = 'left'
         if abs(self.rect.left - self.start[0]) > self.patrol_distance:

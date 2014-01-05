@@ -2,6 +2,7 @@ import pygame
 import player
 import platform
 import monster
+import npc
 import sys
 from pygame.locals import *
 import tmx
@@ -87,6 +88,13 @@ class Level(object):
             if enemy.properties['enemy'] == 'standing':
                 monster.Standing(self, (enemy.px, enemy.py), self.enemies)
         self.tilemap.layers.append(self.enemies)
+
+        #Load in NPCs
+        self.npc = tmx.SpriteLayer()
+        for npcs in self.tilemap.layers['spawns'].find('npc'):
+            if npcs.properties['npc'] == 'dino_male':
+                npc.Dino_male(self, (npcs.px, npcs.py), self.npc)
+        self.tilemap.layers.append(self.npc)
         
         #for test in self.enemies.__iter__():
         #    print test.rect

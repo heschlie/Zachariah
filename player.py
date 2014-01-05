@@ -167,7 +167,6 @@ class Player(Character):
             if self.animSurf['damage_left'].isFinished():
                 self.damage = False
         elif self.dir == 'right':
-            print('test')
             self.image = self.animSurf['damage_right'].getCurrentFrame()
             self.ears.image = self.ears.animSurf['damage_right'].getCurrentFrame()
             if self.animSurf['damage_right'].isFinished():
@@ -186,7 +185,6 @@ class Ears(Character):
                     'stop_right damage_right'.split()
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes, 42, 64)
         self.image = self.animSurf['idle_right'].getCurrentFrame()
-        #self.image = self.sheet.subsurface(0, 0, 42, 64)
         super(Ears, self).__init__(lvl, loc)
         self.rect.topleft = loc
         self.hitmask.clear()

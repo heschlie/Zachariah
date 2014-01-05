@@ -80,8 +80,9 @@ class Character(pygame.sprite.Sprite):
         #flipping the right animations to create the left ones
         for i, src in enumerate(animTypes):
             animSurf[animFlips[i]] = self.flip_anim(animSurf[src])
-        animSurf['damage_right']._propSetLoop(False)
-        animSurf['damage_left']._propSetLoop(False)
+        if 'damage_right' in animTypes:
+            animSurf['damage_right']._propSetLoop(False)
+            animSurf['damage_left']._propSetLoop(False)
         return animSurf, hitmask_dict
 
     def setup_collision_rects(self):
@@ -326,7 +327,6 @@ class Character(pygame.sprite.Sprite):
             if self.animSurf['damage_left'].isFinished():
                 self.damage = False
         elif self.dir == 'right':
-            print('test')
             self.image = self.animSurf['damage_right'].getCurrentFrame()
             if self.animSurf['damage_right'].isFinished():
                 self.damage = False

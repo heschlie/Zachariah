@@ -41,7 +41,7 @@ class NPC(Character):
 class DinoMale(NPC):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
-        self.sheet = pygame.image.load('images/dino_male.png').convert_alpha()
+        self.sheet = pygame.image.load('images/sprites/dino_male.png').convert_alpha()
         self.animTypes = 'idle_right walk_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 64, 64)
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 72, 64)

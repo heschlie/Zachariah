@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levels/beta/beta.tmx" afterPath="$PROJECT_DIR$/levels/beta/beta.tmx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/level.py" afterPath="$PROJECT_DIR$/level.py" />
+    <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="Added Jumper class to Monster, MOAR RABOTS!  You can guess what they do.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/sprites/char.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/sprites/char_ears.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/sprites/dino_male.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/sprites/jumper.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/buttons/play.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/buttons/playHover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/buttons/settings.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/buttons/settingsHover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/sprites/stander.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/sprites/walker.png" />
+      <change type="DELETED" beforePath="C:\Users\heschlie\workspace\game\Zachariah\images\char.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\heschlie\workspace\game\Zachariah\images\char1a.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\heschlie\workspace\game\Zachariah\images\char_ears.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\heschlie\workspace\game\Zachariah\images\enemy1a.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\heschlie\workspace\game\Zachariah\images\play.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\heschlie\workspace\game\Zachariah\images\play.psd" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\heschlie\workspace\game\Zachariah\images\playHover.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\heschlie\workspace\game\Zachariah\images\playHover.psd" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\heschlie\workspace\game\Zachariah\images\settings.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\heschlie\workspace\game\Zachariah\images\settingsHover.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\heschlie\workspace\game\Zachariah\images\stander.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\heschlie\workspace\game\Zachariah\images\walker.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monster.py" afterPath="$PROJECT_DIR$/monster.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/npc.py" afterPath="$PROJECT_DIR$/npc.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/player.py" afterPath="$PROJECT_DIR$/player.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Zachariah.iws" />
@@ -17,7 +40,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1388893202502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1388893971733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$character.coverage" NAME="character Coverage Results" MODIFIED="1387935604072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$level.coverage" NAME="level Coverage Results" MODIFIED="1387935614473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -36,11 +59,13 @@
     <splitter split-orientation="horizontal" split-proportion="0.43766937">
       <split-first>
         <leaf>
-          <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="main.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="2" column="2" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1343">
-                  <folding />
+                <state line="17" column="72" selection-start="538" selection-end="538" vertical-scroll-proportion="0.25098425" vertical-offset="34" max-vertical-offset="1343">
+                  <folding>
+                    <element signature="e#20#38#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -54,10 +79,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="level.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="level.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/level.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="32" selection-start="345" selection-end="345" vertical-scroll-proportion="0.33464566" vertical-offset="0" max-vertical-offset="2278">
+                <state line="20" column="32" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2278">
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -68,7 +93,7 @@
           <file leaf-file-name="player.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/player.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="184" column="53" selection-start="7778" selection-end="7778" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3893">
+                <state line="181" column="54" selection-start="7531" selection-end="7531" vertical-scroll-proportion="0.0" vertical-offset="2739" max-vertical-offset="3893">
                   <folding />
                 </state>
               </provider>
@@ -77,7 +102,7 @@
           <file leaf-file-name="npc.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/npc.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="44" column="25" selection-start="1963" selection-end="1963" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+                <state line="43" column="54" selection-start="1913" selection-end="1913" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
                   <folding />
                 </state>
               </provider>
@@ -90,16 +115,16 @@
           <file leaf-file-name="character.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/character.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="84" column="12" selection-start="3552" selection-end="3552" vertical-scroll-proportion="0.0" vertical-offset="4216" max-vertical-offset="5661">
+                <state line="84" column="12" selection-start="3552" selection-end="3552" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5661">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="monster.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="monster.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/monster.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="94" column="19" selection-start="4101" selection-end="4101" vertical-scroll-proportion="0.91633856" vertical-offset="650" max-vertical-offset="1683">
+                <state line="83" column="54" selection-start="3537" selection-end="3537" vertical-scroll-proportion="1.3720472" vertical-offset="0" max-vertical-offset="1700">
                   <folding />
                 </state>
               </provider>
@@ -149,15 +174,15 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/controller_test.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/settings.py" />
         <option value="$PROJECT_DIR$/tmx.py" />
         <option value="$PROJECT_DIR$/platform.py" />
         <option value="$PROJECT_DIR$/character.py" />
-        <option value="$PROJECT_DIR$/player.py" />
-        <option value="$PROJECT_DIR$/npc.py" />
         <option value="$PROJECT_DIR$/level.py" />
         <option value="$PROJECT_DIR$/monster.py" />
+        <option value="$PROJECT_DIR$/npc.py" />
+        <option value="$PROJECT_DIR$/player.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -225,6 +250,56 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Zachariah" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Zachariah" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Zachariah" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Zachariah" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Zachariah" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sprites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Zachariah" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Zachariah" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="buttons" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -681,12 +756,16 @@
       <created>1388892876439</created>
       <updated>1388892876439</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Added Jumper class to Monster, MOAR RABOTS!  You can guess what they do.">
+      <created>1388893256148</created>
+      <updated>1388893256148</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -694,7 +773,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07773437" sideWeight="0.8115265" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07773437" sideWeight="0.8115265" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18535826" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23831776" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -716,7 +795,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="minor changes to be more PEP-8 compliant" />
     <MESSAGE value="Started sorting out platform X movement, player at this point will move with platform while touching it, but will not carry inertia.&#10;&#10;Player inertia has been implemented, at the moment the player will speed up and slow down at the same rate, this may become one value later." />
     <MESSAGE value="some fixes for the platform moving on the X axis, still needs some tweaks, mainly player need to move with the platform a bit after leaving it, carrying the x_vel of the platform doesn't seem to be enough.  Also need to fix player warping on top of platform when collidiing with sides, this may be a non-issue in actual gameplay as most horizantally moving platforms will be drop-down type.&#10;&#10;Also made some tweaks to the 'fat_mask' for detecting walls when airborne, still needs more polish, also found that the normal wall detector needs tweaking, need to nail down final images for player to make them 'perfect'" />
     <MESSAGE value="Implemented contorllers, well at least an xbox controller, jumping and running and moving all seem to work, will need to implement more methods when other actions are added to the game." />
@@ -741,7 +819,8 @@
     <MESSAGE value="Added NPC class and Dino_male subclass to NPC" />
     <MESSAGE value="Changed super calls back to Python2 syntax to stay compatible with python 2.5+, changed name of Dino_male class to DinoMale to be more pythonic" />
     <MESSAGE value="Cleaned up process for spawning monsters and npcs.  We now just need to add them to the monsters or friendlies dict in the level.py load() function to be passed to the Level class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up process for spawning monsters and npcs.  We now just need to add them to the monsters or friendlies dict in the level.py load() function to be passed to the Level class" />
+    <MESSAGE value="Added Jumper class to Monster, MOAR RABOTS!  You can guess what they do." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Jumper class to Monster, MOAR RABOTS!  You can guess what they do." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -803,13 +882,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="2" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/platform.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="27" selection-start="1439" selection-end="1439" vertical-scroll-proportion="0.0" vertical-offset="174" max-vertical-offset="1428">
@@ -817,17 +889,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/player.py">
+    <entry file="file://$PROJECT_DIR$/level.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="53" selection-start="7778" selection-end="7778" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3893">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/npc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="25" selection-start="1963" selection-end="1963" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
-          <folding />
+        <state line="20" column="32" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2278">
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -838,19 +905,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/level.py">
+    <entry file="file://$PROJECT_DIR$/monster.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="32" selection-start="345" selection-end="345" vertical-scroll-proportion="0.33464566" vertical-offset="0" max-vertical-offset="2278">
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state line="83" column="54" selection-start="3537" selection-end="3537" vertical-scroll-proportion="1.3720472" vertical-offset="0" max-vertical-offset="1700">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monster.py">
+    <entry file="file://$PROJECT_DIR$/npc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="19" selection-start="4101" selection-end="4101" vertical-scroll-proportion="0.91633856" vertical-offset="650" max-vertical-offset="1683">
+        <state line="43" column="54" selection-start="1913" selection-end="1913" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="181" column="54" selection-start="7531" selection-end="7531" vertical-scroll-proportion="0.0" vertical-offset="2739" max-vertical-offset="3893">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="72" selection-start="538" selection-end="538" vertical-scroll-proportion="0.25098425" vertical-offset="34" max-vertical-offset="1343">
+          <folding>
+            <element signature="e#20#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

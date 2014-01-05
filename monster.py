@@ -25,9 +25,9 @@ class Monster(Character):
     def move(self):
         right = 'right'
         left = 'left'
-        if abs(self.rect.left - self.start[0]) > self.patrol_distance:
+        if self.rect.left - self.start[0] < -self.patrol_distance:
             self.dir = right
-        if abs(self.rect.right - self.start[0]) > self.patrol_distance:
+        if self.rect.right - self.start[0] > self.patrol_distance:
             self.dir = left
         #setting directions for idle
         if self.dir == 'left':
@@ -54,7 +54,7 @@ class Monster(Character):
 class Walker(Monster):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
-        self.sheet = pygame.image.load('images/walker.png').convert_alpha()
+        self.sheet = pygame.image.load('images/sprites/walker.png').convert_alpha()
         self.animTypes = 'idle_right blank1_right blank2_right blank3_right damage_right dead_right' \
                          'something_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 32)
@@ -67,7 +67,7 @@ class Walker(Monster):
 class Standing(Monster):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
-        self.sheet = pygame.image.load('images/stander.png').convert_alpha()
+        self.sheet = pygame.image.load('images/sprites/stander.png').convert_alpha()
         self.animTypes = 'idle_right blank1_right blank2_right blank3_right damage_right dead_right' \
                          'something_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 32)
@@ -81,7 +81,7 @@ class Standing(Monster):
 class Jumper(Monster):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
-        self.sheet = pygame.image.load('images/jumper.png').convert_alpha()
+        self.sheet = pygame.image.load('images/sprites/jumper.png').convert_alpha()
         self.animTypes = 'idle_right blank1_right blank2_right blank3_right damage_right dead_right' \
                          'something_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 32)
@@ -89,6 +89,7 @@ class Jumper(Monster):
         super(Jumper, self).__init__(lvl, loc)
         self.hp = 2
         self.jump_hit = 18
+        self.jump_power = -5.0
 
     def update(self, dt, lvl, key, joy, screen, keys):
         super(Jumper, self).update(dt, lvl, key, joy, screen, keys)

@@ -14,8 +14,8 @@ def main():
     screen = pygame.display.set_mode(res[resolution])
     
     pygame.display.set_caption("Zacharaiah")
-    play_btn = Button('images/play.png', 'images/playHover.png', (1280 * .175, 720 * .417))
-    settings_btn = Button('images/settings.png', 'images/settingsHover.png', (1280 * .511, 720 * .417))
+    play_btn = Button('images/buttons/play.png', 'images/buttons/playHover.png', (1280 * .175, 720 * .417))
+    settings_btn = Button('images/buttons/settings.png', 'images/buttons/settingsHover.png', (1280 * .511, 720 * .417))
     
     while True:
         mouseClick = False

@@ -4,7 +4,7 @@ from character import *
 class Player(Character):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
-        self.sheet = pygame.image.load('images/char.png').convert_alpha()
+        self.sheet = pygame.image.load('images/sprites/char.png').convert_alpha()
         animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right ladder_right ' \
                     'stop_right damage_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 64)
@@ -179,7 +179,7 @@ class Player(Character):
 class Ears(Character):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
-        self.sheet = pygame.image.load('images/char_ears.png').convert_alpha()
+        self.sheet = pygame.image.load('images/sprites/char_ears.png').convert_alpha()
         self.placeholder = self.sheet.subsurface(0, 0, 42, 64)
         animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right ladder_right ' \
                     'stop_right damage_right'.split()

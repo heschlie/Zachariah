@@ -1,7 +1,5 @@
 import pygame
 import time
-from pygame.locals import *
-import level
 
 
 def start_dialog(text, screen):

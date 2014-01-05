@@ -38,12 +38,12 @@ class NPC(Character):
             self.x_vel += self.speed
 
 
-class Dino_male(NPC):
+class DinoMale(NPC):
     def __init__(self, lvl, loc, *groups):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/dino_male.png').convert_alpha()
         self.animTypes = 'idle_right walk_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 64, 64)
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 72, 64)
-        super(Dino_male, self).__init__(lvl, loc)
+        super(DinoMale, self).__init__(lvl, loc)
         self.max_speed = 0

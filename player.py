@@ -23,7 +23,7 @@ class Player(Character):
             self.get_events(key, keys, joy)
             self.move()
             self.inertia()
-        super().update(dt, lvl, key, joy, screen, keys)
+        super(Player, self).update(dt, lvl, key, joy, screen, keys)
         self.ears.set_pos(self.rect.topleft)
         lvl.tilemap.set_focus(self.rect.centerx, self.rect.centery)
         self.max_speed = 3

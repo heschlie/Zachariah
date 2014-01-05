@@ -64,7 +64,14 @@ class Level(object):
         self.platforms = tmx.SpriteLayer()
         for plat in self.tilemap.layers['platforms'].find('platform'):
             platform.Platform((plat.px, plat.py), self.platforms)
-        self.tilemap.layers.append(self.platforms)        
+        self.tilemap.layers.append(self.platforms)
+
+        #Load in NPCs
+        self.npc = tmx.SpriteLayer()
+        for npcs in self.tilemap.layers['spawns'].find('npc'):
+            if npcs.properties['npc'] == 'dino_male':
+                npc.DinoMale(self, (npcs.px, npcs.py), self.npc)
+        self.tilemap.layers.append(self.npc)
         
         #Loading the 'hero' into the level, and adding him/her to the self.sprites group
         self.sprites = tmx.SpriteLayer()
@@ -88,13 +95,6 @@ class Level(object):
             if enemy.properties['enemy'] == 'standing':
                 monster.Standing(self, (enemy.px, enemy.py), self.enemies)
         self.tilemap.layers.append(self.enemies)
-
-        #Load in NPCs
-        self.npc = tmx.SpriteLayer()
-        for npcs in self.tilemap.layers['spawns'].find('npc'):
-            if npcs.properties['npc'] == 'dino_male':
-                npc.Dino_male(self, (npcs.px, npcs.py), self.npc)
-        self.tilemap.layers.append(self.npc)
         
         #for test in self.enemies.__iter__():
         #    print test.rect

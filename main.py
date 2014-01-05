@@ -16,6 +16,11 @@ def main():
     pygame.display.set_caption("Zacharaiah")
     play_btn = Button('images/buttons/play.png', 'images/buttons/playHover.png', (1280 * .175, 720 * .417))
     settings_btn = Button('images/buttons/settings.png', 'images/buttons/settingsHover.png', (1280 * .511, 720 * .417))
+
+    menuFont = pygame.font.Font('freesansbold.ttf', 32)
+    title = menuFont.render('Zacharaiah', True, (0, 0, 0))
+    titleObj = title.get_rect()
+    titleObj.center = (1280 * .5), (720 * .1)
     
     while True:
         mouseClick = False
@@ -27,11 +32,6 @@ def main():
                 mouseClick = True
 
         screen.fill((0, 0, 0))
-        menuFont = pygame.font.Font('freesansbold.ttf', 32)
-        
-        title = menuFont.render('Zacharaiah', True, (0, 0, 0))
-        titleObj = title.get_rect()
-        titleObj.center = (1280 * .5), (720 * .1)
 
         play_btn.reset_img()
         settings_btn.reset_img()

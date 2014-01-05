@@ -9,7 +9,7 @@ pygame.init()
 
 def main():
     # Trying to make the menu/game multiresolution capable, might not pan out
-    res = [(1280, 720), (1920, 1080)]
+    res = [(1280, 720), (1920, 1080), (2560, 1440)]
     resolution = 0
     screen = pygame.display.set_mode(res[resolution])
     

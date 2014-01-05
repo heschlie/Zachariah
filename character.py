@@ -17,14 +17,14 @@ class Character(pygame.sprite.Sprite):
         self.is_platform = False
         self.plat_speed = 0
         self.speed = .25
-        self.jump_power = -8.75
+        self.jump_power = -5.0
         self.jump_cut_magnitude = -3
         self.grav = 0.22
         self.x_det = .25
         self.y_vel = self.x_vel = 0
-        self.max_speed = 3
+        self.max_speed = 2
         self.setup_collision_rects()
-        self.hp = 3
+        self.hp = 1
         self.dead = False
         self.damage = False
         self.conductor = pyganim.PygConductor(self.animSurf)
@@ -330,3 +330,13 @@ class Character(pygame.sprite.Sprite):
             self.image = self.animSurf['damage_right'].getCurrentFrame()
             if self.animSurf['damage_right'].isFinished():
                 self.damage = False
+
+    def sprite_collide(self, sprite1, sprite2, offset):
+        test = pygame.Rect((sprite1.rect.x + offset[0], sprite1.rect.y + offset[1]),
+                           (sprite1.rect.width, sprite1.rect.height))
+        mask_test = test.x - sprite2.rect.x, test.y - sprite2.rect.y
+        if sprite1.rect.colliderect(sprite2.rect):
+            if sprite2.hitmask.overlap(sprite1.hitmask, mask_test):
+                return True
+        else:
+            return False

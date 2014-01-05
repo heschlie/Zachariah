@@ -15,6 +15,9 @@ class Player(Character):
         self.ears = Ears(lvl, (self.rect.x, self.rect.y), lvl.sprites)
         self.direction = 'right'
         self.fat_mask = self.gen_fat_mask()
+        self.jump_power = -8.75
+        self.hp = 3
+        self.max_speed = 3
         
     def update(self, dt, lvl, key, joy, screen, keys):
         if self.damage:
@@ -130,18 +133,15 @@ class Player(Character):
     def jmp_damage(self, level):
         x_vel = int(self.x_vel)
         y_vel = int(self.y_vel)
-        mob_offset = 0
-        test = pygame.Rect((self.rect.x + x_vel, self.rect.y + y_vel), (self.rect.width, self.rect.height))
         for mob in level.enemies:
-            mask_test = test.x - mob.rect.x, test.y - mob.rect.y
-            if self.rect.bottom < mob.rect.top + mob.jump_hit and \
-                    mob.hitmask.overlap(self.hitmask, mask_test) and self.fall and self.y_vel > 0:
-                mob_offset = mob.rect.centerx - self.rect.centerx
-                mob.take_damage(1, mob_offset, 8)
-                self.bounce()
-            elif mob.hitmask.overlap(self.hitmask, mask_test):
-                offset = self.rect.centerx - mob.rect.centerx
-                self.take_damage(1, offset, 1, 4)
+            if self.sprite_collide(self, mob, (x_vel, y_vel)):
+                if self.rect.bottom < mob.rect.top + mob.jump_hit and self.fall and self.y_vel > 0:
+                    mob_offset = mob.rect.centerx - self.rect.centerx
+                    mob.take_damage(1, mob_offset, 8)
+                    self.bounce()
+                else:
+                    offset = self.rect.centerx - mob.rect.centerx
+                    self.take_damage(1, offset, 1, 4)
 
     def take_damage(self, damage, offset, pushx, pushy):
         if offset >= 3:

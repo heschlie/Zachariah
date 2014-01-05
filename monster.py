@@ -10,7 +10,6 @@ class Monster(Character):
         self.start = loc
         self.rect.center = self.start
         self.patrol_distance = 160
-        self.max_speed = 2
         self.jump_hit = 0
         
     def update(self, dt, lvl, key, joy, screen, keys):
@@ -89,7 +88,6 @@ class Jumper(Monster):
         super(Jumper, self).__init__(lvl, loc)
         self.hp = 2
         self.jump_hit = 18
-        self.jump_power = -5.0
 
     def update(self, dt, lvl, key, joy, screen, keys):
         super(Jumper, self).update(dt, lvl, key, joy, screen, keys)

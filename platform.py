@@ -11,7 +11,7 @@ class Platform(pygame.sprite.Sprite):
         self.rect.topleft = self.start
         self.hitmask = pygame.mask.from_surface(self.image, 127)
         self.height_map = self.gen_height_map()
-        self.type = 'solid'
+        self.solid = True
         self.float_dist_y = 10
         self.float_dist_x = 100
         self.speed = 0.15

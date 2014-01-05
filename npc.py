@@ -1,4 +1,5 @@
 from character import *
+import dialog
 
 
 class NPC(Character):
@@ -29,11 +30,11 @@ class NPC(Character):
         if self.dir == 'right':
             self.image = self.animSurf['idle_right'].getCurrentFrame()
             self.hitmask = self.hitmask_dict['idle_right'][self.animSurf['idle_right']._propGetCurrentFrameNum()]
-        if self.dir == left and abs(self.x_vel) > 0:
+        if self.dir == left and self.max_speed > 0:
             self.image = self.animSurf['idle_left'].getCurrentFrame()
             self.hitmask = self.hitmask_dict['idle_left'][self.animSurf['idle_left']._propGetCurrentFrameNum()]
             self.x_vel -= self.speed
-        if self.dir == right and abs(self.x_vel) > 0:
+        if self.dir == right and self.max_speed > 0:
             self.image = self.animSurf['idle_right'].getCurrentFrame()
             self.hitmask = self.hitmask_dict['idle_right'][self.animSurf['idle_right']._propGetCurrentFrameNum()]
             self.x_vel += self.speed
@@ -54,3 +55,8 @@ class DinoMale(NPC):
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 72, 64)
         super(DinoMale, self).__init__(lvl, loc)
         self.max_speed = 0
+
+    def talk(self, screen):
+        speech = "This is a test, it needs to be really long to test out what I want to test in the thest so I made" \
+                 " this very long so it will take many lines."
+        dialog.start_dialog(speech, screen)

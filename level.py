@@ -14,9 +14,18 @@ def load():
     
     pygame.init()
     screen = pygame.display.get_surface()
+
+    monsters = {
+        'standing': monster.Standing,
+        'walker': monster.Walker
+    }
+
+    friendies = {
+        'dino_male': npc.DinoMale
+    }
     
     clock = pygame.time.Clock()
-    lvl = Level(screen, 'beta')
+    lvl = Level(screen, 'beta', monsters, friendies)
 
     joysticks = []
     for i in range(0, pygame.joystick.get_count()):
@@ -38,9 +47,6 @@ def load():
         key = pygame.key.get_pressed()
         lvl.tilemap.update(dt, lvl, key, joysticks, screen, keys)
         screen.fill((0, 100, 0))
-        screen.fill((255, 0, 0), lvl.hero.wall_detect_rect)
-        screen.fill((0, 255, 0), lvl.hero.floor_detect_rects[0])
-        screen.fill((0, 255, 0), lvl.hero.floor_detect_rects[1])
         lvl.tilemap.draw(screen)
 
         pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah", clock.get_fps()))
@@ -50,7 +56,7 @@ def load():
 
 
 class Level(object):
-    def __init__(self, screen, name):
+    def __init__(self, screen, name, monsters, friendlies):
         """Loading the level files, changing the CWD to match the files for loading,
         This was easier than having to edit the .tmx file every time it needed to
         be edited."""
@@ -69,8 +75,7 @@ class Level(object):
         #Load in NPCs
         self.npc = tmx.SpriteLayer()
         for npcs in self.tilemap.layers['spawns'].find('npc'):
-            if npcs.properties['npc'] == 'dino_male':
-                npc.DinoMale(self, (npcs.px, npcs.py), self.npc)
+            friendlies[npcs.properties['npc']](self, (npcs.px, npcs.py), self.npc)
         self.tilemap.layers.append(self.npc)
         
         #Loading the 'hero' into the level, and adding him/her to the self.sprites group
@@ -90,10 +95,7 @@ class Level(object):
         #Load the monsters.  Set the value of the enemy property to the class you wish to make a monster from
         self.enemies = tmx.SpriteLayer()
         for enemy in self.tilemap.layers['spawns'].find('enemy'):
-            if enemy.properties['enemy'] == 'walker':
-                monster.Walker(self, (enemy.px, enemy.py), self.enemies)
-            if enemy.properties['enemy'] == 'standing':
-                monster.Standing(self, (enemy.px, enemy.py), self.enemies)
+            monsters[enemy.properties['enemy']](self, (enemy.px, enemy.py), self.enemies)
         self.tilemap.layers.append(self.enemies)
         
         #for test in self.enemies.__iter__():

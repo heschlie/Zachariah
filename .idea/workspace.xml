@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fonts/Bleeding_Cowboys.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fonts/steelfish outline.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fonts/steelfish rg it.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fonts/steelfish rg.ttf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dialog.py" afterPath="$PROJECT_DIR$/dialog.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -76,7 +80,7 @@
           <file leaf-file-name="npc.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/npc.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="44" column="57" selection-start="1959" selection-end="1959" vertical-scroll-proportion="0.6140178" vertical-offset="109" max-vertical-offset="1122">
+                <state line="41" column="29" selection-start="1815" selection-end="1815" vertical-scroll-proportion="0.56367224" vertical-offset="109" max-vertical-offset="1122">
                   <folding />
                 </state>
               </provider>
@@ -128,7 +132,7 @@
           <file leaf-file-name="dialog.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/dialog.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="8" column="59" selection-start="224" selection-end="224" vertical-scroll-proportion="0.1342547" vertical-offset="0" max-vertical-offset="1122">
+                <state line="56" column="17" selection-start="2577" selection-end="2577" vertical-scroll-proportion="0.899309" vertical-offset="41" max-vertical-offset="1054">
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -239,6 +243,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Zachariah" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Zachariah" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Zachariah" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fonts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -719,19 +737,24 @@
       <created>1388910546308</created>
       <updated>1388910546308</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Dialog box is now working, it pauses the game for 5 seconds after finishing blitting all of the text to the screen, this will be changed for a waiting for user input, and if there is more text put a small icon to indicate there is more text and wait for user input">
+      <created>1388949666336</created>
+      <updated>1388949666336</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07773437" sideWeight="0.80919003" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07773437" sideWeight="0.80919003" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18535826" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23831776" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -741,7 +764,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3995327" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -754,7 +776,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Changed the take_damage method to push the character based on the location of what is doing damage, if what is doing damage is in the mid 16 pixels of a character (from something like a jump) the character that took damage will not move.&#10;&#10;I also added some extra arguments to take_damage to input the offset, and velocity that the character taking damage will be pushed." />
     <MESSAGE value="tweaked the area for no movement when damaging something, may need further tuning." />
     <MESSAGE value="Cleaned up the code in main.py, changed the buttons to objects instead of creating the images in the loop (dunno wtf I was originally doing) so there is now a 'Button' Class in main.py that we can use to make the rest of the buttons, we may want to further tweak this to make the main screen more customizable" />
     <MESSAGE value="Changed over to new sprite sheets separating the characters ears from the body, currently the ears are not showing up, still trying to sort out why that image is not blitting to the screen correctly." />
@@ -779,7 +800,8 @@
     <MESSAGE value="Added collision check for NPCs, pressing up (on keyboard or controller) will print to the console for now, will use this to spawn a dialog window later" />
     <MESSAGE value="moved the Font object in main to outside of the loop.  Added method set_dir for NPCs so they can always face the player" />
     <MESSAGE value="Started getting a dialog box working for the dino, still needs work will send the game into an infinte while loop if brought up." />
-    <option name="LAST_COMMIT_MESSAGE" value="Started getting a dialog box working for the dino, still needs work will send the game into an infinte while loop if brought up." />
+    <MESSAGE value="Dialog box is now working, it pauses the game for 5 seconds after finishing blitting all of the text to the screen, this will be changed for a waiting for user input, and if there is more text put a small icon to indicate there is more text and wait for user input" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dialog box is now working, it pauses the game for 5 seconds after finishing blitting all of the text to the screen, this will be changed for a waiting for user input, and if there is more text put a small icon to indicate there is more text and wait for user input" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -803,11 +825,6 @@
     <entry file="file://C:/Python27/Lib/site-packages/pygame/sprite.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="99" column="49" selection-start="4482" selection-end="4482" vertical-scroll-proportion="0.0" vertical-offset="1549" max-vertical-offset="24259" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="45" selection-start="766" selection-end="766" vertical-scroll-proportion="0.33464566" vertical-offset="0" max-vertical-offset="1016" />
       </provider>
     </entry>
     <entry file="file://C:/Python33/Lib/site-packages/pygame/sprite.py">
@@ -884,14 +901,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/npc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="57" selection-start="1959" selection-end="1959" vertical-scroll-proportion="0.6140178" vertical-offset="109" max-vertical-offset="1122">
+        <state line="41" column="29" selection-start="1815" selection-end="1815" vertical-scroll-proportion="0.56367224" vertical-offset="109" max-vertical-offset="1122">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="14" selection-start="2550" selection-end="2550" vertical-scroll-proportion="0.82231" vertical-offset="0" max-vertical-offset="1013">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dialog.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="59" selection-start="224" selection-end="224" vertical-scroll-proportion="0.1342547" vertical-offset="0" max-vertical-offset="1122">
+        <state line="56" column="17" selection-start="2577" selection-end="2577" vertical-scroll-proportion="0.899309" vertical-offset="41" max-vertical-offset="1054">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

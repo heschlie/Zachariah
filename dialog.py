@@ -3,6 +3,7 @@ import time
 from pygame.locals import *
 import level
 
+
 def start_dialog(text, screen):
     paragraph = text.split()
     screen_size = screen.get_size()
@@ -54,8 +55,3 @@ def start_dialog(text, screen):
             pygame.display.update()
             time.sleep(.1)
     time.sleep(5)
-
-        # height = dialog_rects[0].height
-        # for i, line in enumerate(dialog_object):
-        #     screen.blit(line, ((dialog_box.x + 10), height * i))
-        #pygame.display.update()

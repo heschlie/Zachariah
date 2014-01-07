@@ -58,5 +58,7 @@ class DinoMale(NPC):
 
     def talk(self, screen):
         speech = "This is a test, it needs to be really long to test out what I want to test in the thest so I made" \
-                 " this very long so it will take many lines."
+                 " this very long so it will take many lines.  Now I need more lines to test if the dialog works like" \
+                 " I want it to, I'm not sure how long I need to make this but I need to keep going.  The dialog is" \
+                 " starting to come along now, and once we get some borders on it or something it will look pretty!"
         dialog.start_dialog(speech, screen)

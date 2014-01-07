@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dialog.py" afterPath="$PROJECT_DIR$/dialog.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/player.py" afterPath="$PROJECT_DIR$/player.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/npc.py" afterPath="$PROJECT_DIR$/npc.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Zachariah.iws" />
@@ -16,7 +16,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1389135085945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1389135879011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$level.coverage" NAME="level Coverage Results" MODIFIED="1388896240668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$character.coverage" NAME="character Coverage Results" MODIFIED="1387935604072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -62,19 +62,19 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="player.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="player.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/player.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="35" column="0" selection-start="1468" selection-end="1468" vertical-scroll-proportion="-0.89141166" vertical-offset="1498" max-vertical-offset="4131">
+                <state line="35" column="0" selection-start="1468" selection-end="1468" vertical-scroll-proportion="0.0" vertical-offset="1498" max-vertical-offset="4131">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="npc.py" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="npc.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/npc.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="16" column="64" selection-start="504" selection-end="504" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
+                <state line="62" column="115" selection-start="2987" selection-end="2987" vertical-scroll-proportion="0.91609085" vertical-offset="109" max-vertical-offset="1156">
                   <folding />
                 </state>
               </provider>
@@ -123,7 +123,7 @@
           <file leaf-file-name="dialog.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/dialog.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="26" column="21" selection-start="886" selection-end="886" vertical-scroll-proportion="0.43632773" vertical-offset="0" max-vertical-offset="1343">
+                <state line="67" column="30" selection-start="3074" selection-end="3074" vertical-scroll-proportion="0.8894373" vertical-offset="238" max-vertical-offset="1530">
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -163,9 +163,9 @@
         <option value="$PROJECT_DIR$/platform.py" />
         <option value="$PROJECT_DIR$/monster.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/npc.py" />
         <option value="$PROJECT_DIR$/level.py" />
         <option value="$PROJECT_DIR$/player.py" />
+        <option value="$PROJECT_DIR$/npc.py" />
         <option value="$PROJECT_DIR$/dialog.py" />
       </list>
     </option>
@@ -730,7 +730,11 @@
       <created>1389133905639</created>
       <updated>1389133905639</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Added function get_keys() to dialog.py.  Changed the waiting for user input to use that, also added check in for loop that displays the text, when it returns True the delay for text is set to 0 and the block of text is spit out in entirety">
+      <created>1389135220957</created>
+      <updated>1389135220957</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -765,7 +769,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Changed over to new sprite sheets separating the characters ears from the body, currently the ears are not showing up, still trying to sort out why that image is not blitting to the screen correctly." />
     <MESSAGE value="Ears are now showing up, forgot to tell it the rect location upon spawning.  I also moved the ears to be instanciation of the ears object into the Player class itself, I will replicate this for the masks when we get there, this will allow the masks to spawn in without having to add them in the lvl section, and avoiding more additions to the .tmx file, this way we can also easily specify in the class of the monster if we want to have a mask type object or not." />
     <MESSAGE value="More or less working with python3.3 will continue to develop separately from master for now, may merge into master branch if I find this faster" />
     <MESSAGE value="added direction var to Player class" />
@@ -790,7 +793,8 @@
     <MESSAGE value="Dialog box is now working, it pauses the game for 5 seconds after finishing blitting all of the text to the screen, this will be changed for a waiting for user input, and if there is more text put a small icon to indicate there is more text and wait for user input" />
     <MESSAGE value="Adding Fonts dir to repo" />
     <MESSAGE value="Changed dialog to clear upon user input, right now it will clear on space, enter, or button A or button B on on xbox controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed dialog to clear upon user input, right now it will clear on space, enter, or button A or button B on on xbox controller" />
+    <MESSAGE value="Added function get_keys() to dialog.py.  Changed the waiting for user input to use that, also added check in for loop that displays the text, when it returns True the delay for text is set to 0 and the block of text is spit out in entirety" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added function get_keys() to dialog.py.  Changed the waiting for user input to use that, also added check in for loop that displays the text, when it returns True the delay for text is set to 0 and the block of text is spit out in entirety" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -859,13 +863,6 @@
         <state line="50" column="14" selection-start="2550" selection-end="2550" vertical-scroll-proportion="0.82231" vertical-offset="0" max-vertical-offset="1013" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/npc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="64" selection-start="504" selection-end="504" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="45" selection-start="793" selection-end="793" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1343">
@@ -889,14 +886,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1468" selection-end="1468" vertical-scroll-proportion="-0.89141166" vertical-offset="1498" max-vertical-offset="4131">
+        <state line="35" column="0" selection-start="1468" selection-end="1468" vertical-scroll-proportion="0.0" vertical-offset="1498" max-vertical-offset="4131">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/npc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="115" selection-start="2987" selection-end="2987" vertical-scroll-proportion="0.91609085" vertical-offset="109" max-vertical-offset="1156">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dialog.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="21" selection-start="886" selection-end="886" vertical-scroll-proportion="0.43632773" vertical-offset="0" max-vertical-offset="1343">
+        <state line="67" column="30" selection-start="3074" selection-end="3074" vertical-scroll-proportion="0.8894373" vertical-offset="238" max-vertical-offset="1530">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

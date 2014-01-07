@@ -55,6 +55,17 @@ def start_dialog(text, screen):
             screen.blit(dialog_object[4], dialog_rects[4])
             pygame.display.update()
             time.sleep(delay)
+        elif my_font.size(dialog_lines[4] + " " + word)[0] > dialog_box.width - 20:
+            pygame.event.clear()
+            wait = False
+            while not wait:
+                if get_keys():
+                    wait = True
+                    dialog_lines[:] = []
+                    dialog_lines = ['', '', '', '', '']
+                    pygame.draw.rect(screen, (0, 0, 0), dialog_box)
+                    pygame.event.clear()
+                    delay = .1
     cont = False
     pygame.event.clear()
     while not cont:

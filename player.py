@@ -18,6 +18,7 @@ class Player(Character):
         self.jump_power = -8.75
         self.hp = 3
         self.max_speed = 3
+        self.run = False
         
     def update(self, dt, lvl, key, joy, screen, keys):
         if self.damage:

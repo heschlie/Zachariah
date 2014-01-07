@@ -21,45 +21,54 @@ def start_dialog(text, screen):
 
     pygame.draw.rect(screen, (0, 0, 0), dialog_box)
 
+    delay = .1
     for word in paragraph:
+        if get_keys():
+            delay = 0
         if my_font.size(dialog_lines[0] + " " + word)[0] < dialog_box.width - 20:
             dialog_lines[0] = dialog_lines[0] + " " + word
             dialog_object[0] = my_font.render(dialog_lines[0], True, white)
             screen.blit(dialog_object[0], dialog_rects[0])
             pygame.display.update()
-            time.sleep(.1)
+            time.sleep(delay)
         elif my_font.size(dialog_lines[1] + " " + word)[0] < dialog_box.width - 20:
             dialog_lines[1] = dialog_lines[1] + " " + word
             dialog_object[1] = my_font.render(dialog_lines[1], True, white)
             screen.blit(dialog_object[1], dialog_rects[1])
             pygame.display.update()
-            time.sleep(.1)
+            time.sleep(delay)
         elif my_font.size(dialog_lines[2] + " " + word)[0] < dialog_box.width - 20:
             dialog_lines[2] = dialog_lines[2] + " " + word
             dialog_object[2] = my_font.render(dialog_lines[2], True, white)
             screen.blit(dialog_object[2], dialog_rects[2])
             pygame.display.update()
-            time.sleep(.1)
+            time.sleep(delay)
         elif my_font.size(dialog_lines[3] + " " + word)[0] < dialog_box.width - 20:
             dialog_lines[3] = dialog_lines[3] + " " + word
             dialog_object[3] = my_font.render(dialog_lines[3], True, white)
             screen.blit(dialog_object[3], dialog_rects[3])
             pygame.display.update()
-            time.sleep(.1)
+            time.sleep(delay)
         elif my_font.size(dialog_lines[4] + " " + word)[0] < dialog_box.width - 20:
             dialog_lines[4] = dialog_lines[4] + " " + word
             dialog_object[4] = my_font.render(dialog_lines[4], True, white)
             screen.blit(dialog_object[4], dialog_rects[4])
             pygame.display.update()
-            time.sleep(.1)
+            time.sleep(delay)
     cont = False
+    pygame.event.clear()
     while not cont:
-        for event in pygame.event.get():
-            if event.type == KEYUP:
-                if event.key == K_SPACE or \
-                        event.key == K_RETURN:
-                    cont = True
-            elif event.type == JOYBUTTONUP:
-                if event.button == 0 or \
-                        event.button == 1:
-                    cont = True
+        if get_keys():
+            cont = True
+
+
+def get_keys():
+    for event in pygame.event.get():
+        if event.type == KEYUP:
+            if event.key == K_SPACE or \
+                    event.key == K_RETURN:
+                return True
+        elif event.type == JOYBUTTONUP:
+            if event.button == 0 or \
+                    event.button == 1:
+                return True

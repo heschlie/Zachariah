@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dialog.py" afterPath="$PROJECT_DIR$/dialog.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/level.py" afterPath="$PROJECT_DIR$/level.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/player.py" afterPath="$PROJECT_DIR$/player.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Zachariah.iws" />
@@ -16,7 +16,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1389133761142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1389135085945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$level.coverage" NAME="level Coverage Results" MODIFIED="1388896240668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$character.coverage" NAME="character Coverage Results" MODIFIED="1387935604072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -56,7 +56,7 @@
           <file leaf-file-name="level.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/level.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="47" column="46" selection-start="1077" selection-end="1077" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2125">
+                <state line="46" column="38" selection-start="1030" selection-end="1030" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2125">
                   <folding />
                 </state>
               </provider>
@@ -65,7 +65,7 @@
           <file leaf-file-name="player.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/player.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="101" column="44" selection-start="4511" selection-end="4511" vertical-scroll-proportion="0.3188549" vertical-offset="1394" max-vertical-offset="4114">
+                <state line="35" column="0" selection-start="1468" selection-end="1468" vertical-scroll-proportion="-0.89141166" vertical-offset="1498" max-vertical-offset="4131">
                   <folding />
                 </state>
               </provider>
@@ -123,7 +123,7 @@
           <file leaf-file-name="dialog.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/dialog.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="63" column="41" selection-start="2895" selection-end="2895" vertical-scroll-proportion="0.93287265" vertical-offset="126" max-vertical-offset="1190">
+                <state line="26" column="21" selection-start="886" selection-end="886" vertical-scroll-proportion="0.43632773" vertical-offset="0" max-vertical-offset="1343">
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -163,9 +163,9 @@
         <option value="$PROJECT_DIR$/platform.py" />
         <option value="$PROJECT_DIR$/monster.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/player.py" />
         <option value="$PROJECT_DIR$/npc.py" />
         <option value="$PROJECT_DIR$/level.py" />
+        <option value="$PROJECT_DIR$/player.py" />
         <option value="$PROJECT_DIR$/dialog.py" />
       </list>
     </option>
@@ -233,20 +233,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Zachariah" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zachariah" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zachariah" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Fonts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -740,13 +726,18 @@
       <created>1388950632144</created>
       <updated>1388950632144</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Changed dialog to clear upon user input, right now it will clear on space, enter, or button A or button B on on xbox controller">
+      <created>1389133905639</created>
+      <updated>1389133905639</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -762,7 +753,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3995327" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -775,7 +765,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Cleaned up the code in main.py, changed the buttons to objects instead of creating the images in the loop (dunno wtf I was originally doing) so there is now a 'Button' Class in main.py that we can use to make the rest of the buttons, we may want to further tweak this to make the main screen more customizable" />
     <MESSAGE value="Changed over to new sprite sheets separating the characters ears from the body, currently the ears are not showing up, still trying to sort out why that image is not blitting to the screen correctly." />
     <MESSAGE value="Ears are now showing up, forgot to tell it the rect location upon spawning.  I also moved the ears to be instanciation of the ears object into the Player class itself, I will replicate this for the masks when we get there, this will allow the masks to spawn in without having to add them in the lvl section, and avoiding more additions to the .tmx file, this way we can also easily specify in the class of the monster if we want to have a mask type object or not." />
     <MESSAGE value="More or less working with python3.3 will continue to develop separately from master for now, may merge into master branch if I find this faster" />
@@ -800,7 +789,8 @@
     <MESSAGE value="Started getting a dialog box working for the dino, still needs work will send the game into an infinte while loop if brought up." />
     <MESSAGE value="Dialog box is now working, it pauses the game for 5 seconds after finishing blitting all of the text to the screen, this will be changed for a waiting for user input, and if there is more text put a small icon to indicate there is more text and wait for user input" />
     <MESSAGE value="Adding Fonts dir to repo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Fonts dir to repo" />
+    <MESSAGE value="Changed dialog to clear upon user input, right now it will clear on space, enter, or button A or button B on on xbox controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed dialog to clear upon user input, right now it will clear on space, enter, or button A or button B on on xbox controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -883,13 +873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/level.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="46" selection-start="1077" selection-end="1077" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monster.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="49" selection-start="1786" selection-end="1786" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1666">
@@ -897,16 +880,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/level.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="38" selection-start="1030" selection-end="1030" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="44" selection-start="4511" selection-end="4511" vertical-scroll-proportion="0.3188549" vertical-offset="1394" max-vertical-offset="4114">
+        <state line="35" column="0" selection-start="1468" selection-end="1468" vertical-scroll-proportion="-0.89141166" vertical-offset="1498" max-vertical-offset="4131">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dialog.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="41" selection-start="2895" selection-end="2895" vertical-scroll-proportion="0.93287265" vertical-offset="126" max-vertical-offset="1190">
+        <state line="26" column="21" selection-start="886" selection-end="886" vertical-scroll-proportion="0.43632773" vertical-offset="0" max-vertical-offset="1343">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

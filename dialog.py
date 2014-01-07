@@ -1,4 +1,5 @@
 import pygame
+from pygame.locals import *
 import time
 
 
@@ -20,7 +21,6 @@ def start_dialog(text, screen):
 
     pygame.draw.rect(screen, (0, 0, 0), dialog_box)
 
-    #while True:
     for word in paragraph:
         if my_font.size(dialog_lines[0] + " " + word)[0] < dialog_box.width - 20:
             dialog_lines[0] = dialog_lines[0] + " " + word
@@ -52,4 +52,14 @@ def start_dialog(text, screen):
             screen.blit(dialog_object[4], dialog_rects[4])
             pygame.display.update()
             time.sleep(.1)
-    time.sleep(5)
+    cont = False
+    while not cont:
+        for event in pygame.event.get():
+            if event.type == KEYUP:
+                if event.key == K_SPACE or \
+                        event.key == K_RETURN:
+                    cont = True
+            elif event.type == JOYBUTTONUP:
+                if event.button == 0 or \
+                        event.button == 1:
+                    cont = True

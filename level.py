@@ -44,7 +44,6 @@ def load():
                 pygame.quit()
                 sys.exit()
 
-
         key = pygame.key.get_pressed()
         lvl.tilemap.update(dt, lvl, key, joysticks, screen, keys)
         screen.fill((0, 100, 0))

@@ -57,10 +57,10 @@ def start_dialog(text, screen):
             time.sleep(delay)
         elif my_font.size(dialog_lines[4] + " " + word)[0] > dialog_box.width - 20:
             pygame.event.clear()
-            wait = False
-            while not wait:
+            wait = True
+            while wait:
                 if get_keys():
-                    wait = True
+                    wait = False
                     dialog_lines[:] = []
                     dialog_lines = ['', '', '', '', '']
                     pygame.draw.rect(screen, (0, 0, 0), dialog_box)
@@ -83,3 +83,5 @@ def get_keys():
             if event.button == 0 or \
                     event.button == 1:
                 return True
+        else:
+            return False

@@ -1,4 +1,3 @@
-from pygame.locals import *
 from character import *
 
 
@@ -7,8 +6,6 @@ class Monster(Character):
         self.image = self.animSurf['idle_left'].getCurrentFrame()
         super(Monster, self).__init__(lvl, loc)
         self.dir = 'left'
-        self.start = loc
-        self.rect.center = self.start
         self.patrol_distance = 160
         self.jump_hit = 0
         

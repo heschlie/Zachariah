@@ -11,10 +11,11 @@ class Character(pygame.sprite.Sprite):
         self.hitmask = pygame.mask.from_surface(self.image, 127)
         self.blank_hitmask = self.hitmask
         self.blank_hitmask.clear()
+        self.start = loc
+        self.rect.center = self.start
         self.dir = 'right'
         self.fall = False
         self.platform = False
-        self.is_platform = False
         self.plat_speed = 0
         self.speed = .25
         self.jump_power = -5.0

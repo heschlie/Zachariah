@@ -11,7 +11,6 @@ class Player(Character):
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes, 42, 64)
         self.image = self.animSurf['idle_right'].getCurrentFrame()
         super(Player, self).__init__(lvl, loc)
-        self.rect.center = loc
         self.ears = Ears(lvl, (self.rect.x, self.rect.y), lvl.sprites)
         self.direction = 'right'
         self.fat_mask = self.gen_fat_mask()

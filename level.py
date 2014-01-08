@@ -50,7 +50,8 @@ def load():
         lvl.tilemap.draw(screen)
 
         pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah", clock.get_fps()))
-
+        for detector in lvl.hero.floor_detect_rects:
+            screen.fill((255, 0, 0), detector)
         pygame.display.update()
         clock.tick(dt)
 

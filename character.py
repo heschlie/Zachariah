@@ -1,6 +1,7 @@
 import pygame
 import pyganim
 import re
+from pygame.locals import *
 
 
 class Character(pygame.sprite.Sprite):
@@ -161,21 +162,23 @@ class Character(pygame.sprite.Sprite):
 
     def detect_wall(self, level):
         if not self.fall:
-            rect, mask = self.wall_detect_rect, self.wall_detect_mask
+            rect = self.wall_detect_rect
+            mask = self.wall_detect_mask
         else:
             rect = self.rect
             mask = self.fat_mask
         if self.collide_with(level, rect, mask, (int(self.x_vel), 0)):
+            print(True)
             self.x_vel = self.adjust_pos(level, rect, mask, [int(self.x_vel), 0], 0)
         elif self.collide_with_platform(level, rect, mask, (int(self.x_vel), 0)):
-            self.x_vel = 0
+            self.x_vel = self.adjust_pos_platform(level, rect, mask, [int(self.x_vel), 0], 0)
         self.rect.x += int(self.x_vel)
         self.reset_wall_floor_rects()
 
     def reset_wall_floor_rects(self):
-        flr = (pygame.Rect((self.rect.x+6, self.rect.y), (1, self.rect.height+16)),
-               pygame.Rect((self.rect.right-7, self.rect.y), (1, self.rect.height+16)))
-        wall = pygame.Rect(self.rect.x+5, self.rect.bottom-20, self.rect.width-10, 1)
+        flr = (pygame.Rect((self.rect.x+8, self.rect.y), (1, self.rect.height+16)),
+               pygame.Rect((self.rect.right-8, self.rect.y), (1, self.rect.height+16)))
+        wall = pygame.Rect(self.rect.x+5, self.rect.bottom-25, self.rect.width-10, 1)
         self.floor_detect_rects = flr
         self.wall_detect_rect = wall
 
@@ -190,7 +193,8 @@ class Character(pygame.sprite.Sprite):
                 self.y_vel = self.adjust_pos(level, rect, mask, offset, 1)
                 stop_fall = True
             if self.collide_with_platform(level, rect, mask, [0, int(self.y_vel)]):
-                self.y_vel = 0
+                offset = [0, int(self.y_vel)]
+                self.y_vel = self.adjust_pos_platform(level, rect, mask, offset, 1)
                 stop_fall = True
                 self.platform = True
             else:
@@ -224,6 +228,16 @@ class Character(pygame.sprite.Sprite):
         offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
         while 1:
             if any(self.collide_with(level, rect, mask, offset)):
+                offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
+                if not offset[off_ind]:
+                    return 0
+            else:
+                return offset[off_ind]
+
+    def adjust_pos_platform(self, level, rect, mask, offset, off_ind):
+        offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
+        while 1:
+            if self.collide_with_platform(level, rect, mask, offset):
                 offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
                 if not offset[off_ind]:
                     return 0

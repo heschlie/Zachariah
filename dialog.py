@@ -19,7 +19,8 @@ def start_dialog(text, screen):
     for i, rect in enumerate(dialog_rects):
         rect.topleft = (dialog_box.x + 10, (dialog_box.y + 10) + (i * 25))
 
-    pygame.draw.rect(screen, (0, 0, 0), dialog_box)
+    screen.fill((0, 0, 0), dialog_box)
+    #pygame.draw.rect(screen, (0, 0, 0), dialog_box)
 
     delay = .1
     for word in paragraph:

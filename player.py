@@ -14,6 +14,7 @@ class Player(Character):
         self.ears = Ears(lvl, (self.rect.x, self.rect.y), lvl.sprites)
         self.direction = 'right'
         self.fat_mask = self.gen_fat_mask()
+        print(self.fat_mask)
         self.jump_power = -8.75
         self.hp = 3
         self.max_speed = 3
@@ -38,7 +39,7 @@ class Player(Character):
         mask.clear()
         for y in range(self.rect.height):
             for x in range(self.rect.width):
-                if x > 4 < 38 and y < 59:
+                if x > 4 and x < 37 and y < 55:
                     mask.set_at((x, y), 1)
         return mask
         

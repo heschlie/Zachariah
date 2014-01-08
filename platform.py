@@ -68,11 +68,9 @@ class Platform(pygame.sprite.Sprite):
             if mob.hitmask.overlap(self.hitmask, mask_test):
                 mob.plat_speed = self.x_vel
         for sprite in level.sprites:
-            mask_test = (test.x - 8) - sprite.rect.x, (test.y - 5) - sprite.rect.y
+            mask_test = test.x - sprite.rect.x, (test.y - 5) - sprite.rect.y
             if sprite.hitmask.overlap(self.hitmask, mask_test):
                 sprite.rect.x += self.x_vel
-                sprite.plat_speed = self.x_vel
-                sprite.is_platform = True
 
     def update(self, dt, level, key, joy, screen, keys):
         #self.float(self.start)

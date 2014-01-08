@@ -1,8 +1,6 @@
 import pygame
-from pygame.locals import *
 import pyganim
 import re
-import level
 
 
 class Character(pygame.sprite.Sprite):
@@ -16,7 +14,6 @@ class Character(pygame.sprite.Sprite):
         self.dir = 'right'
         self.fall = False
         self.platform = False
-        self.plat_speed = 0
         self.speed = .25
         self.jump_power = -5.0
         self.jump_cut_magnitude = -3

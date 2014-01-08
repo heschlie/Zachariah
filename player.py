@@ -2,19 +2,19 @@ from character import *
 
 
 class Player(Character):
-    def __init__(self, lvl, loc, *groups):
+    def __init__(self, lvl, loc, properties, *groups):
         super(Character, self).__init__(*groups)
+        ears_prop = {}
         self.sheet = pygame.image.load('images/sprites/char.png').convert_alpha()
         animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right ladder_right ' \
                     'stop_right damage_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 64)
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes, 42, 64)
         self.image = self.animSurf['idle_right'].getCurrentFrame()
-        super(Player, self).__init__(lvl, loc)
-        self.ears = Ears(lvl, (self.rect.x, self.rect.y), lvl.sprites)
+        super(Player, self).__init__(lvl, loc, properties)
+        self.ears = Ears(lvl, (self.rect.x, self.rect.y), ears_prop, lvl.sprites)
         self.direction = 'right'
         self.fat_mask = self.gen_fat_mask()
-        print(self.fat_mask)
         self.jump_power = -8.75
         self.hp = 3
         self.max_speed = 3
@@ -191,7 +191,7 @@ class Player(Character):
 
 
 class Ears(Character):
-    def __init__(self, lvl, loc, *groups):
+    def __init__(self, lvl, loc, properties, *groups):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/sprites/char_ears.png').convert_alpha()
         self.placeholder = self.sheet.subsurface(0, 0, 42, 64)
@@ -199,7 +199,7 @@ class Ears(Character):
                     'stop_right damage_right'.split()
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes, 42, 64)
         self.image = self.animSurf['idle_right'].getCurrentFrame()
-        super(Ears, self).__init__(lvl, loc)
+        super(Ears, self).__init__(lvl, loc, properties)
         self.rect.topleft = loc
         self.hitmask.clear()
 

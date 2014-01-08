@@ -2,9 +2,9 @@ from character import *
 
 
 class Monster(Character):
-    def __init__(self, lvl, loc, *groups):
+    def __init__(self, lvl, loc, properties, *groups):
         self.image = self.animSurf['idle_left'].getCurrentFrame()
-        super(Monster, self).__init__(lvl, loc)
+        super(Monster, self).__init__(lvl, loc, properties)
         self.dir = 'left'
         self.patrol_distance = 160
         self.jump_hit = 0
@@ -48,41 +48,41 @@ class Monster(Character):
         
         
 class Walker(Monster):
-    def __init__(self, lvl, loc, *groups):
+    def __init__(self, lvl, loc, properties, *groups):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/sprites/walker.png').convert_alpha()
         self.animTypes = 'idle_right blank1_right blank2_right blank3_right damage_right dead_right' \
                          'something_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 32)
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 32, 32)
-        super(Walker, self).__init__(lvl, loc)
+        super(Walker, self).__init__(lvl, loc, properties)
         self.hp = 2
         self.jump_hit = 18
 
 
 class Standing(Monster):
-    def __init__(self, lvl, loc, *groups):
+    def __init__(self, lvl, loc, properties, *groups):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/sprites/stander.png').convert_alpha()
         self.animTypes = 'idle_right blank1_right blank2_right blank3_right damage_right dead_right' \
                          'something_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 32)
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 32, 32)
-        super(Standing, self).__init__(lvl, loc)
+        super(Standing, self).__init__(lvl, loc, properties)
         self.max_speed = 0
         self.hp = 5
         self.jump_hit = 18
 
 
 class Jumper(Monster):
-    def __init__(self, lvl, loc, *groups):
+    def __init__(self, lvl, loc, properties, *groups):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/sprites/jumper.png').convert_alpha()
         self.animTypes = 'idle_right blank1_right blank2_right blank3_right damage_right dead_right' \
                          'something_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 32)
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 32, 32)
-        super(Jumper, self).__init__(lvl, loc)
+        super(Jumper, self).__init__(lvl, loc, properties)
         self.hp = 2
         self.jump_hit = 18
 

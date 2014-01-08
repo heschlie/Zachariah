@@ -5,7 +5,7 @@ from pygame.locals import *
 
 
 class Character(pygame.sprite.Sprite):
-    def __init__(self, lvl, loc, *groups):
+    def __init__(self, lvl, loc, properties, *groups):
         self.rect = self.image.get_rect()
         self.hitmask = pygame.mask.from_surface(self.image, 127)
         self.blank_hitmask = self.hitmask
@@ -28,6 +28,7 @@ class Character(pygame.sprite.Sprite):
         self.damage = False
         self.conductor = pyganim.PygConductor(self.animSurf)
         self.conductor.play()
+        print(properties)
 
     def update(self, dt, lvl, key, joy, screen, keys):
         self.check_alive(lvl)
@@ -168,7 +169,6 @@ class Character(pygame.sprite.Sprite):
             rect = self.rect
             mask = self.fat_mask
         if self.collide_with(level, rect, mask, (int(self.x_vel), 0)):
-            print(True)
             self.x_vel = self.adjust_pos(level, rect, mask, [int(self.x_vel), 0], 0)
         elif self.collide_with_platform(level, rect, mask, (int(self.x_vel), 0)):
             self.x_vel = self.adjust_pos_platform(level, rect, mask, [int(self.x_vel), 0], 0)

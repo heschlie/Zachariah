@@ -76,14 +76,14 @@ class Level(object):
         #Load in NPCs
         self.npc = tmx.SpriteLayer()
         for npcs in self.tilemap.layers['spawns'].find('npc'):
-            friendlies[npcs.properties['npc']](self, (npcs.px, npcs.py), self.npc)
+            friendlies[npcs.properties['npc']](self, (npcs.px, npcs.py), npcs.properties, self.npc)
         self.tilemap.layers.append(self.npc)
         
         #Loading the 'hero' into the level, and adding him/her to the self.sprites group
         self.sprites = tmx.SpriteLayer()
         self.start_cell = self.tilemap.layers['spawns'].find('player')[0]
-        self.hero = player.Player(self, (self.start_cell.px, self.start_cell.py), self.sprites)
-        #self.hero_ear = player.Ears(self, (self.start_cell.px, self.start_cell.py), self.sprites)
+        hero_spawn = self.tilemap.layers['spawns'].find('player')[0]
+        self.hero = player.Player(self, (self.start_cell.px, self.start_cell.py), hero_spawn.properties, self.sprites)
         self.tilemap.layers.append(self.sprites)
         
         #Cell, rect, and mask dicts
@@ -96,7 +96,7 @@ class Level(object):
         #Load the monsters.  Set the value of the enemy property to the class you wish to make a monster from
         self.enemies = tmx.SpriteLayer()
         for enemy in self.tilemap.layers['spawns'].find('enemy'):
-            monsters[enemy.properties['enemy']](self, (enemy.px, enemy.py), self.enemies)
+            monsters[enemy.properties['enemy']](self, (enemy.px, enemy.py), enemy.properties, self.enemies)
         self.tilemap.layers.append(self.enemies)
         
         #for test in self.enemies.__iter__():

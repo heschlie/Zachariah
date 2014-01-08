@@ -22,6 +22,21 @@
     <property name="npc" value="dino_male"/>
    </properties>
   </object>
+  <object gid="50" x="1054" y="1407">
+   <properties>
+    <property name="enemy" value="walker"/>
+   </properties>
+  </object>
+  <object gid="50" x="1186" y="1408">
+   <properties>
+    <property name="enemy" value="standing"/>
+   </properties>
+  </object>
+  <object gid="50" x="1341" y="1409">
+   <properties>
+    <property name="enemy" value="jumper"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="background" width="500" height="50">
   <data encoding="base64" compression="zlib">

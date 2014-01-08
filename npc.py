@@ -3,9 +3,9 @@ import dialog
 
 
 class NPC(Character):
-    def __init__(self, lvl, loc, *groups):
+    def __init__(self, lvl, loc, properties, *groups):
         self.image = self.animSurf['idle_left'].getCurrentFrame()
-        super(NPC, self).__init__(lvl, loc)
+        super(NPC, self).__init__(lvl, loc, properties)
         self.dir = 'left'
         self.start = loc
         self.rect.center = self.start
@@ -47,13 +47,13 @@ class NPC(Character):
 
 
 class DinoMale(NPC):
-    def __init__(self, lvl, loc, *groups):
+    def __init__(self, lvl, loc, properties, *groups):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/sprites/dino_male.png').convert_alpha()
         self.animTypes = 'idle_right walk_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 64, 64)
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 72, 64)
-        super(DinoMale, self).__init__(lvl, loc)
+        super(DinoMale, self).__init__(lvl, loc, properties)
         self.max_speed = 0
 
     def talk(self, screen):

@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levels/beta/beta.tmx" afterPath="$PROJECT_DIR$/levels/beta/beta.tmx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/character.py" afterPath="$PROJECT_DIR$/character.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dialog.py" afterPath="$PROJECT_DIR$/dialog.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/level.py" afterPath="$PROJECT_DIR$/level.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/player.py" afterPath="$PROJECT_DIR$/player.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platform.py" afterPath="$PROJECT_DIR$/platform.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Zachariah.iws" />
@@ -18,7 +17,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1389215501778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1389219880184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$level.coverage" NAME="level Coverage Results" MODIFIED="1388896240668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$character.coverage" NAME="character Coverage Results" MODIFIED="1387935604072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -46,10 +45,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="platform.py" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="platform.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/platform.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="65" column="33" selection-start="2357" selection-end="2357" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1394">
+                <state line="70" column="60" selection-start="2625" selection-end="2625" vertical-scroll-proportion="0.78183615" vertical-offset="381" max-vertical-offset="1394">
                   <folding />
                 </state>
               </provider>
@@ -64,10 +63,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="player.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="player.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/player.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="41" column="35" selection-start="1707" selection-end="1707" vertical-scroll-proportion="0.5449161" vertical-offset="145" max-vertical-offset="4131">
+                <state line="41" column="35" selection-start="1707" selection-end="1707" vertical-scroll-proportion="0.0" vertical-offset="145" max-vertical-offset="4131">
                   <folding />
                 </state>
               </provider>
@@ -98,7 +97,7 @@
           <file leaf-file-name="character.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/character.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="179" column="45" selection-start="7521" selection-end="7521" vertical-scroll-proportion="0.31589338" vertical-offset="2723" max-vertical-offset="6103">
+                <state line="224" column="69" selection-start="9705" selection-end="9705" vertical-scroll-proportion="0.80256665" vertical-offset="2995" max-vertical-offset="6137">
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -158,10 +157,10 @@
         <option value="$PROJECT_DIR$/npc.py" />
         <option value="$PROJECT_DIR$/monster.py" />
         <option value="$PROJECT_DIR$/environment.py" />
-        <option value="$PROJECT_DIR$/platform.py" />
         <option value="$PROJECT_DIR$/dialog.py" />
         <option value="$PROJECT_DIR$/level.py" />
         <option value="$PROJECT_DIR$/player.py" />
+        <option value="$PROJECT_DIR$/platform.py" />
         <option value="$PROJECT_DIR$/character.py" />
       </list>
     </option>
@@ -746,7 +745,11 @@
       <created>1389139819937</created>
       <updated>1389139819937</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Playing around with the wall detectors and masks, trying to strike a balance between looks and functionality">
+      <created>1389215568662</created>
+      <updated>1389215568662</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -781,7 +784,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="ears were lagging slightly behind player, moved the call to set_pos to the players update method, they are following correctly now." />
     <MESSAGE value="Changed jmp_damage to only apply if the Player is going in a downward motion" />
     <MESSAGE value="Fixed adjust_pos method in Character class, reimplemented it in the collision checks, yay!" />
     <MESSAGE value="Fixed Player from catching on slopes for now, need to fine tune where the floor detectors sit, which may then require further tweaking of the players 'fat_mask' var.  The fix was to set this a small amount off of the bottom." />
@@ -806,7 +808,8 @@
     <MESSAGE value="minor changes" />
     <MESSAGE value="Creating Environment class and Fire class, still in progress" />
     <MESSAGE value="Cleaned up some unused vars and imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up some unused vars and imports" />
+    <MESSAGE value="Playing around with the wall detectors and masks, trying to strike a balance between looks and functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Playing around with the wall detectors and masks, trying to strike a balance between looks and functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -852,13 +855,6 @@
     <entry file="file://$PROJECT_DIR$/npc.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="30" selection-start="839" selection-end="839" vertical-scroll-proportion="0.0" vertical-offset="143" max-vertical-offset="1156">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/platform.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="33" selection-start="2357" selection-end="2357" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1394">
           <folding />
         </state>
       </provider>
@@ -909,14 +905,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="35" selection-start="1707" selection-end="1707" vertical-scroll-proportion="0.5449161" vertical-offset="145" max-vertical-offset="4131">
+        <state line="41" column="35" selection-start="1707" selection-end="1707" vertical-scroll-proportion="0.0" vertical-offset="145" max-vertical-offset="4131">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="60" selection-start="2625" selection-end="2625" vertical-scroll-proportion="0.78183615" vertical-offset="381" max-vertical-offset="1394">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/character.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="45" selection-start="7521" selection-end="7521" vertical-scroll-proportion="0.31589338" vertical-offset="2723" max-vertical-offset="6103">
+        <state line="224" column="69" selection-start="9705" selection-end="9705" vertical-scroll-proportion="0.80256665" vertical-offset="2995" max-vertical-offset="6137">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

@@ -220,8 +220,10 @@ class Character(pygame.sprite.Sprite):
         test = pygame.Rect((rect.x + offset[0], rect.y + offset[1]), rect.size)
         for plat in level.platforms:
             if test.colliderect(plat.rect):
-                mask_test = test.x - plat.rect.x, test.y - plat.rect.y
+                mask_test = test.x - plat.rect.x, test.y - 5 - plat.rect.y
                 if plat.hitmask.overlap(mask, mask_test):
+                    if self.fall and self.rect.top < plat.rect.bottom:
+                        self.rect.x += plat.x_vel
                     return True
 
     def adjust_pos(self, level, rect, mask, offset, off_ind):

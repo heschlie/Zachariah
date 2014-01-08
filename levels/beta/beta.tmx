@@ -17,24 +17,9 @@
     <property name="player" value=""/>
    </properties>
   </object>
-  <object gid="50" x="545" y="1409">
-   <properties>
-    <property name="enemy" value="walker"/>
-   </properties>
-  </object>
-  <object gid="50" x="929" y="1407">
-   <properties>
-    <property name="enemy" value="standing"/>
-   </properties>
-  </object>
-  <object gid="49" x="247" y="1399">
+  <object gid="49" x="703" y="1397">
    <properties>
     <property name="npc" value="dino_male"/>
-   </properties>
-  </object>
-  <object gid="50" x="1436" y="1410">
-   <properties>
-    <property name="enemy" value="jumper"/>
    </properties>
   </object>
  </objectgroup>
@@ -59,7 +44,7 @@
     <property name="blockers" value="t"/>
    </properties>
   </object>
-  <object gid="51" x="1982" y="831">
+  <object gid="51" x="287" y="1119">
    <properties>
     <property name="platform" value=""/>
    </properties>

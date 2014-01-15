@@ -26,7 +26,8 @@ def load():
     }
     
     clock = pygame.time.Clock()
-    lvl = Level(screen, 'beta', monsters, friendies)
+    lvl = Level(screen, 'test', monsters, friendies)
+    print()
 
     joysticks = []
     for i in range(0, pygame.joystick.get_count()):
@@ -36,8 +37,8 @@ def load():
     #print(lvl.tilemap.layers['terrain'].px_height)
     #Main Loop
     while True:
-    #     if lvl.hero.dead:
-    #        break
+        if lvl.hero.dead:
+            break
         keys = pygame.event.get()
         for event in keys:
             if event.type == QUIT or (event.type == KEYUP and event.key == K_ESCAPE):
@@ -48,6 +49,7 @@ def load():
         lvl.tilemap.update(dt, lvl, key, joysticks, screen, keys)
         screen.fill((0, 100, 0))
         lvl.tilemap.draw(screen)
+        lvl.tilemap.layers['foreground'].draw(screen)
 
         pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah", clock.get_fps()))
         for detector in lvl.hero.floor_detect_rects:

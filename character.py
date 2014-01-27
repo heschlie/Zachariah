@@ -28,6 +28,7 @@ class Character(pygame.sprite.Sprite):
         self.damage = False
         self.conductor = pyganim.PygConductor(self.animSurf)
         self.conductor.play()
+        self.drop = False
 
     def update(self, dt, lvl, key, joy, screen, keys):
         self.check_alive(lvl)
@@ -112,10 +113,12 @@ class Character(pygame.sprite.Sprite):
             collide, pads_on = self.check_floor_initial_platform(pads_on, (i, floor), level)
             if collide:
                 change = self.check_floor_final_platform(collide, (i, floor), change, level)
-        for i, floor in enumerate(self.floor_detect_rects):
-            collide, pads_on = self.check_floor_initial_bg(pads_on, (i, floor), level)
-            if collide:
-                change = self.check_floor_final_bg(collide, (i, floor), change, level)
+        if not self.drop:
+            print('test')
+            for i, floor in enumerate(self.floor_detect_rects):
+                collide, pads_on = self.check_floor_initial_bg(pads_on, (i, floor), level)
+                if collide:
+                    change = self.check_floor_final_bg(collide, (i, floor), change, level)
         if pads_on[0] ^ pads_on[1]:
             change = self.detect_glitch_fix(pads_on, change, level)
         if change is not None:
@@ -221,11 +224,11 @@ class Character(pygame.sprite.Sprite):
                 self.y_vel = self.adjust_pos_platform(level, rect, mask, offset, 1)
                 stop_fall = True
                 self.platform = True
-            if self.collide_with_bg(level, rect, mask, [0, int(self.y_vel)]):
-
-                offset = [0, int(self.y_vel)]
-                self.y_vel = self.adjust_pos_bg(level, rect, mask, offset, 1)
-                stop_fall = True
+            if not self.drop:
+                if self.collide_with_bg(level, rect, mask, [0, int(self.y_vel)]):
+                    offset = [0, int(self.y_vel)]
+                    self.y_vel = self.adjust_pos_bg(level, rect, mask, offset, 1)
+                    stop_fall = True
             else:
                 self.fall = True
                 self.platform = False

@@ -1,4 +1,5 @@
 from character import *
+from threading import Timer
 
 
 class Player(Character):
@@ -42,6 +43,14 @@ class Player(Character):
                 if x > 4 and x < 37 and y < 55:
                     mask.set_at((x, y), 1)
         return mask
+
+    def drop_set(self):
+        self.drop = True
+        stop = Timer(1.0, self.drop_stop)
+        stop.start()
+
+    def drop_stop(self):
+        self.drop = False
         
     def move(self):
         #setting directions for idle
@@ -91,24 +100,25 @@ class Player(Character):
             self.x_vel += self.x_det
 
     def get_events(self, key, keys, joy):
-        self.jump_keys(keys)
+        self.jump_keys(keys, key)
         self.run = self.get_run(key, joy)
         self.direction = self.get_direction(key, joy)
     
-    def jump_keys(self, keys):
+    def jump_keys(self, keys, key):
         for event in keys:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    self.jump()
-            elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_SPACE:
-                    self.jump_cut()
-            elif event.type == JOYBUTTONDOWN:
-                if event.button == 0:
-                    self.jump()
-            elif event.type == JOYBUTTONUP:
-                if event.button == 0:
-                    self.jump_cut()
+            if not key[pygame.K_DOWN]:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        self.jump()
+                elif event.type == pygame.KEYUP:
+                    if event.key == pygame.K_SPACE:
+                        self.jump_cut()
+                elif event.type == JOYBUTTONDOWN:
+                    if event.button == 0:
+                        self.jump()
+                elif event.type == JOYBUTTONUP:
+                    if event.button == 0:
+                        self.jump_cut()
 
     def get_direction(self, key, joy):
         direction = ''
@@ -125,6 +135,8 @@ class Player(Character):
             direction = 'right'
         elif key[pygame.K_UP]:
             direction = 'up'
+        if key[pygame.K_DOWN] and key[pygame.K_SPACE]:
+            self.drop_set()
         return direction
 
     def get_run(self, key, joy):

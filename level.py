@@ -27,7 +27,6 @@ def load():
     
     clock = pygame.time.Clock()
     lvl = Level(screen, 'test', monsters, friendies)
-    print()
 
     joysticks = []
     for i in range(0, pygame.joystick.get_count()):
@@ -52,8 +51,8 @@ def load():
         lvl.tilemap.layers['foreground'].draw(screen)
 
         pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah", clock.get_fps()))
-        for detector in lvl.hero.floor_detect_rects:
-            screen.fill((255, 0, 0), detector)
+        # for detector in lvl.hero.floor_detect_rects:
+        #     screen.fill((255, 0, 0), detector)
         pygame.display.update()
         clock.tick(dt)
 
@@ -96,7 +95,7 @@ class Level(object):
         self.mask_dict = self.make_mask_dict(self.cells_dict)
 
         #Same for the terrain-bg layer
-        self.cell_bg_dict = self.tilemap.layers['terrain-bg'].cells
+        self.cell_bg_dict = self.tilemap.layers['terrain_bg'].cells
         self.bg_height_dict = self.gen_height_map(self.cell_bg_dict)
         self.bg_rect_dict = self.get_rect_dict(self.cell_bg_dict)
         self.bg_mask_dict = self.make_mask_dict(self.cell_bg_dict)

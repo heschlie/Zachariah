@@ -33,7 +33,6 @@ class Player(Character):
         self.max_speed = 3
         self.jmp_damage(lvl)
         self.talk(lvl, key, joy, screen)
-        print(self.dead)
 
     def gen_fat_mask(self):
         mask = pygame.mask.Mask((self.rect.width, self.rect.height))

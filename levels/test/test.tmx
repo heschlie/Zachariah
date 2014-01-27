@@ -18,7 +18,7 @@
  <tileset firstgid="1067" name="frill - environmental" tilewidth="32" tileheight="32">
   <image source="frill - environmental.png" width="480" height="256"/>
  </tileset>
- <layer name="terrain-bg" width="500" height="50">
+ <layer name="terrain_bg" width="500" height="50">
   <data encoding="base64" compression="zlib">
    eJzt2klKxEAUgOFqciKHuwhuFJduetg4tHoSx147ncf5KL4gSoOCxhQUSb4P/m3xdo9UJSUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+aqVKaTVai9ar0tMAALBsXHoAAOBLvZcn0UbDpiWGBaAXTquUzqLz6CK6jK6iRYfu8v+zP4+i4+gk8yxbyV4G4GdNv/OG4nOPt9mf85R3t29nOANgSK6jm+g2uovuy45DD+Te7QBd8DBK6TF6ip6jl+g1ehu1P3scZ0yiaTTLcB7dsFd6gCX1bh/y3QcANFHv8P3oIDosPAsA8F39b9hvb/12eD7eCADIbTOalR5iYLz/A5DbTukBBm5eegAAemG39AAAQCvu2gGg+9y1AwAAAAB8eAcUujSq
   </data>
@@ -44,16 +44,6 @@
     <property name="player" value=""/>
    </properties>
   </object>
-  <object gid="2" x="4751" y="1530">
-   <properties>
-    <property name="enemy" value="walker"/>
-   </properties>
-  </object>
-  <object gid="2" x="5036" y="1139">
-   <properties>
-    <property name="enemy" value="standing"/>
-   </properties>
-  </object>
  </objectgroup>
  <layer name="foreground" width="500" height="50">
   <data encoding="base64" compression="zlib">
@@ -61,7 +51,7 @@
   </data>
  </layer>
  <objectgroup name="platforms" width="500" height="50">
-  <object gid="3" x="1982" y="831">
+  <object gid="3" x="865" y="1185">
    <properties>
     <property name="platform" value=""/>
    </properties>

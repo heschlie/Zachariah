@@ -28,7 +28,6 @@ class Character(pygame.sprite.Sprite):
         self.damage = False
         self.conductor = pyganim.PygConductor(self.animSurf)
         self.conductor.play()
-        print(properties)
 
     def update(self, dt, lvl, key, joy, screen, keys):
         self.check_alive(lvl)
@@ -113,6 +112,10 @@ class Character(pygame.sprite.Sprite):
             collide, pads_on = self.check_floor_initial_platform(pads_on, (i, floor), level)
             if collide:
                 change = self.check_floor_final_platform(collide, (i, floor), change, level)
+        for i, floor in enumerate(self.floor_detect_rects):
+            collide, pads_on = self.check_floor_initial_bg(pads_on, (i, floor), level)
+            if collide:
+                change = self.check_floor_final_bg(collide, (i, floor), change, level)
         if pads_on[0] ^ pads_on[1]:
             change = self.detect_glitch_fix(pads_on, change, level)
         if change is not None:
@@ -138,6 +141,15 @@ class Character(pygame.sprite.Sprite):
                 pads_on[i] = True
             return collide, pads_on
 
+    def check_floor_initial_bg(self, pads_on, pad_details, level):
+        i, floor = pad_details
+        collide = []
+        for cell in level.bg_rect_dict:
+            if floor.colliderect(level.bg_rect_dict[cell]):
+                collide.append(cell)
+                pads_on[i] = True
+        return collide, pads_on
+
     def check_floor_final(self, collide, pad_details, change, level):
         i, floor = pad_details
         for key in collide:
@@ -148,6 +160,18 @@ class Character(pygame.sprite.Sprite):
                 change = (key[1] + 1) * level.tilemap.layers['terrain'].tile_height - offset
             else:
                 change = min((key[1] + 1) * level.tilemap.layers['terrain'].tile_height - offset, change)
+        return change
+
+    def check_floor_final_bg(self, collide, pad_details, change, level):
+        i, floor = pad_details
+        for key in collide:
+            cell_heights = level.bg_height_dict[key]
+            x_in_cell = floor.x - key[0] * level.tilemap.layers['terrain_bg'].tile_width
+            offset = cell_heights[x_in_cell]
+            if change is None:
+                change = (key[1] + 1) * level.tilemap.layers['terrain_bg'].tile_height - offset
+            else:
+                change = min((key[1] + 1) * level.tilemap.layers['terrain_bg'].tile_height - offset, change)
         return change
 
     def check_floor_final_platform(self, collide, pad_details, change, level):
@@ -197,6 +221,11 @@ class Character(pygame.sprite.Sprite):
                 self.y_vel = self.adjust_pos_platform(level, rect, mask, offset, 1)
                 stop_fall = True
                 self.platform = True
+            if self.collide_with_bg(level, rect, mask, [0, int(self.y_vel)]):
+
+                offset = [0, int(self.y_vel)]
+                self.y_vel = self.adjust_pos_bg(level, rect, mask, offset, 1)
+                stop_fall = True
             else:
                 self.fall = True
                 self.platform = False
@@ -216,6 +245,22 @@ class Character(pygame.sprite.Sprite):
                     self.collide_ls.append(cell)
         return self.collide_ls
 
+    def collide_with_bg(self, level, rect, mask, offset):
+        test = pygame.Rect((rect.x + offset[0], rect.y + offset[1]), rect.size)
+        self.collide_ls = []
+        for cell, rec in level.bg_rect_dict.items():
+            if test.colliderect(rec):
+                x_in_cell = rect.x - cell[0] * level.tilemap.layers['terrain_bg'].tile_width
+                cell_heights = level.bg_height_dict[cell]
+                offset = (level.cell_size[1] - cell_heights[x_in_cell]) + (cell[1] * level.cell_size[1])
+                if self.rect.bottom <= offset + 2:
+                    level_rect = level.bg_rect_dict[cell]
+                    mask_test = test.x - level_rect.x, test.y - level_rect.y
+                    level_mask = level.bg_mask_dict[cell]
+                    if level_mask.overlap_area(mask, mask_test):
+                        self.collide_ls.append(cell)
+        return self.collide_ls
+
     def collide_with_platform(self, level, rect, mask, offset):
         test = pygame.Rect((rect.x + offset[0], rect.y + offset[1]), rect.size)
         for plat in level.platforms:
@@ -230,6 +275,16 @@ class Character(pygame.sprite.Sprite):
         offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
         while 1:
             if any(self.collide_with(level, rect, mask, offset)):
+                offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
+                if not offset[off_ind]:
+                    return 0
+            else:
+                return offset[off_ind]
+
+    def adjust_pos_bg(self, level, rect, mask, offset, off_ind):
+        offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
+        while 1:
+            if any(self.collide_with_bg(level, rect, mask, offset)):
                 offset[off_ind] += (1 if offset[off_ind] < 0 else -1)
                 if not offset[off_ind]:
                     return 0

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/character.py" afterPath="$PROJECT_DIR$/character.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/level.py" afterPath="$PROJECT_DIR$/level.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/player.py" afterPath="$PROJECT_DIR$/player.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levels/test/test.tmx" afterPath="$PROJECT_DIR$/levels/test/test.tmx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Zachariah.iws" />
@@ -15,9 +18,9 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1389757163145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Zachariah$character.coverage" NAME="character Coverage Results" MODIFIED="1387935604072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1390863494112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$level.coverage" NAME="level Coverage Results" MODIFIED="1388896240668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$character.coverage" NAME="character Coverage Results" MODIFIED="1387935604072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -37,7 +40,7 @@
           <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="34" column="0" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="1343">
+                <state line="22" column="45" selection-start="793" selection-end="793" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1309">
                   <folding />
                 </state>
               </provider>
@@ -46,16 +49,16 @@
           <file leaf-file-name="platform.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/platform.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="59" column="33" selection-start="2100" selection-end="2100" vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="1411">
+                <state line="69" column="13" selection-start="2541" selection-end="2541" vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="1411">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="level.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="level.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/level.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="121" column="80" selection-start="4678" selection-end="4678" vertical-scroll-proportion="0.7162162" vertical-offset="1020" max-vertical-offset="2278">
+                <state line="99" column="65" selection-start="3670" selection-end="3670" vertical-scroll-proportion="0.57058245" vertical-offset="969" max-vertical-offset="2261">
                   <folding />
                 </state>
               </provider>
@@ -64,7 +67,7 @@
           <file leaf-file-name="player.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/player.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="35" column="23" selection-start="1518" selection-end="1518" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="4148">
+                <state line="21" column="8" selection-start="978" selection-end="978" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="4131">
                   <folding />
                 </state>
               </provider>
@@ -92,10 +95,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="character.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="character.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/character.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="94" column="37" selection-start="4054" selection-end="4054" vertical-scroll-proportion="-0.04054054" vertical-offset="1598" max-vertical-offset="6086">
+                <state line="147" column="59" selection-start="6189" selection-end="6189" vertical-scroll-proportion="0.30207306" vertical-offset="2142" max-vertical-offset="7021">
                   <folding />
                 </state>
               </provider>
@@ -104,7 +107,7 @@
           <file leaf-file-name="monster.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/monster.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="45" column="45" selection-start="1985" selection-end="1985" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1632">
+                <state line="45" column="45" selection-start="1985" selection-end="1985" vertical-scroll-proportion="0.0" vertical-offset="619" max-vertical-offset="1632">
                   <folding />
                 </state>
               </provider>
@@ -113,7 +116,7 @@
           <file leaf-file-name="dialog.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/dialog.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="21" column="38" selection-start="785" selection-end="785" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1547">
+                <state line="5" column="28" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="1547">
                   <folding />
                 </state>
               </provider>
@@ -122,7 +125,7 @@
           <file leaf-file-name="tmx.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/tmx.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="274" column="39" selection-start="8736" selection-end="8736" vertical-scroll-proportion="0.0" vertical-offset="4165" max-vertical-offset="14365">
+                <state line="274" column="39" selection-start="8736" selection-end="8736" vertical-scroll-proportion="0.0" vertical-offset="4658" max-vertical-offset="14484">
                   <folding />
                 </state>
               </provider>
@@ -156,15 +159,15 @@
         <option value="$PROJECT_DIR$/controller_test.py" />
         <option value="$PROJECT_DIR$/settings.py" />
         <option value="$PROJECT_DIR$/tmx.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/environment.py" />
         <option value="$PROJECT_DIR$/dialog.py" />
         <option value="$PROJECT_DIR$/platform.py" />
-        <option value="$PROJECT_DIR$/character.py" />
         <option value="$PROJECT_DIR$/npc.py" />
         <option value="$PROJECT_DIR$/monster.py" />
+        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/player.py" />
         <option value="$PROJECT_DIR$/level.py" />
+        <option value="$PROJECT_DIR$/character.py" />
       </list>
     </option>
   </component>
@@ -216,6 +219,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -236,7 +240,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -253,16 +256,16 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="461" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1135" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1139" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1135" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="460" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="453" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -435,6 +438,9 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -456,9 +462,6 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -764,7 +767,11 @@
       <created>1389757247476</created>
       <updated>1389757247477</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Setting up dicts for terrain-bg layer">
+      <created>1389895082767</created>
+      <updated>1389895082767</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -780,7 +787,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18535826" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23831776" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19080997" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19080997" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -799,7 +806,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added jump_keys to detect when the player is jumping in the Player class instead of in the main game loop.  This will allow us to lock out player interaction when we need to, for example, when taking damage" />
     <MESSAGE value="Added damage animation on mobs, may need tweaking for looks, possibly adding more frames into the sprite sheet for playback, starting with inverted frame maybe (inverted -&gt; regular -&gt; inverted)" />
     <MESSAGE value="Added knockback to Player upon taking damage, also added in damage animation for Player.  I sorted out why the animations for damage were inconsistent, it basically came down to needing to call the .play() method on those animations INSIDE the .take_damage() method to start the animation from the start right before the damage_animation() method is called." />
     <MESSAGE value="added ears to damage animations" />
@@ -824,7 +830,8 @@
     <MESSAGE value="Player should not pop on top of platforms now, and should also move more predictably while on top of them." />
     <MESSAGE value="Added properties dict to the Character class and all relevant subclasses.  This will allow us to make unique changes to mobs of the same type if we need to by setting the property in the tmx file and checking it in the class.  Will need to setup a method to check for interesting properties and set them in the object." />
     <MESSAGE value="Setup 'foreground' in tmx, and set it to draw AFTER everything else, so the player will appear to walk behind anything in the 'foreground' layer in the tmx file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Setup 'foreground' in tmx, and set it to draw AFTER everything else, so the player will appear to walk behind anything in the 'foreground' layer in the tmx file." />
+    <MESSAGE value="Setting up dicts for terrain-bg layer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setting up dicts for terrain-bg layer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -867,13 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/platform.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="33" selection-start="2100" selection-end="2100" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1394">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python33/Lib/site-packages/pygame/sprite.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="141" column="0" selection-start="5836" selection-end="5836" vertical-scroll-proportion="0.0" vertical-offset="2009" max-vertical-offset="27081" />
@@ -886,27 +886,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="45" selection-start="1985" selection-end="1985" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1632">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/player.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="23" selection-start="1518" selection-end="1518" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4148">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.0" vertical-offset="296" max-vertical-offset="1309">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tmx.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="274" column="39" selection-start="8736" selection-end="8736" vertical-scroll-proportion="0.0" vertical-offset="4165" max-vertical-offset="14365">
@@ -914,23 +893,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dialog.py">
+    <entry file="file://$PROJECT_DIR$/platform.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="38" selection-start="785" selection-end="785" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1581">
+        <state line="69" column="13" selection-start="2541" selection-end="2541" vertical-scroll-proportion="0.0" vertical-offset="381" max-vertical-offset="1394">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/character.py">
+    <entry file="file://$PROJECT_DIR$/dialog.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="37" selection-start="4054" selection-end="4054" vertical-scroll-proportion="-0.04054054" vertical-offset="1598" max-vertical-offset="6086">
+        <state line="5" column="28" selection-start="84" selection-end="84" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="1547">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="45" selection-start="793" selection-end="793" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1309">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="45" selection-start="1985" selection-end="1985" vertical-scroll-proportion="0.0" vertical-offset="619" max-vertical-offset="1632">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="8" selection-start="978" selection-end="978" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="4131">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/level.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="80" selection-start="4678" selection-end="4678" vertical-scroll-proportion="0.7162162" vertical-offset="1020" max-vertical-offset="2278">
+        <state line="99" column="65" selection-start="3670" selection-end="3670" vertical-scroll-proportion="0.57058245" vertical-offset="969" max-vertical-offset="2261">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/character.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="147" column="59" selection-start="6189" selection-end="6189" vertical-scroll-proportion="0.30207306" vertical-offset="2142" max-vertical-offset="7021">
           <folding />
         </state>
       </provider>

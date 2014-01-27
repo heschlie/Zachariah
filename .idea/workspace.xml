@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/character.py" afterPath="$PROJECT_DIR$/character.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/level.py" afterPath="$PROJECT_DIR$/level.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/player.py" afterPath="$PROJECT_DIR$/player.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levels/test/test.tmx" afterPath="$PROJECT_DIR$/levels/test/test.tmx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Zachariah.iws" />
@@ -18,7 +15,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1390863494112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1390863880572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$level.coverage" NAME="level Coverage Results" MODIFIED="1388896240668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$character.coverage" NAME="character Coverage Results" MODIFIED="1387935604072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -55,10 +52,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="level.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="level.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/level.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="99" column="65" selection-start="3670" selection-end="3670" vertical-scroll-proportion="0.57058245" vertical-offset="969" max-vertical-offset="2261">
+                <state line="48" column="32" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.6544916" vertical-offset="17" max-vertical-offset="2261">
                   <folding />
                 </state>
               </provider>
@@ -95,7 +92,7 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="character.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="character.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/character.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="147" column="59" selection-start="6189" selection-end="6189" vertical-scroll-proportion="0.30207306" vertical-offset="2142" max-vertical-offset="7021">
@@ -166,8 +163,8 @@
         <option value="$PROJECT_DIR$/monster.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/player.py" />
-        <option value="$PROJECT_DIR$/level.py" />
         <option value="$PROJECT_DIR$/character.py" />
+        <option value="$PROJECT_DIR$/level.py" />
       </list>
     </option>
   </component>
@@ -771,13 +768,18 @@
       <created>1389895082767</created>
       <updated>1389895082767</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Added collision for the terrain_bg layer, also changed the layer name from terrain-bg to terrain_bg">
+      <created>1390863574751</created>
+      <updated>1390863574751</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -793,7 +795,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3995327" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -806,7 +807,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added damage animation on mobs, may need tweaking for looks, possibly adding more frames into the sprite sheet for playback, starting with inverted frame maybe (inverted -&gt; regular -&gt; inverted)" />
     <MESSAGE value="Added knockback to Player upon taking damage, also added in damage animation for Player.  I sorted out why the animations for damage were inconsistent, it basically came down to needing to call the .play() method on those animations INSIDE the .take_damage() method to start the animation from the start right before the damage_animation() method is called." />
     <MESSAGE value="added ears to damage animations" />
     <MESSAGE value="Added NPC class and Dino_male subclass to NPC" />
@@ -831,7 +831,8 @@
     <MESSAGE value="Added properties dict to the Character class and all relevant subclasses.  This will allow us to make unique changes to mobs of the same type if we need to by setting the property in the tmx file and checking it in the class.  Will need to setup a method to check for interesting properties and set them in the object." />
     <MESSAGE value="Setup 'foreground' in tmx, and set it to draw AFTER everything else, so the player will appear to walk behind anything in the 'foreground' layer in the tmx file." />
     <MESSAGE value="Setting up dicts for terrain-bg layer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Setting up dicts for terrain-bg layer" />
+    <MESSAGE value="Added collision for the terrain_bg layer, also changed the layer name from terrain-bg to terrain_bg" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added collision for the terrain_bg layer, also changed the layer name from terrain-bg to terrain_bg" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -907,13 +908,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="45" selection-start="793" selection-end="793" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1309">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monster.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="45" column="45" selection-start="1985" selection-end="1985" vertical-scroll-proportion="0.0" vertical-offset="619" max-vertical-offset="1632">
@@ -928,16 +922,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/level.py">
+    <entry file="file://$PROJECT_DIR$/character.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="65" selection-start="3670" selection-end="3670" vertical-scroll-proportion="0.57058245" vertical-offset="969" max-vertical-offset="2261">
+        <state line="147" column="59" selection-start="6189" selection-end="6189" vertical-scroll-proportion="0.30207306" vertical-offset="2142" max-vertical-offset="7021">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/character.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="59" selection-start="6189" selection-end="6189" vertical-scroll-proportion="0.30207306" vertical-offset="2142" max-vertical-offset="7021">
+        <state line="22" column="45" selection-start="793" selection-end="793" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1309">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/level.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="32" selection-start="1126" selection-end="1126" vertical-scroll-proportion="0.6544916" vertical-offset="17" max-vertical-offset="2261">
           <folding />
         </state>
       </provider>

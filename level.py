@@ -46,7 +46,7 @@ def load():
 
         key = pygame.key.get_pressed()
         lvl.tilemap.update(dt, lvl, key, joysticks, screen, keys)
-        screen.fill((0, 100, 0))
+        screen.fill((0, 191, 255))
         lvl.tilemap.draw(screen)
         lvl.tilemap.layers['foreground'].draw(screen)
 

@@ -114,7 +114,6 @@ class Character(pygame.sprite.Sprite):
             if collide:
                 change = self.check_floor_final_platform(collide, (i, floor), change, level)
         if not self.drop:
-            print('test')
             for i, floor in enumerate(self.floor_detect_rects):
                 collide, pads_on = self.check_floor_initial_bg(pads_on, (i, floor), level)
                 if collide:

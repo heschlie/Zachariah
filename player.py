@@ -102,11 +102,11 @@ class Player(Character):
     def get_events(self, key, keys, joy):
         self.jump_keys(keys, key)
         self.run = self.get_run(key, joy)
-        self.direction = self.get_direction(key, joy)
+        self.direction = self.get_direction(key, joy, keys)
     
     def jump_keys(self, keys, key):
         for event in keys:
-            if not key[pygame.K_DOWN]:
+            if self.direction is not 'down':
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         self.jump()
@@ -120,15 +120,21 @@ class Player(Character):
                     if event.button == 0:
                         self.jump_cut()
 
-    def get_direction(self, key, joy):
+    def get_direction(self, key, joy, keys):
         direction = ''
-        for event in joy:
-            if event.get_hat(0) == (-1, 0):
+        for joystick in joy:
+            if joystick.get_hat(0) == (-1, 0):
                 direction = 'left'
-            elif event.get_hat(0) == (1, 0):
+            elif joystick.get_hat(0) == (1, 0):
                 direction = 'right'
-            elif event.get_hat(0) == (0, 1):
+            elif joystick.get_hat(0) == (0, 1):
                 direction = 'up'
+            elif joystick.get_hat(0) == (0, -1):
+                direction = 'down'
+            for event in keys:
+                if event.type == pygame.JOYBUTTONDOWN:
+                    if event.button == 0 and joystick.get_hat(0) == (0, -1):
+                        self.drop_set()
         if key[pygame.K_LEFT]:
             direction = 'left'
         elif key[pygame.K_RIGHT]:

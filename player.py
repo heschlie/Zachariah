@@ -86,6 +86,8 @@ class Player(Character):
                 self.hitmask = self.hitmask_dict['run_right'][frame]
             self.dir = 'right'
             self.x_vel += self.speed
+        if self.direction == 'down':
+            pass
 
     def inertia(self):
         max_speed = self.max_speed
@@ -141,6 +143,8 @@ class Player(Character):
             direction = 'right'
         elif key[pygame.K_UP]:
             direction = 'up'
+        elif key[pygame.K_DOWN]:
+            direction = 'down'
         if key[pygame.K_DOWN] and key[pygame.K_SPACE]:
             self.drop_set()
         return direction

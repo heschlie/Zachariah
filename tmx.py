@@ -673,13 +673,14 @@ class TileMap(object):
         viewport - a Rect instance giving the current viewport specification
 
     '''
+
     def __init__(self, size, origin=(0,0)):
         self.px_width = 0
         self.px_height = 0
         self.tile_width = 0
         self.tile_height = 0
         self.width = 0
-        self.height  = 0
+        self.height = 0
         self.properties = {}
         self.layers = Layers()
         self.tilesets = Tilesets()

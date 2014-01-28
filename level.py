@@ -8,7 +8,6 @@ from pygame.locals import *
 import tmx
 import os
 
-
 def load():
     dt = 60.0
     

@@ -12,6 +12,7 @@ from pygame import Rect
 from xml.etree import ElementTree
 import base64
 import zlib
+import level
 
 
 class Tile(object):
@@ -632,6 +633,12 @@ class SpriteLayer(pygame.sprite.AbstractGroup):
         for sprite in self.sprites():
             sx, sy = sprite.rect.topleft
             screen.blit(sprite.image, (sx-ox, sy-oy))
+            # adding below to draw the wall and floor detectors
+            for detector in sprite.floor_detect_rects:
+                screen.fill((255, 0, 0), ((detector.x-ox, detector.y-oy), (detector.width, detector.height)))
+            screen.fill((0, 255, 0), ((sprite.wall_detect_rect.x-ox, sprite.wall_detect_rect.y-oy),
+                                      (sprite.wall_detect_rect.width, sprite.wall_detect_rect.height)))
+
 
 class Layers(list):
     def __init__(self):

@@ -38,7 +38,7 @@
  </layer>
  <layer name="terrain" width="500" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt3clu00AABuCReoBbyxMAT8UqsRbKDmKnwIXlxnJhOxHelBlFllLXcexk0onr75P+U9PxxJX8a1J7EgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAy9qLORdzq/REAIClfYs5H3M/5m3Mu5j3RWcEAPT1K+Z3mHZ6lWfBeh0AhuZPONjnKU9jLpWcFADQy79weI2ecqPkpACA3m6Hw31+r+iMAIC+mvr8YdEZAQB96XMAGL6mPt8N7nMHgCFp6nOdDgDDMq/PdToADEdbn1f7x10uNjsAoItFfZ5ys9jsAIAuuvR5WqOn726xzzsALOdRzOMw7dMqz2NeZBq/S5/Xsx/8Xx2A5V0JefcWvxg2t5eqHn8Smjs1fXdKjl5fps9TfjaMlf4+1vHAWJyOORNzYkG2t6bZ6ZjZ9VupnNo6mNzjXw159xa/Hqb3cM8eY1PO7bwez93rOfu8Ptb+nPcGMATbob2nz8ac3OBMjjhdj1u9Lufe4ncbjrNMt21CUq+nrnzQ8xyss8/nBWDTpS7fCeU7eQg93iVN88z1/NSFmDu145Xu5Bzpu1drlw7+EPO3lh9LjqXP4Xhb9NnzUDLULk+prrWTDUnbXHM8P3Wt4Zilu3gdfb4X2tfs8zo4dfjHmE8xn1t+v8tY+hzGo3SXjTlN19tJoXSdc1qjr3IfW7pvq742TyndxTlS//zie2heS8/+vL72/hLztfUMNtPnQOlOG2ParreTAuk67+r1u6H/fWDVPeNNXZ5SuotzpdT+L/ocKN1tY8qia+3kCLLK/OtjpXuo256PehnzKuZ1zJsF8yrdw7mSc4/W2fPX5fkDfQ7jVrrjxpCuXTBZc1Z9H21jV/d4z2ZRh8+mdA/nzKpr9EXPv68S4Pgq3XVjSJ/r7SRjcr+PnHOrp3QH50y1R+u6n3/X58Cs/5Q/MYE=
+   eJzt3clu00AABuCReoBby4kj8FSsEmuh7CB2ClxYbiwXthPhTZlRsJS6jmMnk0zcfJ/0n5qOJ67kX5PakxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmNdezNmYm6UnAgDM7WvMuZh7MW9i3sa8KzojAKCvnzG/wrjTqzwN1usAMDS/w8E+T3kSc7HkpACAXv6Gw2v0lOslJwUA9HYrHO7zu0VnBAD01dTnD4rOCADoS58DwPA19flucJ87AAxJU5/rdAAYlml9rtMBYDja+rzaP+5SsdkBAF3M6vOUG8VmBwB00aXP0xo9fXeLfd4BYD4PYx6FcZ9WeRbzPNP4Xfq8nv3g/+oAzO9yyLu3+IWwvr1U9fjj0Nyp6btTcvT6PH2e8qNhrPT3sY4Hlu1k6Qn8dyrmdMyxGdneGmenYybXb6VyYutgco9/JeTdW/xaGN/DPXmMdTm303o8d6/n7PP6WPtT3hvAIlbV59uhvafPxBxf44xWnK7HrV6Xc2/xOw3Hmafb1iGp11NX3u95DpbZ59MCsIhV9Hnq8p1QvpOH0ONd0jTPXM9PnY+5XTte6U7Okb57tXbp4Pcxf2r5PudY+hyOtlmfPQ8lQ+3ylOpaO1qTtM01x/NTVxuOWbqLl9Hne6F9zT6tg1OHf4j5GPOp5fe7jKXPYXOU7rJNTtP1dlQoXeec1uiL3MeW7tuqr81TSndxjtQ/v/gWmtfSkz+vr70/x3xpPYPN9DlQutM2MW3X21GBdJ139frd0P8+sOqe8aYuTyndxblSav8XfQ6U7rZNyqxr7WgFWWT+9bHSPdRtz0e9iHkZ8yrm9Yx5le7hXMm5R+vk+evy/IE+h81WuuM2IV27YLTkLPo+2sau7vGezKwOn0zpHs6ZRdfos55/XyTA0VW66zYhfa63o4zJ/T5yzq2e0h2cM9Uerct+/l2fA5P+AVLKMcY=
   </data>
  </layer>
  <objectgroup name="spawns" width="500" height="50">
@@ -53,11 +53,5 @@
    eJzt17txQjEURVG9GAxNGENFQIdgaMI2NMGvCTDEnALeEChAyVozO1F0sjsqBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKCUVVqn77RJ27ZzAIAKP+k3/aVd2jddAwDUOKRjOqVzurSdAwBUuKZb+k/39Gg7BwCoMOhKGaaPNErjrvUiAKDPPDd6kZY9t/ozb5P0laZp5p4DAABAlVf/bwAAAAAAAAAAAAAAAADe7wmZzRM8
   </data>
  </layer>
- <objectgroup name="platforms" width="500" height="50">
-  <object gid="3" x="865" y="1185">
-   <properties>
-    <property name="platform" value=""/>
-   </properties>
-  </object>
- </objectgroup>
+ <objectgroup name="platforms" width="500" height="50"/>
 </map>

@@ -109,10 +109,11 @@ class Character(pygame.sprite.Sprite):
             collide, pads_on = self.check_floor_initial(pads_on, (i, floor), level)
             if collide:
                 change = self.check_floor_final(collide, (i, floor), change, level)
-        for i, floor in enumerate(self.floor_detect_rects):
-            collide, pads_on = self.check_floor_initial_platform(pads_on, (i, floor), level)
-            if collide:
-                change = self.check_floor_final_platform(collide, (i, floor), change, level)
+        if level.platforms:
+            for i, floor in enumerate(self.floor_detect_rects):
+                collide, pads_on = self.check_floor_initial_platform(pads_on, (i, floor), level)
+                if collide:
+                    change = self.check_floor_final_platform(collide, (i, floor), change, level)
         if not self.drop:
             for i, floor in enumerate(self.floor_detect_rects):
                 collide, pads_on = self.check_floor_initial_bg(pads_on, (i, floor), level)
@@ -202,9 +203,9 @@ class Character(pygame.sprite.Sprite):
         self.reset_wall_floor_rects()
 
     def reset_wall_floor_rects(self):
-        flr = (pygame.Rect((self.rect.x+8, self.rect.y), (1, self.rect.height+16)),
-               pygame.Rect((self.rect.right-8, self.rect.y), (1, self.rect.height+16)))
-        wall = pygame.Rect(self.rect.x+5, self.rect.bottom-25, self.rect.width-10, 1)
+        flr = (pygame.Rect((self.rect.x+12, self.rect.y+16), (1, self.rect.height)),
+               pygame.Rect((self.rect.right-13, self.rect.y+16), (1, self.rect.height)))
+        wall = pygame.Rect(self.rect.x+11, self.rect.bottom-12, self.rect.width-23, 1)
         self.floor_detect_rects = flr
         self.wall_detect_rect = wall
 

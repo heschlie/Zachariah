@@ -14,7 +14,8 @@ class Player(Character):
         self.image = self.animSurf['idle_right'].getCurrentFrame()
         super(Player, self).__init__(lvl, loc, properties)
         self.ears = Ears(lvl, (self.rect.x, self.rect.y), ears_prop, lvl.sprites)
-        self.direction = 'right'
+        self.direction_x = 'right'
+        self.direction_y = ''
         self.fat_mask = self.gen_fat_mask()
         self.jump_power = -8.75
         self.hp = 3
@@ -64,7 +65,7 @@ class Player(Character):
             self.hitmask = self.hitmask_dict['idle_right'][frame]
         if self.run:
             self.max_speed = 6
-        if self.direction == 'left':
+        if self.direction_x == 'left':
             if abs(self.x_vel) > 1:
                 self.image = self.animSurf['walk_left'].getCurrentFrame().copy()
                 frame = self.animSurf['walk_left']._propGetCurrentFrameNum()
@@ -75,7 +76,7 @@ class Player(Character):
                 self.hitmask = self.hitmask_dict['run_left'][frame]
             self.dir = 'left'
             self.x_vel -= self.speed
-        if self.direction == 'right':
+        if self.direction_x == 'right':
             if self.x_vel > 1:
                 self.image = self.animSurf['walk_right'].getCurrentFrame().copy()
                 frame = self.animSurf['walk_right']._propGetCurrentFrameNum()
@@ -86,7 +87,7 @@ class Player(Character):
                 self.hitmask = self.hitmask_dict['run_right'][frame]
             self.dir = 'right'
             self.x_vel += self.speed
-        if self.direction == 'down':
+        if self.direction_y == 'down':
             pass
 
     def inertia(self):
@@ -96,19 +97,19 @@ class Player(Character):
                 self.x_vel -= (self.x_det * 2)
             if self.x_vel < 0:
                 self.x_vel += (self.x_det * 2)
-        if self.x_vel > 0 and self.direction == '' or self.x_vel > max_speed:
+        if self.x_vel > 0 and self.direction_x == '' or self.x_vel > max_speed:
             self.x_vel -= self.x_det
-        if self.x_vel < 0 and self.direction == '' or self.x_vel < (max_speed * -1):
+        if self.x_vel < 0 and self.direction_x == '' or self.x_vel < (max_speed * -1):
             self.x_vel += self.x_det
 
     def get_events(self, key, keys, joy):
         self.jump_keys(keys, key)
         self.run = self.get_run(key, joy)
-        self.direction = self.get_direction(key, joy, keys)
+        self.direction_x, self.direction_y = self.get_direction(key, joy, keys)
     
     def jump_keys(self, keys, key):
         for event in keys:
-            if self.direction is not 'down':
+            if self.direction_y is not 'down':
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         self.jump()
@@ -123,31 +124,32 @@ class Player(Character):
                         self.jump_cut()
 
     def get_direction(self, key, joy, keys):
-        direction = ''
+        direction_x = ''
+        direction_y = ''
         for joystick in joy:
             if joystick.get_hat(0) == (-1, 0):
-                direction = 'left'
+                direction_x = 'left'
             elif joystick.get_hat(0) == (1, 0):
-                direction = 'right'
-            elif joystick.get_hat(0) == (0, 1):
-                direction = 'up'
+                direction_x = 'right'
+            if joystick.get_hat(0) == (0, 1):
+                direction_y = 'up'
             elif joystick.get_hat(0) == (0, -1):
-                direction = 'down'
+                direction_y = 'down'
             for event in keys:
                 if event.type == pygame.JOYBUTTONDOWN:
                     if event.button == 0 and joystick.get_hat(0) == (0, -1):
                         self.drop_set()
         if key[pygame.K_LEFT]:
-            direction = 'left'
+            direction_x = 'left'
         elif key[pygame.K_RIGHT]:
-            direction = 'right'
-        elif key[pygame.K_UP]:
-            direction = 'up'
+            direction_x = 'right'
+        if key[pygame.K_UP]:
+            direction_y = 'up'
         elif key[pygame.K_DOWN]:
-            direction = 'down'
+            direction_y = 'down'
         if key[pygame.K_DOWN] and key[pygame.K_SPACE]:
             self.drop_set()
-        return direction
+        return direction_x, direction_y
 
     def get_run(self, key, joy):
         run = False
@@ -238,7 +240,7 @@ class Ears(Character):
             frame = lvl.hero.animSurf['idle_right']._propGetCurrentFrameNum()
             self.image = self.animSurf['idle_right'].getFrame(frame)
 
-        if lvl.hero.direction == 'left':
+        if lvl.hero.direction_x == 'left':
             if abs(lvl.hero.x_vel) > 1:
                 frame = lvl.hero.animSurf['walk_left']._propGetCurrentFrameNum()
                 self.image = self.animSurf['walk_left'].getFrame(frame)
@@ -247,7 +249,7 @@ class Ears(Character):
                 frame = lvl.hero.animSurf['run_left']._propGetCurrentFrameNum()
                 self.image = self.animSurf['run_left'].getFrame(frame)
 
-        if lvl.hero.direction == 'right':
+        if lvl.hero.direction_x == 'right':
             if lvl.hero.x_vel > 1:
                 frame = lvl.hero.animSurf['walk_right']._propGetCurrentFrameNum()
                 self.image = self.animSurf['walk_right'].getFrame(frame)

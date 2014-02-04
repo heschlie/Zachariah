@@ -3,10 +3,12 @@ import player
 import platform
 import monster
 import npc
+import dict_dump
 import sys
 from pygame.locals import *
 import tmx
 import os
+
 
 def load():
     dt = 60.0
@@ -14,15 +16,9 @@ def load():
     pygame.init()
     screen = pygame.display.get_surface()
 
-    monsters = {
-        'standing': monster.Standing,
-        'walker': monster.Walker,
-        'jumper': monster.Jumper
-    }
+    monsters = dict_dump.monsters
 
-    friendies = {
-        'dino_male': npc.DinoMale
-    }
+    friendies = dict_dump.npc
     
     clock = pygame.time.Clock()
     lvl = Level(screen, 'test', monsters, friendies)
@@ -110,7 +106,6 @@ class Level(object):
         for para in self.tilemap.properties:
             print(para)
 
-        
         #for test in self.enemies.__iter__():
         #    print test.rect
         

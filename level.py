@@ -3,6 +3,7 @@ import player
 import platform
 import monster
 import npc
+import parallax
 import dict_dump
 import sys
 from pygame.locals import *
@@ -22,6 +23,7 @@ def load():
     
     clock = pygame.time.Clock()
     lvl = Level(screen, lvl_dict['test'], monsters, friendies)
+    print(lvl.parallax)
 
     joysticks = []
     for i in range(0, pygame.joystick.get_count()):
@@ -41,7 +43,10 @@ def load():
 
         key = pygame.key.get_pressed()
         lvl.tilemap.update(dt, lvl, key, joysticks, screen, keys)
+        lvl.parallax.update(dt, lvl, key, joysticks, screen, keys)
         screen.fill((0, 191, 255))
+        for para in lvl.parallax:
+            screen.blit(para.image, (para.rect.x, para.rect.y))
         lvl.tilemap.draw(screen)
         lvl.tilemap.layers['foreground'].draw(screen)
 
@@ -59,12 +64,19 @@ class Level(object):
         be edited."""
         name = lvl_dict['name']
         para_layers = lvl_dict['para']
+        para_speed = lvl_dict['para_speed']
 
         os.chdir('levels/%s/' % name)
         self.level = "%s.tmx" % name
         self.tilemap = tmx.load(self.level, screen.get_size())
         #self.background1 = pygame.image.load('background1.png').convert_alpha()
         os.chdir('../..')
+
+        #Loading the parallaxed background layers
+        self.parallax = pygame.sprite.Group()
+        for i, para in para_layers.items():
+            parallax.ParaLayer(para, (0, 0), para_speed[i], self.parallax)
+        #self.tilemap.layers.append(self.parallax)
 
         #Loading platforms, this needs to come before the player so the player is drawn on top
         #of the platform sprites, and so he will move with the platforms
@@ -105,12 +117,12 @@ class Level(object):
             monsters[enemy.properties['enemy']](self, (enemy.px, enemy.py), enemy.properties, self.enemies)
         self.tilemap.layers.append(self.enemies)
 
-        self.parallax = tmx.SpriteLayer()
-        self.para_images = []
-        p = 0
-        for para in para_layers:
-            self.para_images[p] = pygame.image.load(para).convert_alpha()
-            p += 1
+        #self.parallax = tmx.SpriteLayer()
+        # self.para_images = []
+        # p = 0
+        # for para in para_layers:
+        #     self.para_images[p] = pygame.image.load(para).convert_alpha()
+        #     p += 1
 
         #for test in self.enemies.__iter__():
         #    print test.rect

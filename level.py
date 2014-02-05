@@ -17,11 +17,11 @@ def load():
     screen = pygame.display.get_surface()
 
     monsters = dict_dump.monsters
-
     friendies = dict_dump.npc
+    lvl_dict = dict_dump.levels
     
     clock = pygame.time.Clock()
-    lvl = Level(screen, 'test', monsters, friendies)
+    lvl = Level(screen, lvl_dict['test'], monsters, friendies)
 
     joysticks = []
     for i in range(0, pygame.joystick.get_count()):
@@ -53,10 +53,13 @@ def load():
 
 
 class Level(object):
-    def __init__(self, screen, name, monsters, friendlies):
+    def __init__(self, screen, lvl_dict, monsters, friendlies):
         """Loading the level files, changing the CWD to match the files for loading,
         This was easier than having to edit the .tmx file every time it needed to
         be edited."""
+        name = lvl_dict['name']
+        para_layers = lvl_dict['para']
+
         os.chdir('levels/%s/' % name)
         self.level = "%s.tmx" % name
         self.tilemap = tmx.load(self.level, screen.get_size())
@@ -103,8 +106,11 @@ class Level(object):
         self.tilemap.layers.append(self.enemies)
 
         self.parallax = tmx.SpriteLayer()
-        for para in self.tilemap.properties:
-            print(para)
+        self.para_images = []
+        p = 0
+        for para in para_layers:
+            self.para_images[p] = pygame.image.load(para).convert_alpha()
+            p += 1
 
         #for test in self.enemies.__iter__():
         #    print test.rect

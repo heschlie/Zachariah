@@ -23,7 +23,6 @@ def load():
     
     clock = pygame.time.Clock()
     lvl = Level(screen, lvl_dict['test'], monsters, friendies)
-    print(lvl.parallax)
 
     joysticks = []
     for i in range(0, pygame.joystick.get_count()):
@@ -45,8 +44,10 @@ def load():
         lvl.tilemap.update(dt, lvl, key, joysticks, screen, keys)
         lvl.parallax.update(dt, lvl, key, joysticks, screen, keys)
         screen.fill((0, 191, 255))
-        for para in lvl.parallax:
-            screen.blit(para.image, (para.rect.x, para.rect.y))
+        for i, para in enumerate(lvl.parallax):
+            if para.name == i:
+                screen.blit(para.image, (para.rect.x, para.rect.y))
+        #lvl.parallax.draw(screen)
         lvl.tilemap.draw(screen)
         lvl.tilemap.layers['foreground'].draw(screen)
 
@@ -71,11 +72,12 @@ class Level(object):
         self.tilemap = tmx.load(self.level, screen.get_size())
         #self.background1 = pygame.image.load('background1.png').convert_alpha()
         os.chdir('../..')
+        print(self.tilemap.view_h)
 
         #Loading the parallaxed background layers
         self.parallax = pygame.sprite.Group()
         for i, para in para_layers.items():
-            parallax.ParaLayer(para, (0, 0), para_speed[i], self.parallax)
+            parallax.ParaLayer(para, (0, self.tilemap.view_h), para_speed[i], i, self.parallax)
         #self.tilemap.layers.append(self.parallax)
 
         #Loading platforms, this needs to come before the player so the player is drawn on top

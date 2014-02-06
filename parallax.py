@@ -15,8 +15,10 @@ class ParaLayer(pygame.sprite.Sprite):
         self.move(lvl, screen)
 
     def move(self, lvl, screen):
-        screen_w = screen.get_width()
         if lvl.tilemap.viewport.x > 0 and lvl.tilemap.viewport.x < lvl.tilemap.px_width - lvl.tilemap.view_w:
             self.rect.x -= (lvl.hero.x_vel // self.speed)
         # if lvl.tilemap.viewport.y > 0 and lvl.tilemap.viewport.y < lvl.tilemap.px_height - lvl.tilemap.view_h:
-        #     self.rect.y += (lvl.hero.y_vel // self.speed)
+        #     if lvl.hero.y_vel <= 1:
+        #         self.rect.y += 3 // self.speed
+        #     if lvl.hero.y_vel >= 1:
+        #         self.rect.y -= 3 // self.speed

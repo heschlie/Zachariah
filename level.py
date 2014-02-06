@@ -29,7 +29,6 @@ def load():
         joysticks.append(pygame.joystick.Joystick(i))
         joysticks[-1].init()
 
-    #print(lvl.tilemap.layers['terrain'].px_height)
     #Main Loop
     while True:
         if lvl.hero.dead:
@@ -47,13 +46,11 @@ def load():
         for i, para in enumerate(lvl.parallax):
             if para.name == i:
                 screen.blit(para.image, (para.rect.x, para.rect.y))
-        #lvl.parallax.draw(screen)
+                screen.blit(para.image, (para.rect.x - para.rect.width, para.rect.y))
         lvl.tilemap.draw(screen)
         lvl.tilemap.layers['foreground'].draw(screen)
 
         pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah", clock.get_fps()))
-        # for detector in lvl.hero.floor_detect_rects:
-        #     screen.fill((255, 0, 0), detector)
         pygame.display.update()
         clock.tick(dt)
 
@@ -72,7 +69,6 @@ class Level(object):
         self.tilemap = tmx.load(self.level, screen.get_size())
         #self.background1 = pygame.image.load('background1.png').convert_alpha()
         os.chdir('../..')
-        print(self.tilemap.view_h)
 
         #Loading the parallaxed background layers
         self.parallax = pygame.sprite.Group()

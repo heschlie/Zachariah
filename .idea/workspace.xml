@@ -4,7 +4,6 @@
     <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/level.py" afterPath="$PROJECT_DIR$/level.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallax.py" afterPath="$PROJECT_DIR$/parallax.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/levels/test/test.tmx" afterPath="$PROJECT_DIR$/levels/test/test.tmx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Zachariah.iws" />
@@ -17,7 +16,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1391620561059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1391628059555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$level.coverage" NAME="level Coverage Results" MODIFIED="1388896240668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$character.coverage" NAME="character Coverage Results" MODIFIED="1387935604072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -57,7 +56,7 @@
           <file leaf-file-name="player.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/player.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="36" column="40" selection-start="1554" selection-end="1554" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4522">
+                <state line="106" column="41" selection-start="4576" selection-end="4576" vertical-scroll-proportion="0.0" vertical-offset="1496" max-vertical-offset="4522">
                   <folding />
                 </state>
               </provider>
@@ -81,10 +80,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="parallax.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="parallax.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/parallax.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="8" column="24" selection-start="299" selection-end="299" vertical-scroll-proportion="0.1342547" vertical-offset="0" max-vertical-offset="1013">
+                <state line="23" column="48" selection-start="982" selection-end="982" vertical-scroll-proportion="0.38598225" vertical-offset="0" max-vertical-offset="1013">
                   <folding />
                 </state>
               </provider>
@@ -106,7 +105,7 @@
           <file leaf-file-name="character.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/character.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="207" column="82" selection-start="8925" selection-end="8925" vertical-scroll-proportion="0.0" vertical-offset="4122" max-vertical-offset="7072">
+                <state line="120" column="41" selection-start="5168" selection-end="5168" vertical-scroll-proportion="0.0" vertical-offset="1462" max-vertical-offset="7072">
                   <folding />
                 </state>
               </provider>
@@ -141,10 +140,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="level.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="level.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/level.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="79" column="60" selection-start="2542" selection-end="2542" vertical-scroll-proportion="0.3958539" vertical-offset="942" max-vertical-offset="2737">
+                <state line="48" column="85" selection-start="1328" selection-end="1328" vertical-scroll-proportion="0.80552816" vertical-offset="0" max-vertical-offset="2669">
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -189,8 +188,8 @@
         <option value="$PROJECT_DIR$/dict_dump.py" />
         <option value="$PROJECT_DIR$/player.py" />
         <option value="$PROJECT_DIR$/tmx.py" />
-        <option value="$PROJECT_DIR$/parallax.py" />
         <option value="$PROJECT_DIR$/level.py" />
+        <option value="$PROJECT_DIR$/parallax.py" />
       </list>
     </option>
   </component>
@@ -822,12 +821,16 @@
       <created>1391618887983</created>
       <updated>1391618887983</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="parallax much closer to working as intended, need to test with more levels.  Also need to 'wrap' the image to fill up the width of the level.">
+      <created>1391620625027</created>
+      <updated>1391620625027</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -839,7 +842,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18535826" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23831776" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19080997" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19080997" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -883,7 +886,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Moved images around and updated paths in image calls" />
     <MESSAGE value="Added sprite_collide method to Character class to clean up collision detection calls between sprites" />
     <MESSAGE value="Added collision check for NPCs, pressing up (on keyboard or controller) will print to the console for now, will use this to spawn a dialog window later" />
     <MESSAGE value="moved the Font object in main to outside of the loop.  Added method set_dir for NPCs so they can always face the player" />
@@ -908,7 +910,8 @@
     <MESSAGE value="fixed keyboard controls not setting the player.direction var to 'down' allowing you to jump while down was pressed." />
     <MESSAGE value="Started adding dict for level loading, this will allow us to expand on what variables we have per level" />
     <MESSAGE value="started getting parallax effect working, still needs vast amounts of work." />
-    <option name="LAST_COMMIT_MESSAGE" value="started getting parallax effect working, still needs vast amounts of work." />
+    <MESSAGE value="parallax much closer to working as intended, need to test with more levels.  Also need to 'wrap' the image to fill up the width of the level." />
+    <option name="LAST_COMMIT_MESSAGE" value="parallax much closer to working as intended, need to test with more levels.  Also need to 'wrap' the image to fill up the width of the level." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1055,13 +1058,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/character.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="207" column="82" selection-start="8925" selection-end="8925" vertical-scroll-proportion="0.0" vertical-offset="4122" max-vertical-offset="7072">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons/__builtin__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2235" column="8" selection-start="48910" selection-end="48910" vertical-scroll-proportion="0.33333334" vertical-offset="37550" max-vertical-offset="41956">
@@ -1069,37 +1065,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/npc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="54" selection-start="237" selection-end="237" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1156">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/environment.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="45" column="42" selection-start="1881" selection-end="1881" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dict_dump.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="1" selection-start="379" selection-end="379" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/player.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="40" selection-start="1554" selection-end="1554" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4522">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parallax.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="24" selection-start="299" selection-end="299" vertical-scroll-proportion="0.1342547" vertical-offset="0" max-vertical-offset="1013">
           <folding />
         </state>
       </provider>
@@ -1113,12 +1081,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/character.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="41" selection-start="5168" selection-end="5168" vertical-scroll-proportion="0.0" vertical-offset="1462" max-vertical-offset="7072">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="41" selection-start="4576" selection-end="4576" vertical-scroll-proportion="0.0" vertical-offset="1496" max-vertical-offset="4522">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/level.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="60" selection-start="2542" selection-end="2542" vertical-scroll-proportion="0.3958539" vertical-offset="942" max-vertical-offset="2737">
+        <state line="48" column="85" selection-start="1328" selection-end="1328" vertical-scroll-proportion="0.80552816" vertical-offset="0" max-vertical-offset="2669">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dict_dump.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="1" selection-start="379" selection-end="379" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/npc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="54" selection-start="237" selection-end="237" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1156">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parallax.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="48" selection-start="982" selection-end="982" vertical-scroll-proportion="0.38598225" vertical-offset="0" max-vertical-offset="1013">
+          <folding />
         </state>
       </provider>
     </entry>

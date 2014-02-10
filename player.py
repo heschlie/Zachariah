@@ -7,10 +7,9 @@ class Player(Character):
         super(Character, self).__init__(*groups)
         ears_prop = {}
         self.sheet = pygame.image.load('images/sprites/char.png').convert_alpha()
-        animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right ladder_right ' \
-                    'stop_right damage_right'.split()
+        animTypes = self.anim_dict()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 64)
-        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes, 42, 64)
+        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes)
         self.image = self.animSurf['idle_right'].getCurrentFrame()
         super(Player, self).__init__(lvl, loc, properties)
         self.ears = Ears(lvl, (self.rect.x, self.rect.y), ears_prop, lvl.sprites)
@@ -21,6 +20,21 @@ class Player(Character):
         self.hp = 3
         self.max_speed = 3
         self.run = False
+
+    def anim_dict(self):
+        animTypes = {
+            'idle_right': [42, 64, 0.175, True, 0],
+            'walk_right': [42, 64, 0.175, True, 64],
+            'run_right': [42, 64, 0.175, True, 128],
+            'jump_right': [42, 64, 0.175, True, 192],
+            'fall_right': [42, 64, 0.175, True, 256],
+            'tred_right': [42, 64, 0.175, True, 320],
+            'swim_right': [42, 64, 0.175, True, 384],
+            'ladder_right': [42, 64, 0.175, True, 448],
+            'stop_right': [42, 64, 0.175, True, 512],
+            'damage_right': [42, 64, 0.175, False, 576]
+        }
+        return animTypes
         
     def update(self, dt, lvl, key, joy, screen, keys):
         if self.damage:
@@ -219,13 +233,27 @@ class Ears(Character):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/sprites/char_ears.png').convert_alpha()
         self.placeholder = self.sheet.subsurface(0, 0, 42, 64)
-        animTypes = 'idle_right walk_right run_right jump_right fall_right tred_right swim_right ladder_right ' \
-                    'stop_right damage_right'.split()
-        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes, 42, 64)
+        animTypes = self.anim_dict()
+        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes)
         self.image = self.animSurf['idle_right'].getCurrentFrame()
         super(Ears, self).__init__(lvl, loc, properties)
         self.rect.topleft = loc
         self.hitmask.clear()
+
+    def anim_dict(self):
+        animTypes = {
+            'idle_right': [42, 64, 0.175, True, 0],
+            'walk_right': [42, 64, 0.175, True, 64],
+            'run_right': [42, 64, 0.175, True, 128],
+            'jump_right': [42, 64, 0.175, True, 192],
+            'fall_right': [42, 64, 0.175, True, 256],
+            'tred_right': [42, 64, 0.175, True, 320],
+            'swim_right': [42, 64, 0.175, True, 384],
+            'ladder_right': [42, 64, 0.175, True, 448],
+            'stop_right': [42, 64, 0.175, True, 512],
+            'damage_right': [42, 64, 0.175, False, 576]
+        }
+        return animTypes
 
     def update(self, dt, lvl, key, joy, screen, keys):
         if not lvl.hero.damage:

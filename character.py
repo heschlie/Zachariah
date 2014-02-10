@@ -36,7 +36,7 @@ class Character(pygame.sprite.Sprite):
         self.detect_ground(lvl)
         self.physics_update()
 
-    def get_images(self, sheet, animTypes, imgWidth, imgHeight):
+    def get_images(self, sheet, animTypes):
         """This pulls the images from the spritesheet using subsurface and then adds those to
         pyganim objects to be animated in the game, it needs to be fed the width and height of
         the subsurface to be pulled, the spritesheet, and a list of animation names.  This was
@@ -45,25 +45,30 @@ class Character(pygame.sprite.Sprite):
         sheetRect = sheet.get_rect()
         animSurf = {}
         hitmask_dict = {}
-        animFlips = []
+        animFlips = {}
         #Use a regex to replace _right with _left
         for i in animTypes:
             s = re.sub(r'_right\b', '_left', i)
-            animFlips.append(s)
+            animFlips[i] = s
         placeholder = [(self.placeholder, 0.175), (self.placeholder, 0.175)]
         #Grabs the images from the sheet, checks for opaque pixels and appends
         #them to the list, then adds the list to the animation
-        for y, animType in enumerate(animTypes):
+        for animType in animTypes:
+            width = animTypes[animType][0]
+            height = animTypes[animType][1]
+            duration = animTypes[animType][2]
+            loop = animTypes[animType][3]
+            y_in_img = animTypes[animType][4]
             imageAndDuration = []
             hitmask_list_R = []
             hitmask_list_L = []
-            for x in range(sheetRect.width//imgWidth):
-                image = self.sheet.subsurface(imgWidth*x, imgHeight*y, imgWidth, imgHeight)
-                for i in range(imgHeight):
+            for x in range(sheetRect.width//width):
+                image = self.sheet.subsurface(width*x, y_in_img, width, height)
+                for i in range(height):
                     z = False
-                    for j in range(imgWidth):
+                    for j in range(width):
                         if image.get_at((j, i))[3] > 0:
-                            imageAndDuration.append((image, 0.175))
+                            imageAndDuration.append((image, duration))
                             hitmask_list_R.append(pygame.mask.from_surface(image))
                             imageL = pygame.transform.flip(image, True, False)
                             hitmask_list_L.append(pygame.mask.from_surface(imageL))
@@ -72,17 +77,17 @@ class Character(pygame.sprite.Sprite):
                     if z:
                         break
             if imageAndDuration:
-                animSurf[animType] = pyganim.PygAnimation(imageAndDuration)
+                animSurf[animType] = pyganim.PygAnimation(imageAndDuration, loop)
                 hitmask_dict[animType] = hitmask_list_R
-                hitmask_dict[animFlips[y]] = hitmask_list_L
+                hitmask_dict[animFlips[animType]] = hitmask_list_L
             else:
                 animSurf[animType] = pyganim.PygAnimation(placeholder)
         #flipping the right animations to create the left ones
-        for i, src in enumerate(animTypes):
-            animSurf[animFlips[i]] = self.flip_anim(animSurf[src])
-        if 'damage_right' in animTypes:
-            animSurf['damage_right']._propSetLoop(False)
-            animSurf['damage_left']._propSetLoop(False)
+        for src in animTypes:
+            animSurf[animFlips[src]] = self.flip_anim(animSurf[src])
+        # if 'damage_right' in animTypes:
+        #     animSurf['damage_right']._propSetLoop(False)
+        #     animSurf['damage_left']._propSetLoop(False)
         return animSurf, hitmask_dict
 
     def setup_collision_rects(self):

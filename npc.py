@@ -52,9 +52,16 @@ class DinoMale(NPC):
         self.sheet = pygame.image.load('images/sprites/dino_male.png').convert_alpha()
         self.animTypes = 'idle_right walk_right'.split()
         self.placeholder = self.sheet.subsurface(0, 0, 64, 64)
-        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 72, 64)
+        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes)
         super(DinoMale, self).__init__(lvl, loc, properties)
         self.max_speed = 0
+
+    def anim_dict(self):
+        animTypes = {
+            'idle_right': [72, 64, 0.175, True, 0],
+            'walk_right': [72, 64, 0.175, True, 64]
+        }
+        return animTypes
 
     def talk(self, screen):
         speech = "This is a test, it needs to be really long to test out what I want to test in the thest so I made" \

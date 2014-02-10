@@ -51,40 +51,71 @@ class Walker(Monster):
     def __init__(self, lvl, loc, properties, *groups):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/sprites/walker.png').convert_alpha()
-        self.animTypes = 'idle_right blank1_right blank2_right blank3_right damage_right dead_right' \
-                         'something_right'.split()
+        self.animTypes = self.anim_dict()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 32)
-        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 32, 32)
+        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes)
         super(Walker, self).__init__(lvl, loc, properties)
         self.hp = 2
         self.jump_hit = 18
+        
+    def anim_dict(self):
+        animTypes = {
+            'idle_right': [32, 32, 0.175, True, 0],
+            'blank1_right': [32, 32, 0.175, True, 32],
+            'blank2_right': [32, 32, 0.175, True, 64],
+            'blank3_right': [32, 32, 0.175, True, 96],
+            'damage_right': [32, 32, 0.175, False, 128],
+            'dead_right': [32, 32, 0.175, False, 160]
+        }
+        return animTypes
 
 
 class Standing(Monster):
     def __init__(self, lvl, loc, properties, *groups):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/sprites/stander.png').convert_alpha()
-        self.animTypes = 'idle_right blank1_right blank2_right blank3_right damage_right dead_right' \
-                         'something_right'.split()
+        self.animTypes = self.anim_dict()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 32)
-        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 32, 32)
+        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes)
         super(Standing, self).__init__(lvl, loc, properties)
         self.max_speed = 0
         self.hp = 5
         self.jump_hit = 18
+        
+    def anim_dict(self):
+        animTypes = {
+            'idle_right': [32, 32, 0.175, True, 0],
+            'blank1_right': [32, 32, 0.175, True, 32],
+            'blank2_right': [32, 32, 0.175, True, 64],
+            'blank3_right': [32, 32, 0.175, True, 96],
+            'damage_right': [32, 32, 0.175, False, 128],
+            'dead_right': [32, 32, 0.175, False, 160]
+        }
+        return animTypes
 
 
 class Jumper(Monster):
     def __init__(self, lvl, loc, properties, *groups):
         super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/sprites/jumper.png').convert_alpha()
-        self.animTypes = 'idle_right blank1_right blank2_right blank3_right damage_right dead_right' \
-                         'something_right'.split()
+        self.animTypes = self.anim_dict()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 32)
-        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, 32, 32)
+        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes)
         super(Jumper, self).__init__(lvl, loc, properties)
         self.hp = 2
         self.jump_hit = 18
+        
+    def anim_dict(self):
+        animTypes = {
+            'idle_right': [32, 32, 0.175, True, 0],
+            'blank1_right': [32, 32, 0.175, True, 32],
+            'blank2_right': [32, 32, 0.175, True, 64],
+            'blank3_right': [32, 32, 0.175, True, 96],
+            'damage_right': [32, 32, 0.175, False, 128],
+            'dead_right': [32, 32, 0.175, False, 160],
+            'something_right': [32, 32, 0.175, False, 192]
+        }
+        return animTypes
 
     def update(self, dt, lvl, key, joy, screen, keys):
         super(Jumper, self).update(dt, lvl, key, joy, screen, keys)

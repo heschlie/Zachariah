@@ -43,10 +43,12 @@ def load():
         lvl.tilemap.update(dt, lvl, key, joysticks, screen, keys)
         lvl.parallax.update(dt, lvl, key, joysticks, screen, keys)
         screen.fill((0, 191, 255))
+
         for i, para in enumerate(lvl.parallax):
             if para.name == i:
                 screen.blit(para.image, (para.rect.x, para.rect.y))
                 screen.blit(para.image, (para.rect.x - para.rect.width, para.rect.y))
+
         lvl.tilemap.draw(screen)
         lvl.tilemap.layers['foreground'].draw(screen)
 
@@ -69,12 +71,6 @@ class Level(object):
         self.tilemap = tmx.load(self.level, screen.get_size())
         #self.background1 = pygame.image.load('background1.png').convert_alpha()
         os.chdir('../..')
-
-        #Loading the parallaxed background layers
-        self.parallax = pygame.sprite.Group()
-        for i, para in para_layers.items():
-            parallax.ParaLayer(para, (0, self.tilemap.view_h), para_speed[i], i, self.parallax)
-        #self.tilemap.layers.append(self.parallax)
 
         #Loading platforms, this needs to come before the player so the player is drawn on top
         #of the platform sprites, and so he will move with the platforms
@@ -115,15 +111,10 @@ class Level(object):
             monsters[enemy.properties['enemy']](self, (enemy.px, enemy.py), enemy.properties, self.enemies)
         self.tilemap.layers.append(self.enemies)
 
-        #self.parallax = tmx.SpriteLayer()
-        # self.para_images = []
-        # p = 0
-        # for para in para_layers:
-        #     self.para_images[p] = pygame.image.load(para).convert_alpha()
-        #     p += 1
-
-        #for test in self.enemies.__iter__():
-        #    print test.rect
+        #Loading the parallaxed background layers
+        self.parallax = pygame.sprite.Group()
+        for i, para in para_layers.items():
+            parallax.ParaLayer(para, (0, self.tilemap.view_h), para_speed[i], i, self.parallax)
         
     def get_rect_dict(self, cells_dict):
         rect_dict = {}

@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="2fa989b9-0f47-4681-b67b-4f53d994578f" name="Default" comment="updating gitignore">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/levels/test/background1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/sprites/fire.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/levels/test/frill - environmental.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/levels/test/frill - forest charred.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/levels/test/frill - forest-1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/levels/test/frill - forest.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/backgrounds/mid-BG - forest.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/backgrounds/mid-BG - forest2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/levels/test/solids - grass charred.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/levels/test/solids - grass2.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Zachariah.iws" />
@@ -15,7 +24,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1392073831936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zachariah$main.coverage" NAME="main Coverage Results" MODIFIED="1392216942478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$character.coverage" NAME="character Coverage Results" MODIFIED="1387935604072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$level.coverage" NAME="level Coverage Results" MODIFIED="1388896240668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zachariah$controller_test.coverage" NAME="controller_test Coverage Results" MODIFIED="1387255322852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -79,10 +88,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="parallax.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="parallax.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/parallax.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="23" column="48" selection-start="982" selection-end="982" vertical-scroll-proportion="0.3108108" vertical-offset="0" max-vertical-offset="1258">
+                <state line="10" column="17" selection-start="356" selection-end="356" vertical-scroll-proportion="0.13513513" vertical-offset="0" max-vertical-offset="1258">
                   <folding />
                 </state>
               </provider>
@@ -139,10 +148,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="level.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="level.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/level.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="84" column="99" selection-start="2825" selection-end="2825" vertical-scroll-proportion="0.13513513" vertical-offset="1088" max-vertical-offset="2346">
+                <state line="106" column="0" selection-start="4039" selection-end="4039" vertical-scroll-proportion="0.43243244" vertical-offset="1088" max-vertical-offset="2346">
                   <folding />
                 </state>
               </provider>
@@ -256,20 +265,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zachariah" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zachariah" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -284,7 +279,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="468" />
-    <property name="options.lastSelected" value="editor" />
+    <property name="options.lastSelected" value="vcs.Git" />
     <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
@@ -848,14 +843,19 @@
       <created>1392073900162</created>
       <updated>1392073900162</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="updating gitignore">
+      <created>1392216702630</created>
+      <updated>1392216702630</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -870,7 +870,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3995327" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -909,7 +908,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Started getting a dialog box working for the dino, still needs work will send the game into an infinte while loop if brought up." />
     <MESSAGE value="Dialog box is now working, it pauses the game for 5 seconds after finishing blitting all of the text to the screen, this will be changed for a waiting for user input, and if there is more text put a small icon to indicate there is more text and wait for user input" />
     <MESSAGE value="Adding Fonts dir to repo" />
     <MESSAGE value="Changed dialog to clear upon user input, right now it will clear on space, enter, or button A or button B on on xbox controller" />
@@ -934,7 +932,8 @@
     <MESSAGE value="Setting up the parallax layers to be replicated end to end to be wider than the level.  Layers don't move exactly the same amount left and right as the player speed varies, so the images shift from their origin a bit.  This presents a bigger problem for the parallax effect on the Y axis as the images shift down and eventually disappear." />
     <MESSAGE value="Updated get_images method, now takes a dict built in each class that will create the dict, dict is built in the method anim_dict and each value is a list that is [width, height, duration, loop, y_in_sheet]" />
     <MESSAGE value="Tinkering with parallax layers, right now it is hit or miss if they are drawn due to the lack of ordering of dicts, will need to remedy this by forcing the layers to draw at the right moments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tinkering with parallax layers, right now it is hit or miss if they are drawn due to the lack of ordering of dicts, will need to remedy this by forcing the layers to draw at the right moments" />
+    <MESSAGE value="updating gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -945,13 +944,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/player.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="55" selection-start="1478" selection-end="1478" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="5015">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dict_dump.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="1" selection-start="379" selection-end="379" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="425">
@@ -1286,16 +1278,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parallax.py">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="48" selection-start="982" selection-end="982" vertical-scroll-proportion="0.3108108" vertical-offset="0" max-vertical-offset="1258">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="22100">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/level.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="99" selection-start="2825" selection-end="2825" vertical-scroll-proportion="0.13513513" vertical-offset="1088" max-vertical-offset="2346">
+        <state line="106" column="0" selection-start="4039" selection-end="4039" vertical-scroll-proportion="0.43243244" vertical-offset="1088" max-vertical-offset="2346">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parallax.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="17" selection-start="356" selection-end="356" vertical-scroll-proportion="0.13513513" vertical-offset="0" max-vertical-offset="1258">
           <folding />
         </state>
       </provider>

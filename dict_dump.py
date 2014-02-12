@@ -15,6 +15,6 @@ levels = {
     'test': {
         'name': 'test',
         'para': {0: 'images/backgrounds/mid-BG - forest.png', 1: 'images/backgrounds/mid-BG - forest2.png'},
-        'para_speed': {0: 3, 1: 1.5}
+        'para_speed': {0: 4, 1: 2}
     }
 }

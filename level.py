@@ -44,10 +44,6 @@ def load():
         lvl.parallax.update(dt, lvl, key, joysticks, screen, keys)
         screen.fill((0, 191, 255))
 
-        # for i, para in enumerate(lvl.parallax):
-        #     if para.name == i:
-        #         screen.blit(para.image, (para.rect.x, para.rect.y))
-        #         screen.blit(para.image, (para.rect.x - para.rect.width, para.rect.y))
         for key in sorted(lvl.para_layers_dict.keys()):
             para = lvl.para_layers_dict[key]
             screen.blit(para.image, (para.rect.x, para.rect.y))

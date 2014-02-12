@@ -1,61 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="46" height="28" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="test" tilewidth="32" tileheight="32">
-  <image source="test.png" width="192" height="128"/>
- </tileset>
- <tileset firstgid="25" name="mobs" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="250" height="50" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="background1" value="background1.png"/>
+ </properties>
+ <tileset firstgid="1" name="triggers" tilewidth="32" tileheight="32">
   <image source="triggers.png" width="192" height="32"/>
-  <tile id="1">
-   <properties>
-    <property name="enemy" value=""/>
-   </properties>
-  </tile>
  </tileset>
- <layer name="terrain" width="46" height="28">
+ <tileset firstgid="7" name="solids - grass2" tilewidth="32" tileheight="32">
+  <image source="solids - grass2.png" width="256" height="320"/>
+ </tileset>
+ <tileset firstgid="87" name="solids - grass charred" tilewidth="32" tileheight="32">
+  <image source="solids - grass charred.png" width="256" height="320"/>
+ </tileset>
+ <tileset firstgid="167" name="frill - forest" tilewidth="32" tileheight="32">
+  <image source="frill - forest.png" width="800" height="600"/>
+ </tileset>
+ <tileset firstgid="617" name="frill - forest charred" tilewidth="32" tileheight="32">
+  <image source="frill - forest charred.png" width="800" height="600"/>
+ </tileset>
+ <tileset firstgid="1067" name="frill - environmental" tilewidth="32" tileheight="32">
+  <image source="frill - environmental.png" width="480" height="256"/>
+ </tileset>
+ <layer name="terrain_bg" width="250" height="50">
   <data encoding="base64" compression="zlib">
-   eJztkEsKwCAMBdNapPc/sYp1W4KfVykzMJsskiFmAP8lfh3QQTS6ldCthW4tdGuhWwvdWujWQrf/3qw9O//7zp5WG0P2euYrusutY4Kt901vj2cXIo6bAMcJBm0=
+   eJzt2DlOAzEUgGFHORHLXZBoQJQ0WRqWACdhr9nOw34U3hQIOpjEGSvj75P+1nrN03icEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMu2NkxpPdqINoelpwGgjVHpAYB/a/Z1HG21bFJiWKpwHnf/i+gyuoquo5vodoX+CebZq5PoNDrLPMtOsq/Mp+13oRbf+73IXs1S3p3fzXAGP+6i++gheoyeyo5DD+Te+T54HqT0Er1Gb9F79BF9DhY/exRnjKNJNM1wHqvhoPQAvzQ7X/NdCXJqdvswOoqOC88CtNe8Sf31lmC38/GvQde2o2npISrjfYGu7ZUeoHKz0gNQhf3SAwBL5c4O/efODgDQjS+pQTSq
   </data>
  </layer>
- <layer name="Tile Layer 2" width="46" height="28">
+ <layer name="background" width="250" height="50">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgiD/r25IQAEAAAAArwYUIAAB
+   eJzt00tOU2EAhuEj7UhQNiFi4g5MrCAwVEEZeoUdgaxBlMsaFFDXAFp1DV5QZ3yNDCRyoJ34k8PzJG/O4D9t/jb5qgoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgFI67aq6lSbapW8C/G1pqKqW0/O0MnT8O9fbR5917uT8brpn53CmrGXb62kjbdbs/Eb76LPOw5w/So8btPPJ/JbbaarP39R7bzrNNOg/+B9epNX0Mr1Ka2Wv0zg72fbb9C69r9n5eTabvc6l+33utvfegzRv5wN5nd6krbSddorepnm62fan9Dl9sfN/PMlen6Znfe62995CWrTzgeymvfQhfUzdstdpnP1s+2f6lX7bOYV8Td/S9/Qj7Ze9DjCAmxdOPu8cng/nOZIupctptOZzU6d83+Qp50A5V7LPsXQ1jadr9goAAHDmXGz9eY60yt4DAKCJDgCaEyup
   </data>
  </layer>
- <objectgroup name="spawns" width="46" height="28">
-  <object name="Player" x="130" y="546" width="31" height="28">
+ <layer name="background2" width="250" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt2clvlHUAh/F36JEd/BPYlwOC4AU0HmX1BCEhGBfQXoBeZFfxwJYI3gWnhYRFES8KtJAAdcGLyqIJXWjxAtpWEtqy6AGfCWkYmhlm3pl5Z4a3zyd5QiDlN78m822n0yCQJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEVtVk0QvEizaU5NpW8jKQqvs+2FtIgWu/NYWVfpC6hqvM2236F3aY07r0qpva6n5SHbUInL6pl2DguCXbSb9tDeYeV53K1sexttpw/z2Pmn3Gsf7afPMtzxc844QAfpC0pSPTU8R19DCtnVVtpG20t8l9XB472uKDBVlySbqacGOkSHI9x52O8L6Y5wr6N0jI5nuOO37Pk7OkWn6Qw1UlNEO3+Jc+fSPHq5yMcY2Hcxu9oSlHbzbxZxl+d150foKB2j4/RlCc/+ik7Q13SSvinh2fk4w2YaqYnO0rkId54MWbrz3OsCXaTmDHf8ha39Sr/RZbpCV+laRDtfwrlLaRm9UeRjFLOnqDZf7B2qTUsiCFqpjdrpBnVQZ+LJx5ynC3SRmun7PM9exxnraQPVJTJ/zA/0I/1El+jnQj+RZ5jPYy+gVzLc4QqbuUrX6Hf6I8+dP0p9HM/vRIjneDJk6a7zeC3USm0Z7niLe9ymv+hv6qJu6olo52s59z16n2oHPcYHIc8q9c4Hbz7Xa6Uo7lRtennu91E/3aP79IAepm3iOrVQK7VRe55n7+KM3bSH9mbZ+Q3qoE66SX8W+okUqIvNdFMP/UN3yvTzeVh3uVcv9VF/he84nF1/RB/TDvqk5vG2N9Im2lzZ65XE2iBeOx/Bc2YkjaLRNIbG0ri059Jd6qU+6qd7eZ5dz7Yb6BAdzrLz+/SAHtK/9F/Bn4miknpPKtd7Caltr0orDsq582J/1ngtbV+vZtjaRPY8iSbTFJpK02h62s6H8/9G0EgaRaMHnTPwunh+4unXyI3URGfpXJbXzmP4+1gaR+PphSxfD1QZK6kueHrDuYqrcn0/L/V7ivmawPYm0iSaTFNKuMWpnDWNptMMmunOq8pbQbiNu/PcOw/7/oIUtdrAnQ/ItOMwO4/Lz/qKl7Cv2eMuyt8LuHNVSpjX7EOFO1bc1Gb591WD/hxK3Lbipq7SF1Be/gdGCivZ
+  </data>
+ </layer>
+ <layer name="terrain" width="250" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt28lu1EAUheErZUF2CSuWwFMxSoyBMIOYCbBh2DFsmFaYN+WWWiU5lepyufva1+38n3RW6djVtk+qY1eLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIC9fc05zS3vgQAYzDfNec19zVvNO8171xEBsPZL81sWXY95JszvwNz8kcM9D3mqueQ5KACm/snROT3khuegAJi7LUd7fs91RACs5Xr+0HVEAKzRc2D+cj3fE+67A3OS6zldB+ZlWc/pOjAfpZ7H9XKX3UYHwEJXz0Nuuo0OgIWanoc5PXznhXXwwDAeaR7LomcxzzUvjLZf0/M0B8L/7RjOFbFde31Rpnu9xn4/kXzXwndOLPq+Ss9Dfma2Fc6P97x/ymGfOac1ZzQnOrKztchuZdp/771ycutwrLd/VWzXXl+XxT3l9j6mcmyX9du675Y9T7d1kLynMYzV8x0p9/esZnvCaUZO7X7j6yzXXt/N7GeVa34KCX0PXXrQ8xgM2fM0Yxij56Hju+Lf1U3od01y47R6znNBcyfZn3dXLdJ3zWpNzz9o/ib5scK2uj7Dbko2tePbrXPRTCSlsVo857mW2ad3R4fo+b6U5/hl3Qzd/qj5pPlc+P2abcV4X+PHObnz0TildsxhTl/n/lm4X5TO5SHeHbVI+nnnu+Tn3vbP07n6i+Zr8Qjm0fPppXQ+GofUjju+fk/633+K97BzHQ/x7qhVvNa10PPppOsaaUbIOuNPtxXu6Zae47zUvNK81rzpGJd3P61iuVa1ffxqnofQ82n3e6yer/s+StuO95zb6ep2O979tMy6c3rX8/tV4t2B45A+56MxjPX7sBxbGu9uWiauVR36+X2f/Ad/eiuY
+  </data>
+ </layer>
+ <objectgroup name="spawns" width="250" height="50">
+  <object gid="1" x="97" y="1375">
    <properties>
-    <property name="player" value="yes"/>
-   </properties>
-  </object>
-  <object gid="26" x="1378" y="483">
-   <properties>
-    <property name="enemy" value="mob1"/>
-   </properties>
-  </object>
-  <object gid="26" x="1187" y="613">
-   <properties>
-    <property name="enemy" value="mob3"/>
-   </properties>
-  </object>
-  <object gid="26" x="1278" y="291">
-   <properties>
-    <property name="enemy" value="foo"/>
-   </properties>
-  </object>
-  <object gid="26" x="497" y="616">
-   <properties>
-    <property name="enemy" value="mob5"/>
-   </properties>
-  </object>
-  <object gid="26" x="686" y="444">
-   <properties>
-    <property name="enemy" value="mob1"/>
-   </properties>
-  </object>
-  <object gid="26" x="967" y="387">
-   <properties>
-    <property name="enemy" value="bar"/>
+    <property name="player" value=""/>
    </properties>
   </object>
  </objectgroup>
+ <layer name="foreground" width="250" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt1bcNAkEURdHdGNcEriKgQ1wTuCZwTeBiXgGIALGa5BzpJhO95GuqCgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgnHlapGVapXXZOUADNmmbdmmfDkXXAE04plM6p0u6lp0DNOCW7umRnulVdg7QgFZdVe3USd3Uq0svAn4xye1O0+zDDffzNkjDNEpjdw4ARXz7rwEAAAAAAODf3oZGEzw=
+  </data>
+ </layer>
+ <objectgroup name="platforms" width="250" height="50"/>
 </map>

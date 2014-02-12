@@ -2,6 +2,9 @@ import pygame
 import player
 import platform
 import monster
+import npc
+import parallax
+import dict_dump
 import sys
 from pygame.locals import *
 import tmx
@@ -13,9 +16,13 @@ def load():
     
     pygame.init()
     screen = pygame.display.get_surface()
+
+    monsters = dict_dump.monsters
+    friendies = dict_dump.npc
+    lvl_dict = dict_dump.levels
     
     clock = pygame.time.Clock()
-    lvl = Level(screen, 'beta')
+    lvl = Level(screen, lvl_dict['test'], monsters, friendies)
 
     joysticks = []
     for i in range(0, pygame.joystick.get_count()):
@@ -24,44 +31,45 @@ def load():
 
     #Main Loop
     while True:
-    #     if lvl.hero.dead:
-    #        break
+        if lvl.hero.dead:
+            break
         keys = pygame.event.get()
         for event in keys:
             if event.type == QUIT or (event.type == KEYUP and event.key == K_ESCAPE):
                 pygame.quit()
                 sys.exit()
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    lvl.hero.jump()
-            elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_SPACE:
-                    lvl.hero.jump_cut()
-            elif event.type == JOYBUTTONDOWN:
-                if event.button == 0:
-                    lvl.hero.jump()
-            elif event.type == JOYBUTTONUP:
-                if event.button == 0:
-                    lvl.hero.jump_cut()
 
         key = pygame.key.get_pressed()
-        lvl.tilemap.update(dt, lvl, key, joysticks, screen)
-        screen.fill((0, 100, 0))
-        lvl.tilemap.draw(screen)
-        pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah", clock.get_fps()))
+        lvl.tilemap.update(dt, lvl, key, joysticks, screen, keys)
+        lvl.parallax.update(dt, lvl, key, joysticks, screen, keys)
+        screen.fill((0, 191, 255))
 
+        for i, para in enumerate(lvl.parallax):
+            if para.name == i:
+                screen.blit(para.image, (para.rect.x, para.rect.y))
+                screen.blit(para.image, (para.rect.x - para.rect.width, para.rect.y))
+
+        lvl.tilemap.draw(screen)
+        lvl.tilemap.layers['foreground'].draw(screen)
+
+        pygame.display.set_caption("{} - FPS: {:.2f}".format("Zachariah", clock.get_fps()))
         pygame.display.update()
         clock.tick(dt)
 
 
 class Level(object):
-    def __init__(self, screen, name):
+    def __init__(self, screen, lvl_dict, monsters, friendlies):
         """Loading the level files, changing the CWD to match the files for loading,
         This was easier than having to edit the .tmx file every time it needed to
         be edited."""
+        name = lvl_dict['name']
+        para_layers = lvl_dict['para']
+        para_speed = lvl_dict['para_speed']
+
         os.chdir('levels/%s/' % name)
         self.level = "%s.tmx" % name
         self.tilemap = tmx.load(self.level, screen.get_size())
+        #self.background1 = pygame.image.load('background1.png').convert_alpha()
         os.chdir('../..')
 
         #Loading platforms, this needs to come before the player so the player is drawn on top
@@ -69,46 +77,57 @@ class Level(object):
         self.platforms = tmx.SpriteLayer()
         for plat in self.tilemap.layers['platforms'].find('platform'):
             platform.Platform((plat.px, plat.py), self.platforms)
-        self.tilemap.layers.append(self.platforms)        
+        self.tilemap.layers.append(self.platforms)
+
+        #Load in NPCs
+        self.npc = tmx.SpriteLayer()
+        for npcs in self.tilemap.layers['spawns'].find('npc'):
+            friendlies[npcs.properties['npc']](self, (npcs.px, npcs.py), npcs.properties, self.npc)
+        self.tilemap.layers.append(self.npc)
         
         #Loading the 'hero' into the level, and adding him/her to the self.sprites group
         self.sprites = tmx.SpriteLayer()
         self.start_cell = self.tilemap.layers['spawns'].find('player')[0]
-        self.hero = player.Player(self, (self.start_cell.px, self.start_cell.py), self.sprites)
-        #self.hero_ear = player.Ears(self, (self.start_cell.px, self.start_cell.py), self.sprites)
+        hero_spawn = self.tilemap.layers['spawns'].find('player')[0]
+        self.hero = player.Player(self, (self.start_cell.px, self.start_cell.py), hero_spawn.properties, self.sprites)
         self.tilemap.layers.append(self.sprites)
         
         #Cell, rect, and mask dicts
         self.cell_size = (self.tilemap.layers['terrain'].tile_width, self.tilemap.layers['terrain'].tile_height)
         self.cells_dict = self.tilemap.layers['terrain'].cells
-        self.height_dict = self.gen_height_map()
-        self.rect_dict = self.get_rect_dict()
-        self.mask_dict = self.make_mask_dict()
+        self.height_dict = self.gen_height_map(self.cells_dict)
+        self.rect_dict = self.get_rect_dict(self.cells_dict)
+        self.mask_dict = self.make_mask_dict(self.cells_dict)
+
+        #Same for the terrain-bg layer
+        self.cell_bg_dict = self.tilemap.layers['terrain_bg'].cells
+        self.bg_height_dict = self.gen_height_map(self.cell_bg_dict)
+        self.bg_rect_dict = self.get_rect_dict(self.cell_bg_dict)
+        self.bg_mask_dict = self.make_mask_dict(self.cell_bg_dict)
 
         #Load the monsters.  Set the value of the enemy property to the class you wish to make a monster from
         self.enemies = tmx.SpriteLayer()
         for enemy in self.tilemap.layers['spawns'].find('enemy'):
-            if enemy.properties['enemy'] == 'walker':
-                monster.Walker(self, (enemy.px, enemy.py), self.enemies)
-            if enemy.properties['enemy'] == 'standing':
-                monster.Standing(self, (enemy.px, enemy.py), self.enemies)
+            monsters[enemy.properties['enemy']](self, (enemy.px, enemy.py), enemy.properties, self.enemies)
         self.tilemap.layers.append(self.enemies)
+
+        #Loading the parallaxed background layers
+        self.parallax = pygame.sprite.Group()
+        for i, para in para_layers.items():
+            parallax.ParaLayer(para, (0, self.tilemap.view_h), para_speed[i], i, self.parallax)
         
-        #for test in self.enemies.__iter__():
-        #    print test.rect
-        
-    def get_rect_dict(self):
+    def get_rect_dict(self, cells_dict):
         rect_dict = {}
-        for coord, cell in self.cells_dict.items():
+        for coord, cell in cells_dict.items():
             rect_dict[coord] = cell.tile.surface.get_rect(x=coord[0] * self.cell_size[0],
                                                           y=coord[1] * self.cell_size[1])
         return rect_dict
 
-    def gen_height_map(self):
+    def gen_height_map(self, cells_dict):
         height_dict = {}
         test_mask = pygame.Mask((1, self.tilemap.layers['terrain'].tile_height))
         test_mask.fill()
-        for coord, cell in self.cells_dict.items():
+        for coord, cell in cells_dict.items():
             heights = []
             mask = pygame.mask.from_surface(cell.tile.surface)
             for i in range(cell.tile.surface.get_width()):
@@ -117,8 +136,8 @@ class Level(object):
             height_dict[coord] = heights
         return height_dict
     
-    def make_mask_dict(self):
+    def make_mask_dict(self, cells_dict):
         mask_dict = {}
-        for i, cell in self.cells_dict.items():
+        for i, cell in cells_dict.items():
             mask_dict[i] = pygame.mask.from_surface(cell.tile.surface)
         return mask_dict

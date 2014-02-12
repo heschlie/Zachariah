@@ -10,6 +10,9 @@ import pygame
 from pygame.locals import *
 from pygame import Rect
 from xml.etree import ElementTree
+import base64
+import zlib
+import level
 
 
 class Tile(object):
@@ -88,8 +91,8 @@ class Tileset(object):
         if not image:
             sys.exit("Error creating new Tileset: file %s not found" % file)
         id = self.firstgid
-        for line in xrange(image.get_height() / self.tile_height):
-            for column in xrange(image.get_width() / self.tile_width):
+        for line in range(image.get_height() // self.tile_height):
+            for column in range(image.get_width() // self.tile_width):
                 pos = Rect(column * self.tile_width, line * self.tile_height,
                     self.tile_width, self.tile_height)
                 self.tiles.append(Tile(id, image.subsurface(pos), self))
@@ -252,7 +255,8 @@ class Layer(object):
             raise ValueError('layer %s does not contain <data>' % layer.name)
 
         data = data.text.strip()
-        data = data.decode('base64').decode('zlib')
+        data = base64.b64decode(data)
+        data = zlib.decompress(data)
         data = struct.unpack('<%di' % (len(data)/4,), data)
         assert len(data) == layer.width * layer.height
         for i, gid in enumerate(data):
@@ -629,6 +633,13 @@ class SpriteLayer(pygame.sprite.AbstractGroup):
         for sprite in self.sprites():
             sx, sy = sprite.rect.topleft
             screen.blit(sprite.image, (sx-ox, sy-oy))
+            # adding below to draw the wall and floor detectors
+            if sprite.floor_detect_rects:
+                for detector in sprite.floor_detect_rects:
+                    screen.fill((255, 0, 0), ((detector.x-ox, detector.y-oy), (detector.width, detector.height)))
+                screen.fill((0, 255, 0), ((sprite.wall_detect_rect.x-ox, sprite.wall_detect_rect.y-oy),
+                                          (sprite.wall_detect_rect.width, sprite.wall_detect_rect.height)))
+
 
 class Layers(list):
     def __init__(self):
@@ -670,13 +681,14 @@ class TileMap(object):
         viewport - a Rect instance giving the current viewport specification
 
     '''
+
     def __init__(self, size, origin=(0,0)):
         self.px_width = 0
         self.px_height = 0
         self.tile_width = 0
         self.tile_height = 0
         self.width = 0
-        self.height  = 0
+        self.height = 0
         self.properties = {}
         self.layers = Layers()
         self.tilesets = Tilesets()

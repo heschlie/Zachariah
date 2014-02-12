@@ -1,4 +1,4 @@
 import main
 
 def settingsMenu(foo):
-    print foo
+    print('foo')

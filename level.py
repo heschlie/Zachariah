@@ -44,10 +44,14 @@ def load():
         lvl.parallax.update(dt, lvl, key, joysticks, screen, keys)
         screen.fill((0, 191, 255))
 
-        for i, para in enumerate(lvl.parallax):
-            if para.name == i:
-                screen.blit(para.image, (para.rect.x, para.rect.y))
-                screen.blit(para.image, (para.rect.x - para.rect.width, para.rect.y))
+        # for i, para in enumerate(lvl.parallax):
+        #     if para.name == i:
+        #         screen.blit(para.image, (para.rect.x, para.rect.y))
+        #         screen.blit(para.image, (para.rect.x - para.rect.width, para.rect.y))
+        for key in sorted(lvl.para_layers_dict.keys()):
+            para = lvl.para_layers_dict[key]
+            screen.blit(para.image, (para.rect.x, para.rect.y))
+            screen.blit(para.image, (para.rect.x - para.rect.width, para.rect.y))
 
         lvl.tilemap.draw(screen)
         lvl.tilemap.layers['foreground'].draw(screen)
@@ -112,9 +116,12 @@ class Level(object):
         self.tilemap.layers.append(self.enemies)
 
         #Loading the parallaxed background layers
+        self.para_layers_dict = {}
         self.parallax = pygame.sprite.Group()
         for i, para in para_layers.items():
             parallax.ParaLayer(para, (0, self.tilemap.view_h), para_speed[i], i, self.parallax)
+        for para in self.parallax:
+            self.para_layers_dict[para.name] = para
         
     def get_rect_dict(self, cells_dict):
         rect_dict = {}

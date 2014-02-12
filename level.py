@@ -46,8 +46,7 @@ def load():
 
         for key in sorted(lvl.para_layers_dict.keys()):
             para = lvl.para_layers_dict[key]
-            screen.blit(para.image, (para.rect.x, para.rect.y))
-            screen.blit(para.image, (para.rect.x - para.rect.width, para.rect.y))
+            para.para_blit(screen, lvl)
 
         lvl.tilemap.draw(screen)
         lvl.tilemap.layers['foreground'].draw(screen)

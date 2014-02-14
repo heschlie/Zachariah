@@ -14,7 +14,8 @@ npc = {
 levels = {
     'test': {
         'name': 'test',
-        'para': {0: 'images/backgrounds/mid-BG - forest.png', 1: 'images/backgrounds/mid-BG - forest2.png'},
-        'para_speed': {0: 4, 1: 2}
+        'para': {0: 'images/backgrounds/clouds.png', 1: 'images/backgrounds/mid-BG - forest.png', 2: 'images/backgrounds/mid-BG - forest2.png'},
+        'para_speed': {0: 6, 1: 4, 2: 2},
+        'para_start': {0: (0, 100), 1: (0, 720), 2: (0, 720) }
     }
 }

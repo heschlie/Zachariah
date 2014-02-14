@@ -64,6 +64,7 @@ class Level(object):
         name = lvl_dict['name']
         para_layers = lvl_dict['para']
         para_speed = lvl_dict['para_speed']
+        para_start = lvl_dict['para_start']
 
         os.chdir('levels/%s/' % name)
         self.level = "%s.tmx" % name
@@ -114,10 +115,10 @@ class Level(object):
         self.para_layers_dict = {}
         self.parallax = pygame.sprite.Group()
         for i, para in para_layers.items():
-            parallax.ParaLayer(para, (0, self.tilemap.view_h), para_speed[i], i, self.parallax)
+            parallax.ParaLayer(para, para_start[i], para_speed[i], i, self.parallax)
         for para in self.parallax:
             self.para_layers_dict[para.name] = para
-        
+
     def get_rect_dict(self, cells_dict):
         rect_dict = {}
         for coord, cell in cells_dict.items():

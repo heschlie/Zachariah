@@ -40,6 +40,7 @@ def load():
                 sys.exit()
 
         key = pygame.key.get_pressed()
+        print(lvl.tilemap.viewport.y)
         lvl.tilemap.update(dt, lvl, key, joysticks, screen, keys)
         lvl.parallax.update(dt, lvl, key, joysticks, screen, keys)
         screen.fill((0, 191, 255))

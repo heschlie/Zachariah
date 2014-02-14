@@ -12,15 +12,14 @@ class ParaLayer(pygame.sprite.Sprite):
         self.name = i
 
     def update(self, dt, lvl, key, joysticks, screen, keys):
-        self.move(lvl, screen)
+        self.move(lvl)
 
-    def move(self, lvl, screen):
+    def move(self, lvl):
         if lvl.tilemap.viewport.x > 0 and lvl.tilemap.viewport.x < lvl.tilemap.px_width - lvl.tilemap.view_w:
             self.rect.x = (lvl.tilemap.viewport.x // self.speed) * -1
         # if lvl.tilemap.viewport.y > 0 and lvl.tilemap.viewport.y < lvl.tilemap.px_height - lvl.tilemap.view_h:
-        #     dist = ((lvl.tilemap.viewport.y) // self.speed)
-        #     self.rect.y = dis
-        # t
+        #     dist = ((lvl.tilemap.viewport.y + (lvl.tilemap.px_height // 3)) // self.speed)
+        #     self.rect.y = dist
 
     def para_blit(self, screen, level):
         repeat = level.tilemap.px_width // self.rect.width

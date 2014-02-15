@@ -230,7 +230,7 @@ class Character(pygame.sprite.Sprite):
                 stop_fall = True
                 self.platform = True
             if not self.drop:
-                if self.collide_with_bg(level, rect, mask, [0, int(self.y_vel)]):
+                if self.collide_with_bg(level, rect, mask, [0, int(self.y_vel)]) and self.y_vel > 0:
                     offset = [0, int(self.y_vel)]
                     self.y_vel = self.adjust_pos_bg(level, rect, mask, offset, 1)
                     stop_fall = True

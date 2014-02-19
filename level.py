@@ -69,7 +69,6 @@ class Level(object):
         os.chdir('levels/%s/' % name)
         self.level = "%s.tmx" % name
         self.tilemap = tmx.load(self.level, screen.get_size())
-        #self.background1 = pygame.image.load('background1.png').convert_alpha()
         os.chdir('../..')
 
         #Loading platforms, this needs to come before the player so the player is drawn on top

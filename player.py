@@ -22,6 +22,8 @@ class Player(Character):
         self.run = False
 
     def anim_dict(self):
+        # Dict for get_images method, the key is the name of the animation, the list is [width, height,
+        # speed, loop, Y in sheet]
         animTypes = {
             'idle_right': [42, 64, 0.175, True, 0],
             'walk_right': [42, 64, 0.175, True, 64],

@@ -47,3 +47,8 @@ class Fire(Environment):
         self.sheet = pygame.image.load('images/sprites/fire.png').convert_alpha()
         self.animTypes = 'idle_right'
         #self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, )
+
+
+class Wind(Environment):
+    def __init__(self, lvl, loc, *groups):
+        super(Character).__init__(*groups)

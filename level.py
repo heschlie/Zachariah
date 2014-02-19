@@ -42,7 +42,7 @@ def load():
         key = pygame.key.get_pressed()
         lvl.tilemap.update(dt, lvl, key, joysticks, screen, keys)
         lvl.parallax.update(dt, lvl, key, joysticks, screen, keys)
-        screen.fill((0, 191, 255))
+        screen.fill(lvl.bg_color)
 
         for key in sorted(lvl.para_layers_dict.keys()):
             para = lvl.para_layers_dict[key]
@@ -61,6 +61,7 @@ class Level(object):
         """Loading the level files, changing the CWD to match the files for loading,
         This was easier than having to edit the .tmx file every time it needed to
         be edited."""
+        self.bg_color = lvl_dict['bg_color']
         name = lvl_dict['name']
         para_layers = lvl_dict['para']
         para_speed = lvl_dict['para_speed']
@@ -114,7 +115,7 @@ class Level(object):
         self.para_layers_dict = {}
         self.parallax = pygame.sprite.Group()
         for i, para in para_layers.items():
-            parallax.ParaLayer(para, para_start[i], para_speed[i], i, self.parallax)
+            parallax.ParaLayer(para, para_start[i], para_speed[i], i, lvl_dict['para_offset'], self.parallax)
         for para in self.parallax:
             self.para_layers_dict[para.name] = para
 

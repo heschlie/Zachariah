@@ -2,7 +2,7 @@ from character import *
 
 
 class ParaLayer(pygame.sprite.Sprite):
-    def __init__(self, image, start, speed, i, *groups):
+    def __init__(self, image, start, speed, i, offset, *groups):
         super(ParaLayer, self).__init__(*groups)
         self.start = start
         self.image = pygame.image.load(image).convert_alpha()
@@ -11,6 +11,7 @@ class ParaLayer(pygame.sprite.Sprite):
         self.speed = speed
         self.floor_detect_rects = False
         self.name = i
+        self.offset = offset
 
     def update(self, dt, lvl, key, joysticks, screen, keys):
         self.move(lvl)

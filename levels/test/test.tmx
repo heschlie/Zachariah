@@ -41,7 +41,7 @@
    eJzt28lu1EAUheErZUF2CSuWwFMxSoyBMIOYCbBh2DFsmFaYN+WWWiU5lepyufva1+38n3RW6djVtk+qY1eLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIC9fc05zS3vgQAYzDfNec19zVvNO8171xEBsPZL81sWXY95JszvwNz8kcM9D3mqueQ5KACm/snROT3khuegAJi7LUd7fs91RACs5Xr+0HVEAKzRc2D+cj3fE+67A3OS6zldB+ZlWc/pOjAfpZ7H9XKX3UYHwEJXz0Nuuo0OgIWanoc5PXznhXXwwDAeaR7LomcxzzUvjLZf0/M0B8L/7RjOFbFde31Rpnu9xn4/kXzXwndOLPq+Ss9Dfma2Fc6P97x/ymGfOac1ZzQnOrKztchuZdp/771ycutwrLd/VWzXXl+XxT3l9j6mcmyX9du675Y9T7d1kLynMYzV8x0p9/esZnvCaUZO7X7j6yzXXt/N7GeVa34KCX0PXXrQ8xgM2fM0Yxij56Hju+Lf1U3od01y47R6znNBcyfZn3dXLdJ3zWpNzz9o/ib5scK2uj7Dbko2tePbrXPRTCSlsVo857mW2ad3R4fo+b6U5/hl3Qzd/qj5pPlc+P2abcV4X+PHObnz0TildsxhTl/n/lm4X5TO5SHeHbVI+nnnu+Tn3vbP07n6i+Zr8Qjm0fPppXQ+GofUjju+fk/633+K97BzHQ/x7qhVvNa10PPppOsaaUbIOuNPtxXu6Zae47zUvNK81rzpGJd3P61iuVa1ffxqnofQ82n3e6yer/s+StuO95zb6ep2O979tMy6c3rX8/tV4t2B45A+56MxjPX7sBxbGu9uWiauVR36+X2f/Ad/eiuY
   </data>
  </layer>
- <objectgroup name="spawns" width="250" height="50">
+ <objectgroup name="spawns" width="250" height="50" visible="0">
   <object gid="1" x="97" y="1375">
    <properties>
     <property name="player" value=""/>
@@ -58,5 +58,5 @@
    eJzt1bcNAkEURdHdGNcEriKgQ1wTuCZwTeBiXgGIALGa5BzpJhO95GuqCgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgnHlapGVapXXZOUADNmmbdmmfDkXXAE04plM6p0u6lp0DNOCW7umRnulVdg7QgFZdVe3USd3Uq0svAn4xye1O0+zDDffzNkjDNEpjdw4ARXz7rwEAAAAAAODf3oZGEzw=
   </data>
  </layer>
- <objectgroup name="platforms" width="250" height="50"/>
+ <objectgroup name="platforms" width="250" height="50" visible="0"/>
 </map>

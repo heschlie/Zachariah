@@ -62,24 +62,24 @@ class Wind(Environment):
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes)
         self.image = self.animSurf['wind'].getCurrentFrame()
         super(Environment, self).__init__(lvl, loc, self.prop, *groups)
-        self.pos_sprite()
+        self.pos_sprite(self.rect)
 
-    def animate(self):
-        self.image = self.animSurf['wind'].getCurrentFrame()
-        if self.animSurf['wind'].isFinished():
-            self.pos_sprite()
+    def animate(self, anim):
+        self.image = anim.getCurrentFrame()
+        if anim.isFinished():
+            self.pos_sprite(self.rect)
             self.conductor.play()
 
-    def pos_sprite(self):
+    def pos_sprite(self, anim_rect):
         random.seed()
         x = random.randint(self.area.x, self.area.x + self.area.width)
         y = random.randint(self.area.y, self.area.y + self.area.height)
-        self.rect.topleft = (x, y)
+        anim_rect.topleft = (x, y)
 
     def push(self, lvl):
         if lvl.hero.rect.colliderect(self.area):
             lvl.hero.rect.x -= 2
 
     def update(self, dt, lvl, key, joy, screen, keys):
-        self.animate()
+        self.animate(self.animSurf['wind'])
         self.push(lvl)

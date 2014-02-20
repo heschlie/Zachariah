@@ -46,6 +46,7 @@ class Character(pygame.sprite.Sprite):
         animSurf = {}
         hitmask_dict = {}
         animFlips = {}
+
         #Use a regex to replace _right with _left
         for i in animTypes:
             s = re.sub(r'_right\b', '_left', i)
@@ -82,6 +83,7 @@ class Character(pygame.sprite.Sprite):
                 hitmask_dict[animFlips[animType]] = hitmask_list_L
             else:
                 animSurf[animType] = pyganim.PygAnimation(placeholder)
+            # y_in_img += height
         #flipping the right animations to create the left ones
         for src in animTypes:
             animSurf[animFlips[src]] = self.flip_anim(animSurf[src])

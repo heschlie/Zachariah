@@ -43,7 +43,7 @@ class Environment(Character):
 
 class Fire(Environment):
     def __init__(self, lvl, loc, *groups):
-        super(Character).__init__(*groups)
+        super(Character, self).__init__(*groups)
         self.sheet = pygame.image.load('images/sprites/fire.png').convert_alpha()
         self.animTypes = 'idle_right'
         #self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes, )
@@ -51,4 +51,8 @@ class Fire(Environment):
 
 class Wind(Environment):
     def __init__(self, lvl, loc, *groups):
-        super(Character).__init__(*groups)
+        super(Character, self).__init__(*groups)
+        self.sheet = pygame.image.load('images/environment/wind.png').convert_alpha()
+        self.animTypes = {'wind': [256, 33, 0.175, False, 0]}
+        self.placeholder = self.sheet.subsurface(0, 0, 256, 33)
+        self.animSurf, self.hitmask_dict = self.get_images(self.sheet, self.animTypes)

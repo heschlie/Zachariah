@@ -6,7 +6,7 @@ class Player(Character):
     def __init__(self, lvl, loc, properties, *groups):
         super(Character, self).__init__(*groups)
         ears_prop = {}
-        self.sheet = pygame.image.load('images/sprites/char.png').convert_alpha()
+        self.sheet = pygame.image.load('images/sprites/char_new.png').convert_alpha()
         animTypes = self.anim_dict()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 64)
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes)
@@ -25,16 +25,16 @@ class Player(Character):
         # Dict for get_images method, the key is the name of the animation, the list is [width, height,
         # speed, loop, Y in sheet]
         animTypes = {
-            'idle_right': [42, 64, 0.175, True, 0],
-            'walk_right': [42, 64, 0.175, True, 64],
-            'run_right': [42, 64, 0.175, True, 128],
-            'jump_right': [42, 64, 0.175, True, 192],
-            'fall_right': [42, 64, 0.175, True, 256],
-            'tred_right': [42, 64, 0.175, True, 320],
-            'swim_right': [42, 64, 0.175, True, 384],
-            'ladder_right': [42, 64, 0.175, True, 448],
-            'stop_right': [42, 64, 0.175, True, 512],
-            'damage_right': [42, 64, 0.175, False, 576]
+            'idle_right': [42, 43, 0.175, True, 0],
+            'walk_right': [42, 43, 0.175, True, 43],
+            'run_right': [42, 43, 0.175, True, 86],
+            'jump_right': [42, 43, 0.175, True, 129],
+            'fall_right': [42, 43, 0.175, True, 172],
+            'tred_right': [42, 43, 0.175, True, 215],
+            'swim_right': [42, 43, 0.175, True, 258],
+            'ladder_right': [42, 43, 0.175, True, 301],
+            'stop_right': [42, 43, 0.175, True, 344],
+            'damage_right': [42, 43, 0.175, False, 387]
         }
         return animTypes
         
@@ -289,4 +289,6 @@ class Ears(Character):
                 self.image = self.animSurf['run_right'].getFrame(frame)
 
     def set_pos(self, loc):
-        self.rect.topleft = loc
+        x = loc[0]
+        y = loc[1] - 21
+        self.rect.topleft = (x, y)

@@ -56,7 +56,6 @@ class Wind(Environment):
         super(Character, self).__init__(*groups)
         self.prop = prop
         self.area = rect
-        print(self.area)
         self.sheet = pygame.image.load('images/environment/wind.png').convert_alpha()
         self.animTypes = {'wind': [256, 33, 0.1, False, 0]}
         self.placeholder = self.sheet.subsurface(0, 0, 256, 33)
@@ -77,5 +76,10 @@ class Wind(Environment):
         y = random.randint(self.area.y, self.area.y + self.area.height)
         self.rect.topleft = (x, y)
 
+    def push(self, lvl):
+        if lvl.hero.rect.colliderect(self.area):
+            lvl.hero.rect.x -= 2
+
     def update(self, dt, lvl, key, joy, screen, keys):
         self.animate()
+        self.push(lvl)

@@ -1,5 +1,6 @@
 import monster
 import npc
+import environment
 
 # Dict of monster classes
 monsters = {
@@ -11,6 +12,10 @@ monsters = {
 # Dict of NPC classes
 npc = {
     'dino_male': npc.DinoMale
+}
+
+env = {
+    'wind': environment.Wind
 }
 
 # Dict of levels and specific values for the level

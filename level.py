@@ -9,6 +9,7 @@ import sys
 from pygame.locals import *
 import tmx
 import os
+import environment
 
 
 def load():
@@ -19,10 +20,11 @@ def load():
 
     monsters = dict_dump.monsters
     friendies = dict_dump.npc
+    env = dict_dump.env
     lvl_dict = dict_dump.levels
     
     clock = pygame.time.Clock()
-    lvl = Level(screen, lvl_dict['test'], monsters, friendies)
+    lvl = Level(screen, lvl_dict['test'], monsters, friendies, env)
 
     joysticks = []
     for i in range(0, pygame.joystick.get_count()):
@@ -57,7 +59,7 @@ def load():
 
 
 class Level(object):
-    def __init__(self, screen, lvl_dict, monsters, friendlies):
+    def __init__(self, screen, lvl_dict, monsters, friendlies, env):
         """Loading the level files, changing the CWD to match the files for loading,
         This was easier than having to edit the .tmx file every time it needed to
         be edited."""
@@ -110,6 +112,13 @@ class Level(object):
         for enemy in self.tilemap.layers['spawns'].find('enemy'):
             monsters[enemy.properties['enemy']](self, (enemy.px, enemy.py), enemy.properties, self.enemies)
         self.tilemap.layers.append(self.enemies)
+
+        # Load environment e.g. Wind, Fire, Ice, Water
+        self.env = tmx.SpriteLayer()
+        for weather in self.tilemap.layers['spawns'].find('env'):
+            rect = pygame.Rect(weather.px, weather.py, weather.width, weather.height)
+            env[weather.properties['env']](self, (weather.px, weather.py), weather.properties, rect, self.env)
+        self.tilemap.layers.append(self.env)
 
         #Loading the parallaxed background layers
         self.para_layers_dict = {}

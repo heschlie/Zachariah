@@ -68,6 +68,7 @@ class Character(pygame.sprite.Sprite):
                 for i in range(height):
                     z = False
                     for j in range(width):
+                        # Checking if this pixeles alpha is greater than 0, if so grab this image
                         if image.get_at((j, i))[3] > 0:
                             imageAndDuration.append((image, duration))
                             hitmask_list_R.append(pygame.mask.from_surface(image))
@@ -83,13 +84,9 @@ class Character(pygame.sprite.Sprite):
                 hitmask_dict[animFlips[animType]] = hitmask_list_L
             else:
                 animSurf[animType] = pyganim.PygAnimation(placeholder)
-            # y_in_img += height
         #flipping the right animations to create the left ones
         for src in animTypes:
             animSurf[animFlips[src]] = self.flip_anim(animSurf[src])
-        # if 'damage_right' in animTypes:
-        #     animSurf['damage_right']._propSetLoop(False)
-        #     animSurf['damage_left']._propSetLoop(False)
         return animSurf, hitmask_dict
 
     def setup_collision_rects(self):

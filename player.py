@@ -308,21 +308,21 @@ class Ears(Character):
             if lvl.hero.x_vel > 4:
                 frame = lvl.hero.animSurf['run_right']._propGetCurrentFrameNum()
                 self.image = self.animSurf['run_right'].getFrame(frame)
-        if self.dir == 'left':
-            if self.fall and self.y_vel < 0:
+        if lvl.hero.dir == 'left':
+            if lvl.hero.fall and lvl.hero.y_vel < 0:
                 frame = lvl.hero.animSurf['jump_left']._propGetCurrentFrameNum()
                 self.image = self.animSurf['jump_left'].getFrame(frame)
 
-            if self.fall and self.y_vel >= 0:
+            if lvl.hero.fall and lvl.hero.y_vel >= 0:
                 frame = lvl.hero.animSurf['fall_left']._propGetCurrentFrameNum()
                 self.image = self.animSurf['fall_left'].getFrame(frame)
 
-        if self.dir == 'right':
-            if self.fall and self.y_vel < 0:
+        if lvl.hero.dir == 'right':
+            if lvl.hero.fall and lvl.hero.y_vel < 0:
                 frame = lvl.hero.animSurf['jump_right']._propGetCurrentFrameNum()
                 self.image = self.animSurf['jump_right'].getFrame(frame)
 
-            if self.fall and self.y_vel >= 0:
+            if lvl.hero.fall and lvl.hero.y_vel >= 0:
                 frame = lvl.hero.animSurf['fall_right']._propGetCurrentFrameNum()
                 self.image = self.animSurf['fall_right'].getFrame(frame)
 

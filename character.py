@@ -349,6 +349,8 @@ class Character(pygame.sprite.Sprite):
         if not self.fall:
             self.y_vel = self.jump_power
             self.fall = True
+            self.animSurf['jump_left'].play()
+            self.animSurf['jump_right'].play()
 
     def jump_cut(self):
         """Called when the palyer releases the jump key before maximum height is
@@ -356,6 +358,8 @@ class Character(pygame.sprite.Sprite):
         if self.fall:
             if self.y_vel < self.jump_cut_magnitude:
                 self.y_vel = self.jump_cut_magnitude
+                self.animSurf['fall_left'].play()
+                self.animSurf['fall_right'].play()
 
     def flip_anim(self, src):
         """Will flip the right facing animations to face left"""

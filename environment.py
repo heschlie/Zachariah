@@ -72,8 +72,8 @@ class Wind(Environment):
 
     def pos_sprite(self, anim_rect):
         random.seed()
-        x = random.randint(self.area.x, self.area.x + self.area.width)
-        y = random.randint(self.area.y, self.area.y + self.area.height)
+        x = random.randint(self.area.x, self.area.x + self.area.width - self.rect.width)
+        y = random.randint(self.area.y, self.area.y + self.area.height - self.rect.height)
         anim_rect.topleft = (x, y)
 
     def push(self, lvl):

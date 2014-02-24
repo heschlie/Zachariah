@@ -274,7 +274,8 @@ class Ears(Character):
             'swim_right': [42, 64, 0.175, True, 384],
             'ladder_right': [42, 64, 0.175, True, 448],
             'stop_right': [42, 64, 0.175, True, 512],
-            'damage_right': [42, 64, 0.175, False, 576]
+            'damage_right': [42, 64, 0.175, False, 576],
+            'attack_right': [104, 64, 0.175, False, 662]
         }
         return animTypes
 

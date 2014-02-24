@@ -6,7 +6,7 @@ class Player(Character):
     def __init__(self, lvl, loc, properties, *groups):
         super(Character, self).__init__(*groups)
         ears_prop = {}
-        self.sheet = pygame.image.load('images/sprites/char_new.png').convert_alpha()
+        self.sheet = pygame.image.load('images/sprites/char.png').convert_alpha()
         animTypes = self.anim_dict()
         self.placeholder = self.sheet.subsurface(0, 0, 32, 64)
         self.animSurf, self.hitmask_dict = self.get_images(self.sheet, animTypes)

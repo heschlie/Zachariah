@@ -29,6 +29,7 @@ class Character(pygame.sprite.Sprite):
         self.conductor = pyganim.PygConductor(self.animSurf)
         self.conductor.play()
         self.drop = False
+        self.attacking = False
 
     def update(self, dt, lvl, key, joy, screen, keys):
         self.check_alive(lvl)
@@ -420,3 +421,8 @@ class Character(pygame.sprite.Sprite):
                 return True
         else:
             return False
+
+    def attack(self):
+        self.attacking = True
+        self.animSurf['attack_left'].play()
+        self.animSurf['attack_right'].play()

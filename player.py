@@ -20,6 +20,8 @@ class Player(Character):
         self.hp = 3
         self.max_speed = 3
         self.run = False
+        # for i in self.animSurf.keys():
+        #     print(i)
 
     def anim_dict(self):
         # Dict for get_images method, the key is the name of the animation, the list is [width, height,
@@ -34,7 +36,8 @@ class Player(Character):
             'swim_right': [42, 43, 0.175, True, 258],
             'ladder_right': [42, 43, 0.175, True, 301],
             'stop_right': [42, 43, 0.175, True, 344],
-            'damage_right': [42, 43, 0.175, False, 387]
+            'damage_right': [42, 43, 0.175, False, 387],
+            'attack_right': [104, 64, 0.175, False, 494]
         }
         return animTypes
         
@@ -51,7 +54,8 @@ class Player(Character):
         self.max_speed = 3
         self.jmp_damage(lvl)
         self.talk(lvl, key, joy, screen)
-        print(self.direction_x)
+        if (self.animSurf['attack_left'].isFinished() or self.animSurf['attack_right'].isFinished()) and self.attacking:
+            self.attacking = False
 
     def gen_fat_mask(self):
         mask = pygame.mask.Mask((self.rect.width, self.rect.height))
@@ -124,6 +128,15 @@ class Player(Character):
                 self.image = self.animSurf['fall_right'].getCurrentFrame()
                 frame = self.animSurf['fall_right']._propGetCurrentFrameNum()
                 self.hitmask = self.hitmask_dict['fall_right'][frame]
+        # Attacking animations
+        if self.attacking and self.dir == 'left':
+            self.image = self.animSurf['attack_left'].getCurrentFrame()
+            frame = self.animSurf['attack_left']._propGetCurrentFrameNum()
+            self.hitmask = self.hitmask_dict['attack_left'][frame]
+        if self.attacking and self.dir == 'right':
+            self.image = self.animSurf['attack_right'].getCurrentFrame()
+            frame = self.animSurf['attack_right']._propGetCurrentFrameNum()
+            self.hitmask = self.hitmask_dict['attack_right'][frame]
         if self.direction_y == 'down':
             pass
 
@@ -140,12 +153,13 @@ class Player(Character):
             self.x_vel += self.x_det
 
     def get_events(self, key, keys, joy):
-        self.jump_keys(keys, key)
+        self.action_keys(keys, key)
         self.run = self.get_run(key, joy)
         self.direction_x, self.direction_y = self.get_direction(key, joy, keys)
     
-    def jump_keys(self, keys, key):
+    def action_keys(self, keys, key):
         for event in keys:
+            # Jump key
             if self.direction_y is not 'down':
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
@@ -159,6 +173,13 @@ class Player(Character):
                 elif event.type == JOYBUTTONUP:
                     if event.button == 0:
                         self.jump_cut()
+            # Attack key
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RCTRL:
+                    self.attack()
+            elif event.type == pygame.JOYAXISMOTION:
+                if event.axis == 2:
+                    self.attack()
 
     def get_direction(self, key, joy, keys):
         direction_x = ''
@@ -274,8 +295,7 @@ class Ears(Character):
             'swim_right': [42, 64, 0.175, True, 384],
             'ladder_right': [42, 64, 0.175, True, 448],
             'stop_right': [42, 64, 0.175, True, 512],
-            'damage_right': [42, 64, 0.175, False, 576],
-            'attack_right': [104, 64, 0.175, False, 662]
+            'damage_right': [42, 64, 0.175, False, 576]
         }
         return animTypes
 
